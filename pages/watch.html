@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- ✅ Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=GTM-TT7SLZ4L" + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TT7SLZ4L");
+    </script>
+
+    <!-- ✅ Basic -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 🔒 SEO OFF (Private page) -->
+    <title>Watch Course | BR30 Trader</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- 🔐 Security -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- ✅ Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ✅ Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- ✅ SweetAlert2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+    <style>
+      /* =========================================
+           1. GLOBAL & WATCH PAGE LAYOUT
+        ========================================= */
+/* =========================================
+   🔥 GLOBAL
+========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #050505;
+  color: #fff;
+}
+
+/* =========================================
+   🔥 HEADER (GLASS LOOK)
+========================================= */
+header {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 18px;
+}
+
+header a {
+  color: #a020f0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* =========================================
+   🎬 MAIN LAYOUT
+========================================= */
+.watch-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1300px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+/* =========================================
+   🎥 VIDEO PLAYER (CINEMATIC)
+========================================= */
+.video-player {
+  flex: 2;
+  min-width: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(160, 32, 240, 0.3);
+  box-shadow: 0 20px 60px rgba(160, 32, 240, 0.2);
+  transition: 0.3s;
+  background: #000;
+}
+
+.video-player:hover {
+  box-shadow: 0 25px 80px rgba(160, 32, 240, 0.4);
+}
+
+.iframe-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+}
+
+#main-video-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* 🎯 VIDEO TITLE */
+#current-video-title {
+  padding: 15px;
+  background: linear-gradient(90deg, #1e293b, #020617);
+  color: #00ff88;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* =========================================
+   📚 PLAYLIST
+========================================= */
+.video-list {
+  flex: 1;
+  min-width: 280px;
+  background: #0f172a;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #334155;
+}
+
+.video-list h3 {
+  color: #a020f0;
+  margin-bottom: 15px;
+}
+
+/* SCROLL */
+#playlist {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+#playlist::-webkit-scrollbar {
+  width: 6px;
+}
+
+#playlist::-webkit-scrollbar-thumb {
+  background: #a020f0;
+  border-radius: 10px;
+}
+
+/* VIDEO ITEM */
+.video-item {
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #050505;
+  border: 1px solid #334155;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.video-item:hover {
+  background: #a020f0;
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* ACTIVE VIDEO */
+.video-item.active {
+  background: #a020f0;
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* =========================================
+   🏆 CERTIFICATE POPUP
+========================================= */
+#cert-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.cert-card {
+  background: #0a0a0a;
+  border: 2px solid #00ff88;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px #00ff88; }
+  to { box-shadow: 0 0 30px #00ff88; }
+}
+
+.cert-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: #111;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 8px;
+}
+
+.claim-btn {
+  background: #00ff88;
+  color: black;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* =========================================
+   📱 RESPONSIVE
+========================================= */
+@media (max-width: 768px) {
+  .watch-container {
+    flex-direction: column;
+  }
+}
+    </style>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript></noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header>
+      <h1 id="course-title">Course Title</h1>
+      <nav><a href="mycourse.html">← Back to Courses</a></nav>
+    </header>
+
+    <div class="watch-container">
+      <!-- Video Player Section -->
+      <div class="video-player">
+        <div class="iframe-container">
+          <!-- 🔥 YouTube API yahan player inject karega -->
+          <!-- 🎥 SIRF YE RAKHO (Iframe ko bilkul hata do) -->
+          <div
+            id="main-video-iframe"
+            style="
+              width: 100%;
+              aspect-ratio: 16/9;
+              background: #000;
+              border-radius: 15px;
+            "
+          ></div>
+        </div>
+        <h2 id="current-video-title">Select a Video</h2>
+      </div>
+
+      <!-- Playlist Sidebar -->
+      <div class="video-list">
+        <h3>Course Content</h3>
+        <div id="playlist">
+          <p style="font-size: 13px; color: #94a3b8">Loading playlist...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🏆 CERTIFICATE POPUP -->
+    <div id="cert-overlay">
+      <div class="cert-card">
+        <h2 style="color: #00ff88; margin-bottom: 10px">🏆 Congratulations!</h2>
+        <p style="color: #94a3b8; font-size: 14px">
+          Bhai, aapne course complete kar liya! Certificate ke liye apni details
+          bharein:
+        </p>
+
+        <input
+          type="text"
+          id="certName"
+          class="cert-input"
+          placeholder="Aapka Full Name"
+        />
+        <input
+          type="text"
+          id="certMobile"
+          class="cert-input"
+          placeholder="Mobile Number"
+        />
+
+        <button class="claim-btn" onclick="submitCertificate()">
+          Claim Certificate 🚀
+        </button>
+        <p
+          onclick="
+            document.getElementById('cert-overlay').style.display = 'none'
+          "
+          style="
+            color: #ff4d4d;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 12px;
+          "
+        >
+          Maybe Later
+        </p>
+      </div>
+    </div>
+
+  <script src="../js/config.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+  let player;
+  let currentCourseName = "";
+
+  const token = localStorage.getItem("token");
+  const baseUrl = window.API_BASE_URL || "https://br30kart-api.onrender.com";
+  const API = baseUrl + "/api/products";
+
+  const params = new URLSearchParams(window.location.search);
+  const courseId = params.get("id");
+
+  console.log("📥 Course ID:", courseId);
+
+  // 🔐 AUTH CHECK
+  if (!token) {
+    window.location.href = "login.html";
+  }
+
+  if (!courseId) {
+    alert("Invalid Course!");
+    window.location.href = "mycourse.html";
+  }
+
+  // 🎥 YOUTUBE ID EXTRACTOR
+  function getYTID(url) {
+    try {
+      if (!url) return null;
+      const u = new URL(url);
+
+      if (u.hostname.includes("youtu.be")) return u.pathname.slice(1);
+      if (u.pathname.includes("/shorts/")) return u.pathname.split("/shorts/")[1];
+
+      return u.searchParams.get("v");
+    } catch {
+      return null;
+    }
+  }
+
+  // ✅ YT READY
+  function onYouTubeIframeAPIReady() {
+    console.log("✅ YouTube Ready");
+    loadCourseContent();
+  }
+
+  // 🚀 LOAD COURSE
+  async function loadCourseContent() {
+    try {
+      console.log("📡 Loading course...");
+
+      const res = await fetch(`${API}/${courseId}`, {
+        headers: { "x-auth-token": token },
+      });
+
+      if (res.status === 401 || res.status === 403) {
+        alert("Access Denied!");
+        window.location.href = "../index.html";
+        return;
+      }
+
+      const course = await res.json();
+      console.log("📦 Course:", course);
+
+      currentCourseName = course.title;
+      document.getElementById("course-title").innerText = course.title;
+
+      // 💥🔥 FINAL FIX (DUAL SUPPORT)
+      let lessons = [];
+
+      if (Array.isArray(course.lessons) && course.lessons.length > 0) {
+        lessons = course.lessons;
+      } else if (course.videoLink) {
+        lessons = [
+          {
+            lessonTitle: course.title,
+            videoUrl: course.videoLink,
+          },
+        ];
+      }
+
+      if (!lessons.length) {
+        document.getElementById("playlist").innerHTML = "❌ No videos found";
+        return;
+      }
+
+      // 🎬 FIRST VIDEO LOAD
+      loadVideo(lessons[0]);
+
+      // 📚 PLAYLIST
+      renderPlaylist(lessons);
+
+    } catch (err) {
+      console.error("❌ Error:", err);
+    }
+  }
+
+  // 🎬 LOAD VIDEO
+function loadVideo(lesson, index) {
+  const videoId = getYTID(lesson.videoUrl);
+
+  if (!videoId) return;
+
+  if (!player) {
+    player = new YT.Player("main-video-iframe", {
+      videoId: videoId,
+      events: {
+        onStateChange: onPlayerStateChange,
+      },
+    });
+  } else {
+    player.loadVideoById(videoId);
+  }
+
+  // Title update karo
+  const titleEl = document.getElementById("current-video-title");
+  if (titleEl) titleEl.innerText = lesson.lessonTitle;
+
+  // 🔥 ACTIVE CLASS (SAFE VERSION)
+  const videoItems = document.querySelectorAll(".video-item");
+  
+  // Pehle saari active classes hatao
+  videoItems.forEach(el => el.classList.remove("active"));
+
+  // 🛑 FIX: Check karo ki ye index wala element asli mein exist karta hai ya nahi
+  if (videoItems[index]) {
+    videoItems[index].classList.add("active");
+  } else {
+    console.warn(`[UI] Index ${index} wala video-item nahi mila!`);
+  }
+}
+
+
+  // 📚 PLAYLIST
+function renderPlaylist(lessons) {
+  const html = lessons.map((lesson, i) => `
+    <div class="video-item"
+      onclick='loadVideo(${JSON.stringify(lesson)}, ${i})'>
+      ▶ ${i + 1}. ${lesson.lessonTitle}
+    </div>
+  `).join("");
+
+  document.getElementById("playlist").innerHTML = html;
+
+
+    const container = document.getElementById("playlist");
+    container.innerHTML = html;
+
+    // 🔥 SAFE CLICK HANDLER (NO JSON BUG)
+    container.querySelectorAll(".video-item").forEach((el) => {
+      el.addEventListener("click", () => {
+        const index = el.getAttribute("data-index");
+        loadVideo(lessons[index]);
+      });
+    });
+  }
+
+  // 🎯 VIDEO END
+  function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) {
+      document.getElementById("cert-overlay").style.display = "flex";
+    }
+  }
+
+  // 🏆 CERTIFICATE (UNCHANGED)
+  async function submitCertificate() {
+    const name = document.getElementById("certName").value;
+    const mobile = document.getElementById("certMobile").value;
+    const btn = document.querySelector(".claim-btn");
+
+    if (!name) return alert("Enter full name");
+
+    btn.innerText = "Generating...";
+    btn.disabled = true;
+console.log("📤 Sending to Backend:", { name, mobile, courseName: currentCourseName });
+    try {
+      const res = await fetch(`${baseUrl}/api/auth/claim-certificate`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": token,
+        },
+        body: JSON.stringify({
+          fullName: name,
+          mobile,
+          courseId,
+          courseName: currentCourseName,
+        }),
+      });
+
+      const data = await res.json();
+
+  if (data.success) {
+    Swal.fire({
+      title: "🏆 Certificate Ready!",
+      text: "Aapka certificate successfully generate ho gaya hai.",
+      icon: "success",
+      background: "#0a0a0a",
+      confirmButtonColor: "#00ff88",
+      confirmButtonText: "View Certificate 📄", 
+      showCancelButton: true,
+      cancelButtonText: "Later"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.open(data.downloadUrl, "_blank"); 
+      }
+    });
+
+    document.getElementById("cert-overlay").style.display = "none";
+}
+    } catch (err) {
+      console.error(err);
+      alert("Error generating certificate");
+    } finally {
+      btn.innerText = "Claim Certificate";
+      btn.disabled = false;
+    }
+  }
+</script>
+
+    <script src="/js/security.js"></script>
+  </body>
+</html>

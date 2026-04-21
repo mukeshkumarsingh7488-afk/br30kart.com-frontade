@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="hi">
+<head>
+
+  <!-- ✅ Basic -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- 🔒 SECURITY (STRONG 🔥) -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, proxy-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <!-- 🔐 Extra Security Headers (IMPORTANT 🔥) -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+  <!-- ✅ Title -->
+  <title>BR30 Kart - Seller Dashboard</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" href="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg" type="image/png">
+
+  <!-- ✅ Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ✅ Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ Icons -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- ✅ PDF + Screenshot Tools -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- ✅ SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+  <style>
+    /* कैलेंडर इनपुट को प्रीमियम और ब्राइट बनाने के लिए */
+.date-input {
+    background: #1a1f26;
+    color: #ffffff;
+    border: 1px solid #374151;
+    padding: 6px 12px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 13px;
+    color-scheme: dark; /* ये डिफ़ॉल्ट कैलेंडर को डार्क/ब्राइट बैलेंस करेगा */
+}
+
+/* कैलेंडर के लोगो (Icon) को थोड़ा बड़ा और साफ़ करने के लिए */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* लोगो को सफ़ेद/ब्राइट करने के लिए */
+    font-size: 18px;   /* लोगो का साइज़ बड़ा कर दिया */
+    cursor: pointer;
+}
+
+    /* एकदम प्रीमियम गहरा डार्क थीम */
+    body { background-color: #05070a; color: #e1e1e1; font-family: 'Inter', sans-serif; }
+    
+    .stat-card { 
+        background: #0f1216; border: 1px solid #1f2937; border-radius: 16px; 
+        transition: all 0.3s ease;
+    }
+    .stat-card:hover { transform: translateY(-5px); border-color: #3b82f6; }
+
+    /* कैलेंडर डार्क मोड में साफ़ दिखेगा */
+    input[type="date"] {
+        background: #1a1f26; color: #ffffff; border: 1px solid #374151;
+        padding: 5px; border-radius: 8px; outline: none;
+    }
+
+    /* Scrollable Table - DB जैसा फील */
+    .table-container {
+        max-height: 450px; /* फिक्स्ड हाइट ताकि स्क्रॉल दिखे */
+        overflow-y: auto;
+        background: #0f1216;
+        border: 1px solid #1f2937;
+        border-radius: 12px;
+    }
+    .table-container::-webkit-scrollbar { width: 6px; }
+    .table-container::-webkit-scrollbar-thumb { background: #374151; border-radius: 10px; }
+
+    /* Dynamic Colors based on DB */
+    .status-success { color: #00c853; background: rgba(0, 200, 83, 0.1); border: 1px solid rgba(0, 200, 83, 0.2); }
+    .status-pending { color: #ffab00; background: rgba(255, 171, 0, 0.1); border: 1px solid rgba(255, 171, 0, 0.2); }
+    .badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+</style>
+<body>
+    
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+    height="0" width="0"
+    style="display:none;visibility:hidden">
+  </iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Main Header -->
+<div class="p-6">
+    <div class="flex justify-between items-center mb-8">
+        <div class="flex items-center gap-4">
+            <a href="seller-analytics.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs font-bold transition">BACK TO Dashbord</a>
+            <h1 class="text-2xl font-black italic">Best <span class="text-blue-500">Sellers</span></h1>
+        </div>
+      <!-- Search Bar with Refresh Button -->
+<div class="flex items-center gap-3">
+    <!-- Search Input -->
+    <div class="relative">
+        <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
+        <input type="text" id="courseSearch" oninput="applyFilters()" placeholder="Search Course Name..." 
+               class="bg-[#0d1117] border border-gray-800 text-white pl-10 pr-4 py-2 rounded-lg text-sm w-64 outline-none focus:border-blue-500">
+    </div>
+
+    <!-- Exact Refresh Button from Image -->
+    <button onclick="resetFilters()" class="bg-[#2d333b] hover:bg-[#3d444d] text-white p-2.5 rounded-lg transition-all border border-gray-700 flex items-center justify-center w-10 h-10">
+        <i class="fas fa-sync-alt text-sm"></i>
+    </button>
+</div>
+
+    </div>
+
+
+<!-- 4 Stats Boxes: एक लाइन में (Grid 4) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <div class="stat-card p-4 border-l-4 border-l-blue-500">
+        <p class="text-gray-500 text-[9px] font-bold uppercase">Best Seller</p>
+        <h2 class="text-2xl font-black" id="bestSellerAmount">₹0</h2>
+    </div>
+    <div class="stat-card p-4 border-l-4 border-l-green-500">
+        <p class="text-gray-500 text-[9px] font-bold uppercase">2nd Seller</p>
+        <h2 class="text-2xl font-black text-green-500" id="secondSellerAmount">₹0</h2>
+    </div>
+    <div class="stat-card p-4 border-l-4 border-l-yellow-500">
+        <p class="text-gray-500 text-[9px] font-bold uppercase">3rd Seller</p>
+        <h2 class="text-2xl font-black text-yellow-500" id="thirdSellerAmount">₹0</h2>
+    </div>
+    <div class="stat-card p-4 border-l-4 border-l-red-500">
+        <p class="text-gray-500 text-[9px] font-bold uppercase">Low Seller</p>
+        <h2 class="text-2xl font-black text-red-500" id="lowSellerAmount">₹0</h2>
+    </div>
+</div>
+
+
+
+    <!-- Filter Bar -->
+<div class="bg-[#0f1216] p-4 rounded-xl mb-6 flex items-center justify-center gap-4 border border-[#1f2937]"> <!-- justify-center से सब सेंटर में आएगा -->
+    
+    <!-- Start Date -->
+    <div class="relative flex items-center">
+        <input type="date" id="startDate" class="date-input">
+    </div>
+
+    <span class="text-gray-600 font-bold">to</span>
+
+    <!-- End Date -->
+    <div class="relative flex items-center">
+        <input type="date" id="endDate" class="date-input">
+    </div>
+
+    <!-- Apply Filter Button -->
+    <button onclick="applyFilters()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-bold text-xs uppercase transition">
+        Apply
+    </button>
+
+       <!-- Refresh Button -->
+    <button onclick="resetFilters()" class="bg-gray-700 hover:bg-gray-600 text-white px-3 py-2 rounded-lg transition">
+        <i class="fas fa-sync-alt"></i>
+    </button>
+
+    <!-- PDF Button (अब इसी लाइन में सेंटर में है) -->
+    <button onclick="exportToPDF()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold text-xs flex items-center gap-2 transition">
+        <i class="fas fa-file-pdf"></i> PDF
+    </button>
+
+<!-- csv download  -->
+      <button
+        onclick="window.exportToCSV()"
+        class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-bold text-xs flex items-center gap-2 shadow-lg"
+      >
+        <i class="fas fa-file-pdf"></i>
+        CSV
+      </button>
+</div>
+
+
+    <!-- Scrollable Table -->
+   <div class="table-container">
+    <table class="w-full text-left">
+        <thead class="sticky top-0 bg-[#161b22] text-gray-400 text-[10px] font-bold uppercase">
+            <tr>
+                <!-- px-6 से लेफ्ट-राइट गैप आ जाएगा और py-4 से ऊपर-नीचे -->
+                <th class="px-6 py-4 text-center">SALE DATE</th>
+                <th class="px-6 py-4 text-center">COURSE TITLE</th>
+                <th class="px-6 py-4 text-center">AMOUNT (INR)</th>
+                <th class="px-6 py-4 text-center">STUDENT NAME</th>
+                <th class="px-6 py-4 text-center">STATUS</th>
+            </tr>
+        </thead>
+            <tbody id="bestsellerTableBody" class="divide-y divide-[#1f2937]"></tbody>
+        </table>
+    </div>
+</div>
+
+    <!-- Your Config File -->
+    <script src="../js/config.js"></script>
+    <script src="../js/bestseller.js"></script>
+   <script src="/js/security.js"></script>
+  </body>
+</html>

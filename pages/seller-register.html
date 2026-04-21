@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title -->
+    <title>Seller KYC Registration | BR30 Kart</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Register as a seller on BR30 Kart. Complete KYC verification and start listing your products on our platform."
+    />
+
+    <meta name="robots" content="index, follow" />
+
+    <!-- Optional (recommended for form safety) -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+      type="image/png"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Seller KYC Registration | BR30 Kart" />
+    <meta
+      property="og:description"
+      content="Join BR30 Kart as a seller and complete your KYC registration."
+    />
+    <meta
+      property="og:image"
+      content="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BR30 Kart" />
+    <!-- sweet alart & pdf-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background-color: #0d0d0d;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .kyc-container {
+        background: #161b22;
+        width: 100%;
+        max-width: 550px;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid #30363d;
+        margin: 20px 0;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .header h1 {
+        color: #a020f0;
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+      }
+      .header p {
+        color: #8b949e;
+        font-size: 0.9rem;
+      }
+
+      .section-header {
+        color: #a020f0;
+        font-size: 1rem;
+        margin: 20px 0 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #30363d;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+        color: #c9d1d9;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        background: #0d1117;
+        border: 1px solid #30363d;
+        border-radius: 8px;
+        color: #fff;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      input:focus {
+        border-color: #a020f0;
+        box-shadow: 0 0 5px rgba(160, 32, 240, 0.3);
+      }
+
+      /* File Upload Styling */
+      .file-upload {
+        position: relative;
+        background: #0d1117;
+        border: 2px dashed #30363d;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .file-upload:hover {
+        border-color: #a020f0;
+        background: #1c2128;
+      }
+      .file-upload input {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+      }
+      .file-upload span {
+        font-size: 0.8rem;
+        color: #8b949e;
+      }
+
+      .btn-submit {
+        width: 100%;
+        padding: 14px;
+        background: #a020f0;
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 25px;
+        transition: 0.3s;
+        font-size: 1rem;
+      }
+      .btn-submit:hover {
+        background: #8219c4;
+        transform: translateY(-2px);
+      }
+      .btn-submit:disabled {
+        background: #4b2c63;
+        cursor: not-allowed;
+      }
+
+      .note {
+        background: rgba(255, 71, 87, 0.1);
+        color: #ff4757;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        margin-top: 20px;
+        text-align: center;
+        border: 1px solid rgba(255, 71, 87, 0.2);
+      }
+
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        font-size: 0.85rem;
+        color: #8b949e;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+      .back-link:hover {
+        color: #a020f0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="kyc-container">
+      <div class="header">
+        <h1>Seller Registration 💼</h1>
+        <p>Apna business account setup karein.</p>
+      </div>
+
+      <form id="sellerRegForm">
+        <!-- Personal Info -->
+        <div class="section-header">1. Personal Info</div>
+        <div class="form-group">
+          <label>Full Name (As per Documents)</label>
+          <input type="text" id="name" placeholder="Enter Full Name" required />
+        </div>
+        <!-- Email Section with OTP -->
+        <div class="form-group">
+          <label>Email Address</label>
+          <div style="display: flex; gap: 10px">
+            <input
+              type="email"
+              id="email"
+              placeholder="example@mail.com"
+              required
+              style="flex: 1"
+            />
+            <button
+              type="button"
+              id="sendOtpBtn"
+              onclick="sendOTP()"
+              style="padding: 10px; cursor: pointer"
+            >
+              Send OTP
+            </button>
+          </div>
+        </div>
+
+        <div id="otpSection" class="form-group" style="display: none">
+          <label>Enter 6-Digit OTP</label>
+          <div style="display: flex; gap: 10px">
+            <input
+              type="text"
+              id="otpInput"
+              placeholder="123456"
+              maxlength="6"
+            />
+            <button
+              type="button"
+              onclick="verifyOTP()"
+              style="
+                padding: 10px;
+                background: #28a745;
+                color: white;
+                border: none;
+              "
+            >
+              Verify
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Create Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Min. 8 Characters"
+            required
+          />
+        </div>
+
+        <div class="section-header">2. Identity Verification</div>
+        <div class="form-group">
+          <label>Aadhar Number</label>
+          <input
+            type="text"
+            id="aadharNo"
+            placeholder="12-digit Aadhar Number"
+            maxlength="12"
+            pattern="\d{12}"
+            title="Please enter 12 digit aadhar number"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Aadhar Front Side</label>
+          <div class="file-upload">
+            <span id="frontText">📁 Click to upload Front Side</span>
+            <input
+              type="file"
+              id="aadharFront"
+              accept="image/*"
+              required
+              onchange="updateFileName('aadharFront', 'frontText')"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Aadhar Back Side</label>
+          <div class="file-upload">
+            <span id="backText">📁 Click to upload Back Side</span>
+            <input
+              type="file"
+              id="aadharBack"
+              accept="image/*"
+              required
+              onchange="updateFileName('aadharBack', 'backText')"
+            />
+          </div>
+        </div>
+
+        <!-- Bank Details -->
+        <div class="section-header">3. Bank Details (Payouts)</div>
+        <div class="form-group">
+          <label>Bank Name</label>
+          <input
+            type="text"
+            id="bankName"
+            placeholder="e.g. State Bank of India"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Account Number</label>
+          <input
+            type="text"
+            id="accountNo"
+            placeholder="Enter Bank Account Number"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>IFSC Code</label>
+          <input type="text" id="ifscCode" placeholder="SBIN000XXXX" required />
+        </div>
+
+        <div class="form-group">
+          <label>Cancelled Cheque or Passbook Photo</label>
+          <div class="file-upload">
+            <span id="bankDocText">📁 Upload Cheque/Passbook Copy</span>
+            <input
+              type="file"
+              id="bankDoc"
+              accept="image/*"
+              required
+              onchange="updateFileName('bankDoc', 'bankDocText')"
+            />
+          </div>
+        </div>
+
+        <div class="note">
+          ⚠️ Verification status aapko email par mil jayega (24-48 Hours).
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          Submit Application
+        </button>
+
+        <a href="login.html" class="back-link">
+          Already have a seller account? Login
+        </a>
+      </form>
+    </div>
+    <script src="../js/config.js"></script>
+    <script>
+      // 🔐 Already logged in? redirect
+      if (localStorage.getItem("sellerId")) {
+        window.location.href = "seller-dashboard.html";
+      }
+
+      let isEmailVerified = false;
+      const submitBtn = document.getElementById("submitBtn");
+      submitBtn.disabled = true;
+
+      // 📧 Email validation
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      // --- 1. Send OTP ---
+      async function sendOTP() {
+        const email = document.getElementById("email").value.trim();
+        const sendBtn = document.getElementById("sendOtpBtn");
+
+        if (!isValidEmail(email)) {
+          return alert("❌ Enter valid email!");
+        }
+
+        sendBtn.innerText = "Sending...";
+        sendBtn.disabled = true;
+
+        try {
+          const res = await fetch(
+            CONFIG.BASE_API_URL + "/auth/seller/send-otp",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email }),
+            },
+          );
+
+          const data = await res.json();
+
+          if (res.ok) {
+            alert("✅ " + data.msg);
+            document.getElementById("otpSection").style.display = "block";
+          } else {
+            alert("❌ " + (data.msg || "OTP send failed"));
+          }
+        } catch (err) {
+          alert("⚠️ Network Error!");
+        }
+
+        sendBtn.innerText = "Resend OTP";
+        sendBtn.disabled = false;
+      }
+
+      // --- 2. Verify OTP ---
+      async function verifyOTP() {
+        const otp = document.getElementById("otpInput").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        if (otp.length !== 6) {
+          return alert("Enter valid 6 digit OTP");
+        }
+
+        try {
+          const res = await fetch(
+            CONFIG.BASE_API_URL + "/auth/seller/verify-otp",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, otp }),
+            },
+          );
+
+          const data = await res.json();
+
+          if (res.ok) {
+            alert("✅ Email Verified!");
+            isEmailVerified = true;
+
+            document.getElementById("otpSection").style.display = "none";
+            document.getElementById("email").readOnly = true;
+
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+          } else {
+            alert("❌ " + (data.msg || "Invalid OTP"));
+          }
+        } catch (err) {
+          alert("⚠️ Verification Error!");
+        }
+      }
+
+      // 📁 File preview
+      function updateFileName(inputId, textId) {
+        const input = document.getElementById(inputId);
+        const text = document.getElementById(textId);
+
+        if (input.files.length > 0) {
+          text.innerText = "✅ " + input.files[0].name;
+          text.style.color = "#a020f0";
+        }
+      }
+
+      // --- 3. REGISTER ---
+      const API_URL = CONFIG.BASE_API_URL + "/auth/seller/register";
+
+      document
+        .getElementById("sellerRegForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const btn = document.getElementById("submitBtn");
+
+          // 🔒 prevent double click
+          if (btn.disabled) return;
+
+          if (!isEmailVerified) {
+            return alert("Please verify your email first!");
+          }
+
+          // 📁 File validation
+          if (
+            !document.getElementById("aadharFront").files[0] ||
+            !document.getElementById("aadharBack").files[0] ||
+            !document.getElementById("bankDoc").files[0]
+          ) {
+            return alert("❌ Upload all documents!");
+          }
+
+          btn.innerHTML = "Processing... ⏳";
+          btn.disabled = true;
+
+          const formData = new FormData();
+
+          formData.append("name", document.getElementById("name").value);
+          formData.append("email", document.getElementById("email").value);
+          formData.append(
+            "password",
+            document.getElementById("password").value,
+          );
+          formData.append(
+            "aadharNo",
+            document.getElementById("aadharNo").value,
+          );
+          formData.append(
+            "bankName",
+            document.getElementById("bankName").value,
+          );
+          formData.append(
+            "accountNo",
+            document.getElementById("accountNo").value,
+          );
+          formData.append(
+            "ifscCode",
+            document.getElementById("ifscCode").value,
+          );
+
+          formData.append(
+            "aadharFront",
+            document.getElementById("aadharFront").files[0],
+          );
+          formData.append(
+            "aadharBack",
+            document.getElementById("aadharBack").files[0],
+          );
+          formData.append(
+            "bankDoc",
+            document.getElementById("bankDoc").files[0],
+          );
+
+          try {
+            const res = await fetch(API_URL, {
+              method: "POST",
+              body: formData,
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+              // 💾 SAVE DATA
+              localStorage.setItem("sellerId", data.sellerId || "");
+              localStorage.setItem("userName", data.name || "");
+              localStorage.setItem("userEmail", data.email || "");
+              localStorage.setItem("isSeller", "true");
+
+              btn.innerHTML = "Success ✅";
+
+              alert("🎉 Application Submitted!");
+
+              // 🚀 Redirect
+              window.location.href = "seller-dashboard.html";
+            } else {
+              alert("❌ " + (data.msg || data.error || "Registration failed"));
+              btn.innerHTML = "Submit Application";
+              btn.disabled = false;
+            }
+          } catch (err) {
+            console.error(err);
+            alert("⚠️ Server Error!");
+            btn.innerHTML = "Submit Application";
+            btn.disabled = false;
+          }
+        });
+    </script>
+    <script src="/js/security.js"></script>
+  </body>
+</html>

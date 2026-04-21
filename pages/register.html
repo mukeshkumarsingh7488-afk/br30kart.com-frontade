@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TT7SLZ4L");
+    </script>
+
+    <!-- Basic -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title -->
+    <title>Register | BR30 Kart</title>
+
+    <!-- SEO (private page) -->
+    <meta
+      name="description"
+      content="Create your BR30 Kart account and get access to trading courses and learning resources."
+    />
+
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Security: no cache -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+      type="image/png"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <!-- sweet alart-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- ✅ SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+    <!-- Config -->
+    <script src="../assets/js/config.js"></script>
+
+    <!-- Open Graph (optional UI only, not SEO indexing) -->
+    <meta property="og:title" content="Register | BR30 Kart" />
+    <meta
+      property="og:description"
+      content="Create your BR30 Kart account securely."
+    />
+    <meta
+      property="og:image"
+      content="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BR30 Kart" />
+
+    <style>
+      /* =========================================
+           GLOBAL & BACKGROUND STYLES
+        ========================================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #050505;
+        /* Aapka Body Color */
+        padding: 20px;
+      }
+
+      /* =========================================
+           REGISTRATION CONTAINER (Responsive)
+        ========================================= */
+      .container {
+        width: 100%;
+        max-width: 380px;
+        background: #1e293b;
+        /* Dark Card Color */
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid #334155;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #ffffff;
+        /* White Text */
+        font-weight: 600;
+      }
+
+      label {
+        font-size: 13px;
+        font-weight: 500;
+        color: #cbd5e1;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      /* Input Box Styling */
+      .input-box {
+        display: flex;
+        align-items: center;
+        background: #050505;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 5px 12px;
+        margin-bottom: 15px;
+        position: relative;
+        transition: 0.3s;
+      }
+
+      .input-box:focus-within {
+        border-color: #a020f0;
+        /* Purple Focus */
+      }
+
+      .input-box input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        flex: 1;
+        padding: 10px 5px;
+        font-size: 15px;
+      }
+
+      /* Toggle Password Button */
+      .toggle-btn {
+        cursor: pointer;
+        color: #94a3b8;
+        font-size: 18px;
+      }
+
+      /* Button Styling */
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: #a020f0;
+        /* Brand Purple */
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background: #8219c4;
+        transform: translateY(-2px);
+      }
+
+      /* Footer Links */
+      .links {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .links a {
+        text-decoration: none;
+        color: #a020f0;
+        /* Purple Link */
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Mobile Adjustment */
+      @media (max-width: 480px) {
+        .container {
+          padding: 20px;
+        }
+
+        h2 {
+          font-size: 20px;
+        }
+      }
+      .auth-header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Left, Center aur Right align karega */
+        margin-bottom: 25px;
+        padding: 0 5px;
+      }
+
+      .register-heading {
+        font-size: 1.4rem; /* Heading thodi choti taaki space mile */
+        margin: 0;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .role-btn-small {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(160, 32, 240, 0.5);
+        color: #fff;
+        padding: 6px 12px; /* Chhota padding */
+        border-radius: 50px; /* Capsule look */
+        font-size: 0.75rem; /* Text size chota */
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s all ease;
+        min-width: 70px; /* Fixed width taaki dono side barabar dikhein */
+      }
+
+      .role-btn-small.active {
+        background: #a020f0;
+        border-color: #a020f0;
+        box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
+      }
+
+      .role-btn-small:hover {
+        background: #a020f0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ✅ GTM noscript -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <div class="container">
+      <div class="auth-header-row">
+        <button
+          type="button"
+          id="buyerTab"
+          class="role-btn-small active"
+          onclick="setRole('student')"
+        >
+          Student
+        </button>
+        <h2 class="register-heading">Register</h2>
+        <button
+          type="button"
+          id="sellerTab"
+          class="role-btn-small"
+          onclick="redirectToSeller()"
+        >
+          Seller
+        </button>
+      </div>
+
+      <!-- SECTION 1: REGISTRATION (Wrapped in FORM for Password Saving) -->
+      <form id="register-section" onsubmit="handleRegister(event)">
+        <label>Full Name</label>
+        <div class="input-box">
+          <input
+            id="username"
+            name="username"
+            placeholder="Only letters allowed"
+            required
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+          />
+        </div>
+
+        <label>Email Address</label>
+        <div class="input-box">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="example@mail.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <label>Password</label>
+        <div class="input-box">
+          <!-- autocomplete="new-password" se Google prompt trigger hota hai -->
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="8+ chars, 1 Special (@#$%^&*)"
+            autocomplete="new-password"
+            required
+          />
+          <span
+            class="toggle-btn"
+            id="toggleBtn"
+            onclick="togglePassword()"
+            style="cursor: pointer"
+          >
+            👁️
+          </span>
+        </div>
+
+        <button type="submit" id="regBtn">Send OTP</button>
+      </form>
+
+      <!-- SECTION 2: OTP VERIFICATION (Wrapped in FORM) -->
+      <form
+        id="otp-section"
+        style="display: none"
+        onsubmit="handleVerify(event)"
+      >
+        <p
+          style="
+            text-align: center;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+          "
+        >
+          Verification code sent to email.
+        </p>
+        <label>Enter 6-Digit OTP</label>
+        <div class="input-box">
+          <input
+            id="otpInput"
+            type="number"
+            placeholder="Ex: 123456"
+            required
+          />
+        </div>
+        <button type="submit" id="verifyBtn">Verify & Register</button>
+
+        <!-- Timer & Resend -->
+        <div style="text-align: center; margin-top: 15px">
+          <p id="timerText" style="font-size: 12px; color: #94a3b8">
+            Resend in
+            <span id="timer">30</span>
+            s
+          </p>
+          <button
+            type="button"
+            id="resendBtn"
+            onclick="resendOTP()"
+            style="
+              display: none;
+              background: none;
+              color: #3b82f6;
+              border: none;
+              cursor: pointer;
+              text-decoration: underline;
+              font-size: 13px;
+            "
+          >
+            Resend OTP
+          </button>
+        </div>
+      </form>
+
+      <div class="links">
+        <a
+          href="login.html"
+          onclick="
+            window.location.href = 'login.html';
+            return false;
+          "
+          style="cursor: pointer; display: inline-block; padding: 10px"
+        >
+          Already have an account? Login
+        </a>
+      </div>
+    </div>
+
+    <script src="../js/config.js"></script>
+
+    <script>
+      const API_URL = window.API_BASE_URL + "/api/auth";
+
+      function togglePassword() {
+        const pass = document.getElementById("password");
+        const btn = document.getElementById("toggleBtn");
+        if (!pass || !btn) return;
+        pass.type = pass.type === "password" ? "text" : "password";
+        btn.textContent = pass.type === "password" ? "👁️" : "🙈";
+      }
+
+      function validateInput(name, email, pass) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passRegex =
+          /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+        if (name.length < 3) return "Name must be at least 3 characters!";
+        if (!emailRegex.test(email))
+          return "Please enter a valid email address!";
+        if (!passRegex.test(pass))
+          return "Password needs 8+ chars with at least 1 special character!";
+        return null;
+      }
+
+      let timerInterval;
+      function startTimer() {
+        let timeLeft = 30;
+        const resendBtn = document.getElementById("resendBtn");
+        const timerText = document.getElementById("timerText");
+        const timerDisplay = document.getElementById("timer");
+
+        if (resendBtn) resendBtn.style.display = "none";
+        if (timerText) timerText.style.display = "block";
+
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            if (resendBtn) resendBtn.style.display = "block";
+            if (timerText) timerText.style.display = "none";
+          } else {
+            if (timerDisplay) timerDisplay.innerText = timeLeft;
+          }
+          timeLeft--;
+        }, 1000);
+      }
+
+      // --- 1. HANDLE REGISTRATION (Request OTP) ---
+      async function handleRegister(e) {
+        if (e) e.preventDefault();
+
+        const regBtn = document.getElementById("regBtn");
+        const name = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        const error = validateInput(name, email, password);
+        if (error) {
+          return Swal.fire({
+            icon: "warning",
+            title: "Validation Error",
+            text: error,
+            background: "#111827",
+            color: "#fff",
+          });
+        }
+
+        try {
+          regBtn.disabled = true;
+          regBtn.innerText = "Sending OTP... ⏳";
+
+          Swal.fire({
+            title: "Sending OTP...",
+            text: "Please wait while we verify your email.",
+            allowOutsideClick: false,
+            background: "#111827",
+            color: "#fff",
+            didOpen: () => {
+              Swal.showLoading();
+            },
+          });
+
+          const res = await fetch(`${window.API_BASE_URL}/api/auth/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password }),
+          });
+
+          const data = await res.json();
+
+          if (res.ok) {
+            await Swal.fire({
+              icon: "success",
+              title: "OTP Sent! ✅",
+              text: "A 6-digit verification code has been sent to your email.",
+              timer: 2000,
+              showConfirmButton: false,
+              background: "#111827",
+              color: "#fff",
+            });
+
+            document.getElementById("register-section").style.display = "none";
+            document.getElementById("otp-section").style.display = "block";
+            startTimer();
+          } else {
+            throw new Error(data.msg || "Registration Failed!");
+          }
+        } catch (err) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: err.message,
+            background: "#111827",
+            color: "#fff",
+          });
+          regBtn.disabled = false;
+          regBtn.innerText = "Register Now";
+        }
+      }
+
+      // --- 2. HANDLE VERIFICATION (Verify OTP) ---
+      async function handleVerify(e) {
+        if (e) e.preventDefault();
+
+        const verifyBtn = document.getElementById("verifyBtn");
+        const otpInput = document.getElementById("otpInput");
+        const emailInput = document.getElementById("email");
+
+        const otp = otpInput ? otpInput.value.trim() : "";
+        const email = emailInput ? emailInput.value.trim() : "";
+
+        if (otp.length < 6) {
+          return Swal.fire({
+            icon: "warning",
+            title: "Incomplete OTP",
+            text: "Please enter the 6-digit code.",
+            background: "#111827",
+            color: "#fff",
+          });
+        }
+
+        try {
+          verifyBtn.disabled = true;
+          verifyBtn.innerText = "Verifying... ⏳";
+
+          Swal.fire({
+            title: "Verifying OTP...",
+            allowOutsideClick: false,
+            background: "#111827",
+            color: "#fff",
+            didOpen: () => {
+              Swal.showLoading();
+            },
+          });
+
+          const res = await fetch(
+            `${window.API_BASE_URL}/api/auth/verify-otp`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, otp }),
+            },
+          );
+
+          const data = await res.json();
+
+          if (res.ok) {
+            await Swal.fire({
+              icon: "success",
+              title: "Account Verified! 🚀",
+              text: "Your account is now active. Redirecting to login...",
+              timer: 2000,
+              showConfirmButton: false,
+              background: "#111827",
+              color: "#fff",
+            });
+            window.location.replace("login.html");
+          } else {
+            throw new Error(data.msg || "Verification Failed!");
+          }
+        } catch (err) {
+          Swal.fire({
+            icon: "error",
+            title: "Failed",
+            text: err.message,
+            background: "#111827",
+            color: "#fff",
+          });
+          verifyBtn.disabled = false;
+          verifyBtn.innerText = "Verify & Register";
+        }
+      }
+
+      function resendOTP() {
+        handleRegister();
+      }
+
+      // Enter Key Listener
+      document.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          const isOtpVisible =
+            document.getElementById("otp-section")?.style.display === "block";
+          if (isOtpVisible) handleVerify();
+          else handleRegister();
+        }
+      });
+    </script>
+    <script>
+      // Seller button pe click karte hi hard verification page pe bhej do
+      function redirectToSeller() {
+        window.location.href = "seller-register.html";
+      }
+
+      // Buyer ke liye role set rahega (backend ko batane ke liye)
+      let currentRole = "student";
+      function setRole(role) {
+        currentRole = role;
+        document.getElementById("buyerTab").classList.add("active");
+        // Agar hum ek hi page pe dono rakhte to switch logic yahan aata
+      }
+    </script>
+    <script src="/js/security.js"></script>
+  </body>
+</html>

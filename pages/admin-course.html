@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Master Admin | BR30 TRADER</title>
+    <link rel="stylesheet" href="https://cloudflare.com" />
+        <!-- ✅ Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- sweet alart (swal, chart, pdf, etc.) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  </head>
+  <style>
+ :root {
+            --bg-black: #050505;        /* Dashboard BG */
+            --card-bg: #0a0a0a;         /* Inner Card BG */
+            --box-bg: #111111;          /* Button/Input Box BG */
+            --neon-green: #00ffcc;      /* Highlight Color */
+            --neon-red: #ff4757;        /* Alert/Delete Color */
+            --text-grey: #94a3b8;       /* Subtle Text */
+            --border-color: #1a1a1a;    /* Borders */
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .full-page-admin {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        /* HEADER SECTION */
+        .admin-header-v2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 10px 0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-btn {
+            background: var(--box-bg);
+            color: #fff;
+            border: 1px solid var(--border-color);
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        .title-group h1 { font-size: 22px; margin: 0; letter-spacing: 1px; }
+        .title-group p { color: var(--text-grey); font-size: 13px; margin-top: 4px; }
+
+        /* STATS BOXES */
+        .stats-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 200px;
+            border-left: 4px solid var(--neon-green); /* Visual Highlight */
+        }
+
+        /* --- Stats Box Hover Effect --- */
+.stat-box {
+    transition: all 0.3s ease; /* Smooth transition ke liye */
+    cursor: pointer;
+}
+
+/* 1. Live Courses Box Hover (Neon Green Glow) */
+.stat-box:hover {
+    transform: translateY(-5px); /* Thoda upar uthega */
+    background: #111111; /* Thoda light black */
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2); /* Neon Green Glow */
+}
+
+/* 2. Hidden Courses Box Hover (Neon Red Glow) */
+.stat-box.hidden-stat:hover {
+    border-color: var(--neon-red);
+    box-shadow: 0 0 20px rgba(255, 71, 87, 0.2); /* Neon Red Glow */
+}
+
+/* Stats ke andar ke text ka color thoda bright ho jaye hover pe */
+.stat-box:hover h3 {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+
+        .stat-box.hidden-stat { border-left-color: var(--neon-red); }
+
+        .stat-box h3 { font-size: 28px; margin: 0; color: #fff; }
+        .stat-box p { color: var(--text-grey); font-size: 12px; margin: 5px 0 0; text-transform: uppercase; }
+
+        /* DATA TABLE SECTION */
+        .table-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .master-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .master-table th {
+            background: #0f0f0f;
+            padding: 15px;
+            font-size: 12px;
+            color: var(--neon-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .master-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 13px;
+            color: #e2e8f0;
+            vertical-align: middle;
+        }
+
+        /* ACTIONS BUTTONS */
+        .admin-ctrl-btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            border-radius: 5px;
+            border: none;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-hide { background: #1e293b; color: #fff; border: 1px solid #334155; }
+        .btn-hide:hover { background: #334155; }
+
+        .btn-del { background: rgba(255, 71, 87, 0.1); color: var(--neon-red); border: 1px solid var(--neon-red); }
+        .btn-del:hover { background: var(--neon-red); color: #fff; }
+
+        .btn-coupon { background: rgba(0, 255, 204, 0.1); color: var(--neon-green); border: 1px solid var(--neon-green); }
+        .btn-coupon:hover { background: var(--neon-green); color: #000; }
+
+        /* MISC */
+        .obj-id { font-family: monospace; color: var(--text-grey); font-size: 11px; }
+        .status-live { color: var(--neon-green); font-weight: bold; }
+        .status-hidden { color: var(--neon-red); }
+
+        .admin-info-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--box-bg);
+            padding: 8px 15px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+        .dot-online {
+            width: 8px;
+            height: 8px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--neon-green);
+        }
+
+        /* table scroling */
+        /* Table ko cutne se rokne ke liye */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Horizontal scroll enable karega */
+    -webkit-overflow-scrolling: touch; /* Mobile par smooth scroll ke liye */
+}
+
+.master-table {
+    width: 100%;
+    min-width: 1100px; /* IMPORTANT: Itni width se kam hone par scroll aayega */
+    border-collapse: collapse;
+}
+
+/* Scrollbar ko thoda stylish banane ke liye (Optional) */
+.table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #a020f0; /* Aapka theme color */
+    border-radius: 10px;
+}
+.table-responsive::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <main class="full-page-admin">
+        <!-- TOP HEADER -->
+        <header class="admin-header-v2">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.location.href='admin-dashboard.html'">
+                    <i class="fas fa-arrow-left"></i> BACK TO HOME
+                </button>
+                <div class="title-group">
+                    <h1>🎓 COURSE MANAGEMENT PANEL 👑</h1>
+                    <p>Controll all course library, prices, and visibility.</p>
+                </div>
+            </div>
+            
+            <div class="admin-info-badge">
+                <span id="adminName" style="font-size: 13px;">mukeshkumarsingh7488@gmail.com</span>
+                <div class="dot-online"></div>
+            </div>
+        </header>
+
+    <!-- 🔥 ADMIN CONTROL BAR (Search & Filters) -->
+      <!-- Main Filter Bar -->
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background: #0f1216;
+          padding: 15px;
+          border-radius: 12px;
+          border: 1px solid #1f2937;
+          margin-bottom: 25px;
+        "
+      >
+        <!-- Search Section -->
+        <div
+          style="
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          "
+        >
+          <i
+            class="fas fa-search"
+            style="
+              position: absolute;
+              left: 12px;
+              color: #4b5563;
+              font-size: 14px;
+            "
+          ></i>
+          <input
+            type="text"
+            id="courseSearch"
+            oninput="searchTableLive()"
+            placeholder="mukeshkumarsingh7488@gmail.com"
+            style="
+              background: #111827;
+              border: 1px solid #374151;
+              color: white;
+              padding: 10px 15px 10px 40px;
+              border-radius: 8px;
+              width: 280px;
+              outline: none;
+              font-size: 13px;
+            "
+          />
+
+          <!-- Search Refresh Button (Grey Square) -->
+          <button
+            onclick="clearSearchOnly()"
+            style="
+              background: #2d333b;
+              border: 1px solid #3d444d;
+              color: white;
+              width: 38px;
+              height: 38px;
+              border-radius: 8px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+
+        <!-- Date Section -->
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 10px;
+          "
+        >
+          <input
+            type="date"
+            id="startDate"
+            style="
+              background: #111827;
+              border: 1px solid #374151;
+              color: white;
+              padding: 8px;
+              border-radius: 8px;
+              color-scheme: dark;
+              font-size: 13px;
+            "
+          />
+          <input
+            type="date"
+            id="endDate"
+            style="
+              background: #111827;
+              border: 1px solid #374151;
+              color: white;
+              padding: 8px;
+              border-radius: 8px;
+              color-scheme: dark;
+              font-size: 13px;
+            "
+          />
+
+          <!-- Apply Button (Green) -->
+          <button
+            onclick="applyFilters()"
+            style="
+              background: #22c55e;
+              color: white;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 8px;
+              font-weight: bold;
+              cursor: pointer;
+              text-transform: uppercase;
+              font-size: 12px;
+            "
+          >
+            APPLY
+          </button>
+
+          <!-- Reset Button (Grey Square - Seam to Search Refresh) -->
+          <button
+            onclick="resetAllFilters()"
+            style="
+              background: #2d333b;
+              border: 1px solid #3d444d;
+              color: white;
+              width: 38px;
+              height: 38px;
+              border-radius: 8px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="fas fa-sync-alt"></i>
+          </button>
+          <!-- PDF Button (अब इसी लाइन में सेंटर में है) -->
+          <!-- PDF Button -->
+          <!-- 🔥 PDF Button (Fixed Background) -->
+          <button
+            onclick="exportPDF()"
+            style="
+              background: #dc3545 !important;
+              color: #fff !important;
+              border: none;
+              padding: 10px 18px;
+              border-radius: 8px;
+              font-weight: 800;
+              font-size: 12px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <i class="fas fa-file-pdf"></i>
+            PDF
+          </button>
+
+          <!-- 🔥 CSV Button (Fixed Background) -->
+          <button
+            onclick="exportCSV()"
+            style="
+              background: #007bff !important;
+              color: #fff !important;
+              border: none;
+              padding: 10px 18px;
+              border-radius: 8px;
+              font-weight: 800;
+              font-size: 12px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <i class="fas fa-file-csv"></i>
+            CSV
+          </button>
+        </div>
+      </div>
+
+
+        <!-- STATS SECTION -->
+        <section class="stats-row">
+            <div class="stat-box">
+                <h3 id="totalProducts">0</h3>
+                <p>Total Live Courses</p>
+            </div>
+            <div class="stat-box hidden-stat">
+                <h3 id="hiddenProducts">0</h3>
+                <p>Courses Approve Pending</p>
+            </div>
+               <div class="stat-box">
+                <h3 id="hiddendraf">0</h3>
+                <p>Courses Hidden/Draft</p>
+            </div>
+        </section>
+
+        <!-- DATA TABLE -->
+        <section class="table-card">
+           <div class="table-responsive">
+            <table class="master-table">
+             <thead>
+    <tr>
+        <!-- 1. Select All Checkbox -->
+        <th style="width: 40px;">
+            <input type="checkbox" id="selectAll" style="cursor: pointer; width: 18px; height: 18px;">
+        </th>
+        
+        <th>Date</th>
+        <th>Title & Category</th>
+        <th>Object Id</th>
+        <th>Seller Info</th>
+        <th>Price</th>
+        <th>Off %</th>
+        <th>Status</th>
+
+        <!-- 2. Bulk Action Dropdown in Header -->
+        <th style="text-align: center; min-width: 250px;">
+            <div style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+                <span style="font-size: 11px; color: #aaa; text-transform: uppercase;">Bulk:</span>
+                <select id="bulkActionSelect" style="background: #1a1a1a; color: #fff; border: 1px solid #444; padding: 5px; border-radius: 4px; outline: none; cursor: pointer;">
+                    <option value="">-- Action --</option>
+                    <option value="approve">Approve</option>
+                    <option value="unapprove">Unapprove</option>
+                    <option value="hide">Hide</option>
+                    <option value="unhide">Unhide</option>
+                    <option value="bestseller">Mark Bestseller</option>
+                    <option value="remove_bestseller">Remove Bestseller</option>
+                    <option value="del_coupon">Delete Coupon</option>
+                    <option value="delete">Delete All</option>
+                </select>
+                <button id="applyBulkAction" style="background: #a020f0; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.3s;">
+                    Apply
+                </button>
+            </div>
+            </div>
+        </th>
+    </tr>
+</thead>
+
+                <tbody id="adminProductList">
+                    <!-- Sample Row for Design Check -->
+                    <tr>
+                        <td>18-04-2026</td>
+                        <td><b>Crypto Masterclass</b><br><small style="color: var(--text-grey);">Premium</small></td>
+                        <td class="obj-id">69db4b67606a...</td>
+                        <td>Mukesh Kumar<br><small>mukesh@br30.com</small></td>
+                        <td>₹17,400</td>
+                        <td>20%</td>
+                        <td><span class="status-live">LIVE</span></td>
+                        <td class="admin-ctrl-btns">
+                            <button class="btn-sm btn-hide">Hide</button>
+                            <button class="btn-sm btn-coupon">Del Coupon</button>
+                            <button class="btn-sm btn-del">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <tbody id="adminProductList">
+    <!-- Aapka dynamic data yahan aayega -->
+</tbody>
+
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/admin.js"></script>
+<script src="/js/security.js"></script>
+  </body>
+</html>

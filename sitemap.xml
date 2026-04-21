@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 🏠 Home -->
+  <url>
+    <loc>https://br30kart.com/</loc>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <!-- 🌐 Public Pages -->
+  <url><loc>https://br30kart.com/pages/about.html</loc><priority>0.8</priority></url>
+  <url><loc>https://br30kart.com/pages/aboutbr30.html</loc><priority>0.8</priority></url>
+  <url><loc>https://br30kart.com/pages/besictoadvance.html</loc><priority>0.8</priority></url>
+  <url><loc>https://br30kart.com/pages/contact.html</loc><priority>0.8</priority></url>
+  <url><loc>https://br30kart.com/pages/disclaimer.html</loc><priority>0.6</priority></url>
+  <url><loc>https://br30kart.com/pages/how-it-works.html</loc><priority>0.9</priority></url>
+  <url><loc>https://br30kart.com/pages/learn-more.html</loc><priority>0.8</priority></url>
+  <url><loc>https://br30kart.com/pages/lifetimeaccess.html</loc><priority>0.9</priority></url>
+  <url><loc>https://br30kart.com/pages/livemarketanalysis.html</loc><priority>0.9</priority></url>
+  <url><loc>https://br30kart.com/pages/premiumcourse.html</loc><priority>0.9</priority></url>
+  <url><loc>https://br30kart.com/pages/privacy.html</loc><priority>0.7</priority></url>
+  <url><loc>https://br30kart.com/pages/refund.html</loc><priority>0.7</priority></url>
+  <url><loc>https://br30kart.com/pages/riskmanagement.html</loc><priority>0.8</priority></url>
+  <url><loc>https://br30kart.com/pages/service.html</loc><priority>0.8</priority></url>
+  <url><loc>https://br30kart.com/pages/supportcommunity.html</loc><priority>0.8</priority></url>
+  <url><loc>https://br30kart.com/pages/terms.html</loc><priority>0.7</priority></url>
+  <url><loc>https://br30kart.com/pages/verify.html</loc><priority>0.5</priority></url>
+
+  <!-- 🔥 Main Product Page -->
+  <url>
+    <loc>https://br30kart.com/pages/index.html</loc>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+</urlset>

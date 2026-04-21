@@ -1,0 +1,976 @@
+/* --- Global Theme Colors (From your Image) --- */
+/*header/nav style */
+section {
+  scroll-margin-top: 80px;
+}
+body {
+  background: #0b0f14;
+  color: #e5e7eb;
+  font-family: "Poppins", sans-serif !important;
+  line-height: 1.6 !important;
+}
+:root {
+  --body-bg: #030708; /* Pura dark background */
+  --box-bg: #0a1112; /* Header aur Box ka color */
+  --neon-green: #00ffaa; /* Supply/Demand wala color */
+  --text-white: #e0e0e0;
+  --text-dim: #94a3b8;
+  --border-color: #1a2628;
+}
+
+body {
+  background-color: var(--body-bg);
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: var(--text-white);
+}
+
+/* --- Header Styling --- */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  background: #121212;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+main,
+section:first-of-type {
+  margin-top: 80px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 15px;
+}
+
+/* Logo */
+.logo-title a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-left: 10px;
+  color: #ffffff !important;
+}
+
+.purple {
+  color: #a855f7;
+} /* Purple color for logo text */
+
+/* --- Navigation & Dropdowns --- */
+.nav-pills {
+  display: flex;
+  gap: 12px;
+}
+
+/* Pill Design (Desktop Only) */
+.pill {
+  background: #0d1a1b;
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: var(--text-white);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.pill:hover {
+  border-color: var(--neon-green);
+  background: #122527;
+}
+
+/* Dots Styling */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.ebook {
+  background: #00ffaa;
+  box-shadow: 0 0 10px #00ffaa;
+}
+.rules {
+  background: #ffcc00;
+  box-shadow: 0 0 10px #ffcc00;
+}
+.graphics {
+  background: #00ccff;
+  box-shadow: 0 0 10px #00ccff;
+}
+.branding {
+  background: #ff00ff;
+  box-shadow: 0 0 10px #ff00ff;
+}
+
+/* Dropdown Base Logic */
+.user-dropdown {
+  position: relative;
+}
+
+/* Invisible bridge to prevent dropdown closing on move */
+.user-dropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  height: 15px;
+}
+
+.dropdown-btn {
+  background: transparent;
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.25s;
+  white-space: nowrap;
+}
+
+.dropdown-btn:hover {
+  background: rgba(0, 255, 200, 0.08);
+}
+
+.dropdown-content {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 10px;
+  background-color: var(--box-bg);
+  min-width: 200px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 1001;
+  overflow: hidden;
+}
+
+.user-dropdown:hover .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.user-dropdown.show .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-content a {
+  color: var(--text-white);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.dropdown-content a:hover {
+  background-color: #122527;
+  color: var(--neon-green);
+}
+
+/* --- Mobile Specific Fixes --- */
+.mobile-sections-dropdown {
+  display: none;
+} /* Hide on Desktop */
+
+@media (max-width: 992px) {
+  .nav-pills {
+    display: none !important;
+  } /* Hide pills on mobile */
+  .mobile-sections-dropdown {
+    display: block;
+  } /* Show dropdown on mobile */
+
+  .logo-text {
+    font-size: 1.1rem;
+  }
+  .header-container {
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  /* Account Button text change for small mobile */
+  .dropdown-btn span.text-hide {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    display: none;
+  } /* Show only logo image on very small screens */
+}
+
+/* User Actions bell icon */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.notif-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  font-size: 0.6rem;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+.notif-count {
+  box-shadow:
+    0 0 10px #ff4757,
+    0 0 20px #ff4757;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth Scroll Fix */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🚀 Exact Card Highlight (Section ki jagah ab Card chamkega) */
+.card:target {
+  border: 2px solid #ffcc00 !important; /* Golden Border */
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.6); /* Ultra Glow */
+  transform: scale(1.03); /* Thoda bada dikhega */
+  border-radius: 12px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* 🛠️ Offset Fix: Taaki Header card ko chhupaye nahi */
+.card {
+  scroll-margin-top: 100px; /* Isse card header ke neeche sahi dikhega */
+}
+
+/* Baki aapka purana logic waise hi rahega */
+.triangle-icon {
+  font-size: 0.7rem;
+  transition: 0.3s;
+}
+.user-dropdown:hover .triangle-icon {
+  transform: rotate(180deg);
+}
+
+/* notification container */
+.notification-container {
+  position: relative;
+  display: inline-block;
+}
+
+#bellBtn {
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
+  padding: 5px;
+}
+
+/* --- Ultra Pro Dark Dropdown (Height Locked) --- */
+.notif-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 55px;
+  width: 320px;
+  max-height: 450px; /* 👈 Height fix: Isse zyada bada nahi hoga */
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  font-family: "Poppins", sans-serif;
+  animation: fadeIn 0.3s ease-out;
+  flex-direction: column;
+}
+
+.notif-dropdown.show {
+  display: flex !important; /* Flex use kiya taki scroll sahi chale */
+}
+
+/* Scrollable Body */
+.notif-body {
+  flex: 1;
+  overflow-y: auto; /* 👈 Scroll yahan aayega */
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar Styling */
+.notif-body::-webkit-scrollbar {
+  width: 5px;
+}
+.notif-body::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile View Fix */
+@media (max-width: 768px) {
+  .notif-dropdown {
+    position: fixed !important;
+    top: 80px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90vw !important;
+    max-width: 350px;
+    max-height: 400px; /* Mobile me thoda chhota */
+    right: auto !important;
+  }
+
+  body,
+  html {
+    overflow-x: hidden;
+  }
+}
+
+/* Header Section */
+.notif-header {
+  padding: 15px;
+  background: #252525;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.notif-header span {
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#clearNotif {
+  background: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+  border: 1px solid #ff4757;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#clearNotif:hover {
+  background: #ff4757;
+  color: white;
+}
+
+/* Notification List Items */
+.notif-body {
+  max-height: 380px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.notif-item {
+  padding: 15px;
+  border-bottom: 1px solid #282828;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.notif-item:hover {
+  background: #2c2c2c;
+}
+
+.notif-item p strong {
+  color: #f1c40f; /* Gold color for highlights */
+  font-size: 13.5px;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.notif-item p {
+  color: #bbb; /* Subtle grey for message */
+  font-size: 12.5px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Scrollbar Styling for Dark Theme */
+.notif-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notif-body::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+.notif-item small {
+  color: #666;
+  font-size: 10px;
+  display: block;
+  margin-top: 8px;
+}
+
+/* No Notifications Message */
+.empty-msg {
+  padding: 30px;
+  text-align: center;
+  color: #777;
+  font-size: 13px;
+}
+.notif-count {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #ff4757;
+  color: white;
+  font-size: 10px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes bellShake {
+  0% {
+    transform: rotate(0);
+  }
+  15% {
+    transform: rotate(15deg);
+  }
+  30% {
+    transform: rotate(-15deg);
+  }
+  45% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.bell-shake {
+  animation: bellShake 0.5s ease-in-out;
+}
+
+/*header/nav style end */
+
+/* Leaderboard Grid Setup (Flipkart Jaisa No-Limit Row) */
+section {
+  padding: 20px 5%; /* Side se thodi jagah chodi hai professional look ke liye */
+}
+
+h2 {
+  color: #00ffcc;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.card {
+  background: #111827;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #1f2937;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 255, 204, 0.1);
+}
+
+.thumb {
+  width: 100%;
+  height: 130px; /* Thumbnail size chota kiya */
+  object-fit: cover;
+}
+
+.content {
+  padding: 12px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+  height: 42px; /* Fixed height taaki cards align rahein */
+  line-height: 21px; /* Ek line ki height */
+  overflow: hidden; /* Extra text chhupa dega */
+  display: block; /* Standard property */
+}
+
+.seller {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 5px 0;
+}
+
+.learn-link {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* Discount & Apply Button Logic */
+.discount-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 255, 204, 0.1);
+  padding: 5px 8px;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.discount-box span {
+  color: #00ffcc;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.apply-btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Price Area */
+.price-container {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mrp {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.final-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.buy {
+  background: #00ffcc;
+  color: #000;
+}
+
+.buy:hover {
+  background: #05d9ae;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(160px, 1fr)
+    ); /* Mobile pe 2 cards side-by-side */
+    gap: 10px;
+    padding: 0;
+  }
+
+  .thumb {
+    height: 100px;
+  }
+
+  .title {
+    font-size: 13px;
+    height: 35px;
+  }
+
+  .content {
+    padding: 8px;
+  }
+}
+
+/* --- COURSE HIGHLIGHTS SECTION --- */
+.highlights-section {
+  padding: 40px 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.highlights-card {
+  width: 100%;
+  max-width: 1100px;
+  background: #000000;
+  border: 1px solid rgba(160, 32, 240, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(160, 32, 240, 0.1);
+}
+
+.highlights-card h3 {
+  color: #00ff88;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.highlights-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.h-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #a9b1c5;
+  font-weight: 500;
+  text-decoration: none;
+  background: rgba(160, 32, 240, 0.1);
+  padding: 12px 20px;
+  border-radius: 50px;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.h-item i {
+  color: #00ff88;
+  font-size: 1.1rem;
+}
+
+.h-item:hover {
+  background: #00ff88;
+  color: #000;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 255, 136, 0.2);
+}
+
+.h-item:hover i {
+  color: #000;
+}
+
+/* new scrolling course section grid 
+/* ===== GRID CONTAINER (2 ROW HORIZONTAL SCROLL) ===== */
+.grid {
+  display: grid;
+  grid-auto-flow: column;
+
+  /* FIX: Fixed height ki jagah minmax use karein */
+  grid-template-rows: repeat(2, minmax(420px, auto));
+  grid-auto-columns: 320px;
+
+  gap: 20px;
+  padding: 20px 10px;
+
+  overflow-x: auto;
+  /* overflow-y ko hidden ki jagah auto ya visible rakhein agar zaroorat ho */
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+/* Scrollbar */
+.grid::-webkit-scrollbar {
+  height: 6px;
+}
+.grid::-webkit-scrollbar-thumb {
+  background: #a020f0;
+  border-radius: 10px;
+}
+
+/* ===== CARD FIX ===== */
+.product-card {
+  width: 320px;
+  /* height: 100% sahi hai grid ke context mein */
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  /* FIX: Isse button hamesha niche rahega */
+  justify-content: space-between;
+
+  background: #0d1a1b;
+  border-radius: 15px;
+
+  /* SAVDHAANI: Agar content cut raha hai to ise check karein */
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ===== THUMBNAIL FIX (NO CUTTING) ===== */
+.product-card img {
+  width: 100%;
+  height: 180px;
+
+  object-fit: cover; /* clean crop */
+  object-position: center;
+}
+
+/* optional safe wrapper if needed */
+.thumb {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+/* ===== TITLE SCROLL (Crypto & Forex PRO effect) ===== */
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-title span {
+  display: inline-block;
+  animation: scrollText 8s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* --- PREMIUM FOOTER SECTION --- */
+.premium-footer {
+  background: #0a0a0a;
+  padding: 60px 0 20px;
+  border-top: 2px solid #a020f0;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.footer-logo span {
+  color: #a020f0;
+}
+
+.brand-info p {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.footer-box h3 {
+  color: #a020f0;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 12px;
+}
+
+.footer-box ul li a {
+  color: #d1d1d1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.footer-box ul li a:hover {
+  color: #a020f0;
+  padding-left: 5px;
+}
+
+.social-multi {
+  display: flex;
+  gap: 12px;
+}
+
+.social-multi a {
+  width: 38px;
+  height: 38px;
+  background: rgba(160, 32, 240, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.social-multi a:hover {
+  background: #a020f0;
+  transform: translateY(-5px);
+}
+
+.contact-details p {
+  font-size: 0.9rem;
+  color: #d1d1d1;
+  margin-bottom: 12px;
+}
+
+.built-by span {
+  color: #ff4757;
+  font-weight: 600;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.risk-warn {
+  color: #ff4757;
+  font-weight: bold;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Mobile & Tablet Fixes */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Highlights Grid: 2 Column View */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .h-item {
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Full Center Alignment for Mobile */
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .social-multi {
+    justify-content: center;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr; /* Single Column for small phones */
+  }
+
+  .highlights-card h3 {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,1183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- 🔥 Google Tag Manager (optional - agar admin track karna hai) -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=GTM-TT7SLZ4L" + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TT7SLZ4L");
+    </script>
+
+    <!-- ✅ Basic -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 🔒 SECURITY (IMPORTANT 🔥) -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- ✅ Title -->
+    <title>BR30 Kart Admin Panel</title>
+
+    <!-- ✅ Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- sweet alart (swal, chart, pdf, etc.) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <style>
+      /* 1. बॉक्सेस के लिए स्मूथ ट्रांजिशन */
+      .stat-card {
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        cursor: default;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      /* 2. होवर इफेक्ट (हल्का ऊपर उठना और ग्लो) */
+      .stat-card:hover {
+        transform: translateY(-8px); /* थोड़ा ऊपर उठेगा */
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* गहरी परछाई */
+        filter: brightness(1.2); /* थोड़ा चमक बढ़ेगी */
+      }
+
+      /* 3. अलग-अलग बॉर्डर कलर्स के लिए हल्का ग्लो इफेक्ट */
+      .stat-card:nth-child(1):hover {
+        border-color: #007bff;
+        box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+      }
+      .stat-card:nth-child(2):hover {
+        border-color: #6f42c1;
+        box-shadow: 0 10px 20px rgba(111, 66, 193, 0.2);
+      }
+      .stat-card:nth-child(3):hover {
+        border-color: #2ecc71;
+        box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
+      }
+      .stat-card:nth-child(4):hover {
+        border-color: #ffcc00;
+        box-shadow: 0 10px 20px rgba(255, 204, 0, 0.2);
+      }
+      .stat-card:nth-child(5):hover {
+        border-color: #ff4d4d;
+        box-shadow: 0 10px 20px rgba(255, 77, 77, 0.2);
+      }
+
+      /* --- NEON DARK THEME CSS --- */
+      :root {
+        --primary: #a020f0; /* Purple */
+        --neon-green: #00ffcc; /* Neon Green */
+        --bg: #000000; /* Black */
+        --card: #0a0a0a; /* Dark Card */
+        --text: #ffffff;
+        --danger: #ff4d4d;
+        --sidebar-w: 260px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        display: flex;
+      }
+
+      /* --- SIDEBAR --- */
+      .sidebar {
+        width: var(--sidebar-w);
+        background: #050505;
+        height: 100vh;
+        position: fixed;
+        padding: 20px;
+        border-right: 1px solid #1a1a1a;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .logo span {
+        color: var(--neon-green);
+      }
+
+      .nav-links {
+        list-style: none;
+      }
+      .nav-links li {
+        padding: 12px 20px;
+        margin: 5px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #888; /* डिफ़ॉल्ट फीका रंग */
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .nav-links li:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+      }
+
+      /* 🔥 ACTIVE CLASS: जो बटन सिलेक्टेड है वो ऐसा दिखेगा */
+      .nav-links li.active {
+        background: linear-gradient(90deg, #007bff44, transparent);
+        color: #007bff; /* नीला रंग */
+        border-left: 4px solid #007bff;
+        font-weight: bold;
+      }
+
+      .nav-links li.active i {
+        color: #007bff;
+      }
+
+      /* --- MAIN CONTENT --- */
+      .main-content {
+        margin-left: var(--sidebar-w);
+        width: calc(100% - var(--sidebar-w));
+        padding: 30px;
+      }
+
+      /* Header Layout Fix */
+      .top-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #333;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+
+      /* Back to Home Button Styling */
+      .back-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.05); /* Light glass effect */
+        color: #bbb;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        border: 1px solid #444;
+        transition: all 0.3s ease;
+      }
+
+      /* 🌟 Hover Effect 🔥 */
+      .back-btn:hover {
+        background: #9c27b0; /* Purple theme matches your VIP btn */
+        color: white;
+        border-color: #ba68c8;
+        transform: translateX(-5px); /* Chhota sa left animation */
+        box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+      }
+
+      .back-btn i {
+        font-size: 12px;
+      }
+
+      .admin-email {
+        font-size: 12px;
+        color: #777;
+        background: #1a1a1a;
+        padding: 5px 12px;
+        border-radius: 20px;
+      }
+      .search-bar {
+        width: 100%;
+        max-width: 600px;
+        background: #111;
+        border: 1px solid #222;
+        padding: 12px 20px;
+        border-radius: 10px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      /* --- STATS GRID --- */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .stat-card {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 15px;
+        border: 1px solid #1a1a1a;
+        text-align: left;
+        position: relative;
+      }
+
+      .stat-card h3 {
+        font-size: 0.8rem;
+        color: #666;
+        text-transform: uppercase;
+      }
+      .stat-card .value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        margin-top: 5px;
+      }
+
+      /* --- TABLE STYLE (Screenshot Jaisa) --- */
+      .table-container {
+        background: var(--card);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #1a1a1a;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th {
+        background: #0f0f0f;
+        color: var(--neon-green);
+        text-align: left;
+        padding: 15px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      td {
+        padding: 15px;
+        border-bottom: 1px solid #151515;
+        font-size: 0.9rem;
+      }
+
+      tr:hover {
+        background: #0f0f0f;
+      }
+
+      /* --- BUTTONS --- */
+      .btn-vip {
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
+      }
+
+      .btn-block {
+        background: #ffcc00;
+        color: #000;
+        border: none;
+        padding: 5px 12px;
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .btn-del {
+        background: var(--danger);
+        color: #fff;
+        border: none;
+        padding: 5px 12px;
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .cert-icon {
+        color: var(--neon-green);
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      .badge-ui {
+        border: 1px solid #333;
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 10px;
+        color: #777;
+      }
+
+      .badge-vip {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      /* --- REVENUE TRACK BOX --- */
+      .revenue-track {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0, 255, 204, 0.05);
+        border: 1px solid var(--neon-green);
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .revenue-track span {
+        color: var(--neon-green);
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      /* Table Wrapper for Horizontal Scroll friday payout*/
+      /* --- Final Friday Payout Dashboard CSS --- */
+
+      /* Toolbar Container */
+      .toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        background: #1a1a1a;
+        padding: 12px 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #333;
+      }
+
+      /* TradingView Style Timeframe Buttons */
+      .timeframes {
+        display: flex;
+        background: #000;
+        border-radius: 6px;
+        padding: 4px;
+        border: 1px solid #333;
+      }
+
+      .timeframes button {
+        background: transparent;
+        border: none;
+        color: #888;
+        padding: 6px 14px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 4px;
+        transition: 0.3s;
+      }
+
+      .timeframes button.active {
+        background: #3d3d3d;
+        color: #2ecc71; /* Active color like TradingView */
+      }
+
+      .timeframes button:hover {
+        color: #fff;
+        background: #222;
+      }
+
+      /* Custom Date Section */
+      .custom-date {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #222;
+        padding: 5px 10px;
+        border-radius: 6px;
+      }
+
+      .custom-date input {
+        background: #111;
+        border: 1px solid #444;
+        color: white;
+        padding: 5px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      /* Table Layout Fix */
+      .payout-table-wrapper {
+        width: 100%;
+        overflow-x: auto; /* Horizontal Scroll */
+        background: #0f0f0f;
+        border-radius: 12px;
+        border: 1px solid #333;
+      }
+
+      .seller-email {
+        color: #888;
+        font-size: 12px;
+      }
+
+      .email-text {
+        color: #888;
+        font-size: 13px;
+      }
+      .course-flex {
+        display: flex;
+        gap: 8px;
+      }
+      .amount-text {
+        color: gold;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      .payout-text {
+        color: #2ecc71;
+        font-weight: bold;
+        font-size: 15px;
+      }
+
+      .status-pending {
+        background: rgba(241, 196, 15, 0.1);
+        color: #f1c40f;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+      }
+      /* Seller Info Layout */
+      .seller-box {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .seller-name {
+        color: #fff;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .payout-table {
+        width: 100%;
+        min-width: 1500px; /* 👈 Ye sabse zaroori hai! Table ko itna bada rakho ki wo scroll ho sake */
+        border-collapse: collapse;
+      }
+
+      .payout-table th {
+        background: #1a1a1a;
+        color: #888;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 1px;
+        padding: 15px;
+      }
+
+      .payout-table td {
+        padding: 15px;
+        border-bottom: 1px solid #222;
+      }
+
+      /* Course Tags */
+      .c-tag {
+        background: rgba(46, 204, 113, 0.1);
+        color: #2ecc71;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        border: 1px solid rgba(46, 204, 113, 0.3);
+        margin: 2px;
+        display: inline-block;
+      }
+
+      /* Pay Button Styling */
+      .pay-btn {
+        background: #00a8ff;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .pay-btn:hover {
+        background: #27ae60;
+        transform: translateY(-2px);
+      }
+      /* Scrollbar ko sundar banane ke liye (Optional) */
+      .payout-table-wrapper::-webkit-scrollbar {
+        height: 8px;
+      }
+      .payout-table-wrapper::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 10px;
+      }
+
+      /* Columns Styling */
+      .payout-table th,
+      .payout-table td {
+        padding: 18px 25px; /* Thodi zyada padding taaki saaf dikhe */
+        border-bottom: 1px solid #222;
+        white-space: nowrap; /* Text ko ek hi line mein rakhega */
+      }
+      /* froday payout end */
+      /* seller document td style */
+      /* Table containers ko manage karne ke liye */
+      .table-container,
+      .seller-docs-container {
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      /* Scrolling smooth karne ke liye */
+      .table-responsive-wrapper {
+        overflow-x: auto;
+        background: #161b22;
+        border-radius: 12px;
+        border: 1px solid #30363d;
+      }
+      /* seller document td end */
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="sidebar">
+      <div class="logo">
+        BR30
+        <span>ADMIN</span>
+      </div>
+      <ul class="nav-links">
+        <!-- Overview को reload के बजाय सिर्फ active करें या dashboard लोड करें -->
+        <li
+          class="active"
+          onclick="
+            setActiveNav(this);
+            location.reload();
+          "
+        >
+          <i class="fas fa-chart-line"></i>
+          Overview
+        </li>
+        <li
+          onclick="
+            setActiveNav(this);
+            loadUsers('student');
+          "
+        >
+          <i class="fas fa-user-graduate"></i>
+          Student Control
+        </li>
+        <li
+          onclick="
+            setActiveNav(this);
+            loadVIPs();
+          "
+        >
+          <i class="fas fa-crown" style="color: gold"></i>
+          VIP Control
+        </li>
+        <li
+          onclick="
+            setActiveNav(this);
+            loadUsers('seller');
+          "
+        >
+          <i class="fas fa-store"></i>
+          Seller Control
+        </li>
+        <li onclick="loadSellerRequests()">
+          <i class="fas fa-user-check"></i>
+          Seller Requests
+        </li>
+        <li
+          onclick="
+            setActiveNav(this);
+            loadPayouts();
+          "
+        >
+          <i class="fas fa-money-bill-wave"></i>
+          Friday Payouts
+        </li>
+        <li>
+          <a
+            href="seller-docs.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+            "
+          >
+            <i class="fas fa-file-invoice"></i>
+            Seller Document
+          </a>
+        </li>
+        <li>
+          <a
+            href="admin-orders.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+            "
+          >
+            <i class="fas fa-receipt"></i>
+            Order History
+          </a>
+        </li>
+        <li>
+          <a
+            href="admin-course.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+            "
+          >
+            <i class="fas fa-cogs"></i>
+            Course Control
+          </a>
+        </li>
+        <li>
+          <a
+            href="activ-seller.html"
+            rel="noopener noreferrer"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+            "
+          >
+            <i class="fas fa-user-tie"></i>
+            <!-- Professional Seller Icon -->
+            Activ Seller
+          </a>
+        </li>
+
+        <!-- 2. Activ Student (Education Icon) -->
+        <li>
+          <a
+            href="activ-student.html"
+            rel="noopener noreferrer"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+            "
+          >
+            <i class="fas fa-user-graduate"></i>
+            <!-- Student/Graduate Icon -->
+            Activ Student
+          </a>
+        </li>
+        <li>
+          <a
+            href="seller-dashboard.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+            "
+          >
+            <i class="fas fa-tachometer-alt"></i>
+            Seller Dashboard
+          </a>
+        </li>
+        <!-- 1. Activ Seller (Professional Icon) -->
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="top-header">
+        <div class="header-left">
+          <h2>User Management Panel 👑</h2>
+          <!-- Back to Home Button -->
+          <a href="../index.html" class="back-btn" target="_blank">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+          </a>
+        </div>
+        <div class="admin-email">mukeshkumarsingh7488@gmail.com</div>
+      </div>
+
+      <!-- Search & Refresh Unit -->
+      <!-- Main Filter Bar -->
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background: #0f1216;
+          padding: 15px;
+          border-radius: 12px;
+          border: 1px solid #1f2937;
+          margin-bottom: 25px;
+        "
+      >
+        <!-- Search Section -->
+        <div
+          style="
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          "
+        >
+          <i
+            class="fas fa-search"
+            style="
+              position: absolute;
+              left: 12px;
+              color: #4b5563;
+              font-size: 14px;
+            "
+          ></i>
+          <input
+            type="text"
+            id="courseSearch"
+            oninput="searchTableLive()"
+            placeholder="mukeshkumarsingh7488@gmail.com"
+            style="
+              background: #111827;
+              border: 1px solid #374151;
+              color: white;
+              padding: 10px 15px 10px 40px;
+              border-radius: 8px;
+              width: 280px;
+              outline: none;
+              font-size: 13px;
+            "
+          />
+
+          <!-- Search Refresh Button (Grey Square) -->
+          <button
+            onclick="clearSearchOnly()"
+            style="
+              background: #2d333b;
+              border: 1px solid #3d444d;
+              color: white;
+              width: 38px;
+              height: 38px;
+              border-radius: 8px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+
+        <!-- Date Section -->
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 10px;
+          "
+        >
+          <input
+            type="date"
+            id="startDate"
+            style="
+              background: #111827;
+              border: 1px solid #374151;
+              color: white;
+              padding: 8px;
+              border-radius: 8px;
+              color-scheme: dark;
+              font-size: 13px;
+            "
+          />
+          <input
+            type="date"
+            id="endDate"
+            style="
+              background: #111827;
+              border: 1px solid #374151;
+              color: white;
+              padding: 8px;
+              border-radius: 8px;
+              color-scheme: dark;
+              font-size: 13px;
+            "
+          />
+
+          <!-- Apply Button (Green) -->
+          <button
+            onclick="applyFilters()"
+            style="
+              background: #22c55e;
+              color: white;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 8px;
+              font-weight: bold;
+              cursor: pointer;
+              text-transform: uppercase;
+              font-size: 12px;
+            "
+          >
+            APPLY
+          </button>
+
+          <!-- Reset Button (Grey Square - Seam to Search Refresh) -->
+          <button
+            onclick="resetAllFilters()"
+            style="
+              background: #2d333b;
+              border: 1px solid #3d444d;
+              color: white;
+              width: 38px;
+              height: 38px;
+              border-radius: 8px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- STATS - 5 Boxes in One Line -->
+      <div
+        class="stats-grid"
+        style="
+          display: flex;
+          gap: 15px;
+          margin-bottom: 25px;
+          flex-wrap: wrap;
+          align-items: stretch;
+        "
+      >
+        <!-- 1. Students Card (IDs NOT CHANGED) -->
+        <div
+          class="stat-card"
+          style="
+            flex: 1;
+            min-width: 170px;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #007bff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+        >
+          <small
+            style="
+              color: #888;
+              text-transform: uppercase;
+              font-size: 11px;
+              letter-spacing: 1px;
+            "
+          >
+            Total Students
+          </small>
+          <h3
+            class="value"
+            id="totalUsers"
+            style="margin: 5px 0; color: #fff; font-size: 22px"
+          >
+            0
+          </h3>
+        </div>
+
+        <!-- 2. Sellers Card (IDs NOT CHANGED) -->
+        <div
+          class="stat-card"
+          style="
+            flex: 1;
+            min-width: 170px;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #6f42c1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+        >
+          <small
+            style="
+              color: #888;
+              text-transform: uppercase;
+              font-size: 11px;
+              letter-spacing: 1px;
+            "
+          >
+            Total Sellers
+          </small>
+          <h3
+            class="value"
+            id="totalSellers"
+            style="margin: 5px 0; color: #fff; font-size: 22px"
+          >
+            0
+          </h3>
+        </div>
+
+        <!-- 3. Total Sales -->
+        <div
+          class="stat-card"
+          style="
+            flex: 1.2;
+            min-width: 180px;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #2ecc71;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+        >
+          <small
+            style="
+              color: #888;
+              text-transform: uppercase;
+              font-size: 11px;
+              letter-spacing: 1px;
+            "
+          >
+            Total Sales
+          </small>
+          <h3
+            id="statSales"
+            style="margin: 5px 0; color: #2ecc71; font-size: 22px"
+          >
+            ₹0
+          </h3>
+        </div>
+
+        <!-- 4. Total Payout -->
+        <div
+          class="stat-card"
+          style="
+            flex: 1.2;
+            min-width: 180px;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ffcc00;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+        >
+          <small
+            style="
+              color: #888;
+              text-transform: uppercase;
+              font-size: 11px;
+              letter-spacing: 1px;
+            "
+          >
+            Total Payout
+          </small>
+          <h3
+            id="statPayout"
+            style="margin: 5px 0; color: #ffcc00; font-size: 22px"
+          >
+            ₹0
+          </h3>
+        </div>
+
+        <!-- 5. Fee Collected -->
+        <div
+          class="stat-card"
+          style="
+            flex: 1.2;
+            min-width: 180px;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ff4d4d;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+        >
+          <small
+            style="
+              color: #888;
+              text-transform: uppercase;
+              font-size: 11px;
+              letter-spacing: 1px;
+            "
+          >
+            Fee Collected
+          </small>
+          <h3
+            id="statFee"
+            style="margin: 5px 0; color: #ff4d4d; font-size: 22px"
+          >
+            ₹0
+          </h3>
+        </div>
+      </div>
+
+      <!-- USER TABLE -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <!-- 1. Master Checkbox -->
+              <th style="width: 40px">
+                <input
+                  type="checkbox"
+                  id="selectAllSellers"
+                  style="cursor: pointer; width: 18px; height: 18px"
+                />
+              </th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Badge</th>
+
+              <!-- 2. Actions with Bulk Dropdown -->
+              <th style="min-width: 280px; text-align: center">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    justify-content: center;
+                  "
+                >
+                  <span style="font-size: 11px; color: #aaa">BULK:</span>
+                  <select
+                    id="bulkSellerAction"
+                    style="
+                      background: #1a1a1a;
+                      color: #fff;
+                      border: 1px solid #444;
+                      padding: 4px;
+                      border-radius: 4px;
+                      font-size: 12px;
+                      outline: none;
+                      cursor: pointer;
+                    "
+                  >
+                    <option value="">-- Select Action --</option>
+
+                    <!-- 🏪 SELLER SPECIFIC -->
+                    <optgroup label="SELLER CONTROL">
+                      <option value="approve_seller">✅ Approve Seller</option>
+                      <option value="unapprove_seller">
+                        ❌ Unapprove Seller
+                      </option>
+                      <option value="block_seller">🚫 Block Seller</option>
+                      <option value="unblock_seller">🔓 Unblock Seller</option>
+                      <option value="delete_seller">🗑️ Delete Seller</option>
+                    </optgroup>
+
+                    <!-- 💎 VIP SPECIFIC -->
+                    <optgroup label="VIP CONTROL">
+                      <option value="make_vip">👑 Make VIP (All Roles)</option>
+                      <option value="remove_vip">👤 Remove VIP / Reset</option>
+                      <option value="block_vip">🚫 Block VIP</option>
+                      <option value="delete_vip">🗑️ Delete VIP</option>
+                    </optgroup>
+
+                    <!-- 🎓 STUDENT SPECIFIC -->
+                    <optgroup label="STUDENT CONTROL">
+                      <option value="block_student">🚫 Block Student</option>
+                      <option value="delete_student">🗑️ Delete Student</option>
+                      <option value="reject_cert">📜 Reject Certificate</option>
+                    </optgroup>
+
+                    <!-- ⚠️ GLOBAL ACTIONS -->
+                    <optgroup label="DANGER ZONE">
+                      <option value="make_seller">
+                        👨‍🏫 Make Seller (Convert)
+                      </option>
+                      <option value="delete_all">💀 Delete All Selected</option>
+                    </optgroup>
+                  </select>
+
+                  <button
+                    id="applyBulkSellerAction"
+                    style="
+                      background: #00ff88;
+                      color: #000;
+                      border: none;
+                      padding: 4px 12px;
+                      border-radius: 4px;
+                      cursor: pointer;
+                      font-weight: bold;
+                      font-size: 12px;
+                    "
+                  >
+                    APPLY
+                  </button>
+                </div>
+              </th>
+
+              <th>Certificate 🎓</th>
+            </tr>
+          </thead>
+
+          <tbody id="tableBody">
+            <!-- Data yahan JS se aayega -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+    </script>
+  </body>
+</html>

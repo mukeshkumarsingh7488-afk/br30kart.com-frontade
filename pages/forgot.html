@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- 🔥 Google Tag Manager (optional but ok) -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=GTM-TT7SLZ4L" + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TT7SLZ4L");
+    </script>
+
+    <!-- ✅ Basic -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 🔐 SECURITY FIRST -->
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+
+    <!-- ✅ Title -->
+    <title>Reset Password | BR30 Kart</title>
+
+    <!-- ✅ Minimal Description (no SEO push needed) -->
+    <meta
+      name="description"
+      content="Securely reset your BR30 Kart account password."
+    />
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg" />
+
+    <!-- ✅ Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ✅ Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- ✅ CSS (as per your structure) -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!-- ✅ SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+    <!-- ✅ Config -->
+    <script src="../assets/js/config.js"></script>
+    <!-- sweet alart-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+      /* =========================================
+           GLOBAL & BODY STYLES
+        ========================================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #050505;
+        /* Aapka bataya hua Body Color */
+        padding: 20px;
+      }
+
+      /* =========================================
+           CONTAINER (Mobile Friendly)
+        ========================================= */
+      .container {
+        width: 100%;
+        max-width: 360px;
+        background: #1e293b;
+        /* Premium Dark Card */
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid #334155;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      h2 {
+        text-align: center;
+        color: #ffffff;
+        /* White Big Text */
+        margin-bottom: 25px;
+        font-weight: 600;
+      }
+
+      /* Input Styling */
+      input {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        border: 1px solid #334155;
+        background: #050505;
+        /* Input background matches body */
+        color: white;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      input:focus {
+        border-color: #a020f0;
+        /* Aapka Purple Color */
+      }
+
+      /* Purple Button */
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: #a020f0;
+        /* Purple */
+        color: white;
+        cursor: pointer;
+        transition: 0.3s ease;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background: #8b1ad4;
+        /* Slightly darker purple on hover */
+        transform: translateY(-2px);
+      }
+
+      /* Footer Links */
+      .links {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .links a {
+        text-decoration: none;
+        color: #a020f0;
+        /* Purple Link */
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Password Toggle Icon */
+      .input-box {
+        position: relative;
+        width: 100%;
+      }
+
+      .toggle-btn {
+        position: absolute;
+        right: 15px;
+        top: 12px;
+        cursor: pointer;
+        color: #94a3b8;
+        font-size: 18px;
+      }
+
+      /* Mobile Adjustment */
+      @media (max-width: 480px) {
+        .container {
+          padding: 20px;
+        }
+
+        h2 {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ✅ GTM noscript -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <div class="container">
+      <h2 class="login-heading">Reset Password</h2>
+
+      <!-- SECTION 1: REQUEST OTP (Wrapped in FORM) -->
+      <form id="request-section" onsubmit="handleRequestOTP(event)">
+        <p
+          style="
+            text-align: center;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+          "
+        >
+          Enter email to receive reset code.
+        </p>
+        <label>Email Address</label>
+        <div class="input-box">
+          <!-- name="email" added -->
+          <input
+            id="resetEmail"
+            name="email"
+            type="email"
+            placeholder="example@mail.com"
+            autocomplete="username"
+            required
+          />
+        </div>
+        <button type="submit" id="reqBtn">Send Reset OTP</button>
+      </form>
+
+      <!-- SECTION 2: RESET PASSWORD (Wrapped in FORM) -->
+      <form
+        id="reset-section"
+        style="display: none"
+        onsubmit="handleResetPassword(event)"
+      >
+        <label>6-Digit OTP</label>
+        <div class="input-box">
+          <input
+            id="resetOtp"
+            name="otp"
+            type="number"
+            placeholder="Ex: 123456"
+            required
+          />
+        </div>
+
+        <label>New Password</label>
+        <div class="input-box">
+          <!-- autocomplete="new-password" is key for Google Prompt -->
+          <input
+            id="newPassword"
+            name="password"
+            type="password"
+            placeholder="8+ chars, 1 Special"
+            autocomplete="new-password"
+            required
+          />
+          <span
+            class="toggle-btn"
+            id="toggleBtn"
+            onclick="togglePassword()"
+            style="cursor: pointer"
+          >
+            👁️
+          </span>
+        </div>
+
+        <button type="submit" id="resetBtn">Update Password</button>
+
+        <!-- Resend Timer -->
+        <div style="text-align: center; margin-top: 15px">
+          <p id="timerText" style="font-size: 12px; color: #94a3b8">
+            Resend in
+            <span id="timer">30</span>
+            s
+          </p>
+          <button
+            type="button"
+            id="resendBtn"
+            onclick="handleRequestOTP(event)"
+            style="
+              display: none;
+              background: none;
+              color: #3b82f6;
+              border: none;
+              cursor: pointer;
+              text-decoration: underline;
+              font-size: 13px;
+            "
+          >
+            Resend OTP
+          </button>
+        </div>
+      </form>
+
+      <div class="links">
+        <a href="login.html">Back to Login</a>
+      </div>
+    </div>
+
+    <script src="../js/config.js"></script>
+
+    <script>
+      const API_URL = window.API_BASE_URL + "/api/auth";
+
+      function togglePassword() {
+        const pass = document.getElementById("newPassword");
+        const btn = document.getElementById("toggleBtn");
+        if (!pass || !btn) return;
+
+        pass.type = pass.type === "password" ? "text" : "password";
+        btn.textContent = pass.type === "password" ? "👁️" : "🙈";
+      }
+
+      // 1. Request OTP Logic
+      async function handleRequestOTP(e) {
+        if (e) e.preventDefault();
+
+        const emailInput = document.getElementById("resetEmail");
+        const email = emailInput.value.trim();
+        const btn = document.getElementById("reqBtn");
+
+        // 1. Validation Check
+        if (!email || !email.includes("@")) {
+          return Swal.fire({
+            icon: "warning",
+            title: "Invalid Email",
+            text: "Please enter a valid email address to receive the OTP.",
+            background: "#0a0a0a",
+            color: "#fff",
+            confirmButtonColor: "#3b82f6",
+          });
+        }
+
+        try {
+          // 2. Button & Loader State
+          btn.innerText = "Sending...";
+          btn.disabled = true;
+
+          Swal.fire({
+            title: "Sending OTP...",
+            text: "Please check your inbox for the reset code.",
+            allowOutsideClick: false,
+            background: "#0a0a0a",
+            color: "#fff",
+            didOpen: () => {
+              Swal.showLoading();
+            },
+          });
+
+          // 3. API Call
+          const apiBase = window.API_BASE_URL || ""; // Safety check
+          const res = await fetch(apiBase + "/api/auth/forgot-password", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+          });
+
+          const data = await res.json();
+
+          if (res.ok) {
+            // 4. Success Response
+            await Swal.fire({
+              icon: "success",
+              title: "OTP Sent! ✅",
+              text: "A reset code has been sent to your email successfully.",
+              background: "#0a0a0a",
+              color: "#fff",
+              timer: 2000,
+              showConfirmButton: false,
+            });
+
+            // UI Switch
+            document.getElementById("request-section").style.display = "none";
+            document.getElementById("reset-section").style.display = "block";
+
+            if (typeof startTimer === "function") startTimer();
+          } else {
+            throw new Error(data.msg || "User not found or Server error.");
+          }
+        } catch (err) {
+          console.error("OTP Request Error:", err);
+
+          // 5. Error Alert
+          Swal.fire({
+            icon: "error",
+            title: "Request Failed",
+            text: err.message || "Server connection failed. Please try again.",
+            background: "#0a0a0a",
+            color: "#fff",
+            confirmButtonColor: "#d33",
+          });
+
+          // Reset button
+          btn.innerText = "Send Reset OTP";
+          btn.disabled = false;
+        }
+      }
+
+      // 2. Reset Password Logic
+      async function handleResetPassword(e) {
+        if (e) e.preventDefault();
+
+        const email = document.getElementById("resetEmail").value;
+        const otp = document.getElementById("resetOtp").value;
+        const newPassword = document.getElementById("newPassword").value;
+        const btn = document.getElementById("resetBtn");
+
+        // 1. Password Strength & OTP Validation
+        const passRegex =
+          /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+        if (!passRegex.test(newPassword)) {
+          return Swal.fire({
+            icon: "warning",
+            title: "Weak Password",
+            text: "Password must be at least 8 characters long and include at least one special character and a number.",
+            background: "#0a0a0a",
+            color: "#fff",
+          });
+        }
+
+        if (otp.length < 6) {
+          return Swal.fire({
+            icon: "warning",
+            title: "Invalid OTP",
+            text: "Please enter the complete 6-digit verification code.",
+            background: "#0a0a0a",
+            color: "#fff",
+          });
+        }
+
+        try {
+          // 2. Loading State
+          btn.innerText = "Updating...";
+          btn.disabled = true;
+
+          Swal.fire({
+            title: "Resetting Password...",
+            text: "Please wait while we update your security credentials.",
+            allowOutsideClick: false,
+            background: "#0a0a0a",
+            color: "#fff",
+            didOpen: () => {
+              Swal.showLoading();
+            },
+          });
+
+          const res = await fetch(
+            window.API_BASE_URL + "/api/auth/reset-password",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, otp, newPassword }),
+            },
+          );
+
+          const data = await res.json();
+
+          if (res.ok) {
+            // 3. Success Message
+            await Swal.fire({
+              icon: "success",
+              title: "Password Changed! 🚀",
+              text: "Your password has been updated successfully. Redirecting to login...",
+              background: "#0a0a0a",
+              color: "#fff",
+              timer: 2000,
+              showConfirmButton: false,
+            });
+
+            // Redirect to login
+            window.location.href = "login.html";
+          } else {
+            throw new Error(data.msg || "Invalid OTP or Session Expired.");
+          }
+        } catch (err) {
+          console.error("Reset Error:", err);
+
+          // 4. Error Message
+          Swal.fire({
+            icon: "error",
+            title: "Reset Failed",
+            text: err.message || "Server connection error. Please try again.",
+            background: "#0a0a0a",
+            color: "#fff",
+            confirmButtonColor: "#d33",
+          });
+
+          btn.innerText = "Update Password";
+          btn.disabled = false;
+        }
+      }
+
+      // Timer Logic
+      let timerId;
+
+      function startTimer() {
+        let timeLeft = 30;
+        const resendBtn = document.getElementById("resendBtn");
+        const timerText = document.getElementById("timerText");
+        const timerDisplay = document.getElementById("timer");
+
+        // Initial UI State
+        if (resendBtn) resendBtn.style.display = "none";
+        if (timerText) timerText.style.display = "block";
+
+        console.log(
+          "%c[TIMER] OTP Resend cooldown started: 30s",
+          "color: #fbbf24; font-weight: bold;",
+        );
+
+        clearInterval(timerId);
+
+        timerId = setInterval(() => {
+          if (timeLeft <= 0) {
+            clearInterval(timerId);
+
+            // Timer finished state
+            if (resendBtn) resendBtn.style.display = "block";
+            if (timerText) timerText.style.display = "none";
+
+            console.log(
+              "%c[TIMER] Cooldown finished. Resend available.",
+              "color: #28a745; font-weight: bold;",
+            );
+          } else {
+            if (timerDisplay) timerDisplay.innerText = timeLeft;
+          }
+          timeLeft--;
+        }, 1000);
+      }
+
+      // Global Enter Support
+      document.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          const isResetVisible =
+            document.getElementById("reset-section").style.display === "block";
+          if (isResetVisible) document.getElementById("resetBtn").click();
+          else document.getElementById("reqBtn").click();
+        }
+      });
+    </script>
+    <script src="/js/security.js"></script>
+  </body>
+</html>

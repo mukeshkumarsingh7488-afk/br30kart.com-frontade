@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title -->
+    <title>BR30 | Active Seller Tracker</title>
+
+    <!-- Private admin security -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- No cache (VERY IMPORTANT for KYC data) -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+      type="image/png"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- ✅ SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+    <!-- Optional Open Graph (UI only, not indexable) -->
+    <meta property="og:title" content="Seller KYC Documents | BR30 Kart" />
+    <meta
+      property="og:description"
+      content="Secure seller identity verification documents panel for BR30 Kart admin."
+    />
+    <meta
+      property="og:image"
+      content="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BR30 Kart" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* 🔙 Back to Dashboard Button - Elite Green Version */
+      .btn-back {
+        color: #00ff88;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border: 1px solid rgba(0, 255, 136, 0.3);
+        border-radius: 10px;
+        background: rgba(0, 255, 136, 0.05);
+        transition: all 0.3s ease-in-out;
+      }
+      .tag-pending {
+        background: rgba(255, 187, 51, 0.1);
+        color: #ffbb33;
+      }
+      /* 🔥 Hover Effect Logic */
+      .btn-back:hover {
+        background: #00ff88; /* Poora button green ho jayega */
+        color: #000 !important; /* Text kaali ho jayegi contrast ke liye */
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.4); /* Neon Glow */
+        transform: translateX(
+          -5px
+        ); /* Thoda sa piche hilega stylish look ke liye */
+        border-color: #00ff88;
+      }
+
+      .btn-back i {
+        font-size: 12px;
+        transition: transform 0.3s ease;
+      }
+
+      .btn-back:hover i {
+        transform: scale(1.2);
+      }
+
+      body {
+        background-color: #0d0d0d;
+        color: #fff;
+        padding: 20px;
+        width: 100%; /* 🔥 Full display stretch */
+        overflow-x: hidden;
+      }
+
+      /* --- Header & Search Area (Elite Green Theme) --- */
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #1c1c1c;
+        padding: 15px 10px;
+      }
+
+      .logo {
+        color: #00ff88; /* 🔥 Green Logo */
+        font-weight: 900;
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      }
+
+      .logo span {
+        color: #fff;
+        font-weight: 300;
+      }
+
+      .search-box {
+        position: relative;
+        width: 500px; /* Thoda wide kiya taaki full display me achha lage */
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 12px 45px;
+        background: #111;
+        border: 1px solid #333;
+        border-radius: 12px;
+        color: #fff;
+        outline: none;
+        transition: 0.3s all ease;
+      }
+
+      /* 🔥 Pink to Neon Green Focus Fix */
+      .search-box input:focus {
+        border-color: #00ff88;
+        background: #161b22;
+        box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+      }
+
+      .search-box i {
+        position: absolute;
+        left: 15px;
+        top: 14px;
+        color: #00ff88; /* 🔥 Icon bhi green kar diya */
+        font-size: 1.1rem;
+      }
+
+      /* Table Header H2 Fix (Pink to Green) */
+      .table-header h2 {
+        font-size: 1.4rem;
+        color: #00ff88 !important;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      /* 🏆 Table Styling - ULTRA WIDE MODIFICATION */
+      .table-section {
+        width: 100% !important; /* 98% se badha kar 100% kar diya */
+        max-width: none !important; /* 1600px ki limit hata di */
+        margin: 20px 0 !important; /* Auto margin hata kar full stretch kiya */
+        padding: 0 20px; /* Side me thodi si breathing space */
+        background: transparent;
+      }
+
+      .table-header {
+        padding: 20px 0; /* Header alignment sahi kiya */
+        border-bottom: 1px solid #30363d;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .table-header h2 {
+        font-size: 1.2rem;
+        color: #a020f0;
+      }
+
+      .scroll-container {
+        width: 100% !important;
+        max-width: none !important;
+        overflow-x: auto; /* Agar data screen se bahar jaye tabhi scroll dikhe */
+        background: #0a0a0a;
+        border-radius: 15px;
+        border: 1px solid #1a1a1a;
+      }
+
+      table {
+        width: 100% !important; /* Table ko poore container me phailao */
+        min-width: 1200px; /* Ye zaroori hai taaki columns bahut zyada na pichak jayein */
+        border-collapse: collapse;
+        table-layout: auto !important;
+      }
+
+      /* 🔥 Column Width Fix: Pehle column ko bolna hoga ki baki bachi jagah le le */
+      th:first-child,
+      td:first-child {
+        width: 30%; /* Seller detail ko zyada jagah di */
+        min-width: 300px;
+      }
+
+      th,
+      td {
+        padding: 18px 15px !important;
+        text-align: left;
+        white-space: nowrap; /* Text ko ek line me rakhne ke liye */
+        border-bottom: 1px solid #30363d;
+      }
+
+      th {
+        background: #0d1117;
+        color: #8b949e;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      tr:hover {
+        background: #1c2128;
+      }
+
+      /* 🚀 Global Stretch */
+      body,
+      .admin-container {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      /* --- Modified Part One (Ultra Wide Fix) --- */
+
+      /* Neon Buttons */
+      .btn-neon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        transition: 0.3s;
+        font-size: 14px;
+      }
+      .btn-alert {
+        background: rgba(0, 255, 136, 0.1);
+        color: #00ff88;
+        border: 1px solid #00ff88;
+      }
+      .btn-block {
+        background: rgba(255, 187, 51, 0.1);
+        color: #ffbb33;
+        border: 1px solid #ffbb33;
+      }
+      .btn-delete {
+        background: rgba(255, 68, 68, 0.1);
+        color: #ff4444;
+        border: 1px solid #ff4444;
+      }
+
+      .btn-neon:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px currentColor;
+      }
+
+      /* 🔥 ULTRA WIDE FIX: Admin container ko full breadth di hai */
+      .admin-container {
+        width: 100% !important;
+        max-width: 100% !important; /* Kisi bhi limit ko todne ke liye */
+        padding: 0 30px !important;
+        margin: 0 !important;
+      }
+
+      /* Course Dropdown List */
+      .course-dropdown-list {
+        display: none;
+        position: absolute;
+        top: 45px;
+        right: 0;
+        background: #080808;
+        border: 1px solid #00ff88;
+        border-radius: 12px;
+        z-index: 10000;
+        min-width: 350px;
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
+      }
+      .show-dropdown {
+        display: block !important;
+        animation: fadeIn 0.2s ease-in-out;
+      }
+
+      .course-mini-card {
+        display: flex;
+        gap: 12px;
+        padding: 12px;
+        background: #111;
+        border-radius: 10px;
+        border: 1px solid #222;
+        margin-bottom: 10px;
+      }
+      .c-thumb {
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+        object-fit: cover;
+        border: 1px solid #333;
+      }
+      .c-name {
+        color: #00ff88;
+        font-weight: bold;
+        font-size: 13px;
+      }
+      .c-id {
+        font-size: 9px;
+        color: #555;
+        font-family: monospace;
+      }
+      .c-price {
+        color: #fff;
+        font-weight: 900;
+        font-size: 12px;
+        margin-right: 8px;
+      }
+      .c-discount {
+        color: #ffbb33;
+        font-size: 10px;
+        font-weight: bold;
+      }
+      .c-cat,
+      .c-meta {
+        font-size: 10px;
+        color: #777;
+        margin-top: 2px;
+      }
+
+      .c-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        transition: 0.2s;
+      }
+      .c-btn.hide {
+        color: #ffbb33;
+      }
+      .c-btn.del {
+        color: #ff4444;
+      }
+      .c-btn:hover {
+        transform: scale(1.2);
+        text-shadow: 0 0 10px currentColor;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .status-tag {
+        padding: 4px 12px;
+        border-radius: 5px;
+        font-size: 11px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+      .tag-active {
+        background: rgba(0, 255, 136, 0.1);
+        color: #00ff88;
+      }
+      .tag-blocked {
+        background: rgba(255, 68, 68, 0.1);
+        color: #ff4444;
+      }
+
+      .view-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid #333;
+        color: #888;
+        padding: 6px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-has-courses {
+        border-color: #00ff88 !important;
+        color: #00ff88 !important;
+        background: rgba(0, 255, 136, 0.05) !important;
+      }
+      /* 1. टेबल रो को पतला करना */
+      #sellerTrackerBody tr td {
+        padding: 8px 12px !important; /* ऊपर-नीचे की जगह कम की गई */
+        vertical-align: middle;
+      }
+
+      .action-flex {
+        display: flex;
+        flex-direction: row; /* वर्टिकल से हॉरिजॉन्टल */
+        gap: 8px;
+        justify-content: flex-start;
+      }
+
+      /* 3. Hide/Unhide बटन के कलर्स */
+      .c-btn {
+        padding: 6px 10px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      /* Visible - Green with Eye */
+      .c-btn.is-visible {
+        background-color: #22c55e !important;
+      }
+
+      /* Hidden - Red with Eye-Slash */
+      .c-btn.is-hidden {
+        background-color: #ef4444 !important;
+      }
+
+      .btn-neon {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+
+      /* 1. क्विक एक्शन्स को एक लाइन में करना */
+      .action-flex {
+        display: flex !important;
+        flex-direction: row !important; /* वर्टिकल से हॉरिजॉन्टल */
+        gap: 8px !important;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 2. टेबल रो को स्लिम (पतला) करना */
+      #sellerTrackerBody tr td {
+        padding: 6px 12px !important; /* कम पैडिंग = पतली रो */
+        font-size: 13px;
+        vertical-align: middle;
+      }
+
+      /* 3. सेलर नेम और ईमेल को छोटा और साफ दिखाना */
+      .seller-info-cell {
+        line-height: 1.2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="admin-header">
+      <div class="logo">
+        BR30
+        <span>ADMIN</span>
+      </div>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search seller by name or email..."
+          onkeyup="searchSeller()"
+        />
+      </div>
+      <button
+        onclick="clearSearch()"
+        style="
+          background: #2d333b;
+          border: 1px solid #3d444d;
+          color: white;
+          width: 38px;
+          height: 38px;
+          border-radius: 8px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <i class="fas fa-sync-alt"></i>
+      </button>
+      <a href="admin-dashboard.html" class="btn-back">
+        <i class="fas fa-arrow-left"></i>
+        Back to Dashboard
+      </a>
+    </div>
+
+    <div class="table-section">
+      <div class="table-header">
+        <h2>Student Activity Tracker 🚀</h2>
+      </div>
+      <div class="scroll-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Student Detail</th>
+              <th>Last Active</th>
+              <th>Courses Bought</th>
+              <th>View Inventory 📚</th>
+              <!-- Courses List Dropdown -->
+              <th>Status</th>
+              <th>Quick Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentTrackerBody">
+            <!-- Data JS se load hoga -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="noData" class="status-msg" style="display: none">
+        <i class="fas fa-user-slash fa-2x"></i>
+        <br />
+        Koi active student nahi mila.
+      </div>
+    </div>
+
+    <!-- 🔥 Alert / Mail Modal -->
+    <div id="alertModal" class="modal" style="display: none">
+      <div class="modal-box">
+        <h3>Send Elite Alert 📧</h3>
+        <p
+          id="alertUserEmail"
+          style="color: #00ff88; font-size: 12px; margin-bottom: 10px"
+        ></p>
+
+        <div class="input-group">
+          <textarea
+            id="alertMessage"
+            placeholder="Bhai, kya message bhejna hai? (e.g. Upload more courses)"
+          ></textarea>
+        </div>
+
+        <div class="btns">
+          <button onclick="closeAlertModal()" id="cancel">Cancel</button>
+          <button
+            onclick="confirmSendAlert()"
+            id="sendBtn"
+            style="background: #00ff88; color: #000"
+          >
+            Send Alert Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Files Connect -->
+    <script src="../js/config.js"></script>
+    <script src="../js/student-tracker.js"></script>
+    <script src="/js/security.js"></script>
+  </body>
+</html>

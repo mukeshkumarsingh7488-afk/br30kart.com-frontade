@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TT7SLZ4L");
+    </script>
+
+    <!-- Basic -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title -->
+    <title>Live Market Alerts | BR30 Kart</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Get real-time trading alerts, market signals, and live updates from BR30 Kart. Stay ahead with professional trading insights."
+    />
+
+    <meta
+      name="keywords"
+      content="market alerts, trading signals, live alerts, intraday signals, stock market updates, option trading alerts"
+    />
+
+    <meta name="author" content="BR30 Kart" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://br30trader.com/view-alart.html" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+      type="image/png"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Live Market Alerts | BR30 Kart" />
+    <meta
+      property="og:description"
+      content="Receive real-time trading alerts and market signals from BR30 Kart."
+    />
+    <meta
+      property="og:image"
+      content="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BR30 Kart" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Live Market Alerts | BR30 Kart" />
+    <meta
+      name="twitter:description"
+      content="Get instant trading alerts and market signals from BR30 Kart."
+    />
+    <meta
+      name="twitter:image"
+      content="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+    />
+
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #0f0f1b;
+        color: white;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: auto;
+        background: #1a1a2e;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      h2 {
+        border-bottom: 2px solid #6c5ce7;
+        padding-bottom: 10px;
+        color: #a29bfe;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #all-notif-list {
+        margin-top: 20px;
+        max-height: 70vh;
+        overflow-y: auto;
+        padding-right: 10px;
+      }
+
+      .notif-card {
+        background: #252545;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border-left: 5px solid #6c5ce7;
+        transition: 0.3s;
+      }
+
+      .notif-card:hover {
+        transform: translateX(5px);
+        background: #2d2d5a;
+      }
+
+      .notif-card p {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .notif-card b {
+        color: #f1c40f;
+      }
+
+      .notif-card small {
+        color: #bbb;
+        display: block;
+        margin-top: 8px;
+        font-size: 12px;
+      }
+
+      /* Scrollbar Styling */
+      #all-notif-list::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      #all-notif-list::-webkit-scrollbar-thumb {
+        background: #6c5ce7;
+        border-radius: 10px;
+      }
+
+      .back-btn {
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        background: #4834d4;
+        padding: 8px 15px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ✅ GTM noscript -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <div class="container">
+      <h2>
+        <span>Live Market Alerts ⚡</span>
+        <a href="../index.html" class="back-btn">← Home</a>
+      </h2>
+
+      <div id="all-notif-list">
+        <!-- Alerts yahan load honge -->
+        <p style="text-align: center; color: gray">
+          Alerts load ho rahe hain...
+        </p>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+      async function fetchAllAlerts() {
+        const token = localStorage.getItem("token");
+        const list = document.getElementById("all-notif-list");
+
+        try {
+          // 1. Initial Loading State
+          list.innerHTML = `
+        <div style="text-align:center; padding:40px; color:#9ca3af;">
+          <div class="spinner" style="margin-bottom:10px;">⏳</div>
+          <p>Syncing latest alerts from the server...</p>
+        </div>
+      `;
+
+          // 2. Fetch Notifications with Auth Header
+          const response = await fetch(
+            window.API_BASE_URL + "/api/notifications/all",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "x-auth-token": token,
+              },
+            },
+          );
+
+          // 3. Unauthorized Access Handling
+          if (response.status === 401 || response.status === 403) {
+            list.innerHTML = `
+          <div style="text-align:center; padding:20px; color:#facc15;">
+            <p>Authentication Required. Please login to view alerts.</p>
+            <button onclick="window.location.href='login.html'" style="margin-top:10px; padding:8px 20px; cursor:pointer;">Login</button>
+          </div>
+        `;
+            return;
+          }
+
+          const alerts = await response.json();
+          list.innerHTML = ""; // Clear loader
+
+          // 4. Empty Data Check
+          if (!Array.isArray(alerts) || alerts.length === 0) {
+            list.innerHTML = `
+          <div style="text-align:center; padding:60px; color:#6b7280;">
+            <div style="font-size:40px; margin-bottom:10px;">🔔</div>
+            <p>Your notification tray is empty.</p>
+          </div>
+        `;
+            return;
+          }
+
+          // 5. Render Notifications (Premium UI)
+          alerts.forEach((data) => {
+            const name = data.senderName || "System Administrator";
+            const date = new Date(data.date).toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            });
+            const time = new Date(data.date).toLocaleTimeString("en-US", {
+              hour: "2-digit",
+              minute: "2-digit",
+            });
+
+            const card = `
+          <div class="notif-card" style="padding:15px; border-radius:12px; background:rgba(255,255,255,0.03); border:1px solid #333; margin-bottom:12px;">
+              <p style="color:#e5e7eb; line-height:1.5;">
+                <span style="color:#3b82f6; font-weight:bold;">📢 ${name}:</span> ${data.message}
+              </p>
+              <div style="margin-top:10px; font-size:11px; color:#9ca3af; display:flex; justify-content:space-between;">
+                <span>📅 ${date}</span>
+                <span>⏰ ${time}</span>
+              </div>
+          </div>
+        `;
+            list.insertAdjacentHTML("beforeend", card);
+          });
+        } catch (err) {
+          console.error("Critical Error:", err);
+          list.innerHTML = `
+        <div style="text-align:center; padding:20px; color:#ef4444;">
+          <p>System offline. Unable to connect to the notification server.</p>
+          <button onclick="fetchAllAlerts()" style="margin-top:10px; background:none; border:1px solid #ef4444; color:#ef4444; padding:5px 15px; cursor:pointer; border-radius:5px;">Retry Sync</button>
+        </div>
+      `;
+        }
+      }
+
+      // Run on page load
+      document.addEventListener("DOMContentLoaded", fetchAllAlerts);
+    </script>
+
+    <script src="/js/security.js"></script>
+  </body>
+</html>
