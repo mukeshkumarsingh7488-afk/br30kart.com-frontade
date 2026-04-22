@@ -1040,10 +1040,11 @@ loadTopReviews();
 // 1. पेज लोड होते ही डेटाबेस से शुरूआती काउंट लाने के लिए
 async function loadInitialCount() {
   try {
-    const response = await fetch("/api/reviews/top-reviews"); // अपनी सही API Path चेक कर लेना
+    const response = await fetch(`${window.API_BASE_URL}/api/reviews/top10`);
     const data = await response.json();
 
-    if (data.success) {
+    // बैकएंड अब 'totalCount' भेज रहा है,
+    if (data.totalCount !== undefined) {
       updateCountUI(data.totalCount);
     }
   } catch (err) {
@@ -1061,9 +1062,12 @@ socket.on("updateTotalReviewCount", (newCount) => {
 function updateCountUI(number) {
   const countElement = document.getElementById("countNumber");
   if (countElement) {
-    countElement.innerText = number;
+    // 🔥 यहाँ जादू है: यह नंबर को '20,159' में बदल देगा
+    const formattedNumber = Number(number).toLocaleString("en-IN");
 
-    // एक छोटा सा 'Flash' इफ़ेक्ट ताकि यूजर को पता चले नंबर बदला है
+    countElement.innerText = formattedNumber;
+
+    // Flash effect
     countElement.classList.add("count-update-flash");
     setTimeout(() => {
       countElement.classList.remove("count-update-flash");
