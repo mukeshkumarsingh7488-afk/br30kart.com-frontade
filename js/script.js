@@ -3,6 +3,8 @@
 /* ============================================
    Socket.io Connection Setup (admin Alart)
   ===========================================*/
+window.API_BASE_URL =
+  window.API_BASE_URL || "https://br30kart-api.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
   const role = localStorage.getItem("userRole"); // Options: 'admin', 'seller', 'student'
@@ -925,8 +927,9 @@ async function loadTopReviews() {
     const response = await fetch(
       `${window.API_BASE_URL.replace(/\/$/, "")}/api/reviews/top10`,
     );
-
+    console.log("Calling API:", apiUrl);
     const data = await response.json(); // 1. 'reviews' की जगह 'data' नाम रखा है
+    console.log("Full Data Received:", data);
 
     // 2. BACKEND CHANGE: अब डेटा 'data.reviews' के अंदर है
     const reviews = data.reviews || [];
