@@ -130,6 +130,7 @@ function applyFilters() {
   }
 
   filtered.forEach((order) => {
+    console.log("Check this Order Object:", order);
     const pStat = order.payoutStatus || "pending";
     const sStat = order.status || "pending";
 
@@ -141,12 +142,13 @@ function applyFilters() {
     </td>
 
     <!-- 2. कोर्स का नाम और ID (एक ही लाइन में) -->
-    <td class="px-6 py-4 text-sm uppercase">
-        <span class="font-bold text-white">${order.productName}</span> 
-        <span style="color: #64748b; font-family: monospace; font-size: 10px; margin-left: 8px;">
-            (${order.productId?._id || order.productId || order.courseId || "N/A"})
-        </span>
-    </td>
+<td class="px-6 py-4 text-sm uppercase">
+    <span class="font-bold text-white">${order.productName}</span> 
+    <span style="color: #64748b; font-family: monospace; font-size: 10px; margin-left: 8px;">
+        <!-- ✅ चूंकि productId नहीं है, इसलिए हम Order की अपनी ID दिखाएंगे -->
+        (#${order._id.slice(-6)}) 
+    </span>
+</td>
 
     <!-- 3. स्टूडेंट का नाम (अगर आपके पास order.customerName है तो यहाँ डालें) -->
     <td class="px-6 py-4 text-sm text-blue-400 font-semibold">
