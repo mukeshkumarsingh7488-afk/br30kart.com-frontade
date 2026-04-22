@@ -105,10 +105,12 @@ function applyPayoutFilters() {
   });
 
   // --- 2. Calculations & Counters ---
+  // --- 2. Calculations & Counters (Pro Fix: No More Math Magic) ---
   let paidSum = 0,
     pendingSum = 0,
     feeSum = 0,
     mailsSent = 0;
+
   tableBody.innerHTML = "";
 
   if (filtered.length === 0) {
@@ -116,19 +118,20 @@ function applyPayoutFilters() {
   }
 
   filtered.forEach((o) => {
-    const amt = Number(o.amount) || 0;
-    const pStatus = (o.payoutStatus || "Pending").trim();
-    const isCompleted = pStatus.toLowerCase() === "completed";
+    const earn = Number(o.sellerEarnings) || 0;
+    const comm = Number(order.platformCommission) || 0;
+    const pStatus = (o.payoutStatus || "Pending").trim().toLowerCase();
 
-    feeSum += amt * 0.2;
+    feeSum += comm;
 
-    if (isCompleted) {
-      paidSum += amt * 0.8;
+    if (pStatus === "completed") {
+      paidSum += earn;
+
       if (o.mailTrack && o.mailTrack.toUpperCase().includes("SUCCESS")) {
         mailsSent++;
       }
     } else {
-      pendingSum += amt * 0.8;
+      pendingSum += earn;
     }
 
     // --- 3. Dynamic Display Data ---

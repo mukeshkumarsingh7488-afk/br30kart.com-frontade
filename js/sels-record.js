@@ -321,28 +321,36 @@ function applyFilters() {
 
   // --- 2. Calculations & Stats Update ---
   let totalRevenue = 0;
-  let pendingPayout = 0;
+  let totalEarnings = 0;
+  e;
+  let platformFee = 0;
+  let pendingAmount = 0;
 
   filtered.forEach((order) => {
     const amt = Number(order.amount) || 0;
+    const comm = Number(order.platformCommission) || 0;
+    const earn = Number(order.sellerEarnings) || 0;
+
     totalRevenue += amt;
+    platformFee += comm;
+    totalEarnings += earn;
 
     const pStat = (order.payoutStatus || "").toString().toLowerCase().trim();
     if (pStat === "pending") {
-      pendingPayout += amt * 0.8;
+      pendingAmount += earn;
     }
   });
 
-  // 4 Boxes Update (Make sure IDs match your HTML)
+  // UI Boxes Update
   const updateText = (id, val) => {
-    if (document.getElementById(id))
-      document.getElementById(id).innerText = val;
+    const el = document.getElementById(id);
+    if (el) el.innerText = val;
   };
 
   updateText("totalRevenue", `₹${totalRevenue.toLocaleString()}`);
-  updateText("sellerPayout", `₹${(totalRevenue * 0.8).toLocaleString()}`);
-  updateText("platformFee", `₹${(totalRevenue * 0.2).toLocaleString()}`);
-  updateText("pendingAmount", `₹${pendingPayout.toLocaleString()}`);
+  updateText("sellerPayout", `₹${totalEarnings.toLocaleString()}`);
+  updateText("platformFee", `₹${platformFee.toLocaleString()}`);
+  updateText("pendingAmount", `₹${pendingAmount.toLocaleString()}`);
 
   // --- 3. Table Rendering ---
   tableBody.innerHTML = "";
