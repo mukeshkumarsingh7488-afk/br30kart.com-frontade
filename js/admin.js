@@ -3149,6 +3149,7 @@ window.viewOrder = async function (orderId) {
 // 1. Sidebar Buttons Navigation
 document.querySelectorAll(".nav-item").forEach((item) => {
   item.addEventListener("click", function () {
+    // Active class toggle
     document
       .querySelectorAll(".nav-item")
       .forEach((i) => i.classList.remove("active"));
@@ -3156,8 +3157,14 @@ document.querySelectorAll(".nav-item").forEach((item) => {
 
     const target = this.getAttribute("data-target");
 
+    // 🔥 Navigation Logic
     if (target === "overview") {
+      // Overview के लिए अगर कोई loadOverview है तो वो कॉल कर, नहीं तो reload/stats call कर
       loadDashboardStats();
+    } else if (target === "payouts") {
+      // ✅ सबसे पहले Payout का HTML ढांचा बनाओ (जो तूने ऊपर भेजा है)
+      loadPayouts(7);
+      console.log("🚀 Friday Payouts Structure Loaded!");
     } else if (target === "student") {
       loadUsers("student");
     } else if (target === "seller") {
@@ -3166,14 +3173,6 @@ document.querySelectorAll(".nav-item").forEach((item) => {
       loadVIPs();
     } else if (target === "requests") {
       loadSellerRequests();
-    }
-    // ✅ यहाँ सुधार किया गया है: fetchData() को कॉल करें
-    else if (target === "payouts") {
-      const today = new Date().toISOString().split("T")[0]; // आज की तारीख
-      fetchData(today, today);
-
-      // और हाँ, पेआउट वाले सेक्शन (Div) को दिखाना मत भूलना
-      showSection("payouts-section");
     }
   });
 });
