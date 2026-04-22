@@ -3167,5 +3167,9 @@ document.querySelectorAll(".nav-item").forEach((item) => {
     } else if (target === "requests") {
       loadSellerRequests();
     }
+    // ✅ Friday Payouts के लिए ये जोड़ दिया
+    else if (target === "payouts") {
+      loadFridayPayouts();
+    }
   });
 });
