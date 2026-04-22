@@ -38,10 +38,6 @@
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
     <style>
-      .nav-links li:active {
-        transform: scale(0.95);
-        transition: 0.1s;
-      }
       /* 1. बॉक्सेस के लिए स्मूथ ट्रांजिशन */
       .stat-card {
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -158,31 +154,11 @@
 
       /* --- MAIN CONTENT --- */
       .main-content {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        overflow: hidden;
+        margin-left: var(--sidebar-w);
+        width: calc(100% - var(--sidebar-w));
+        padding: 30px;
       }
 
-      .dashboard-header-section {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: #000;
-        padding-bottom: 10px;
-      }
-      .table-section {
-        flex: 1;
-        overflow-y: auto;
-        margin-top: 10px;
-      }
-      table thead th {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: #161b22;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-      }
       /* Header Layout Fix */
       .top-header {
         display: flex;
@@ -627,7 +603,6 @@
         BR30
         <span>ADMIN</span>
       </div>
-      <!--  sidebar btn -->
       <ul
         class="nav-links"
         id="adminSidebar"
@@ -847,8 +822,6 @@
           </a>
         </li>
       </ul>
-
-      <!-- sidebar btn end -->
     </div>
 
     <div class="main-content">
