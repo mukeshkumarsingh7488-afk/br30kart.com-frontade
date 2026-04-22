@@ -385,14 +385,32 @@
       </div>
 
       <!-- B. Community Highlights: Display Section (SCROLL ADDED) -->
-   <div class="review-list-box">
+<div class="review-list-box">
+  <!-- Header Section: Heading and Count Badge side by side -->
+  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 25px;">
     
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
-    <h3 style="margin: 0;">Community Highlights (Top Review)</h3>
-    <div style="font-size: 13px; background: rgba(0,255,136,0.1); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(0,255,136,0.3);">
-      Total Reviews: <span id="countNumber" style="color: #00ff88; font-weight: bold;">0</span>
+    <h3 style="margin: 0; color: #fff; font-size: 18px; white-space: nowrap;">
+      Community Highlights <span style="font-weight: normal; font-size: 13px; color: #888;">(Top Review)</span>
+    </h3>
+
+    <!-- Compact Total Count Badge right next to heading -->
+    <div style="background: #00ff88; color: #000; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 11px; display: flex; align-items: center; gap: 4px; white-space: nowrap; height: fit-content;">
+        <span style="opacity: 0.8; font-weight: normal;">Total:</span> 
+        <span id="countNumber">0</span>
     </div>
+    
   </div>
+
+  <div id="reviewDisplay" style="max-height: 350px; overflow-y: auto;">
+    <!-- Reviews yahan load honge -->
+  </div>
+</div>
+
+  <!-- रिव्यूज का एरिया -->
+  <div id="reviewDisplay" style="max-height: 350px; overflow-y: auto;">
+    <!-- Reviews yahan load honge -->
+  </div>
+</div>
 
   <!-- 3. रिव्यूज का डिब्बा -->
   <div id="reviewDisplay" style="max-height: 320px; overflow-y: auto; padding-right: 5px;">
