@@ -134,19 +134,41 @@ function applyFilters() {
     const sStat = order.status || "pending";
 
     tableBody.innerHTML += `
-            <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
-                <td class="px-6 py-4 text-xs text-gray-500 font-medium">${new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
-              
-            <td class="px-6 py-4 text-sm uppercase">
-    <span class="font-bold text-white">${order.productName}</span> 
-    <span style="color: #64748b; font-family: monospace; font-size: 10px; margin-left: 8px;">
-        (${order.productId || order.courseId || "N/A"})
-    </span>
-</td>
-                <td class="px-6 py-4"><span class="badge ${getStatusClass(sStat)}">${sStat}</span></td>
-                <td class="px-6 py-4 font-black text-white text-right">₹${order.amount}</td>
-                <td class="px-6 py-4 text-center"><span class="badge ${getStatusClass(pStat)}">${pStat}</span></td>
-            </tr>`;
+         <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
+    <!-- 1. केवल तारीख (Date) -->
+    <td class="px-6 py-4 text-xs text-gray-500 font-medium">
+        ${new Date(order.createdAt).toLocaleDateString("en-GB")}
+    </td>
+
+    <!-- 2. कोर्स का नाम और ID (एक ही लाइन में) -->
+    <td class="px-6 py-4 text-sm uppercase">
+        <span class="font-bold text-white">${order.productName}</span> 
+        <span style="color: #64748b; font-family: monospace; font-size: 10px; margin-left: 8px;">
+            (${order.productId?._id || order.productId || order.courseId || "N/A"})
+        </span>
+    </td>
+
+    <!-- 3. स्टूडेंट का नाम (अगर आपके पास order.customerName है तो यहाँ डालें) -->
+    <td class="px-6 py-4 text-sm text-blue-400 font-semibold">
+        ${order.customerName || "N/A"}
+    </td>
+
+    <!-- 4. पेमेंट स्टेटस -->
+    <td class="px-6 py-4">
+        <span class="badge ${getStatusClass(sStat)}">${sStat}</span>
+    </td>
+
+    <!-- 5. अमाउंट (Amount) -->
+    <td class="px-6 py-4 font-black text-white text-right">
+        ₹${Number(order.amount).toLocaleString()}
+    </td>
+
+    <!-- 6. पेआउट स्टेटस -->
+    <td class="px-6 py-4 text-center">
+        <span class="badge ${getStatusClass(pStat)}">${pStat}</span>
+    </td>
+</tr>
+`;
   });
 }
 
