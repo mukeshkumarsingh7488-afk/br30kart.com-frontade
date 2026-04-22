@@ -1153,18 +1153,33 @@ function setTimeframe(days) {
 }
 
 async function fetchData(start, end) {
-  try {
-    const res = await fetch(
-      `${CONFIG.BASE_API_URL}/admin/friday-payouts?startDate=${start}&endDate=${end}`,
-    );
-    const result = await res.json();
-    if (result.success) {
-      currentData = result.data;
-      renderTable(currentData);
+  // थोड़ा सा इंतज़ार ताकि HTML DOM में आ जाए
+  setTimeout(async () => {
+    const body = document.getElementById("payoutTableBody");
+    if (!body) {
+      console.error("❌ payoutTableBody not found in DOM!");
+      return;
     }
-  } catch (error) {
-    console.error("Data fetch error:", error);
-  }
+
+    body.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:20px; color:#00ff88;">⏳ Fetching records...</td></tr>`;
+
+    try {
+      const res = await fetch(
+        `${CONFIG.BASE_API_URL}/admin/friday-payouts?startDate=${start}&endDate=${end}`,
+      );
+      const result = await res.json();
+
+      if (result.success && result.data.length > 0) {
+        currentData = result.data;
+        renderTable(currentData); // ✅ अब ये सही से काम करेगा
+      } else {
+        body.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:40px; color:#666;">No payouts found for this range. 📂</td></tr>`;
+      }
+    } catch (error) {
+      console.error("Data fetch error:", error);
+      body.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:20px; color:red;">⚠️ Server Connection Error</td></tr>`;
+    }
+  }, 100); // 100ms का छोटा डिले
 }
 
 function renderTable(data) {
