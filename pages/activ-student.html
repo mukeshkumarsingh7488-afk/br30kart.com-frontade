@@ -169,19 +169,20 @@
 
       /* 🏆 Table Styling - ULTRA WIDE MODIFICATION */
       .table-section {
-        width: 100% !important; /* 98% se badha kar 100% kar diya */
-        max-width: none !important; /* 1600px ki limit hata di */
-        margin: 20px 0 !important; /* Auto margin hata kar full stretch kiya */
-        padding: 0 20px; /* Side me thodi si breathing space */
-        background: transparent;
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 180px);
+        margin: 20px;
+        background: #000;
+        border: 1px solid #222;
+        border-radius: 12px;
+        overflow: hidden;
       }
 
       .table-header {
-        padding: 20px 0; /* Header alignment sahi kiya */
-        border-bottom: 1px solid #30363d;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        padding: 15px 20px;
+        background: #111;
+        border-bottom: 1px solid #222;
       }
 
       .table-header h2 {
@@ -189,13 +190,25 @@
         color: #a020f0;
       }
 
+      table thead {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: #151515;
+      }
+
+      table th {
+        padding: 12px 15px;
+        text-align: left;
+        color: #888;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
       .scroll-container {
-        width: 100% !important;
-        max-width: none !important;
-        overflow-x: auto; /* Agar data screen se bahar jaye tabhi scroll dikhe */
+        flex: 1;
+        overflow-y: auto;
         background: #0a0a0a;
-        border-radius: 15px;
-        border: 1px solid #1a1a1a;
       }
 
       table {
@@ -523,7 +536,9 @@
 
     <div class="table-section">
       <div class="table-header">
-        <h2>Student Activity Tracker 🚀</h2>
+        <h2 style="margin: 0; color: #00ff88; font-size: 18px">
+          Student Activity Tracker 🚀
+        </h2>
       </div>
       <div class="scroll-container">
         <table>

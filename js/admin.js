@@ -3138,3 +3138,28 @@ window.viewOrder = async function (orderId) {
     });
   }
 };
+
+// over view btn click ligic
+// 1. Sidebar Buttons Navigation
+document.querySelectorAll(".nav-item").forEach((item) => {
+  item.addEventListener("click", function () {
+    document
+      .querySelectorAll(".nav-item")
+      .forEach((i) => i.classList.remove("active"));
+    this.classList.add("active");
+
+    const target = this.getAttribute("data-target");
+
+    if (target === "overview") {
+      loadDashboardStats();
+    } else if (target === "student") {
+      loadUsers("student");
+    } else if (target === "seller") {
+      loadUsers("seller");
+    } else if (target === "vip") {
+      loadVIPs();
+    } else if (target === "requests") {
+      loadSellerRequests();
+    }
+  });
+});

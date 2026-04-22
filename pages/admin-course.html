@@ -126,13 +126,16 @@
         .stat-box p { color: var(--text-grey); font-size: 12px; margin: 5px 0 0; text-transform: uppercase; }
 
         /* DATA TABLE SECTION */
-        .table-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+       .table-card {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 180px); 
+    margin: 20px;
+    background: #000;
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+}
 
         .master-table {
             width: 100%;
@@ -140,22 +143,21 @@
             text-align: left;
         }
 
-        .master-table th {
-            background: #0f0f0f;
-            padding: 15px;
-            font-size: 12px;
-            color: var(--neon-green);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid var(--border-color);
-        }
+      .master-table th {
+    padding: 15px;
+    color: #00ff88;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #222;
+    white-space: nowrap;
+}
 
         .master-table td {
-            padding: 15px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 12px 15px;
+           border-bottom: 1px solid #1a1a1a;
             font-size: 13px;
             color: #e2e8f0;
-            vertical-align: middle;
+             vertical-align: middle;
         }
 
         /* ACTIONS BUTTONS */
@@ -209,9 +211,17 @@
         /* table scroling */
         /* Table ko cutne se rokne ke liye */
 .table-responsive {
-    width: 100%;
-    overflow-x: auto; /* Horizontal scroll enable karega */
-    -webkit-overflow-scrolling: touch; /* Mobile par smooth scroll ke liye */
+    flex: 1;
+    overflow: auto;
+    background: #0a0a0a;
+}
+
+.master-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #151515;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .master-table {
@@ -499,10 +509,13 @@
                     Apply
                 </button>
             </div>
-            </div>
         </th>
     </tr>
-</thead>
+
+       <!-- 3. Actions column header fix -->
+          <th>Quick Actions</th>
+        </tr>
+      </thead>
 
                 <tbody id="adminProductList">
                     <!-- Sample Row for Design Check -->
@@ -519,6 +532,7 @@
                             <button class="btn-sm btn-coupon">Del Coupon</button>
                             <button class="btn-sm btn-del">Delete</button>
                         </td>
+                         <td></td>
                     </tr>
                 </tbody>
             </table>

@@ -246,16 +246,47 @@
       }
 
       /* --- TABLE --- */
-      .table-container {
-        max-height: 400px;
-        overflow-y: auto;
-        border: 1px solid #333;
-        background: var(--card-bg);
-        border-radius: 8px;
-        border: 1px solid #222;
-        overflow: hidden;
-        padding-right: 5px;
-      }
+    .table-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 200px); 
+    margin: 20px;
+    background: #000;
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table-scroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: auto;
+    background: #0a0a0a;
+}
+
+.table-container table thead {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #151515;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.table-container th {
+    padding: 15px;
+    color: #00ff88;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: left;
+    border-bottom: 2px solid #222;
+    white-space: nowrap;
+}
+
+.table-container td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #1a1a1a;
+    color: #e2e8f0;
+}
 
       /* स्क्रॉलबार को सुंदर बनाने के लिए (Optional) */
       .table-container::-webkit-scrollbar {
@@ -453,7 +484,8 @@
       </div>
 
       <div class="table-container">
-        <table>
+         <div class="table-scroll">
+        <table style="width: 100%; border-collapse: collapse;">
           <thead>
             <tr>
               <th>Student Name</th>

@@ -38,6 +38,10 @@
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
     <style>
+      .nav-links li:active {
+        transform: scale(0.95);
+        transition: 0.1s;
+      }
       /* 1. बॉक्सेस के लिए स्मूथ ट्रांजिशन */
       .stat-card {
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -252,10 +256,42 @@
 
       /* --- TABLE STYLE (Screenshot Jaisa) --- */
       .table-container {
-        background: var(--card);
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 160px);
+        background: #000;
+        border: 1px solid #222;
         border-radius: 12px;
+        margin: 20px;
         overflow: hidden;
-        border: 1px solid #1a1a1a;
+      }
+
+      .table-wrapper {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: auto;
+        background: #0a0a0a;
+      }
+
+      table thead {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: #151515;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      table th {
+        padding: 15px;
+        color: #888;
+        font-size: 12px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #222;
+      }
+
+      /* Rows styling */
+      table tbody tr {
+        border-bottom: 1px solid #1a1a1a;
       }
 
       table {
@@ -475,7 +511,7 @@
 
       .payout-table {
         width: 100%;
-        min-width: 1500px; /* 👈 Ye sabse zaroori hai! Table ko itna bada rakho ki wo scroll ho sake */
+        min-width: 1500px;
         border-collapse: collapse;
       }
 
@@ -571,86 +607,32 @@
         BR30
         <span>ADMIN</span>
       </div>
-      <ul class="nav-links">
-        <!-- Overview को reload के बजाय सिर्फ active करें या dashboard लोड करें -->
-        <li
-          class="active"
-          onclick="
-            setActiveNav(this);
-            location.reload();
-          "
-        >
+      <ul class="nav-links" id="adminSidebar">
+        <!-- JavaScript के ज़रिए मैनेज होगा -->
+        <li class="nav-item active" data-target="overview">
           <i class="fas fa-chart-line"></i>
           Overview
         </li>
-        <li
-          onclick="
-            setActiveNav(this);
-            loadUsers('student');
-          "
-        >
+        <li class="nav-item" data-target="student">
           <i class="fas fa-user-graduate"></i>
           Student Control
         </li>
-        <li
-          onclick="
-            setActiveNav(this);
-            loadVIPs();
-          "
-        >
+        <li class="nav-item" data-target="vip">
           <i class="fas fa-crown" style="color: gold"></i>
           VIP Control
         </li>
-        <li
-          onclick="
-            setActiveNav(this);
-            loadUsers('seller');
-          "
-        >
+        <li class="nav-item" data-target="seller">
           <i class="fas fa-store"></i>
           Seller Control
         </li>
-        <li onclick="loadSellerRequests()">
+        <li class="nav-item" data-target="requests">
           <i class="fas fa-user-check"></i>
           Seller Requests
         </li>
-        <li
-          onclick="
-            setActiveNav(this);
-            loadPayouts();
-          "
-        >
-          <i class="fas fa-money-bill-wave"></i>
-          Friday Payouts
-        </li>
+
+        <!-- Direct Pages (Href वाले बटन) -->
         <li>
-          <a
-            href="seller-docs.html"
-            style="
-              text-decoration: none;
-              color: inherit;
-              display: flex;
-              align-items: center;
-              gap: 10px;
-              width: 100%;
-            "
-          >
-            <i class="fas fa-file-invoice"></i>
-            Seller Document
-          </a>
-        </li>
-        <li>
-          <a
-            href="admin-orders.html"
-            style="
-              text-decoration: none;
-              color: inherit;
-              display: flex;
-              align-items: center;
-              gap: 10px;
-              width: 100%;
-            "
-          >
+          <a href="admin-orders.html" class="nav-link-btn">
             <i class="fas fa-receipt"></i>
             Order History
           </a>
@@ -1069,115 +1051,129 @@
 
       <!-- USER TABLE -->
       <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <!-- 1. Master Checkbox -->
-              <th style="width: 40px">
-                <input
-                  type="checkbox"
-                  id="selectAllSellers"
-                  style="cursor: pointer; width: 18px; height: 18px"
-                />
-              </th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Badge</th>
+        <div class="table-wrapper">
+          <table style="width: 100%; border-collapse: collapse">
+            <thead>
+              <tr>
+                <!-- 1. Master Checkbox -->
+                <th style="width: 50px; text-align: center">
+                  <input
+                    type="checkbox"
+                    id="selectAllSellers"
+                    style="cursor: pointer; width: 18px; height: 18px"
+                  />
+                </th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Badge</th>
 
-              <!-- 2. Actions with Bulk Dropdown -->
-              <th style="min-width: 280px; text-align: center">
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    justify-content: center;
-                  "
-                >
-                  <span style="font-size: 11px; color: #aaa">BULK:</span>
-                  <select
-                    id="bulkSellerAction"
+                <!-- 2. Actions with Bulk Dropdown -->
+                <th style="min-width: 280px; text-align: center">
+                  <div
                     style="
-                      background: #1a1a1a;
-                      color: #fff;
-                      border: 1px solid #444;
-                      padding: 4px;
-                      border-radius: 4px;
-                      font-size: 12px;
-                      outline: none;
-                      cursor: pointer;
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      justify-content: center;
                     "
                   >
-                    <option value="">-- Select Action --</option>
+                    <span style="font-size: 11px; color: #aaa">BULK:</span>
+                    <select
+                      id="bulkSellerAction"
+                      style="
+                        background: #1a1a1a;
+                        color: #fff;
+                        border: 1px solid #444;
+                        padding: 4px;
+                        border-radius: 4px;
+                        font-size: 12px;
+                        outline: none;
+                        cursor: pointer;
+                      "
+                    >
+                      <option value="">-- Select Action --</option>
 
-                    <!-- 🏪 SELLER SPECIFIC -->
-                    <optgroup label="SELLER CONTROL">
-                      <option value="approve_seller">✅ Approve Seller</option>
-                      <option value="unapprove_seller">
-                        ❌ Unapprove Seller
-                      </option>
-                      <option value="block_seller">🚫 Block Seller</option>
-                      <option value="unblock_seller">🔓 Unblock Seller</option>
-                      <option value="delete_seller">🗑️ Delete Seller</option>
-                    </optgroup>
+                      <!-- 🏪 SELLER SPECIFIC -->
+                      <optgroup label="SELLER CONTROL">
+                        <option value="approve_seller">
+                          ✅ Approve Seller
+                        </option>
+                        <option value="unapprove_seller">
+                          ❌ Unapprove Seller
+                        </option>
+                        <option value="block_seller">🚫 Block Seller</option>
+                        <option value="unblock_seller">
+                          🔓 Unblock Seller
+                        </option>
+                        <option value="delete_seller">🗑️ Delete Seller</option>
+                      </optgroup>
 
-                    <!-- 💎 VIP SPECIFIC -->
-                    <optgroup label="VIP CONTROL">
-                      <option value="make_vip">👑 Make VIP (All Roles)</option>
-                      <option value="remove_vip">👤 Remove VIP / Reset</option>
-                      <option value="block_vip">🚫 Block VIP</option>
-                      <option value="delete_vip">🗑️ Delete VIP</option>
-                    </optgroup>
+                      <!-- 💎 VIP SPECIFIC -->
+                      <optgroup label="VIP CONTROL">
+                        <option value="make_vip">
+                          👑 Make VIP (All Roles)
+                        </option>
+                        <option value="remove_vip">
+                          👤 Remove VIP / Reset
+                        </option>
+                        <option value="block_vip">🚫 Block VIP</option>
+                        <option value="delete_vip">🗑️ Delete VIP</option>
+                      </optgroup>
 
-                    <!-- 🎓 STUDENT SPECIFIC -->
-                    <optgroup label="STUDENT CONTROL">
-                      <option value="block_student">🚫 Block Student</option>
-                      <option value="delete_student">🗑️ Delete Student</option>
-                      <option value="reject_cert">📜 Reject Certificate</option>
-                    </optgroup>
+                      <!-- 🎓 STUDENT SPECIFIC -->
+                      <optgroup label="STUDENT CONTROL">
+                        <option value="block_student">🚫 Block Student</option>
+                        <option value="delete_student">
+                          🗑️ Delete Student
+                        </option>
+                        <option value="reject_cert">
+                          📜 Reject Certificate
+                        </option>
+                      </optgroup>
 
-                    <!-- ⚠️ GLOBAL ACTIONS -->
-                    <optgroup label="DANGER ZONE">
-                      <option value="make_seller">
-                        👨‍🏫 Make Seller (Convert)
-                      </option>
-                      <option value="delete_all">💀 Delete All Selected</option>
-                    </optgroup>
-                  </select>
+                      <!-- ⚠️ GLOBAL ACTIONS -->
+                      <optgroup label="DANGER ZONE">
+                        <option value="make_seller">
+                          👨‍🏫 Make Seller (Convert)
+                        </option>
+                        <option value="delete_all">
+                          💀 Delete All Selected
+                        </option>
+                      </optgroup>
+                    </select>
 
-                  <button
-                    id="applyBulkSellerAction"
-                    style="
-                      background: #00ff88;
-                      color: #000;
-                      border: none;
-                      padding: 4px 12px;
-                      border-radius: 4px;
-                      cursor: pointer;
-                      font-weight: bold;
-                      font-size: 12px;
-                    "
-                  >
-                    APPLY
-                  </button>
-                </div>
-              </th>
+                    <button
+                      id="applyBulkSellerAction"
+                      style="
+                        background: #00ff88;
+                        color: #000;
+                        border: none;
+                        padding: 4px 12px;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        font-weight: bold;
+                        font-size: 12px;
+                      "
+                    >
+                      APPLY
+                    </button>
+                  </div>
+                </th>
 
-              <th>Certificate 🎓</th>
-            </tr>
-          </thead>
+                <th>Certificate 🎓</th>
+              </tr>
+            </thead>
 
-          <tbody id="tableBody">
-            <!-- Data yahan JS se aayega -->
-          </tbody>
-        </table>
+            <tbody id="tableBody">
+              <!-- Data yahan JS se aayega -->
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
     <script src="../js/config.js"></script>
     <script src="../js/admin.js"></script>
-    <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-    </script>
+    <script src="/js/security.js"></script>
   </body>
 </html>

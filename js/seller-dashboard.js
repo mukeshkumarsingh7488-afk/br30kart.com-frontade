@@ -171,9 +171,13 @@ function renderManageContentList(products) {
                                 : `<span style="color:#64748b; font-size:10px; background: rgba(100, 116, 139, 0.1); padding: 2px 8px; border-radius: 20px;">No Offer</span>`
                             }
 
-                            <span style="color: #94a3b8; font-size: 11px; display: flex; align-items: center; gap: 4px;">
-                                📅 ${formattedDate}
-                            </span>
+                          <div style="font-size: 10px; display: flex; align-items: center; gap: 10px; margin-bottom: 6px; font-family: monospace; flex-wrap: wrap;">
+    <span style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 1px 6px; border-radius: 4px;">📂 ${item.category || "Trading"}</span>
+    <span style="color: #64748b; opacity: 0.8;">🆔 ${item._id}</span>
+    <span style="color: #94a3b8; font-size: 10px; display: flex; align-items: center; gap: 4px;">
+        📅 ${formattedDate}
+    </span>
+</div>
 
                             <!-- 🔥 ALL STATUS TAGS HERE -->
                             <div style="display:flex; gap:6px;">

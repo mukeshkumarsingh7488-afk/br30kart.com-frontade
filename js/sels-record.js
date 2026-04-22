@@ -362,14 +362,42 @@ function applyFilters() {
       payoutStatus === "completed" ? "status-success" : "status-pending";
 
     tableBody.innerHTML += `
-            <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
-                <td class="px-6 py-4 text-xs text-gray-500 font-medium">${new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
-                <td class="px-6 py-4 text-sm font-bold text-white uppercase">${order.productName}</td>
-                <td class="px-6 py-4 text-sm text-blue-400 font-semibold">${order.customerName || "N/A"}</td>
-                <td class="px-6 py-4"><span class="badge ${payClass}">${order.status}</span></td>
-                <td class="px-6 py-4 font-black text-white text-right">₹${Number(order.amount).toLocaleString()}</td>
-                <td class="px-6 py-4 text-center"><span class="badge ${payoutClass}">${order.payoutStatus}</span></td>
-            </tr>
+      <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
+    <!-- 1. Sale Date -->
+    <td class="px-6 py-4 text-xs text-gray-500 font-medium">
+        ${new Date(order.createdAt).toLocaleDateString("en-GB")}
+    </td>
+
+    <!-- 2. Course Title & ID -->
+    <td class="px-6 py-4 text-sm uppercase">
+        <div class="font-bold text-white">${order.productName}</div>
+        <!-- ✅ Course ID added right below the Title -->
+        <div style="font-size: 10px; color: #64748b; font-family: monospace; margin-top: 2px;">
+            ID: ${order.productId || "N/A"}
+        </div>
+    </td>
+
+    <!-- 3. Student Name -->
+    <td class="px-6 py-4 text-sm text-blue-400 font-semibold">
+        ${order.customerName || "N/A"}
+    </td>
+
+    <!-- 4. Payment Status -->
+    <td class="px-6 py-4">
+        <span class="badge ${payClass}">${order.status}</span>
+    </td>
+
+    <!-- 5. Amount -->
+    <td class="px-6 py-4 font-black text-white text-right">
+        ₹${Number(order.amount).toLocaleString()}
+    </td>
+
+    <!-- 6. Payout Status -->
+    <td class="px-6 py-4 text-center">
+        <span class="badge ${payoutClass}">${order.payoutStatus}</span>
+    </td>
+</tr>
+
         `;
   });
 }
