@@ -119,7 +119,7 @@ function applyPayoutFilters() {
 
   filtered.forEach((o) => {
     const earn = Number(o.sellerEarnings) || 0;
-    const comm = Number(order.platformCommission) || 0;
+    const comm = Number(o.platformCommission) || 0;
     const pStatus = (o.payoutStatus || "Pending").trim().toLowerCase();
 
     feeSum += comm;

@@ -322,7 +322,7 @@ function applyFilters() {
   // --- 2. Calculations & Stats Update ---
   let totalRevenue = 0;
   let totalEarnings = 0;
-  e;
+
   let platformFee = 0;
   let pendingAmount = 0;
 
