@@ -3,8 +3,9 @@
 /* ============================================
    Socket.io Connection Setup (admin Alart)
   ===========================================*/
-window.API_BASE_URL =
-  window.API_BASE_URL || "https://br30kart-api.onrender.com";
+if (!window.API_BASE_URL) {
+  window.API_BASE_URL = "https://br30kart-api.onrender.com";
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const role = localStorage.getItem("userRole"); // Options: 'admin', 'seller', 'student'
@@ -924,11 +925,14 @@ document.getElementById("reviewForm").addEventListener("submit", async (e) => {
 // ✅ 1. Updated loadTopReviews function (Inside logic updated for outside-click)
 async function loadTopReviews() {
   try {
-    const response = await fetch(
-      `${window.API_BASE_URL.replace(/\/$/, "")}/api/reviews/top10`,
-    );
+    // 1. Pehle variable define karo
+    const apiUrl = `${window.API_BASE_URL.replace(/\/$/, "")}/api/reviews/top10`;
+
+    // 2. Ab isse log aur fetch karo
     console.log("Calling API:", apiUrl);
-    const data = await response.json(); // 1. 'reviews' की जगह 'data' नाम रखा है
+    const response = await fetch(apiUrl);
+
+    const data = await response.json();
     console.log("Full Data Received:", data);
 
     // 2. BACKEND CHANGE: अब डेटा 'data.reviews' के अंदर है
