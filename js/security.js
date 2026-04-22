@@ -30,5 +30,3 @@ setInterval(() => {
   debugger;
 }, 100);
 // cleane consol
-console.clear();
-setInterval(() => console.clear(), 1000);
