@@ -874,7 +874,7 @@ document.getElementById("reviewForm").addEventListener("submit", async (e) => {
   const storedData = localStorage.getItem("userData");
   if (!storedData) {
     alert("Please, Login first!");
-    window.location.href = "login.html";
+    window.location.href = "pages/login.html";
     return;
   }
 
