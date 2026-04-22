@@ -3,46 +3,7 @@
 /* ============================================
    Socket.io Connection Setup (admin Alart)
   ===========================================*/
-const socket = io(window.API_BASE_URL, {
-  path: "/socket.io/", // Agar backend pe custom path hai toh yahan define hota hai
-  transports: ["websocket"],
-  closeOnBeforeunload: true,
-  reconnectionAttempts: 5,
-  timeout: 10000,
-});
 
-socket.on("connect", () => {
-  console.log("✅ Live connection ban gaya! ID:", socket.id);
-
-  // Example: dynamic userId, apne user se fetch kar sakte ho
-  const userId = "69bfdc6e61e19c17bf18d597";
-  socket.emit("join", userId);
-});
-
-socket.on("connect_error", (err) => {
-  console.log("❌ Connection Error:", err.message);
-});
-
-// 🔥 Live Users Count (safe, HTML optional)
-socket.on("live_users_count", (count) => {
-  console.log("🔥 Live Users:", count);
-
-  // Agar element hai to update kare, nahi to skip kare
-  const liveUsersElem = document.getElementById("liveCount");
-  if (liveUsersElem) {
-    liveUsersElem.innerText = count;
-  }
-});
-
-// 📩 Notifications
-socket.on("notification", (data) => {
-  console.log("📩 Notification:", data);
-
-  // Optional: agar alert chahiye to
-  if (data && data.message) {
-    alert("New Notification: " + data.message);
-  }
-});
 document.addEventListener("DOMContentLoaded", () => {
   const role = localStorage.getItem("userRole"); // Options: 'admin', 'seller', 'student'
   const sellerBtn = document.getElementById("sellerDashLink");
