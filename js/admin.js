@@ -3167,9 +3167,13 @@ document.querySelectorAll(".nav-item").forEach((item) => {
     } else if (target === "requests") {
       loadSellerRequests();
     }
-    // ✅ Friday Payouts के लिए ये जोड़ दिया
+    // ✅ यहाँ सुधार किया गया है: fetchData() को कॉल करें
     else if (target === "payouts") {
-      loadFridayPayouts();
+      const today = new Date().toISOString().split("T")[0]; // आज की तारीख
+      fetchData(today, today);
+
+      // और हाँ, पेआउट वाले सेक्शन (Div) को दिखाना मत भूलना
+      showSection("payouts-section");
     }
   });
 });
