@@ -918,7 +918,10 @@ document.getElementById("reviewForm").addEventListener("submit", async (e) => {
 // ✅ 1. Updated loadTopReviews function (Inside logic updated for outside-click)
 async function loadTopReviews() {
   try {
-    const response = await fetch(`${window.API_BASE_URL}/api/reviews/top10`);
+    const response = await fetch(
+      `${window.API_BASE_URL.replace(/\/$/, "")}/api/reviews/top10`,
+    );
+
     const data = await response.json(); // 1. 'reviews' की जगह 'data' नाम रखा है
 
     // 2. BACKEND CHANGE: अब डेटा 'data.reviews' के अंदर है
