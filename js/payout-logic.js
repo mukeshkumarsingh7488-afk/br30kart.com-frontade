@@ -172,14 +172,28 @@ function applyPayoutFilters() {
     // --- 4. Table Row Injection ---
     tableBody.innerHTML += `
         <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
+            <!-- 1. Payout Date -->
             <td class="px-6 py-4 text-xs text-gray-500 font-medium">${displayDate}</td>
+            
+            <!-- 2. Course Details & Order ID -->
             <td class="px-6 py-4">
                 <div class="text-sm font-bold text-white uppercase">${o.productName}</div>
-                <!-- 🆔 यहाँ अब DB की असली ObjectId दिखेगी -->
                 <div class="text-[10px] text-blue-400 font-bold">Order ID: #${realOrderID}</div>
             </td>
-            <td class="px-6 py-4 font-black text-white text-lg">₹${(amt * 0.8).toLocaleString()}</td>
+
+            <!-- ✅ 3. Sell Price (Asli Kimat) -->
+            <td class="px-6 py-4 text-sm font-semibold text-gray-400">₹${Number(o.amount || 0).toLocaleString()}</td>
+
+            <!-- ✅ 4. Platform Fee (20% - Red) -->
+            <td class="px-6 py-4 text-sm font-semibold text-red-500">₹${Number(o.platformCommission || 0).toLocaleString()}</td>
+
+            <!-- ✅ 5. Earnings (80% - Green & Bold) -->
+            <td class="px-6 py-4 font-black text-green-400 text-lg">₹${Number(o.sellerEarnings || 0).toLocaleString()}</td>
+
+            <!-- 6. Mail Track -->
             <td class="px-6 py-4">${mailHTML}</td>
+
+            <!-- 7. Payout Status -->
             <td class="px-6 py-4 text-center">
                 <span class="badge ${statusClass}" style="padding: 4px 12px; border-radius: 6px; font-size: 10px;">${pStatus}</span>
             </td>

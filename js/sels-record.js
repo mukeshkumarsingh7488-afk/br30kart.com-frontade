@@ -137,7 +137,12 @@ function applyFilters() {
             <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
                 <td class="px-6 py-4 text-xs text-gray-500 font-medium">${new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
                 <td class="px-6 py-4 text-sm font-bold text-white uppercase tracking-tight">${order.productName}</td>
-                <td class="px-6 py-4 text-sm text-blue-400 font-semibold">${order.customerName || "N/A"}</td>
+            <td class="px-6 py-4 text-sm uppercase">
+    <span class="font-bold text-white">${order.productName}</span> 
+    <span style="color: #64748b; font-family: monospace; font-size: 10px; margin-left: 8px;">
+        (${order.productId || order.courseId || "N/A"})
+    </span>
+</td>
                 <td class="px-6 py-4"><span class="badge ${getStatusClass(sStat)}">${sStat}</span></td>
                 <td class="px-6 py-4 font-black text-white text-right">₹${order.amount}</td>
                 <td class="px-6 py-4 text-center"><span class="badge ${getStatusClass(pStat)}">${pStat}</span></td>

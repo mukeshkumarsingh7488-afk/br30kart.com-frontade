@@ -2802,7 +2802,13 @@ function renderOrderTable(orders) {
         <tr>
             <td>${new Date(o.createdAt).toLocaleDateString("en-IN")}</td>
             <td><b>${o.customerName || "User"}</b><br><small>${o.customerEmail}</small></td>
-            <td><b>${o.productName}</b><br><small class="obj-id">ID: ${o.productId}</small></td>
+           <td>
+    <b>${o.productName}</b>
+    <br>
+    <small class="obj-id" style="color: #666;">
+        ID: ${o.productId?._id || o.productId || "N/A"}
+    </small>
+</td>
             <td style="color:#00ffcc; font-weight:bold;">₹${o.amount}</td>
             <td>${o.sellerName}<br><small>${o.sellerEmail}</small></td>
             <td><span class="status-success">SUCCESS</span></td>

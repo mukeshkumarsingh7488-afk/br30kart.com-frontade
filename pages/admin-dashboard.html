@@ -607,73 +607,229 @@
         BR30
         <span>ADMIN</span>
       </div>
-   <!--  nav overview btn & pannels  -->
-     <ul class="nav-links" id="adminSidebar" style="list-style: none; padding: 0; margin: 0;">
-    
-    <!-- JS Managed Items -->
-    <li class="nav-item active" data-target="overview" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; transition: 0.3s; border-radius: 8px;">
-        <i class="fas fa-chart-line"></i> Overview
-    </li>
+      <!--  sidebar btn -->
+      <ul
+        class="nav-links"
+        id="adminSidebar"
+        style="list-style: none; padding: 0; margin: 0"
+      >
+        <!-- JS Managed Items -->
+        <li
+          class="nav-item active"
+          data-target="overview"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 8px;
+          "
+        >
+          <i class="fas fa-chart-line"></i>
+          Overview
+        </li>
 
-    <li class="nav-item" data-target="student" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px;">
-        <i class="fas fa-user-graduate"></i> Student Control
-    </li>
+        <li
+          class="nav-item"
+          data-target="student"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+          "
+        >
+          <i class="fas fa-user-graduate"></i>
+          Student Control
+        </li>
 
-    <li class="nav-item" data-target="vip" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px;">
-        <i class="fas fa-crown" style="color: gold"></i> VIP Control
-    </li>
+        <li
+          class="nav-item"
+          data-target="vip"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+          "
+        >
+          <i class="fas fa-crown" style="color: gold"></i>
+          VIP Control
+        </li>
 
-    <li class="nav-item" data-target="seller" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px;">
-        <i class="fas fa-store"></i> Seller Control
-    </li>
+        <li
+          class="nav-item"
+          data-target="seller"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+          "
+        >
+          <i class="fas fa-store"></i>
+          Seller Control
+        </li>
 
-    <li class="nav-item" data-target="requests" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px;">
-        <i class="fas fa-user-check"></i> Seller Requests
-    </li>
+        <li
+          class="nav-item"
+          data-target="requests"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+          "
+        >
+          <i class="fas fa-user-check"></i>
+          Seller Requests
+        </li>
 
-    <li class="nav-item" data-target="payouts" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px;">
-        <i class="fas fa-money-bill-wave"></i> Friday Payouts
-    </li>
+        <li
+          class="nav-item"
+          data-target="payouts"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+          "
+        >
+          <i class="fas fa-money-bill-wave"></i>
+          Friday Payouts
+        </li>
 
-    <!-- Direct Page Links -->
-    <li style="padding: 0;">
-        <a href="seller-docs.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px;">
-            <i class="fas fa-file-invoice"></i> Seller Document
-        </a>
-    </li>
+        <!-- Direct Page Links -->
+        <li style="padding: 0">
+          <a
+            href="seller-docs.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 12px 15px;
+              width: 100%;
+              border-radius: 8px;
+            "
+          >
+            <i class="fas fa-file-invoice"></i>
+            Seller Document
+          </a>
+        </li>
 
-    <li style="padding: 0;">
-        <a href="admin-orders.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px;">
-            <i class="fas fa-receipt"></i> Order History
-        </a>
-    </li>
+        <li style="padding: 0">
+          <a
+            href="admin-orders.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 12px 15px;
+              width: 100%;
+              border-radius: 8px;
+            "
+          >
+            <i class="fas fa-receipt"></i>
+            Order History
+          </a>
+        </li>
 
-    <li style="padding: 0;">
-        <a href="admin-course.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px;">
-            <i class="fas fa-cogs"></i> Course Control
-        </a>
-    </li>
+        <li style="padding: 0">
+          <a
+            href="admin-course.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 12px 15px;
+              width: 100%;
+              border-radius: 8px;
+            "
+          >
+            <i class="fas fa-cogs"></i>
+            Course Control
+          </a>
+        </li>
 
-    <li style="padding: 0;">
-        <a href="activ-seller.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px;">
-            <i class="fas fa-user-tie"></i> Activ Seller
-        </a>
-    </li>
+        <li style="padding: 0">
+          <a
+            href="activ-seller.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 12px 15px;
+              width: 100%;
+              border-radius: 8px;
+            "
+          >
+            <i class="fas fa-user-tie"></i>
+            Activ Seller
+          </a>
+        </li>
 
-    <li style="padding: 0;">
-        <a href="activ-student.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px;">
-            <i class="fas fa-user-graduate"></i> Activ Student
-        </a>
-    </li>
+        <li style="padding: 0">
+          <a
+            href="activ-student.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 12px 15px;
+              width: 100%;
+              border-radius: 8px;
+            "
+          >
+            <i class="fas fa-user-graduate"></i>
+            Activ Student
+          </a>
+        </li>
 
-    <li style="padding: 0;">
-        <a href="seller-dashboard.html" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px;">
-            <i class="fas fa-tachometer-alt"></i> Seller Dashboard
-        </a>
-    </li>
-</ul>
+        <li style="padding: 0">
+          <a
+            href="seller-dashboard.html"
+            target="_blank"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 12px 15px;
+              width: 100%;
+              border-radius: 8px;
+            "
+          >
+            <i class="fas fa-tachometer-alt"></i>
+            Seller Dashboard
+          </a>
+        </li>
+      </ul>
 
-     <!--  end overview all pannel btn  -->
+      <!-- sidebar btn end -->
+    </div>
 
     <div class="main-content">
       <div class="top-header">
