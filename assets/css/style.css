@@ -975,9 +975,17 @@ h2 {
   }
 }
 /*=====================================================================
-/* --- 12. FOOTER & REVIEW SECTION (Desktop + Mobile) --- */
+/* --- 12. FOOTER & REVIEW SECTION (FINAL FIXED 🔥) --- */
+
+* {
+  box-sizing: border-box;
+}
+
+/* --- 12. FOOTER & REVIEW SECTION --- */
+
 .footer-review-section {
-  padding: 40px 20px;
+  padding: 30px 15px;
+  width: 100%; /* 🔥 extra safety */
 }
 
 .footer-review-section h3 {
@@ -985,297 +993,168 @@ h2 {
   letter-spacing: 1px !important;
 }
 
+/* 🔥 FLEX CONTAINER FIX */
 .review-flex-container {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   flex-wrap: wrap;
-  max-width: 1200px;
+  justify-content: center;
+  max-width: 1100px;
+  width: 100%; /* 🔥 ADD */
   margin: 0 auto;
 }
 
+/* 🔥 BOX SIZE FIX */
 .review-form-box,
 .review-list-box {
   flex: 1;
-  max-height: 400px;
-  min-width: 320px;
-  /* Mobile par width auto adjust hogi */
+  max-width: 520px;
+  width: 100%;
+  max-height: 360px;
+  min-width: 280px;
   background: #000000 !important;
-  padding: 25px;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0 15px 40px rgba(38, 193, 95, 0.2);
+  overflow: hidden;
 }
 
-/* Form Styles */
+/* FORM */
 #reviewForm {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
+/* INPUT FIX */
 input,
 textarea,
 select {
   background-color: rgba(255, 255, 255, 0.05);
-  /* Bahut halka white */
   color: #ffffff;
-  /* Likha hua white dikhega */
   border: 1px solid rgba(255, 255, 255, 0.1);
-  /* Halka border */
   backdrop-filter: blur(10px);
-  /* Glass effect */
 }
 
+/* ALL INPUT SAME SIZE */
 #reviewForm input,
 #reviewForm select,
 #reviewForm textarea {
-  padding: 12px;
-  border: #00ff88;
+  padding: 10px;
+  border: 1px solid #00ff88;
   border-radius: 8px;
   width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
-/* ⚡ Cyber Green Scrollbar Logic */
+/* TEXTAREA CONTROL */
+#reviewForm textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* FOCUS EFFECT */
+#reviewForm input:focus,
+#reviewForm select:focus,
+#reviewForm textarea:focus {
+  outline: none;
+  border-color: palevioletred;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+/* 🔥 SCROLL AREA */
 #reviewDisplay {
-  max-height: 320px;
-  /* हेडिंग के बाद बचे हुए स्पेस के लिए */
+  max-height: 240px;
   overflow-y: auto;
-  padding-right: 10px;
-
-  /* स्क्रॉलबार को सुंदर बनाने के लिए (Custom Scrollbar) */
+  padding-right: 8px;
 }
 
-/* 🟢 CYBER GREEN SCROLLBAR (Taki look kharab na ho) */
+/* SCROLLBAR */
 #reviewDisplay::-webkit-scrollbar {
   width: 5px;
 }
 
 #reviewDisplay::-webkit-scrollbar-track {
   background: #050505;
-  border-radius: 10px;
 }
 
 #reviewDisplay::-webkit-scrollbar-thumb {
   background: #00ff88;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
-/* Review cards ke beech thoda gap taki clean dikhe */
+/* REVIEW GAP */
 #reviewDisplay > div {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
+/* BUTTON */
 #submitBtn {
   position: relative;
   background: #050505;
-  /* बटन का अंदरूनी कलर डार्क रखें ताकि लाइट चमके */
   color: black !important;
-  padding: 14px;
+  padding: 12px;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
   width: 100%;
   border: none;
   overflow: hidden;
-  /* लाइट को बटन के अंदर रखने के लिए */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s;
 }
 
-/* घूमने वाली पर्पल लाइट (1-2 इंच की पट्टी) */
+/* ANIMATION */
 #submitBtn::before {
   content: "";
   position: absolute;
   width: 150px;
-  /* लाइट की लंबाई (करीब 1.5-2 इंच) */
   height: 300%;
   background: #00ff88;
   animation: rotateBtn 3s linear infinite;
 }
 
-/* बटन का टेक्स्ट कवर (ताकि लाइट सिर्फ बॉर्डर पर दिखे) */
 #submitBtn::after {
   content: "Post Review";
-  /* यहाँ अपना बटन टेक्स्ट लिखें */
   position: absolute;
   inset: 3px;
-  /* बॉर्डर की मोटाई */
   background: palevioletred !important;
-  /* बटन का मुख्य कलर */
   border-radius: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* घूमने वाला एनिमेशन */
 @keyframes rotateBtn {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
 }
 
-/* होवर करने पर हल्का सा बड़ा होगा */
 #submitBtn:hover {
-  background: palevioletred !important;
-  color: black !important;
-  box-shadow: 0 0 20px #00ff88 !important;
+  box-shadow: 0 0 15px #00ff88;
 }
 
-/* --- FINAL MOBILE FIXES (Max 768px) --- */
-@media (max-width: 768px) {
-  .info-section {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .info-links {
-    text-align: center;
-    order: 2;
-    /* Policy links niche aayenge */
-  }
-
-  .disclaimer {
-    order: 1;
-    /* Disclaimer upar dikhega mobile par */
-    width: 100%;
-  }
-
-  .review-flex-container {
-    flex-direction: column;
-  }
-
-  .review-form-box,
-  .review-list-box {
-    width: 100%;
-  }
-
-  h5 {
-    font-size: 1rem;
-    text-align: center;
-    margin: 20px 0;
-  }
-}
-
-/* Form Styles - सभी बॉक्स बराबर करने के लिए */
-#reviewForm input,
-#reviewForm select,
-#reviewForm textarea {
-  padding: 12px;
-  border: #00ff88;
-  border-radius: 8px;
-  width: 100%;
-  /* पूरी चौड़ाई लेगा */
-  box-sizing: border-box;
-  /* पैडिंग को चौड़ाई के अंदर रखेगा, जिससे बॉक्स बाहर नहीं भागेंगे */
-  font-family: inherit;
-  /* फॉन्ट सेम रखेगा */
-  font-size: 14px;
-}
-
-#reviewForm textarea {
-  resize: vertical;
-  /* यूजर सिर्फ नीचे की तरफ खींच सकेगा, साइड में नहीं जिससे लेआउट नहीं बिगड़ेगा */
-  min-height: 100px;
-  /* एक फिक्स हाइट ताकि बॉक्स अच्छा दिखे */
-}
-
-/* इनपुट पर क्लिक करने पर आपका पर्पल बॉर्डर आए (Optional but looks pro) */
-#reviewForm input:focus,
-#reviewForm select:focus,
-#reviewForm textarea:focus {
-  outline: none;
-  border-color: palevioletred;
-  /* आपका पर्पल कलर */
-  box-shadow: 0 15px 40px rgba(38, 193, 95, 0.2);
-}
-
-/* कम्युनिटी हाइलाइट्स बॉक्स के लिए स्टाइल */
+/* REVIEW LIST HOVER */
 .review-list-box {
-  border: 2px solid transparent;
-  /* डिफ़ॉल्ट बॉर्डर गायब रहेगा */
-  transition: all 0.4s ease;
-  cursor: pointer;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  transition: 0.3s;
 }
 
-/* बॉक्स पर माउस ले जाने (Hover) पर इफ़ेक्ट */
 .review-list-box:hover {
   border-color: #00ff88;
-  /* आपका पर्पल बॉर्डर */
-  transform: translateY(-5px);
-  /* हल्का सा ऊपर उठेगा */
-  box-shadow: 0 15px 40px rgba(38, 193, 95, 0.2);
-  /* पर्पल ग्लो */
-  background: rgb(55, 51, 51);
-  /* बैकग्राउंड थोड़ा हल्का होगा */
+  transform: translateY(-4px);
+  background: #111;
 }
 
-/* बॉक्स के अंदर के टाइटल (Top 10) को चमकाने के लिए */
-.review-list-box h3,
-.review-list-box h2 {
-  transition: color 0.3s ease;
-}
-
-.review-list-box:hover h3,
-.review-list-box:hover h2 {
-  color: #00ff88;
-  /* टाइटल भी पर्पल हो जाएगा */
-}
-
-/* बॉक्स के चारों तरफ घूमती हुई पर्पल लाइट 
-.review-list-box {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(15, 112, 38, 0.3);
-}
-
-.review-list-box::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(transparent, transparent, transparent, #00ff88);
-  animation: rotate 4s linear infinite;
-  z-index: -1;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* कंटेंट को ऊपर रखने के लिए */
-.review-list-box > * {
-  position: relative;
-  z-index: 1;
-}
-
+/* FORM BOX LIGHT */
 .review-form-box {
   position: relative;
-  flex: 1;
-  min-width: 320px;
-  background: #000000;
-  padding: 25px;
-  border-radius: 15px;
-  overflow: hidden;
-  /* लाइट को बाहर जाने से रोकने के लिए */
   z-index: 1;
 }
 
-/* घूमने वाली पर्पल पट्टी (सिर्फ होवर पर दिखेगी) */
 .review-form-box::before {
   content: "";
   position: absolute;
@@ -1284,113 +1163,101 @@ select {
   width: 200%;
   height: 200%;
   background: conic-gradient(transparent, transparent, #00ff88);
-  /* आपका पर्पल कलर */
   animation: rotateBox 4s linear infinite;
-  z-index: -1;
   display: none;
-  /* डिफ़ॉल्ट में छुपा रहेगा */
+  z-index: -1;
 }
 
-/* अंदर का कवर ताकि लाइट सिर्फ किनारों पर दिखे */
 .review-form-box::after {
   content: "";
   position: absolute;
-  inset: 4px;
-  /* बॉर्डर की मोटाई (जितना कम, उतनी पतली लाइन) */
-  background: #000000;
-  /* बॉक्स का ओरिजिनल बैकग्राउंड */
+  inset: 3px;
+  background: #000;
   border-radius: 12px;
   z-index: -1;
 }
 
-/* होवर करने पर लाइट जल उठेगी  */
 .review-form-box:hover::before {
   display: block;
 }
 
-/* घूमने वाला एनिमेशन */
 @keyframes rotateBox {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
 }
 
-/* मोबाइल के लिए टच पर भी काम करेगा */
+/* 📱 MOBILE FIX (FINAL 🔥🔥🔥) */
 @media (max-width: 768px) {
-  .review-form-box:active::before {
-    display: block;
+  .review-flex-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 5px; /* 🔥 side cut fix */
+  }
+
+  .review-form-box,
+  .review-list-box {
+    max-width: 100%;
+    width: 100%;
+    max-height: none !important; /* 🔥 MAIN FIX */
+    padding: 15px;
+  }
+
+  #reviewDisplay {
+    max-height: 250px;
+  }
+
+  .footer-review-section {
+    padding: 15px 10px; /* 🔥 FIX */
   }
 }
 
-/*  Admin Review Replay Coment Style */
-.reply-badge {
-  color: #00ffa3;
-  font-size: 0.8rem;
-  cursor: pointer;
-  text-decoration: underline;
-  margin-left: 10px;
+/* 🔥 SMALL DEVICES */
+@media (max-width: 480px) {
+  .review-form-box,
+  .review-list-box {
+    padding: 12px;
+  }
+
+  #reviewForm textarea {
+    min-height: 80px;
+  }
 }
 
-.admin-msg-box {
-  display: none;
-  /* Pehle se hide rahega */
-  background: rgba(0, 255, 163, 0.1);
-  border-left: 2px solid #00ffa3;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  font-size: 0.9rem;
+.review-list-box h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap; /* 🔥 ye line hero hai */
 }
-
-/* review total count style */
 .review-count-box {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 5px 15px;
-  border-radius: 50px;
-  font-size: 14px;
-  border: 1px solid #444;
-  color: #fff;
+  white-space: nowrap; /* text break na ho */
+  flex-shrink: 0; /* 🔥 cut fix */
 }
 
-#countNumber {
-  font-weight: bold;
-  color: #00ff88; /* हल्का हरा रंग जो डार्क थीम पर अच्छा लगता है */
-  transition: all 0.3s ease;
-}
-
-/* नंबर अपडेट होने पर चमकने वाला इफ़ेक्ट */
-.count-update-flash {
-  text-shadow: 0 0 15px #00ff88;
-  transform: scale(1.2);
-}
-
-/* लाइव जैसा दिखने के लिए एक छोटा सा ब्लिंकिंग डॉट */
-.pulse-icon {
-  height: 8px;
-  width: 8px;
-  background-color: #ff4d6d;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 5px;
-  box-shadow: 0 0 8px #ff4d6d;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 1;
+@media (max-width: 768px) {
+  .review-list-box h3 {
+    font-size: 14px !important; /* thoda chota */
   }
-  70% {
-    transform: scale(1.5);
-    opacity: 0;
+
+  .review-count-box {
+    font-size: 12px;
+    padding: 4px 10px;
   }
-  100% {
-    transform: scale(0.9);
-    opacity: 0;
+}
+
+@media (max-width: 480px) {
+  .review-list-box h3 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .review-count-box {
+    margin-top: 5px;
   }
 }
