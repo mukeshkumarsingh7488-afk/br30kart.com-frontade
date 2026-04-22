@@ -136,7 +136,7 @@ function applyFilters() {
     tableBody.innerHTML += `
             <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
                 <td class="px-6 py-4 text-xs text-gray-500 font-medium">${new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
-                <td class="px-6 py-4 text-sm font-bold text-white uppercase tracking-tight">${order.productName}</td>
+              
             <td class="px-6 py-4 text-sm uppercase">
     <span class="font-bold text-white">${order.productName}</span> 
     <span style="color: #64748b; font-family: monospace; font-size: 10px; margin-left: 8px;">
