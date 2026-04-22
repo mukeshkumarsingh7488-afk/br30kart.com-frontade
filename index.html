@@ -359,6 +359,50 @@
       </div>
     </div>
 
+      <!-- =========================================
+         13. FOOTER REVIEW & FEEDBACK SECTION
+    ========================================= -->
+  <!-- Highlight Stat -->
+<div class="community-header" style="display: flex; justify-content: space-between; align-items: center;">
+    <h3 style="margin: 0;">Community Highlights (Top Review)</h3>
+    <div class="review-count-box">
+        <span class="pulse-icon"></span> 
+        Total Reviews: <span id="countNumber">0</span>
+    </div>
+</div>
+
+  <div class="footer-review-section">
+    <div class="review-flex-container">
+
+      <!-- A. Share Your Experience: Review Form -->
+      <div class="review-form-box">
+        <h3>Share Your Experience</h3>
+        <form id="reviewForm">
+          <input type="text" id="userName" placeholder="Your Name" required>
+          <select id="userRating">
+            <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+            <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+            <option value="3">⭐⭐⭐ (3 Stars)</option>
+          </select>
+          <textarea id="userComment" placeholder="Write your feedback here..." required></textarea>
+          <button type="submit" id="submitBtn">Post Review</button>
+        </form>
+      </div>
+
+      <!-- B. Community Highlights: Display Section (SCROLL ADDED) -->
+      <div class="review-list-box">
+        <h3>Community Highlights (Top Review)</h3>
+
+        <!-- HTML के इस हिस्से को ऐसे बदलें -->
+        <div id="reviewDisplay" style="max-height: 320px; overflow-y: auto; padding-right: 5px;">
+          <!-- Reviews यहाँ आएँगे -->
+        </div>
+
+      </div>
+
+    </div> <!-- review-flex-container ends -->
+  </div> <!-- footer-review-section ends -->
+
     <!-- ../index.html ke liye -->
     <script src="./js/config.js"></script>
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>

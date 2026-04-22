@@ -842,7 +842,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Right click block
 document.addEventListener("contextmenu", (e) => e.preventDefault());
 
-// F12 + DevTools block
+// F12 + DevTools block ===========================================================
 document.onkeydown = function (e) {
   if (e.keyCode == 123) return false;
   if (e.ctrlKey && e.shiftKey && e.keyCode == 73) return false;
@@ -854,3 +854,224 @@ setInterval(() => {
     document.body.innerHTML = "<h1>Access Denied</h1>";
   }
 }, 1000);
+
+//==============================================================================
+/* =========================================
+   3.  Review submil & LOADING LOGIC   
+========================================= */
+// 2. Main Submit Event
+document.getElementById("reviewForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  // 1. Latest User Data nikaalo
+  const storedData = localStorage.getItem("userData");
+  if (!storedData) {
+    alert("Please, Login first!");
+    window.location.href = "login.html";
+    return;
+  }
+
+  const user = JSON.parse(storedData);
+
+  // 2. Clear IDs nikaalo (Multiple checks for safety)
+  const finalUserId =
+    user._id || user.id || (user.user && (user.user._id || user.user.id));
+
+  // 3. 🚨 PROFILE PIC FIX: Direct Cloudinary URL uthao
+  // Agar profile page par update hua hai, toh wahi url yahan use hoga
+  const latestProfilePic =
+    user.profilePic || (user.user && user.user.profilePic) || "";
+
+  const data = {
+    username: document.getElementById("userName").value.trim(),
+    rating: document.getElementById("userRating").value,
+    comment: document.getElementById("userComment").value.trim(),
+    userId: finalUserId,
+    profilePic: latestProfilePic, // Ye ab Cloudinary ka direct link (http...) bhejega
+  };
+
+  console.log("📝 Posting Review with Data:", data); // Debugging ke liye
+
+  try {
+    const response = await fetch(`${window.API_BASE_URL}/api/reviews/add`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("Thanks for your review! ✅");
+      document.getElementById("reviewForm").reset();
+      // Yahan function ka naam check kar lena (loadTopReviews ya fetchReviews)
+      if (typeof loadTopReviews === "function") loadTopReviews();
+    } else {
+      alert(result.message || "Error while posting review!");
+    }
+  } catch (err) {
+    console.error("🚨 Review Error:", err);
+    alert("Server Error! Check console for details.");
+  }
+});
+
+// ✅ 1. Updated loadTopReviews function (Inside logic updated for outside-click)
+async function loadTopReviews() {
+  try {
+    const response = await fetch(`${window.API_BASE_URL}/api/reviews/top10`);
+    const data = await response.json(); // 1. 'reviews' की जगह 'data' नाम रखा है
+
+    // 2. BACKEND CHANGE: अब डेटा 'data.reviews' के अंदर है
+    const reviews = data.reviews || [];
+    const totalCount = data.totalCount || 0;
+
+    // 🔥 3. UI UPDATE: यहाँ आपका नया काउंट सेट होगा
+    const countElement = document.getElementById("countNumber");
+    if (countElement) {
+      countElement.innerText = totalCount;
+    }
+
+    const displayArea = document.getElementById("reviewDisplay");
+
+    if (!reviews || reviews.length === 0) {
+      displayArea.innerHTML =
+        "<p style='color:gray; font-size:12px;'>No reviews yet.</p>";
+      return;
+    }
+
+    const BASE_URL = `${window.API_BASE_URL}`;
+    displayArea.innerHTML = reviews
+      .map((r) => {
+        const userName = (r.userId && r.userId.name) || r.username || "User";
+        let rawPath = (r.userId && r.userId.profilePic) || r.profilePic || "";
+        let profileImg;
+
+        if (rawPath && typeof rawPath === "string" && rawPath.length > 5) {
+          if (rawPath.startsWith("http")) {
+            profileImg = rawPath;
+          } else {
+            const fileName = rawPath.split(/[\\/]/).pop();
+            profileImg = `${window.API_BASE_URL}/uploads/${fileName}`;
+          }
+        } else {
+          profileImg = `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=00ff88&color=000&bold=true&size=128`;
+        }
+
+        const adminReplyBtn = r.adminReply
+          ? `<span onclick="window.toggleReplyBox(event, '${r._id}')" style="color:#00ff88; font-size:10px; cursor:pointer; text-decoration:underline; margin-left:8px; font-weight:normal;">View Reply</span>`
+          : "";
+
+        const adminReplyContent = r.adminReply
+          ? `<div id="reply-box-${r._id}" class="reply-box-item" style="display:none; margin-top:8px; padding:8px; background:rgba(0,255,136,0.1); border-left:2px solid #00ff88; border-radius:4px; font-size:12px; color:#00ff88;">
+              <strong style="color:#fff;">Admin:</strong> ${r.adminReply}
+           </div>`
+          : "";
+
+        return `
+        <div class="review-card" style="background: rgba(255,255,255,0.05); padding: 15px; margin-bottom: 12px; border-radius: 15px; border-left: 4px solid #00ff88; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <img src="${profileImg}" 
+                     onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=333&color=fff&size=128';"
+                     style="width:45px; height:45px; border-radius:50%; border:2px solid #00ff88; object-fit:cover; background:#111;">
+                <div style="flex:1;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <strong style="color: #00ff88; font-size:15px; letter-spacing:0.5px;">${userName}</strong> 
+                        <div style="display:flex; align-items:center;">
+                            <span style="color:gold; font-size:11px;">${"★".repeat(r.rating || 0)}</span>
+                            ${adminReplyBtn}
+                        </div>
+                    </div>
+                    <p style="margin: 6px 0 0 0; font-size: 13px; color: #e2e8f0; line-height:1.5;">${r.comment}</p>
+                    ${adminReplyContent}
+                </div>
+            </div>
+        </div>`;
+      })
+      .join("");
+  } catch (err) {
+    console.error("Error:", err);
+  }
+}
+
+// ✅ 2. Pro Toggle Logic (Outside Click Support)
+window.toggleReplyBox = function (event, id) {
+  event.stopPropagation(); // Stop click from reaching window listener immediately
+  const box = document.getElementById(`reply-box-${id}`);
+  const allBoxes = document.querySelectorAll(".reply-box-item");
+
+  // Close all other open boxes first
+  allBoxes.forEach((b) => {
+    if (b.id !== `reply-box-${id}`) b.style.display = "none";
+  });
+
+  if (box) {
+    box.style.display =
+      box.style.display === "none" || box.style.display === ""
+        ? "block"
+        : "none";
+  }
+};
+
+// ✅ 3. Global Click Listener to close box when clicking outside
+window.addEventListener("click", function (event) {
+  const allBoxes = document.querySelectorAll(".reply-box-item");
+  allBoxes.forEach((box) => {
+    // If click is outside the box and not on a 'View Reply' button, close it
+    if (box.style.display === "block" && !box.contains(event.target)) {
+      box.style.display = "none";
+    }
+  });
+});
+
+// Baki ka Enter Key logic
+const commentBox = document.getElementById("userComment");
+if (commentBox) {
+  commentBox.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      document.getElementById("reviewForm").requestSubmit();
+    }
+  });
+}
+loadTopReviews();
+
+// --- Review Count Logic ---
+
+// 1. पेज लोड होते ही डेटाबेस से शुरूआती काउंट लाने के लिए
+async function loadInitialCount() {
+  try {
+    const response = await fetch("/api/reviews/top-reviews"); // अपनी सही API Path चेक कर लेना
+    const data = await response.json();
+
+    if (data.success) {
+      updateCountUI(data.totalCount);
+    }
+  } catch (err) {
+    console.error("Count load karne mein error:", err);
+  }
+}
+
+// 2. सॉकेट के ज़रिए रियल-टाइम अपडेट सुनना
+socket.on("updateTotalReviewCount", (newCount) => {
+  console.log("Naya review aaya! New Count:", newCount);
+  updateCountUI(newCount);
+});
+
+// 3. UI को अपडेट करने वाला फंक्शन (एनीमेशन के साथ)
+function updateCountUI(number) {
+  const countElement = document.getElementById("countNumber");
+  if (countElement) {
+    countElement.innerText = number;
+
+    // एक छोटा सा 'Flash' इफ़ेक्ट ताकि यूजर को पता चले नंबर बदला है
+    countElement.classList.add("count-update-flash");
+    setTimeout(() => {
+      countElement.classList.remove("count-update-flash");
+    }, 1000);
+  }
+}
+
+// फंक्शन कॉल करें
+loadInitialCount();
+
+//Review Logic end..
