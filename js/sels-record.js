@@ -144,10 +144,7 @@ function applyFilters() {
     <!-- 2. कोर्स का नाम और ID (एक ही लाइन में) -->
 <td class="px-6 py-4 text-sm uppercase">
     <span class="font-bold text-white">${order.productName}</span> 
-    <span style="color: #64748b; font-family: monospace; font-size: 10px; margin-left: 8px;">
-        <!-- ✅ चूंकि productId नहीं है, इसलिए हम Order की अपनी ID दिखाएंगे -->
-        (#${order._id.slice(-6)}) 
-    </span>
+     <div class="text-[10px] text-blue-400 font-bold">Order ID: #${realOrderID}</div>
 </td>
 
     <!-- 3. स्टूडेंट का नाम (अगर आपके पास order.customerName है तो यहाँ डालें) -->
