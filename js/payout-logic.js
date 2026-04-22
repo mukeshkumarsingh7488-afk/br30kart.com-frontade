@@ -118,6 +118,7 @@ function applyPayoutFilters() {
   }
 
   filtered.forEach((o) => {
+    const amt = Number(o.amount) || 0;
     const earn = Number(o.sellerEarnings) || 0;
     const comm = Number(o.platformCommission) || 0;
     const pStatus = (o.payoutStatus || "Pending").trim().toLowerCase();
