@@ -122,6 +122,8 @@ function applyPayoutFilters() {
     const comm = Number(o.platformCommission) || 0;
     const pStatus = (o.payoutStatus || "Pending").trim().toLowerCase();
 
+    const isCompleted = pStatus === "completed";
+
     feeSum += comm;
 
     if (pStatus === "completed") {
