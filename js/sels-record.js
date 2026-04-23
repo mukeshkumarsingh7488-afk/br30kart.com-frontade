@@ -131,43 +131,48 @@ function applyFilters() {
 
   filtered.forEach((order) => {
     console.log("Check this Order Object:", order);
+
+    // 🔥 UNIQUE ID LOGIC: अगर DB में orderId नहीं है, तो MongoDB ID के आखिरी 6 अक्षर लो
+    const displayOrderID =
+      order.orderId || order._id.toString().slice(-6).toUpperCase();
+
     const pStat = order.payoutStatus || "pending";
     const sStat = order.status || "pending";
 
     tableBody.innerHTML += `
          <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
-    <!-- 1. केवल तारीख (Date) -->
-    <td class="px-6 py-4 text-xs text-gray-500 font-medium">
-        ${new Date(order.createdAt).toLocaleDateString("en-GB")}
-    </td>
+            <!-- 1. केवल तारीख -->
+            <td class="px-6 py-4 text-xs text-gray-500 font-medium">
+                ${new Date(order.createdAt).toLocaleDateString("en-GB")}
+            </td>
 
-    <!-- 2. कोर्स का नाम और ID (एक ही लाइन में) -->
-<td class="px-6 py-4 text-sm uppercase">
-    <span class="font-bold text-white">${order.productName}</span> 
-     <div class="text-[10px] text-blue-400 font-bold">Order ID: #${realOrderID}</div>
-</td>
+            <!-- 2. कोर्स का नाम और ID -->
+            <td class="px-6 py-4 text-sm uppercase">
+                <div class="font-bold text-white">${order.productName}</div> 
+                <div class="text-[10px] text-blue-500 font-bold mt-0.5 tracking-wider">ID: #${displayOrderID}</div>
+            </td>
 
-    <!-- 3. स्टूडेंट का नाम (अगर आपके पास order.customerName है तो यहाँ डालें) -->
-    <td class="px-6 py-4 text-sm text-blue-400 font-semibold">
-        ${order.customerName || "N/A"}
-    </td>
+            <!-- 3. स्टूडेंट का नाम -->
+            <td class="px-6 py-4 text-sm text-blue-400 font-semibold">
+                ${order.customerName || "N/A"}
+            </td>
 
-    <!-- 4. पेमेंट स्टेटस -->
-    <td class="px-6 py-4">
-        <span class="badge ${getStatusClass(sStat)}">${sStat}</span>
-    </td>
+            <!-- 4. पेमेंट स्टेटस -->
+            <td class="px-6 py-4">
+                <span class="badge ${getStatusClass(sStat)}">${sStat}</span>
+            </td>
 
-    <!-- 5. अमाउंट (Amount) -->
-    <td class="px-6 py-4 font-black text-white text-right">
-        ₹${Number(order.amount).toLocaleString()}
-    </td>
+            <!-- 5. अमाउंट -->
+            <td class="px-6 py-4 font-black text-white text-right">
+                ₹${Number(order.amount).toLocaleString()}
+            </td>
 
-    <!-- 6. पेआउट स्टेटस -->
-    <td class="px-6 py-4 text-center">
-        <span class="badge ${getStatusClass(pStat)}">${pStat}</span>
-    </td>
-</tr>
-`;
+            <!-- 6. पेआउट स्टेटस -->
+            <td class="px-6 py-4 text-center">
+                <span class="badge ${getStatusClass(pStat)}">${pStat}</span>
+            </td>
+        </tr>
+    `;
   });
 }
 
