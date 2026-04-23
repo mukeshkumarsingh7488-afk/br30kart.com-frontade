@@ -77,7 +77,6 @@ function renderUserTable(users, isApprovalPage = false) {
     document.querySelector("h1")?.parentElement;
   if (userHeader) userHeader.style.display = "block";
 
-  // 2. --- Tumhara Purana Rendering Logic ---
   const tableBody = document.getElementById("tableBody");
   tableBody.innerHTML = "";
 
@@ -625,6 +624,17 @@ function renderUserTable(users = []) {
   const tableBody = document.getElementById("tableBody");
   tableBody.innerHTML = "";
 
+  if (!users || users.length === 0) {
+    tableBody.innerHTML = `
+      <tr id="noDataRow">
+        <td colspan="10" style="text-align:center; padding:20px; color:#ff4d4f; font-weight:bold;">
+          ❌ No Data Found. 📂
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
   users.forEach((user) => {
     const isVipUser = user.role === "vip" || user.isVip === true;
     const isSeller = user.role === "seller";
@@ -682,9 +692,13 @@ function renderUserTable(users = []) {
                     }
                 </td>
             </tr>
+            
         `;
   });
-  searchTableLive();
+  setTimeout(() => {
+    const input = document.getElementById("courseSearch");
+    if (input) input.dispatchEvent(new Event("input"));
+  }, 100);
 }
 
 // apply bulk seller,student,vip action
