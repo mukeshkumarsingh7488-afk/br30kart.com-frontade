@@ -132,7 +132,10 @@ function applyFilters() {
   let html = "";
 
   filtered.forEach((order, i) => {
-    console.log(`👉 Order ${i}:`, order); // DEBUG
+    console.log("👉 FULL ORDER:", order);
+    console.log("🆔 orderId:", order.orderId);
+    console.log("🆔 orderID:", order.orderID);
+    console.log("🆔 _id:", order._id);
 
     // 🔥 STRONG ID FIX
     const displayOrderID =
