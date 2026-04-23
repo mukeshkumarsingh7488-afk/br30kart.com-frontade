@@ -1153,8 +1153,19 @@ function filterPayouts() {
   }
 
   const filtered = currentData.filter((item) => {
-    const name = (item.sellerName || "").toLowerCase();
-    const email = (item.sellerEmail || "").toLowerCase();
+    const name = (
+      item.sellerName ||
+      item.name ||
+      item.seller?.name ||
+      ""
+    ).toLowerCase();
+
+    const email = (
+      item.sellerEmail ||
+      item.email ||
+      item.seller?.email ||
+      ""
+    ).toLowerCase();
 
     return name.includes(searchTerm) || email.includes(searchTerm);
   });
@@ -1162,6 +1173,23 @@ function filterPayouts() {
   renderTable(filtered);
 }
 
+// ✅ TABLE RENDER (👉 yaha dalna hai)
+function renderTable(data) {
+  const tbody = document.getElementById("payoutTableBody");
+
+  if (!tbody) return;
+
+  tbody.innerHTML = data
+    .map(
+      (item) => `
+      <tr>
+        <td>${item.sellerName || "-"}</td>
+        <td>${item.sellerEmail || "-"}</td>
+      </tr>
+    `,
+    )
+    .join("");
+}
 // 2. Date Filter Fix
 function setTimeframe(days) {
   document
