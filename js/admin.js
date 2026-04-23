@@ -1035,8 +1035,22 @@ function resetStats() {
 
 // serch bar function
 function searchTableLive() {
-  console.log("🚀 searchTableLive called");
+  console.log("🚀 search fired");
 
+  const filter = document.getElementById("courseSearch").value.toLowerCase();
+
+  const rows = document.querySelectorAll("#tableBody tr");
+
+  console.log("📊 Rows:", rows.length);
+
+  rows.forEach((row) => {
+    const text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+}
+
+//
+document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("courseSearch");
 
   if (!input) {
@@ -1044,49 +1058,13 @@ function searchTableLive() {
     return;
   }
 
-  const filter = input.value.toLowerCase().trim();
-  console.log("🔍 Search Value:", filter);
+  console.log("✅ Input mil gaya");
 
-  const tbody = document.getElementById("tableBody");
-
-  if (!tbody) {
-    console.log("❌ tableBody nahi mila");
-    return;
-  }
-
-  const rows = tbody.getElementsByTagName("tr");
-
-  console.log("📊 Total Rows Found:", rows.length);
-
-  if (rows.length === 0) {
-    console.log("⚠️ Table me rows hi nahi hain (data load nahi hua)");
-  }
-
-  for (let i = 0; i < rows.length; i++) {
-    const cols = rows[i].getElementsByTagName("td");
-
-    if (!cols || cols.length === 0) {
-      console.log(`❌ Row ${i} me columns nahi mile`);
-      continue;
-    }
-
-    const name = cols[1]?.innerText.toLowerCase() || "";
-    const email = cols[2]?.innerText.toLowerCase() || "";
-
-    console.log(`👉 Row ${i}`, {
-      name,
-      email,
-    });
-
-    const match = name.includes(filter) || email.includes(filter);
-
-    console.log(`   ✅ Match:`, match);
-
-    rows[i].style.display = match ? "" : "none";
-  }
-
-  console.log("🏁 Search complete");
-}
+  input.addEventListener("input", () => {
+    console.log("🔥 typing detected");
+    searchTableLive();
+  });
+});
 
 //============== end sidebar btn =======================
 
