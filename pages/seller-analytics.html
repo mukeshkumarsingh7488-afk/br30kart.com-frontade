@@ -428,85 +428,48 @@
       </nav>
     </div>
 
-    <div class="main-content">
-      <div class="header">
-        <div
-          class="header"
-          style="
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          "
-        >
-          <h2 style="font-size: 20px; letter-spacing: 0.5px">
-            Sales Analytics & Records 📈
-          </h2>
+<div class="main-content">
+  <!-- 🔥 MAIN HEADER: Title, Logo, and Filters all in ONE line -->
+  <div class="header" style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-bottom: 1px solid #1f2937; padding-bottom: 15px; margin-bottom: 30px; flex-wrap: nowrap;">
+    
+    <!-- 1. LEFT: Title -->
+    <div style="flex: 1; min-width: 250px;">
+      <h2 style="font-size: 20px; letter-spacing: 0.5px; margin: 0; white-space: nowrap;">
+        Sales Analytics & Records 📈
+      </h2>
+    </div>
 
-          <!-- 🚀 2. Center: Branding Logo -->
-          <div
-            style="
-              flex: 1;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              gap: 2px;
-            "
-          >
-            <img
-              src="../images/BR30™  LOGO.jpeg"
-              alt="Logo"
-              style="
-                height: 35px;
-                width: auto;
-                filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3));
-              "
-            />
-            <div
-              style="
-                font-size: 12px;
-                font-weight: 900;
-                color: #fff;
-                letter-spacing: 1px;
-              "
-            >
-              BR30
-              <span style="color: #3b82f6">KART</span>
-            </div>
-          </div>
-        </div>
-        <div class="filter-section">
-          <input type="date" id="startDate" class="bright-date" />
-          <input type="date" id="endDate" class="bright-date" />
-          <button
-            id="filterBtn"
-            class="btn-action update-btn"
-            onclick="fetchAnalyticsData()"
-          >
-            Apply
-          </button>
-
-          <!-- PDF Button (अब इसी लाइन में सेंटर में है) -->
-          <button class="btn-action reset-btn" onclick="resetFilters()">
-            <i class="fas fa-sync-alt"></i>
-          </button>
-          <!-- pdf  btn-->
-          <button
-            onclick="exportToPDF()"
-            class="btn-action pdf-btn"
-            onclick="exportToPDF()"
-          >
-            <i class="fas fa-file-excel"></i>
-            PDF
-          </button>
-
-          <button class="btn-action csv-btn" onclick="exportCSV()">
-            <i class="fas fa-file-excel"></i>
-            CSV
-          </button>
-        </div>
+    <!-- 🚀 2. CENTER: Branding Logo -->
+    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; justify-content: center;">
+      <img src="../images/BR30™  LOGO.jpeg" alt="Logo" style="height: 35px; width: auto; filter: drop-shadow(0 0 5px rgba(59,130,246,0.3));">
+      <div style="font-size: 12px; font-weight: 900; color: #fff; letter-spacing: 1px;">
+        BR30 <span style="color: #3b82f6;">KART</span>
       </div>
     </div>
+
+    <!-- 3. RIGHT: Filter Section -->
+    <div class="filter-section" style="flex: 2; display: flex; gap: 8px; align-items: center; justify-content: flex-end;">
+      <input type="date" id="startDate" class="bright-date" />
+      <input type="date" id="endDate" class="bright-date" />
+      
+      <button id="filterBtn" class="btn-action update-btn" onclick="fetchAnalyticsData()">Apply</button>
+
+      <button class="btn-action reset-btn" onclick="resetFilters()">
+        <i class="fas fa-sync-alt"></i>
+      </button>
+      
+      <button onclick="exportToPDF()" class="btn-action pdf-btn">
+        <i class="fas fa-file-pdf"></i> PDF
+      </button>
+
+      <button class="btn-action csv-btn" onclick="exportCSV()">
+        <i class="fas fa-file-excel"></i> CSV
+      </button>
+    </div>
+  </div> <!-- ✅ Header Closed Properly -->
+
+  <!-- यहाँ से आपके Statistics Boxes और Table शुरू होंगे -->
+
 
     <div class="stats-grid">
       <div class="stat-card blue">
