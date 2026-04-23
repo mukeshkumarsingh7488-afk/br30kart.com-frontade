@@ -36,19 +36,25 @@
         }
 
      .full-page-admin {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
-    background: #000;
+
+     height: 100vh;
+   overflow-y: auto;
+   
+}
+
+.full-page-admin > div:nth-child(2) {
+  position: sticky;
+  top: 70px;
+  z-index: 998;
+  background: #0f1216;
 }
 
         /* HEADER SECTION */
-      .admin-header-v2 {
-    flex-shrink: 0;
-    z-index: 100;
-    background: #000;
-    border-bottom: 1px solid #222;
+   .admin-header-v2 {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #0f1216;
 }
 
         .header-left {
@@ -222,11 +228,7 @@
 
         /* table scroling */
         /* Table ko cutne se rokne ke liye */
-.table-responsive {
-    flex: 1;
-    overflow: auto;
-    background: #0a0a0a;
-}
+
 
 .master-table thead {
     position: sticky;
@@ -252,6 +254,11 @@
 }
 .table-responsive::-webkit-scrollbar-track {
     background: #1a1a1a;
+}
+
+.table-responsive {
+  overflow: visible !important;
+  max-height: none !important;
 }
 
 
