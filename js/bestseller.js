@@ -81,36 +81,55 @@ async function fetchBestSellerData() {
 
 function renderBestsellerTable(records) {
   const tbody = document.getElementById("bestsellerTableBody");
-
   if (!tbody) return;
 
   if (!records || records.length === 0) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="5" class="text-center p-8 text-gray-500 font-bold uppercase text-[10px] tracking-widest">
-          No records found in this period 📂
-        </td>
-      </tr>
-    `;
+    tbody.innerHTML = `<tr><td colspan="5" class="text-center p-8 text-gray-500 font-bold uppercase text-[10px]">No records found 📂</td></tr>`;
     return;
   }
 
-  tbody.innerHTML = records
+  // 1. 🔥 LOGIC: कोर्सेस का काउंट निकालो ताकि पता चले कौन सबसे ज़्यादा बिका (Dynamic Sorting)
+  const productStats = records.reduce((acc, curr) => {
+    const pName = curr.productName || "N/A";
+    acc[pName] = (acc[pName] || 0) + 1;
+    return acc;
+  }, {});
+
+  // 2. डेटा को सॉर्ट करो: सबसे ज़्यादा बिकने वाले कोर्स के ऑर्डर्स सबसे ऊपर आएंगे
+  const sortedRecords = [...records].sort((a, b) => {
+    return productStats[b.productName] - productStats[a.productName];
+  });
+
+  // 3. सबसे टॉप वाले प्रोडक्ट का नाम निकालो
+  const topProduct = Object.keys(productStats).reduce((a, b) =>
+    productStats[a] > productStats[b] ? a : b,
+  );
+
+  tbody.innerHTML = sortedRecords
     .map((item, index) => {
-      // 🔥 नंबर 1 सेल के लिए डायनामिक टैग और स्टाइल
-      const isTop = index === 0;
-      const topTag = isTop
-        ? `<span class="ml-2 animate-pulse bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-[8px] px-1.5 py-0.5 rounded-sm font-black shadow-lg shadow-yellow-500/20">🏆 TOP SELLER</span>`
-        : "";
+      const pName = item.productName || "N/A";
+      const sellCount = productStats[pName];
+      const isTopSeller = pName === topProduct;
+
+      // प्रीमियम लुक वाले बैज और काउंट
+      const topTag =
+        isTopSeller && index === 0
+          ? `<span class="ml-2 animate-pulse bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-[8px] px-1.5 py-0.5 rounded-sm font-black shadow-lg">🏆 TOP SELLER</span>`
+          : "";
+
+      // नाम के साथ काउंट (जैसे: Trading Course *3)
+      const displayName = isTopSeller
+        ? `${pName} <span class="text-yellow-500 ml-1">*${sellCount}</span>`
+        : pName;
 
       return `
-        <tr class="transition border-b border-[#1f2937] ${isTop ? "bg-yellow-500/5 hover:bg-yellow-500/10" : "hover:bg-[#0a0c10]"}">
+        <tr class="transition border-b border-[#1f2937] ${isTopSeller ? "bg-yellow-500/5" : "hover:bg-[#0a0c10]"}">
           <td class="p-4 text-gray-500 text-[10px] uppercase font-bold text-center">
             ${new Date(item.createdAt).toLocaleDateString("en-GB")}
           </td>
           
           <td class="p-4 font-bold text-white text-xs uppercase text-center flex items-center justify-center">
-            ${item.productName || "N/A"} ${topTag}
+            ${displayName} ${topTag}
           </td>
           
           <td class="p-4 font-black text-white text-sm text-center">
@@ -122,8 +141,8 @@ function renderBestsellerTable(records) {
           </td>
           
           <td class="p-4 text-center">
-            <span class="${isTop ? "text-yellow-500 border-yellow-500/30 bg-yellow-500/10" : "text-green-500 border-green-500/30 bg-green-500/10"} text-[9px] font-black uppercase tracking-widest border px-2 py-1 rounded-full">
-              ${isTop ? "💎 PREMIUM" : "ACTIVE"}
+            <span class="${isTopSeller ? "text-yellow-500 border-yellow-500/30 bg-yellow-500/10" : "text-green-500 border-green-500/30 bg-green-500/10"} text-[9px] font-black uppercase tracking-widest border px-2 py-1 rounded-full">
+              ${isTopSeller ? "💎 PREMIUM" : "ACTIVE"}
             </span>
           </td>
         </tr>
