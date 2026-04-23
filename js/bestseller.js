@@ -96,34 +96,39 @@ function renderBestsellerTable(records) {
   }
 
   tbody.innerHTML = records
-    .map(
-      (item) => `
-      <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
-        <!-- 🔥 Center aligned columns to match your header -->
-        <td class="p-4 text-gray-500 text-[10px] uppercase font-bold text-center">
-          ${new Date(item.createdAt).toLocaleDateString("en-GB")}
-        </td>
-        
-        <td class="p-4 font-bold text-white text-xs uppercase text-center">
-          ${item.productName || "N/A"}
-        </td>
-        
-        <td class="p-4 font-black text-white text-sm text-center">
-          ₹${(item.amount || 0).toLocaleString()}
-        </td>
-        
-        <td class="p-4 text-blue-400 font-bold text-[10px] uppercase text-center">
-          ${item.customerName || "Guest"}
-        </td>
-        
-        <td class="p-4 text-center">
-          <span class="text-green-500 text-[9px] font-black uppercase tracking-widest border border-green-500/30 px-2 py-1 rounded-full bg-green-500/10">
-            ACTIVE
-          </span>
-        </td>
-      </tr>
-    `,
-    )
+    .map((item, index) => {
+      // 🔥 नंबर 1 सेल के लिए डायनामिक टैग और स्टाइल
+      const isTop = index === 0;
+      const topTag = isTop
+        ? `<span class="ml-2 animate-pulse bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-[8px] px-1.5 py-0.5 rounded-sm font-black shadow-lg shadow-yellow-500/20">🏆 TOP SELLER</span>`
+        : "";
+
+      return `
+        <tr class="transition border-b border-[#1f2937] ${isTop ? "bg-yellow-500/5 hover:bg-yellow-500/10" : "hover:bg-[#0a0c10]"}">
+          <td class="p-4 text-gray-500 text-[10px] uppercase font-bold text-center">
+            ${new Date(item.createdAt).toLocaleDateString("en-GB")}
+          </td>
+          
+          <td class="p-4 font-bold text-white text-xs uppercase text-center flex items-center justify-center">
+            ${item.productName || "N/A"} ${topTag}
+          </td>
+          
+          <td class="p-4 font-black text-white text-sm text-center">
+            ₹${(item.amount || 0).toLocaleString()}
+          </td>
+          
+          <td class="p-4 text-blue-400 font-bold text-[10px] uppercase text-center">
+            ${item.customerName || "Guest"}
+          </td>
+          
+          <td class="p-4 text-center">
+            <span class="${isTop ? "text-yellow-500 border-yellow-500/30 bg-yellow-500/10" : "text-green-500 border-green-500/30 bg-green-500/10"} text-[9px] font-black uppercase tracking-widest border px-2 py-1 rounded-full">
+              ${isTop ? "💎 PREMIUM" : "ACTIVE"}
+            </span>
+          </td>
+        </tr>
+      `;
+    })
     .join("");
 }
 
