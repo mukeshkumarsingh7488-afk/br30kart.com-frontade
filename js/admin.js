@@ -1062,9 +1062,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("✅ Input mil gaya");
 
-  input.addEventListener("input", () => {
+  input.addEventListener("input", function () {
     console.log("🔥 typing detected");
-    searchTableLive();
+
+    const filter = input.value.toLowerCase();
+    const rows = document.querySelectorAll("#tableBody tr");
+
+    console.log("📊 Rows:", rows.length);
+
+    rows.forEach((row, i) => {
+      const text = row.innerText.toLowerCase();
+
+      const match = text.includes(filter);
+
+      console.log(`Row ${i}:`, text, "→", match);
+
+      row.style.display = match ? "" : "none";
+    });
   });
 });
 
