@@ -1021,7 +1021,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("statSales")) {
     updateFinancials();
   }
-  loadUserStats();
+
+  //loadUserStats();
 });
 
 // overview clender reset
