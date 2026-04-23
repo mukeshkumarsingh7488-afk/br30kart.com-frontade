@@ -130,54 +130,79 @@ function applyFilters() {
   }
 
   filtered.forEach((order) => {
-    console.log("Check this Order Object:", order);
-
-    // 🔥 UNIQUE ID LOGIC: अगर DB में orderId नहीं है, तो MongoDB ID के आखिरी 6 अक्षर लो
+    // 🛠️ 1. Bulletproof ID Logic (Database se orderId ya MongoDB ki slice)
     const displayOrderID =
       order.orderId ||
       order.orderID ||
-      order._id.toString().slice(-6).toUpperCase();
-    console.log(
-      "Rendering ID for:",
-      order.productName,
-      "ID is:",
-      displayOrderID,
-    );
+      (order._id ? order._id.toString().slice(-6).toUpperCase() : "N/A");
 
-    const pStat = order.payoutStatus || "pending";
-    const sStat = order.status || "pending";
+    // 🎨 2. Dynamic Status Styles
+    const pStat = (order.payoutStatus || "pending").toLowerCase();
+    const sStat = (order.status || "pending").toLowerCase();
+
+    // Status colors logic
+    const getSStatColor = (s) =>
+      s === "success"
+        ? "text-green-400 bg-green-400/10 border-green-400/20"
+        : "text-yellow-400 bg-yellow-400/10 border-yellow-400/20";
+    const getPStatColor = (p) =>
+      p === "completed"
+        ? "text-blue-400 bg-blue-400/10 border-blue-400/20"
+        : "text-orange-400 bg-orange-400/10 border-orange-400/20";
 
     tableBody.innerHTML += `
-         <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
-            <!-- 1. केवल तारीख -->
-            <td class="px-6 py-4 text-xs text-gray-500 font-medium">
-                ${new Date(order.createdAt).toLocaleDateString("en-GB")}
+        <tr class="group hover:bg-[#0f172a] transition-all duration-300 border-b border-[#1e293b]">
+            <!-- 📅 Date Column -->
+            <td class="px-6 py-5">
+                <div class="text-xs text-gray-500 font-mono tracking-tight group-hover:text-gray-300 transition">
+                    ${new Date(order.createdAt).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
+                </div>
             </td>
 
-            <!-- 2. कोर्स का नाम और ID -->
-            <td class="px-6 py-4 text-sm uppercase">
-                <div class="font-bold text-white">${order.productName}</div> 
-                <div class="text-[10px] text-blue-500 font-bold mt-0.5 tracking-wider">ID: #${displayOrderID}</div>
+            <!-- 📚 Course & ID Column -->
+            <td class="px-6 py-5">
+                <div class="flex flex-col">
+                    <span class="font-bold text-slate-100 text-sm tracking-wide group-hover:text-blue-400 transition duration-300">
+                        ${order.productName || "N/A"}
+                    </span>
+                    <span class="text-[10px] font-black text-slate-500 mt-1 flex items-center gap-1">
+                        <span class="text-blue-500/50">#</span>${displayOrderID}
+                    </span>
+                </div>
             </td>
 
-            <!-- 3. स्टूडेंट का नाम -->
-            <td class="px-6 py-4 text-sm text-blue-400 font-semibold">
-                ${order.customerName || "N/A"}
+            <!-- 👤 Student Column -->
+            <td class="px-6 py-5">
+                <div class="flex items-center gap-2">
+                    <div class="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                    <span class="text-sm font-semibold text-slate-300 group-hover:text-white transition italic">
+                        ${order.customerName || "Guest User"}
+                    </span>
+                </div>
             </td>
 
-            <!-- 4. पेमेंट स्टेटस -->
-            <td class="px-6 py-4">
-                <span class="badge ${getStatusClass(sStat)}">${sStat}</span>
+            <!-- 💳 Payment Status Badge -->
+            <td class="px-6 py-5">
+                <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase border ${getSStatColor(sStat)} tracking-widest shadow-sm">
+                    ${sStat}
+                </span>
             </td>
 
-            <!-- 5. अमाउंट -->
-            <td class="px-6 py-4 font-black text-white text-right">
-                ₹${Number(order.amount).toLocaleString()}
+            <!-- 💰 Amount Column (Ultra Clean) -->
+            <td class="px-6 py-5 text-right">
+                <div class="flex flex-col items-end">
+                    <span class="text-sm font-black text-white tracking-tighter">
+                        ₹${Number(order.amount || 0).toLocaleString("en-IN")}
+                    </span>
+                    <span class="text-[9px] text-gray-600 font-bold uppercase">Incl. Tax</span>
+                </div>
             </td>
 
-            <!-- 6. पेआउट स्टेटस -->
-            <td class="px-6 py-4 text-center">
-                <span class="badge ${getStatusClass(pStat)}">${pStat}</span>
+            <!-- 🏦 Payout Badge -->
+            <td class="px-6 py-5 text-center">
+                <span class="px-3 py-1 rounded-md text-[9px] font-extrabold uppercase border ${getPStatColor(pStat)} tracking-widest">
+                    ${pStat}
+                </span>
             </td>
         </tr>
     `;
