@@ -129,84 +129,91 @@ function applyFilters() {
     return;
   }
 
-  filtered.forEach((order) => {
-    // 🛠️ 1. Bulletproof ID Logic (Database se orderId ya MongoDB ki slice)
+  filtered.forEach((order, i) => {
+    console.log(`👉 Order ${i}:`, order); // DEBUG
+
+    // 🔥 STRONG ID FIX
     const displayOrderID =
-      order.orderId ||
-      order.orderID ||
-      (order._id ? order._id.toString().slice(-6).toUpperCase() : "N/A");
+      order?.orderId ||
+      order?.orderID ||
+      (order?._id ? order._id.toString().slice(-6).toUpperCase() : "N/A");
 
-    // 🎨 2. Dynamic Status Styles
-    const pStat = (order.payoutStatus || "pending").toLowerCase();
-    const sStat = (order.status || "pending").toLowerCase();
+    const pStat = (order?.payoutStatus || "pending").toLowerCase();
+    const sStat = (order?.status || "pending").toLowerCase();
 
-    // Status colors logic
     const getSStatColor = (s) =>
       s === "success"
         ? "text-green-400 bg-green-400/10 border-green-400/20"
         : "text-yellow-400 bg-yellow-400/10 border-yellow-400/20";
+
     const getPStatColor = (p) =>
       p === "completed"
         ? "text-blue-400 bg-blue-400/10 border-blue-400/20"
         : "text-orange-400 bg-orange-400/10 border-orange-400/20";
 
-    tableBody.innerHTML += `
-        <tr class="group hover:bg-[#0f172a] transition-all duration-300 border-b border-[#1e293b]">
-            <!-- 📅 Date Column -->
-            <td class="px-6 py-5">
-                <div class="text-xs text-gray-500 font-mono tracking-tight group-hover:text-gray-300 transition">
-                    ${new Date(order.createdAt).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
-                </div>
-            </td>
+    html += `
+      <tr class="group hover:bg-[#0f172a] transition-all duration-300 border-b border-[#1e293b]">
+        
+        <!-- 📅 Date -->
+        <td class="px-6 py-5">
+          <div class="text-xs text-gray-500 font-mono">
+            ${
+              order?.createdAt
+                ? new Date(order.createdAt).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  })
+                : "N/A"
+            }
+          </div>
+        </td>
 
-            <!-- 📚 Course & ID Column -->
-            <td class="px-6 py-5">
-                <div class="flex flex-col">
-                    <span class="font-bold text-slate-100 text-sm tracking-wide group-hover:text-blue-400 transition duration-300">
-                        ${order.productName || "N/A"}
-                    </span>
-                    <span class="text-[10px] font-black text-slate-500 mt-1 flex items-center gap-1">
-                        <span class="text-blue-500/50">#</span>${displayOrderID}
-                    </span>
-                </div>
-            </td>
+        <!-- 📚 Course + ID -->
+        <td class="px-6 py-5">
+          <div class="flex flex-col">
+            <span class="font-bold text-slate-100 text-sm">
+              ${order?.productName || "N/A"}
+            </span>
+            <span class="text-[10px] font-black text-slate-500 mt-1">
+              #${displayOrderID}
+            </span>
+          </div>
+        </td>
 
-            <!-- 👤 Student Column -->
-            <td class="px-6 py-5">
-                <div class="flex items-center gap-2">
-                    <div class="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
-                    <span class="text-sm font-semibold text-slate-300 group-hover:text-white transition italic">
-                        ${order.customerName || "Guest User"}
-                    </span>
-                </div>
-            </td>
+        <!-- 👤 Student -->
+        <td class="px-6 py-5">
+          <span class="text-sm text-slate-300 italic">
+            ${order?.customerName || "Guest User"}
+          </span>
+        </td>
 
-            <!-- 💳 Payment Status Badge -->
-            <td class="px-6 py-5">
-                <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase border ${getSStatColor(sStat)} tracking-widest shadow-sm">
-                    ${sStat}
-                </span>
-            </td>
+        <!-- 💳 Payment -->
+        <td class="px-6 py-5">
+          <span class="px-3 py-1 rounded-full text-[10px] font-black border ${getSStatColor(sStat)}">
+            ${sStat}
+          </span>
+        </td>
 
-            <!-- 💰 Amount Column (Ultra Clean) -->
-            <td class="px-6 py-5 text-right">
-                <div class="flex flex-col items-end">
-                    <span class="text-sm font-black text-white tracking-tighter">
-                        ₹${Number(order.amount || 0).toLocaleString("en-IN")}
-                    </span>
-                    <span class="text-[9px] text-gray-600 font-bold uppercase">Incl. Tax</span>
-                </div>
-            </td>
+        <!-- 💰 Amount -->
+        <td class="px-6 py-5 text-right">
+          <span class="text-sm font-black text-white">
+            ₹${Number(order?.amount || 0).toLocaleString("en-IN")}
+          </span>
+        </td>
 
-            <!-- 🏦 Payout Badge -->
-            <td class="px-6 py-5 text-center">
-                <span class="px-3 py-1 rounded-md text-[9px] font-extrabold uppercase border ${getPStatColor(pStat)} tracking-widest">
-                    ${pStat}
-                </span>
-            </td>
-        </tr>
+        <!-- 🏦 Payout -->
+        <td class="px-6 py-5 text-center">
+          <span class="px-3 py-1 rounded-md text-[9px] font-extrabold border ${getPStatColor(pStat)}">
+            ${pStat}
+          </span>
+        </td>
+
+      </tr>
     `;
   });
+
+  tableBody.innerHTML = html;
 }
 
 // 6. फिल्टर रीसेट करना
