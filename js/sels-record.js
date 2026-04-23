@@ -69,6 +69,7 @@ async function loadSalesData(email) {
 
 // 5. मास्टर फिल्टर और कैलकुलेशन (Search + Date + Stats)
 function applyFilters() {
+  console.log("🔥 applyFilters RUN ho raha hai");
   const searchTerm = document
     .getElementById("courseSearch")
     .value.toLowerCase();
