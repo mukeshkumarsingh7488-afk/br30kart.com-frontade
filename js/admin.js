@@ -1306,8 +1306,12 @@ function renderTable(data) {
   const body = document.getElementById("payoutTableBody");
   // कॉलम बढ़ गए हैं इसलिए colspan को 9 कर दिया
   if (!data || data.length === 0) {
-    body.innerHTML =
-      tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 20px;">No records found. 📂</td></tr>`;
+    body.innerHTML = `
+    <tr>
+      <td colspan="9" style="text-align:center; padding: 20px;">
+        No records found. 📂
+      </td>
+    </tr>`;
     return;
   }
 
