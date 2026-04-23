@@ -457,9 +457,9 @@ function applyFilters() {
     <td class="px-6 py-4 text-sm uppercase">
         <div class="font-bold text-white">${order.productName}</div>
         <!-- ✅ Course ID added right below the Title -->
-        <div style="font-size: 10px; color: #64748b; font-family: monospace; margin-top: 2px;">
-            ID: ${order.productId || "N/A"}
-        </div>
+      <div style="font-size: 10px; color: #64748b; font-family: monospace; margin-top: 2px;">
+    ID: ${order.orderId || "N/A"}
+</div>
     </td>
 
     <!-- 3. Student Name -->
