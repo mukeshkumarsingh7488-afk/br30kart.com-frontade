@@ -379,12 +379,7 @@
         </div>
         <div class="logo-sub" id="sellerIdText">Loading...</div>
       </div>
-        <div style="padding: 10px 20px; display: flex; flex-direction: column; align-items: center; gap: 4px; border-bottom: 1px solid #1e293b; margin-bottom: 15px;">
-      <img src="YOUR_LOGO_URL" alt="Logo" style="height: 35px; width: auto; filter: drop-shadow(0 0 5px rgba(59,130,246,0.5));">
-      <div style="font-size: 14px; font-weight: 900; color: #fff; letter-spacing: 1px; font-family: sans-serif;">
-          BR30 <span style="color: #3b82f6;">KART</span>
-      </div>
-  </div>
+     
       <nav>
         <!-- 1. Overview Button -->
         <button class="side-btn active" onclick="loadSection('overview')">
@@ -436,9 +431,21 @@
 
     <div class="main-content">
       <div class="header">
-        <h2 style="font-size: 20px; letter-spacing: 0.5px">
-          Sales Analytics & Records 📈
-        </h2>
+     <div class="header" style="position: relative; display: flex; justify-content: space-between; align-items: center;">
+    
+    <h2 style="font-size: 20px; letter-spacing: 0.5px">
+        Sales Analytics & Records 📈
+    </h2>
+
+    <!-- 🚀 NEW: TOP RIGHT LOGO & NAME -->
+    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
+        <!-- इमेज का पाथ ठीक कर दिया है -->
+        <img src="../assets/logo.png" alt="Logo" style="height: 35px; width: auto; filter: drop-shadow(0 0 5px rgba(59,130,246,0.5));">
+        <div style="font-size: 14px; font-weight: 900; color: #fff; letter-spacing: 1px;">
+            BR30 <span style="color: #3b82f6;">KART</span>
+        </div>
+    </div>
+</div>
         <div class="filter-section">
           <input type="date" id="startDate" class="bright-date" />
           <input type="date" id="endDate" class="bright-date" />
