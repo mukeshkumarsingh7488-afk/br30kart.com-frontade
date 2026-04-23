@@ -129,6 +129,8 @@ function applyFilters() {
     return;
   }
 
+  let html = "";
+
   filtered.forEach((order, i) => {
     console.log(`👉 Order ${i}:`, order); // DEBUG
 
