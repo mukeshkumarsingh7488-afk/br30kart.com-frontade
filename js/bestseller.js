@@ -132,7 +132,7 @@ function renderBestsellerTable(records) {
       const isTopSeller = pName === Array.from(shownBadges)[0];
 
       return `
-        <tr class="transition border-b border-[#1f2937] ${isTopSeller ? "bg-yellow-500/5" : "hover:bg-[#0a0c10]"}">
+        <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
           <td class="p-4 text-gray-500 text-[10px] uppercase font-bold text-center">
             ${new Date(item.createdAt).toLocaleDateString("en-GB")}
           </td>

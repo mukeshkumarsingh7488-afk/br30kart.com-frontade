@@ -30,3 +30,8 @@ setInterval(() => {
   debugger;
 }, 100);
 // cleane consol
+if (location.hostname !== "localhost") {
+  console.log = function () {};
+  console.warn = function () {};
+  console.error = function () {};
+}
