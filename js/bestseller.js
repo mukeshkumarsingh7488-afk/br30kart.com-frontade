@@ -31,6 +31,7 @@ async function fetchBestSellerData() {
     const url = `${CONFIG.BASE_API_URL}/seller/bestsellers-data?email=${email}`;
     const response = await fetch(url);
     const data = await response.json();
+    console.log("🔥 Full API Response:", data);
 
     if (data.success) {
       // --- 1. Boxes Update ---
@@ -69,8 +70,9 @@ async function fetchBestSellerData() {
       }
 
       // --- 2. Table Update (Using Your ID: bestsellerTableBody) ---
-      window.allSalesData = data.allData || [];
-      renderBestsellerTable(window.allSalesData);
+      const finalData = data.allData || data.orders || data.data || [];
+      console.log("Records for Table:", finalData);
+      renderBestsellerTable(finalData);
     }
   } catch (err) {
     console.error("Logic Error:", err);
