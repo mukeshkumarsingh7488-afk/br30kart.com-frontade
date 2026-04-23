@@ -1083,8 +1083,14 @@ async function loadPayouts(days = 7) {
             }
         </style>
 
-        <div class="payout-header">
-            <h2 style="margin-bottom:20px; color: #fff;">Seller Payouts & Analytics</h2>
+       <div class="payout-header" style="display:flex; justify-content:space-between; align-items:center;">
+    <h2 style="margin-bottom:20px; color: #fff;">Seller Payouts & Analytics</h2>
+    
+    <button onclick="refreshPayouts()" 
+        style="background:#007bff; color:#fff; border:none; padding:10px 15px; border-radius:6px; cursor:pointer;">
+        🔄 Refresh
+    </button>
+</div>
             <div class="toolbar">
                 <div class="search-box">
                     <input type="text" id="sellerSearch" placeholder="🔍 Search by Seller Name or Email..." onkeyup="filterPayouts()">
@@ -1101,7 +1107,7 @@ async function loadPayouts(days = 7) {
                     <button onclick="applyCustomDate()" style="background:#28a745; color:#fff; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;">Apply</button>
                 </div>
             </div>
-        </div>
+    
         
         <div class="payout-table-wrapper">
             <table class="payout-table" style="width:100%; border-collapse: collapse; margin-top: 10px;">
@@ -1124,15 +1130,35 @@ async function loadPayouts(days = 7) {
     `;
   setTimeframe(days);
 }
+// refresh function
+function refreshPayouts() {
+  document.getElementById("sellerSearch").value = "";
 
+  const start = document.getElementById("startDate");
+  const end = document.getElementById("endDate");
+  if (start) start.value = "";
+  if (end) end.value = "";
+
+  setTimeframe(7);
+}
 // 1. Search Function (Sirf Email se search karega)
 function filterPayouts() {
   const searchTerm = document
     .getElementById("sellerSearch")
     .value.toLowerCase();
-  const filtered = currentData.filter((item) =>
-    (item.sellerEmail || item._id).toLowerCase().includes(searchTerm),
-  );
+
+  if (!searchTerm) {
+    renderTable(currentData);
+    return;
+  }
+
+  const filtered = currentData.filter((item) => {
+    const name = (item.sellerName || "").toLowerCase();
+    const email = (item.sellerEmail || "").toLowerCase();
+
+    return name.includes(searchTerm) || email.includes(searchTerm);
+  });
+
   renderTable(filtered);
 }
 
