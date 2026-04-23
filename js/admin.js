@@ -1195,31 +1195,29 @@ function filterPayouts() {
 
 // ✅ TABLE RENDER
 function renderTable(data) {
-  const tbody = document.getElementById("payoutTableBody");
+  const tableBody = document.getElementById("payoutTableBody"); // 👈 ye line MUST hai
 
-  if (!tbody) {
-    console.log("❌ payoutTableBody nahi mila");
-    return;
-  }
-
-  console.log("🧾 Rendering Table Data:", data);
+  if (!tableBody) return;
 
   if (!data || data.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="2" style="text-align:center; color:red;">No Data Found</td></tr>`;
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="9" style="text-align:center; color:red;">
+          No Data Found
+        </td>
+      </tr>`;
     return;
   }
 
-  tbody.innerHTML = data
-    .map((item, index) => {
-      console.log(`🛠️ Render item ${index}:`, item);
-
-      return `
-      <tr>
-        <td>${item.sellerName || item.name || item.seller?.name || "-"}</td>
-        <td>${item.sellerEmail || item.email || item.seller?.email || "-"}</td>
-      </tr>
-      `;
-    })
+  tableBody.innerHTML = data
+    .map(
+      (item) => `
+    <tr>
+      <td>${item.sellerName || item.name || item.seller?.name || "-"}</td>
+      <td>${item.sellerEmail || item.email || item.seller?.email || "-"}</td>
+    </tr>
+  `,
+    )
     .join("");
 }
 // 2. Date Filter Fix
