@@ -14,12 +14,12 @@
   }
 })();
 
-// अपनी API का Base URL (config.js)
+// API का Base URL (config.js)
 const API_URL = `${CONFIG.BASE_API_URL}/admin`;
 
 let allData = {};
 
-// 1. पेज लोड होते ही डेटा लाओ
+// 1. page load hote hi data fact ( admin dashbord overview,student,vip,seller,request)
 async function fetchDashboardData() {
   try {
     // 🔥 SAFETY CHECK: Agar ye element nahi hai, matlab hum dashboard page par nahi hain
@@ -116,7 +116,6 @@ function loadUsers(role) {
 async function loadSellerRequests() {
   console.log("🚀 Fetching Pending Seller Requests...");
 
-  // Apne table body ki ID check karein (Main yahan 'sellerRequestTableBody' use kar raha hoon)
   const tableBody = document.getElementById("tableBody");
 
   if (!tableBody) return console.error("Table body ID not found!");
@@ -604,11 +603,9 @@ async function toggleVIP(id) {
 
 // टेबल रेंडर करने का हिस्सा (जहाँ बटन बनता है)
 function renderUserTable(users = []) {
-  // 🔥 SMART RESET: Seller Document table ko chhupane ke liye
   const sellerDiv = document.getElementById("sellerDocsDiv");
   if (sellerDiv) sellerDiv.style.display = "none";
 
-  // Dashboard ke normal containers (Stats, Filters, etc.) ko wapas dikhao
   const containers = [
     ".table-container",
     ".stats-container",
@@ -619,18 +616,15 @@ function renderUserTable(users = []) {
     if (el) el.style.display = c === ".table-container" ? "block" : "flex";
   });
 
-  // "User Management Panel" header dikhane ke liye
   const uHeader =
     document.querySelector(".user-management-header") ||
     document.querySelector("h1")?.parentElement;
   if (uHeader) uHeader.style.display = "block";
 
-  // --- Tumhara Purana Code Yahan Se Shuru ---
   const tableBody = document.getElementById("tableBody");
   tableBody.innerHTML = "";
 
   users.forEach((user) => {
-    // बदलाव 1: VIP चेक करने के लिए Role और isVip दोनों देखो
     const isVipUser = user.role === "vip" || user.isVip === true;
     const isSeller = user.role === "seller";
     const isApproved = user.isApproved === true;
@@ -791,7 +785,7 @@ document
     }
   });
 
-// Seller Toggle Function (Isko bhi admin.js me niche copy kar lena)
+// Seller Toggle Function
 async function toggleSellerApproval(id) {
   console.log(
     "%c[FETCH] Toggling Seller Status...",
@@ -1024,36 +1018,59 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // 2. DOMContentLoaded - यहाँ फंक्शन का नाम सही करें
 document.addEventListener("DOMContentLoaded", () => {
-  // अगर Overview पेज पर हैं तभी इसे कॉल करें
   if (document.getElementById("statSales")) {
     updateFinancials();
   }
-  // स्टूडेंट्स और सेलर्स वाले फंक्शन यहाँ कॉल करें
-  // loadUserStats();
+  loadUserStats();
 });
 
 // overview clender reset
 function resetStats() {
-  // 1. दोनों डेट इनपुट्स को खाली करो
   document.getElementById("statsStart").value = "";
   document.getElementById("statsEnd").value = "";
 
-  // 2. दोबारा बिना डेट के फंक्शन कॉल करो (All-time data के लिए)
   updateFinancials();
 }
 
-// साइडबार के एक्टिव स्टेट को मैनेज करने वाला फंक्शन
+// serch bar function
+function searchTableLive() {
+  const input = document.getElementById("courseSearch");
+  if (!input) return;
+
+  const filter = input.value.toLowerCase();
+
+  const tbody = document.getElementById("tableBody");
+  if (!tbody) return;
+
+  const rows = tbody.getElementsByTagName("tr");
+
+  console.log("Rows:", rows.length);
+
+  for (let i = 0; i < rows.length; i++) {
+    const cols = rows[i].getElementsByTagName("td");
+
+    const name = cols[1]?.innerText.toLowerCase() || "";
+    const email = cols[2]?.innerText.toLowerCase() || "";
+
+    const match = name.includes(filter) || email.includes(filter);
+
+    rows[i].style.display = match ? "" : "none";
+  }
+}
+
+//============== end sidebar btn =======================
+
+//============== start friday payout ===================
+// साइडबार के एक्टिव स्टेट को मैनेज करने वाला फंक्शन ( Friday payout )
 function setActiveNav(element) {
-  // 1. पहले से मौजूद सभी 'active' क्लास हटाओ
   document.querySelectorAll(".nav-links li").forEach((li) => {
     li.classList.remove("active");
   });
 
-  // 2. जिस पर क्लिक हुआ, उस पर 'active' क्लास लगाओ
   element.classList.add("active");
 }
 const body = document.getElementById("payoutTableBody");
-// Friday Payouts load karne ka function
+
 let currentData = [];
 
 async function loadPayouts(days = 7) {
@@ -1151,7 +1168,7 @@ function filterPayouts() {
   }
 
   const rawSearch = input.value.toLowerCase().trim();
-  const searchTerm = rawSearch.replace(/\s+/g, ""); // 🔥 space remove
+  const searchTerm = rawSearch.replace(/\s+/g, "");
 
   console.log("🔍 Search Term:", rawSearch);
   console.log("📦 Full Data:", currentData);
@@ -1180,7 +1197,6 @@ function filterPayouts() {
     const cleanName = name.replace(/\s+/g, "");
     const cleanEmail = email.replace(/\s+/g, "");
 
-    // 🔥 Smart match (name + email)
     const match =
       cleanName.includes(searchTerm) || cleanEmail.includes(searchTerm);
 
@@ -1246,12 +1262,10 @@ function setTimeframe(days) {
   const start = new Date();
   start.setDate(end.getDate() - days);
 
-  // ISO string backend ke liye
   fetchData(start.toISOString().split("T")[0], end.toISOString().split("T")[0]);
 }
 
 async function fetchData(start, end) {
-  // थोड़ा सा इंतज़ार ताकि HTML DOM में आ जाए
   setTimeout(async () => {
     const body = document.getElementById("payoutTableBody");
     if (!body) {
@@ -1269,7 +1283,7 @@ async function fetchData(start, end) {
 
       if (result.success && result.data.length > 0) {
         currentData = result.data;
-        renderTable(currentData); // ✅ अब ये सही से काम करेगा
+        renderTable(currentData);
       } else {
         body.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:40px; color:#666;">No payouts found for this range. 📂</td></tr>`;
       }
@@ -1277,15 +1291,13 @@ async function fetchData(start, end) {
       console.error("Data fetch error:", error);
       body.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:20px; color:red;">⚠️ Server Connection Error</td></tr>`;
     }
-  }, 100); // 100ms का छोटा डिले
+  }, 100);
 }
 
 function renderTable(data) {
-  // 🔥 SMART HIDE LOGIC: Seller Document table ko chhupane ke liye
   const sellerDiv = document.getElementById("sellerDocsDiv");
   if (sellerDiv) sellerDiv.style.display = "none";
 
-  // Purane containers (Stats, Filters, etc.) ko wapas dikhane ke liye
   const containers = [
     ".table-container",
     ".stats-container",
@@ -1296,15 +1308,13 @@ function renderTable(data) {
     if (el) el.style.display = c === ".table-container" ? "block" : "flex";
   });
 
-  // "User Management Panel" ka header dikhane ke liye
   const uHeader =
     document.querySelector(".user-management-header") ||
     document.querySelector("h1")?.parentElement;
   if (uHeader) uHeader.style.display = "block";
 
-  // --- Tumhara Purana Code Yahan Se Shuru ---
   const body = document.getElementById("payoutTableBody");
-  // कॉलम बढ़ गए हैं इसलिए colspan को 9 कर दिया
+
   if (!data || data.length === 0) {
     body.innerHTML = `
     <tr>
@@ -1388,13 +1398,12 @@ function renderTable(data) {
 
 // 3. Pay Now Button Logic
 async function processPayment(email, amount) {
-  // 1. Professional Payment Confirmation
   const result = await Swal.fire({
     title: "Confirm Payout",
     html: `You are about to pay <b style="color: #28a745; font-size: 1.2rem;">₹${amount}</b><br>to <b>${email}</b>`,
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#28a745", // Green for payment
+    confirmButtonColor: "#28a745",
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, Pay Now!",
     cancelButtonText: "Cancel",
@@ -1402,7 +1411,6 @@ async function processPayment(email, amount) {
 
   if (result.isConfirmed) {
     try {
-      // Show loading spinner during API call
       Swal.fire({
         title: "Processing Payment...",
         text: "Please do not refresh the page.",
@@ -1424,7 +1432,6 @@ async function processPayment(email, amount) {
       const result = await res.json();
 
       if (result.success) {
-        // 2. Success Alert
         await Swal.fire({
           title: "Payment Successful! 💰",
           text: `Status updated to 'Success' for ${email}`,
@@ -1432,10 +1439,8 @@ async function processPayment(email, amount) {
           confirmButtonText: "Great!",
         });
 
-        // Refresh table or page
         location.reload();
       } else {
-        // 3. Server Error Alert
         Swal.fire({
           title: "Payment Failed",
           text: result.message || "The transaction could not be completed.",
@@ -1444,7 +1449,7 @@ async function processPayment(email, amount) {
       }
     } catch (error) {
       console.error("Payment Error:", error);
-      // 4. Connection Error Alert
+
       Swal.fire({
         title: "Network Error",
         text: "Could not connect to the payment server.",
@@ -1499,15 +1504,13 @@ window.resetAllFilters = function () {
   if (start) start.value = "";
   if (end) end.value = "";
 
-  // 🔍 Table reset
   if (typeof searchTableLive === "function") {
     searchTableLive();
   }
 
-  // 📊 Stats reset (IMPORTANT 🔥)
   updateFinancials();
 };
-//   admin order tracker pannel bellow function
+//========== admin order tracker pannel bellow function ====================
 // ============================================================
 // 📡 1. DATA FETCH FUNCTION (Global Scope mein rakha hai)
 // ============================================================
