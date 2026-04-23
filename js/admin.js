@@ -1034,28 +1034,57 @@ function resetStats() {
 
 // serch bar function
 function searchTableLive() {
-  const input = document.getElementById("courseSearch");
-  if (!input) return;
+  console.log("🚀 searchTableLive called");
 
-  const filter = input.value.toLowerCase();
+  const input = document.getElementById("courseSearch");
+
+  if (!input) {
+    console.log("❌ Input nahi mila");
+    return;
+  }
+
+  const filter = input.value.toLowerCase().trim();
+  console.log("🔍 Search Value:", filter);
 
   const tbody = document.getElementById("tableBody");
-  if (!tbody) return;
+
+  if (!tbody) {
+    console.log("❌ tableBody nahi mila");
+    return;
+  }
 
   const rows = tbody.getElementsByTagName("tr");
 
-  console.log("Rows:", rows.length);
+  console.log("📊 Total Rows Found:", rows.length);
+
+  if (rows.length === 0) {
+    console.log("⚠️ Table me rows hi nahi hain (data load nahi hua)");
+  }
 
   for (let i = 0; i < rows.length; i++) {
     const cols = rows[i].getElementsByTagName("td");
 
+    if (!cols || cols.length === 0) {
+      console.log(`❌ Row ${i} me columns nahi mile`);
+      continue;
+    }
+
     const name = cols[1]?.innerText.toLowerCase() || "";
     const email = cols[2]?.innerText.toLowerCase() || "";
 
+    console.log(`👉 Row ${i}`, {
+      name,
+      email,
+    });
+
     const match = name.includes(filter) || email.includes(filter);
+
+    console.log(`   ✅ Match:`, match);
 
     rows[i].style.display = match ? "" : "none";
   }
+
+  console.log("🏁 Search complete");
 }
 
 //============== end sidebar btn =======================
