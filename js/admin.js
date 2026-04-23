@@ -1150,9 +1150,10 @@ function filterPayouts() {
     return;
   }
 
-  const searchTerm = input.value.toLowerCase().trim();
+  const rawSearch = input.value.toLowerCase().trim();
+  const searchTerm = rawSearch.replace(/\s+/g, ""); // 🔥 space remove
 
-  console.log("🔍 Search Term:", searchTerm);
+  console.log("🔍 Search Term:", rawSearch);
   console.log("📦 Full Data:", currentData);
 
   if (!searchTerm) {
@@ -1162,8 +1163,6 @@ function filterPayouts() {
   }
 
   const filtered = currentData.filter((item, index) => {
-    console.log(`👉 Checking item ${index}:`, item);
-
     const name = (
       item.sellerName ||
       item.name ||
@@ -1178,12 +1177,18 @@ function filterPayouts() {
       ""
     ).toLowerCase();
 
-    console.log("   Name:", name);
-    console.log("   Email:", email);
+    const cleanName = name.replace(/\s+/g, "");
+    const cleanEmail = email.replace(/\s+/g, "");
 
-    const match = name.includes(searchTerm) || email.includes(searchTerm);
+    // 🔥 Smart match (name + email)
+    const match =
+      cleanName.includes(searchTerm) || cleanEmail.includes(searchTerm);
 
-    console.log("   ✅ Match:", match);
+    console.log(`👉 [${index}]`, {
+      name,
+      email,
+      match,
+    });
 
     return match;
   });
@@ -1193,31 +1198,40 @@ function filterPayouts() {
   renderTable(filtered);
 }
 
-// ✅ TABLE RENDER
+// ✅ FINAL TABLE RENDER (NO ERROR VERSION)
 function renderTable(data) {
-  const tableBody = document.getElementById("payoutTableBody"); // 👈 ye line MUST hai
+  const tableBody = document.getElementById("payoutTableBody");
 
-  if (!tableBody) return;
+  if (!tableBody) {
+    console.log("❌ payoutTableBody nahi mila");
+    return;
+  }
+
+  console.log("🧾 Rendering:", data);
 
   if (!data || data.length === 0) {
     tableBody.innerHTML = `
       <tr>
-        <td colspan="9" style="text-align:center; color:red;">
-          No Data Found
+        <td colspan="9" style="text-align:center; color:#ff4d4f; padding:20px;">
+          ❌ No Data Found
         </td>
       </tr>`;
     return;
   }
 
   tableBody.innerHTML = data
-    .map(
-      (item) => `
-    <tr>
-      <td>${item.sellerName || item.name || item.seller?.name || "-"}</td>
-      <td>${item.sellerEmail || item.email || item.seller?.email || "-"}</td>
-    </tr>
-  `,
-    )
+    .map((item, i) => {
+      const name = item.sellerName || item.name || item.seller?.name || "-";
+
+      const email = item.sellerEmail || item.email || item.seller?.email || "-";
+
+      return `
+      <tr>
+        <td>${name}</td>
+        <td>${email}</td>
+      </tr>
+      `;
+    })
     .join("");
 }
 // 2. Date Filter Fix
