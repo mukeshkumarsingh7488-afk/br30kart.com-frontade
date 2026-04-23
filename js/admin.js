@@ -1143,16 +1143,27 @@ function refreshPayouts() {
 }
 // 1. Search Function (Sirf Email se search karega)
 function filterPayouts() {
-  const searchTerm = document
-    .getElementById("sellerSearch")
-    .value.toLowerCase();
+  const input = document.getElementById("sellerSearch");
+
+  if (!input) {
+    console.log("❌ sellerSearch input nahi mila");
+    return;
+  }
+
+  const searchTerm = input.value.toLowerCase().trim();
+
+  console.log("🔍 Search Term:", searchTerm);
+  console.log("📦 Full Data:", currentData);
 
   if (!searchTerm) {
+    console.log("⚠️ Empty search → full table render");
     renderTable(currentData);
     return;
   }
 
-  const filtered = currentData.filter((item) => {
+  const filtered = currentData.filter((item, index) => {
+    console.log(`👉 Checking item ${index}:`, item);
+
     const name = (
       item.sellerName ||
       item.name ||
@@ -1167,27 +1178,48 @@ function filterPayouts() {
       ""
     ).toLowerCase();
 
-    return name.includes(searchTerm) || email.includes(searchTerm);
+    console.log("   Name:", name);
+    console.log("   Email:", email);
+
+    const match = name.includes(searchTerm) || email.includes(searchTerm);
+
+    console.log("   ✅ Match:", match);
+
+    return match;
   });
+
+  console.log("🎯 Filtered Result:", filtered);
 
   renderTable(filtered);
 }
 
-// ✅ TABLE RENDER (👉 yaha dalna hai)
+// ✅ TABLE RENDER
 function renderTable(data) {
   const tbody = document.getElementById("payoutTableBody");
 
-  if (!tbody) return;
+  if (!tbody) {
+    console.log("❌ payoutTableBody nahi mila");
+    return;
+  }
+
+  console.log("🧾 Rendering Table Data:", data);
+
+  if (!data || data.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="2" style="text-align:center; color:red;">No Data Found</td></tr>`;
+    return;
+  }
 
   tbody.innerHTML = data
-    .map(
-      (item) => `
+    .map((item, index) => {
+      console.log(`🛠️ Render item ${index}:`, item);
+
+      return `
       <tr>
-        <td>${item.sellerName || "-"}</td>
-        <td>${item.sellerEmail || "-"}</td>
+        <td>${item.sellerName || item.name || item.seller?.name || "-"}</td>
+        <td>${item.sellerEmail || item.email || item.seller?.email || "-"}</td>
       </tr>
-    `,
-    )
+      `;
+    })
     .join("");
 }
 // 2. Date Filter Fix
