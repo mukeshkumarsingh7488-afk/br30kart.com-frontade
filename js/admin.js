@@ -104,6 +104,7 @@ function renderUserTable(users, isApprovalPage = false) {
             </tr>
         `;
   });
+  searchTableLive();
 }
 
 // 3. Student या Seller कंट्रोल बटन के लिए
@@ -683,6 +684,7 @@ function renderUserTable(users = []) {
             </tr>
         `;
   });
+  searchTableLive();
 }
 
 // apply bulk seller,student,vip action
