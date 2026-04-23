@@ -88,39 +88,48 @@ function renderBestsellerTable(records) {
     return;
   }
 
-  // 1. 🔥 LOGIC: कोर्सेस का काउंट निकालो ताकि पता चले कौन सबसे ज़्यादा बिका (Dynamic Sorting)
+  // 1. प्रोडक्ट काउंट निकालो
   const productStats = records.reduce((acc, curr) => {
     const pName = curr.productName || "N/A";
     acc[pName] = (acc[pName] || 0) + 1;
     return acc;
   }, {});
 
-  // 2. डेटा को सॉर्ट करो: सबसे ज़्यादा बिकने वाले कोर्स के ऑर्डर्स सबसे ऊपर आएंगे
-  const sortedRecords = [...records].sort((a, b) => {
-    return productStats[b.productName] - productStats[a.productName];
-  });
-
-  // 3. सबसे टॉप वाले प्रोडक्ट का नाम निकालो
-  const topProduct = Object.keys(productStats).reduce((a, b) =>
-    productStats[a] > productStats[b] ? a : b,
+  // 2. सॉर्टिंग: सबसे ज़्यादा बिकने वाले कोर्सेस के ऑर्डर्स एक साथ ऊपर आएंगे
+  const sortedRecords = [...records].sort(
+    (a, b) => productStats[b.productName] - productStats[a.productName],
   );
+
+  // 3. ट्रैकिंग के लिए एक 'Set' ताकि पता चले कि इस प्रोडक्ट का 'Badge' हम दिखा चुके हैं या नहीं
+  const shownBadges = new Set();
 
   tbody.innerHTML = sortedRecords
     .map((item, index) => {
       const pName = item.productName || "N/A";
       const sellCount = productStats[pName];
-      const isTopSeller = pName === topProduct;
+      let displayBadge = "";
+      let displayName = pName;
 
-      // प्रीमियम लुक वाले बैज और काउंट
-      const topTag =
-        isTopSeller && index === 0
-          ? `<span class="ml-2 animate-pulse bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-[8px] px-1.5 py-0.5 rounded-sm font-black shadow-lg">🏆 TOP SELLER</span>`
-          : "";
+      // 🔥 LOGIC: सिर्फ पहली बार दिखने पर Badge और Count दिखाओ
+      if (!shownBadges.has(pName)) {
+        shownBadges.add(pName); // इस प्रोडक्ट को 'Shown' मार्क कर दो
 
-      // नाम के साथ काउंट (जैसे: Trading Course *3)
-      const displayName = isTopSeller
-        ? `${pName} <span class="text-yellow-500 ml-1">*${sellCount}</span>`
-        : pName;
+        // 🥇 1st Best Seller (रैंक के हिसाब से बैज)
+        const rank = shownBadges.size;
+        if (rank === 1) {
+          displayBadge = `<span class="ml-2 animate-pulse bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-[8px] px-1.5 py-0.5 rounded-sm font-black shadow-lg">🏆 TOP SELLER</span>`;
+          displayName = `${pName} <span class="text-yellow-500 ml-1">*${sellCount}</span>`;
+        } else if (rank === 2) {
+          displayBadge = `<span class="ml-2 bg-blue-500 text-white text-[8px] px-1.5 py-0.5 rounded-sm font-bold">🥈 2ND BEST</span>`;
+          displayName = `${pName} <span class="text-blue-400 ml-1">*${sellCount}</span>`;
+        } else if (rank === 3) {
+          displayBadge = `<span class="ml-2 bg-orange-600 text-white text-[8px] px-1.5 py-0.5 rounded-sm font-bold">🥉 3RD BEST</span>`;
+          displayName = `${pName} <span class="text-orange-400 ml-1">*${sellCount}</span>`;
+        }
+      }
+
+      // Premium Status Logic (सिर्फ टॉप सेलर की सभी लाइनों के लिए)
+      const isTopSeller = pName === Array.from(shownBadges)[0];
 
       return `
         <tr class="transition border-b border-[#1f2937] ${isTopSeller ? "bg-yellow-500/5" : "hover:bg-[#0a0c10]"}">
@@ -129,7 +138,7 @@ function renderBestsellerTable(records) {
           </td>
           
           <td class="p-4 font-bold text-white text-xs uppercase text-center flex items-center justify-center">
-            ${displayName} ${topTag}
+            ${displayName} ${displayBadge}
           </td>
           
           <td class="p-4 font-black text-white text-sm text-center">
