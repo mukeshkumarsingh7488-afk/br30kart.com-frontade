@@ -1052,7 +1052,7 @@ function setActiveNav(element) {
   // 2. जिस पर क्लिक हुआ, उस पर 'active' क्लास लगाओ
   element.classList.add("active");
 }
-
+const body = document.getElementById("payoutTableBody");
 // Friday Payouts load karne ka function
 let currentData = [];
 
