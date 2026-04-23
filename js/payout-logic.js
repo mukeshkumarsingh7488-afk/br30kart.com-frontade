@@ -178,7 +178,7 @@ function applyPayoutFilters() {
             <!-- 2. Course Details & Order ID -->
             <td class="px-6 py-4">
                 <div class="text-sm font-bold text-white uppercase">${o.productName}</div>
-                <div class="text-[10px] text-blue-400 font-bold">Order ID: #${realOrderID}</div>
+                <div class="text-[10px] text-blue-400 font-bold">Course ID: #${realOrderID}</div>
             </td>
 
             <!-- ✅ 3. Sell Price (Asli Kimat) -->
