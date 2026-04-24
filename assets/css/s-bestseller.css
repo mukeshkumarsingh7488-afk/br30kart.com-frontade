@@ -24,34 +24,15 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-/* 🚀 Stats Card: Layout aur Style ekdum Fix */
 .stat-card {
-  background: #0f1216 !important; /* Tera Original Color */
-  border: 1px solid #1f2937 !important;
-  border-radius: 16px !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  padding: 1.5rem !important; /* Proper spacing */
-  box-sizing: border-box !important;
-  transition: all 0.3s ease !important;
-  cursor: pointer;
+  background: #0f1216;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
-
-/* Hover Effect */
 .stat-card:hover {
-  transform: translateY(-5px) !important;
-  border-color: #3b82f6 !important;
-}
-
-/* 🚀 Grid Fix: Web par 4 Boxes ek line mein */
-@media (min-width: 768px) {
-  .grid.md\:grid-cols-4 {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important; /* 4 column fix */
-    gap: 1.5rem !important;
-  }
+  transform: translateY(-5px);
+  border-color: #3b82f6;
 }
 
 /* कैलेंडर डार्क मोड में साफ़ दिखेगा */

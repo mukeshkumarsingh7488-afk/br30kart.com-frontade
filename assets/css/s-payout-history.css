@@ -6,37 +6,18 @@ body {
   overflow-x: hidden;
 }
 
-/* 🚀 4-Stat Boxes: Professional Setup (Layout & Color Safe) */
+/* 4-Stat Boxes with Smooth Hover & Rounded Corners */
 .stat-card {
-  background: #0f1216 !important; /* Tera Original Dark Color */
-  border: 1px solid #1f2937 !important;
-  border-radius: 16px !important;
-  width: 100% !important;
-  min-height: 140px !important; /* Ek barabar height ke liye */
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  padding: 24px !important; /* Proper spacing */
-  box-sizing: border-box !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: #0f1216;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
-
-/* Hover Effect (No Color Change, Just Elevation) */
 .stat-card:hover {
-  transform: translateY(-8px) !important;
-  border-color: #3b82f6 !important; /* Light blue border on hover */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6) !important;
-}
-
-/* 🚀 Grid System: Web/Desktop par 1 line mein 4 Boxes */
-@media (min-width: 768px) {
-  .grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important; /* 4 Boxes in one line */
-    gap: 24px !important; /* Boxes ke beech ka gap */
-    width: 100% !important;
-  }
+  transform: translateY(-8px);
+  border-color: #3b82f6;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
 /* Balanced Date Input */
