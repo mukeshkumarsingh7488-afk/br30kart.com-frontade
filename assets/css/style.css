@@ -1261,3 +1261,32 @@ select {
     margin-top: 5px;
   }
 }
+
+/*   footer mail link */
+.mail-link {
+  position: relative;
+  text-decoration: none;
+  color: #94a3b8;
+  transition: 0.3s;
+}
+
+/* Hover color */
+.mail-link:hover {
+  color: #00ffcc;
+}
+
+/* Underline animation */
+.mail-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background: #00ffcc;
+  transition: 0.3s;
+}
+
+.mail-link:hover::after {
+  width: 100%;
+}
