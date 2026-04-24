@@ -13,6 +13,17 @@ body {
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  /* 🔥 YE LINES ADD KARO */
+  width: 100%; /* Card ko poori width do */
+  min-height: 140px; /* Card ki ek barabar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px !important; /* Tailwind ki p-6 ko force karo */
+}
+.grid {
+  display: grid !important;
+  gap: 24px !important;
 }
 .stat-card:hover {
   transform: translateY(-8px);
