@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: #fff;
+}
+
+.header {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+}
+
+.intro {
+  text-align: center;
+  padding: 40px;
+}
+
+.section {
+  padding: 40px 20px;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: #1e293b;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 10px;
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+.card li {
+  margin-bottom: 10px;
+}
+
+.cta {
+  text-align: center;
+  padding: 60px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #3b82f6;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+}
