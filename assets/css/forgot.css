@@ -1,0 +1,126 @@
+/* =========================================
+           GLOBAL & BODY STYLES
+        ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #050505;
+  /* Aapka bataya hua Body Color */
+  padding: 20px;
+}
+
+/* =========================================
+           CONTAINER (Mobile Friendly)
+        ========================================= */
+.container {
+  width: 100%;
+  max-width: 360px;
+  background: #1e293b;
+  /* Premium Dark Card */
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+  text-align: center;
+  color: #ffffff;
+  /* White Big Text */
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Input Styling */
+input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #050505;
+  /* Input background matches body */
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #a020f0;
+  /* Aapka Purple Color */
+}
+
+/* Purple Button */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #a020f0;
+  /* Purple */
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #8b1ad4;
+  /* Slightly darker purple on hover */
+  transform: translateY(-2px);
+}
+
+/* Footer Links */
+.links {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #a020f0;
+  /* Purple Link */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* Password Toggle Icon */
+.input-box {
+  position: relative;
+  width: 100%;
+}
+
+.toggle-btn {
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}

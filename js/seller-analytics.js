@@ -475,5 +475,26 @@ function addFooter(doc, pageWidth, pageHeight) {
     pageHeight - 32,
   );
 }
+// reset date
+function resetFilters() {
+  document.getElementById("startDate").value = "";
+  document.getElementById("endDate").value = "";
+  console.log("♻️ Filters Reset");
+  // Yahan fetch function call karna
+}
 
+function exportCSV() {
+  alert("📥 Excel Report (CSV) download ho rahi hai...");
+}
+
+// dinamic seller id
+const sellerId = localStorage.getItem("sellerId");
+
+const sellerText = document.getElementById("sellerIdText");
+
+if (sellerId) {
+  sellerText.innerText = sellerId;
+} else {
+  sellerText.innerText = "Guest";
+}
 //#endregion

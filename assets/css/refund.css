@@ -1,0 +1,95 @@
+/* =========================================
+           GLOBAL & BODY STYLING (Dark Theme)
+        ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #050505;
+  /* Aapka Body Color */
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* =========================================
+           REFUND BOX (Mobile Responsive)
+        ========================================= */
+.box {
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  text-align: center;
+  background: #1e293b;
+  /* Card Background */
+  border-radius: 20px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  color: #a020f0;
+  /* Purple Header */
+  font-size: 26px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+p {
+  color: #cbd5e1;
+  /* Soft White */
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+b {
+  color: #a020f0;
+  /* Purple labels */
+}
+
+/* =========================================
+           PURPLE BUTTON STYLING
+        ========================================= */
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 35px;
+  background-color: #a020f0;
+  /* Purple Button */
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  border: 1px solid #a020f0;
+}
+
+.btn:hover {
+  background: transparent;
+  color: #a020f0;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
+}
+
+/* Mobile Adjustments (Dimensions Fix) */
+@media (max-width: 480px) {
+  .box {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}

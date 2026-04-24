@@ -1,0 +1,159 @@
+/* =========================================
+           1. GLOBAL & BODY STYLES (Dark Theme)
+        ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #050505;
+  /* Aapka Body Color */
+  padding: 20px;
+}
+
+/* =========================================
+           2. PROFILE CARD (Responsive)
+        ========================================= */
+.profile-card {
+  width: 100%;
+  max-width: 360px;
+  padding: 30px;
+  background: #1e293b;
+  /* Card Color */
+  border: 1px solid #334155;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+/* Profile Pic Section */
+.photo-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid #a020f0;
+  /* Purple Border */
+  object-fit: cover;
+  background: #050505;
+}
+
+.upload-label {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #a020f0;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid #1e293b;
+  font-size: 14px;
+}
+
+/* Text & Inputs */
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+p#userEmail {
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 25px;
+}
+
+.edit-box input {
+  width: 100%;
+  padding: 12px;
+  background: #050505;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  outline: none;
+  color: white;
+  text-align: center;
+}
+
+.edit-box input:focus {
+  border-color: #a020f0;
+}
+
+/* =========================================
+           3. BUTTONS & LINKS
+        ========================================= */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 15px;
+}
+
+/* Primary Purple Buttons */
+#editBtn,
+#saveBtn {
+  background: #a020f0;
+  color: white;
+}
+
+/* Logout Button (Outline style) */
+#logoutBtn {
+  background: transparent;
+  border: 1px solid #f87171;
+  color: #f87171;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+#logoutBtn:hover {
+  background: #f87171;
+  color: white;
+}
+
+.back-home {
+  text-decoration: none;
+  color: #a020f0;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+/* Mobile Fixes */
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 25px 20px;
+  }
+}

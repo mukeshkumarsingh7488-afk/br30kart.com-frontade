@@ -71,6 +71,8 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/premiumcourse.css" />
 
     <!-- ✅ Icons -->
     <link
@@ -92,183 +94,6 @@
         }
       }
     </script>
-
-    <style>
-      /* --- CSS STYLES --- */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-
-      body {
-        background-color: #050505;
-        /* Your Brand Dark Navy */
-        color: #ffffff;
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      /* Hero Section with Motivational Quote */
-      .hero-strategy {
-        padding: 80px 20px;
-        text-align: center;
-        background: linear-gradient(
-          rgba(160, 32, 240, 0.1),
-          rgba(15, 23, 42, 1)
-        );
-        border-bottom: 2px solid #a020f0;
-      }
-
-      .hero-strategy h1 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      .hero-strategy h1 span {
-        color: #a020f0;
-        text-shadow: 0 0 20px rgba(160, 32, 240, 0.5);
-      }
-
-      .quote-box {
-        max-width: 800px;
-        margin: 0 auto;
-        font-style: italic;
-        font-size: 1.2rem;
-        color: #cbd5e1;
-        border-left: 4px solid #a020f0;
-        padding-left: 20px;
-      }
-
-      /* Strategy Grid */
-      .strategy-container {
-        max-width: 1200px;
-        margin: 60px auto;
-        padding: 0 20px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-      }
-
-      .strategy-card {
-        background: #1e293b;
-        padding: 40px 30px;
-        border-radius: 25px;
-        border: 1px solid rgba(160, 32, 240, 0.2);
-        transition: 0.4s ease;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .strategy-card:hover {
-        transform: translateY(-10px);
-        border-color: #a020f0;
-        box-shadow: 0 15px 40px rgba(160, 32, 240, 0.2);
-      }
-
-      .icon-box {
-        font-size: 3rem;
-        color: #a020f0;
-        margin-bottom: 20px;
-        text-shadow: 0 0 15px rgba(160, 32, 240, 0.3);
-      }
-
-      .strategy-card h2 {
-        font-size: 1.4rem;
-        margin-bottom: 15px;
-        color: #ffffff;
-      }
-
-      .tags {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .tag {
-        font-size: 0.7rem;
-        padding: 4px 12px;
-        background: rgba(160, 32, 240, 0.1);
-        border: 1px solid #a020f0;
-        border-radius: 50px;
-        color: #ffffff;
-        font-weight: 600;
-      }
-
-      .details p {
-        font-size: 0.9rem;
-        color: #94a3b8;
-      }
-
-      /* Center Motivational Quote */
-      .center-quote {
-        text-align: center;
-        padding: 60px 20px;
-        background: rgba(30, 41, 59, 0.5);
-        margin: 40px 0;
-      }
-
-      .center-quote h2 {
-        font-size: 2rem;
-        color: #ffffff;
-        margin-bottom: 10px;
-      }
-
-      .center-quote p {
-        font-size: 1.1rem;
-        color: #a020f0;
-        font-weight: 600;
-      }
-
-      /* Footer Button */
-      .back-home {
-        display: block;
-        width: 200px;
-        margin: 50px auto;
-        text-align: center;
-        padding: 15px;
-        background: #a020f0;
-        color: white;
-        text-decoration: none;
-        border-radius: 12px;
-        font-weight: bold;
-        transition: 0.3s;
-        border: 1px solid #a020f0;
-      }
-
-      .back-home:hover {
-        background: transparent;
-        color: #a020f0;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
-      }
-
-      /* Mobile View */
-      @media (max-width: 900px) {
-        .strategy-container {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .strategy-container {
-          grid-template-columns: 1fr;
-        }
-
-        .hero-strategy h1 {
-          font-size: 2rem;
-        }
-      }
-    </style>
   </head>
 
   <body>
@@ -406,6 +231,6 @@
     <!-- Back to Home -->
     <a href="../index.html" class="back-home">Back to Dashboard</a>
     <script></script>
-    <script src="/js/security.js"></script>
+    <script src="../js/security.js"></script>
   </body>
 </html>

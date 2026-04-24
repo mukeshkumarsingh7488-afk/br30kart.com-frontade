@@ -1,0 +1,130 @@
+/* =========================================
+           GLOBAL & BACKGROUND STYLES
+        ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #050505;
+  /* Body Color */
+  padding: 20px;
+}
+
+/* =========================================
+           LOGIN CONTAINER (Responsive)
+        ========================================= */
+.container {
+  width: 100%;
+  max-width: 360px;
+  background: #1e293b;
+  /* Dark Card Color */
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;
+  /* White Text */
+  font-weight: 600;
+}
+
+/* Input Fields */
+label {
+  font-size: 14px;
+  color: #cbd5e1;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  background: #050505;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 5px 12px;
+  margin-bottom: 20px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.input-box:focus-within {
+  border-color: #a020f0;
+  /* Purple Focus */
+}
+
+.input-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  flex: 1;
+  padding: 10px 5px;
+  font-size: 15px;
+}
+
+.toggle-btn {
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+/* Button Styling */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #a020f0;
+  /* Purple Button */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+button:hover {
+  background: #8219c4;
+  transform: translateY(-2px);
+}
+
+/* Footer Links */
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #a020f0;
+  /* Purple Links */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+}

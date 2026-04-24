@@ -1,0 +1,172 @@
+/* =========================================
+           GLOBAL & BACKGROUND STYLES
+        ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #050505;
+  /* Aapka Body Color */
+  padding: 20px;
+}
+
+/* =========================================
+           REGISTRATION CONTAINER (Responsive)
+        ========================================= */
+.container {
+  width: 100%;
+  max-width: 380px;
+  background: #1e293b;
+  /* Dark Card Color */
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;
+  /* White Text */
+  font-weight: 600;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Input Box Styling */
+.input-box {
+  display: flex;
+  align-items: center;
+  background: #050505;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 5px 12px;
+  margin-bottom: 15px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.input-box:focus-within {
+  border-color: #a020f0;
+  /* Purple Focus */
+}
+
+.input-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  flex: 1;
+  padding: 10px 5px;
+  font-size: 15px;
+}
+
+/* Toggle Password Button */
+.toggle-btn {
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+/* Button Styling */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #a020f0;
+  /* Brand Purple */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #8219c4;
+  transform: translateY(-2px);
+}
+
+/* Footer Links */
+.links {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #a020f0;
+  /* Purple Link */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+.auth-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Left, Center aur Right align karega */
+  margin-bottom: 25px;
+  padding: 0 5px;
+}
+
+.register-heading {
+  font-size: 1.4rem; /* Heading thodi choti taaki space mile */
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+.role-btn-small {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(160, 32, 240, 0.5);
+  color: #fff;
+  padding: 6px 12px; /* Chhota padding */
+  border-radius: 50px; /* Capsule look */
+  font-size: 0.75rem; /* Text size chota */
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s all ease;
+  min-width: 70px; /* Fixed width taaki dono side barabar dikhein */
+}
+
+.role-btn-small.active {
+  background: #a020f0;
+  border-color: #a020f0;
+  box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
+}
+
+.role-btn-small:hover {
+  background: #a020f0;
+}

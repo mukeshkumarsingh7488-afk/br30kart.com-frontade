@@ -1,0 +1,152 @@
+:root {
+  --bg: #0a0a0a;
+  --card: #141414;
+  --primary: #00ffa3;
+  --danger: #ff4d4d;
+  --text: #ffffff;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Search Box Style */
+.search-container {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 15px 0;
+  z-index: 100;
+}
+
+#searchUser {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+}
+
+#searchUser:focus {
+  border-color: var(--primary);
+}
+
+.review-card {
+  background: var(--card);
+  border-left: 4px solid var(--primary);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.stars {
+  color: #ffd700;
+}
+
+.comment {
+  margin: 10px 0;
+  color: #ccc;
+}
+
+.status-tag {
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.status-approved {
+  background: rgba(0, 255, 163, 0.2);
+  color: var(--primary);
+}
+
+.status-hidden {
+  background: rgba(255, 77, 77, 0.2);
+  color: var(--danger);
+}
+
+.actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.btn-reply {
+  background: #333;
+  color: white;
+}
+
+.btn-hide {
+  background: orange;
+  color: black;
+}
+
+.btn-delete {
+  background: var(--danger);
+  color: white;
+}
+
+/* Reply Box Animation */
+.reply-box {
+  margin-top: 15px;
+  display: none;
+  padding: 10px;
+  background: #1c1c1c;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+textarea {
+  width: 100%;
+  background: #222;
+  border: 1px solid #444;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  resize: none;
+  min-height: 80px;
+  box-sizing: border-box;
+}

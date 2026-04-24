@@ -1,0 +1,112 @@
+/* =========================================
+           GLOBAL & BODY STYLES (Dark Theme)
+        ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #050505;
+  /* Aapka Body Color */
+  padding: 20px;
+}
+
+/* =========================================
+           CONTAINER (Responsive & Dark)
+        ========================================= */
+.container {
+  width: 100%;
+  max-width: 360px;
+  background: #1e293b;
+  /* Card Background */
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+h2 {
+  color: #ffffff;
+  /* White Text */
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Input Styling */
+input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #050505;
+  /* Input background matches body */
+  color: white;
+  outline: none;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+input:focus {
+  border-color: #a020f0;
+  /* Purple Focus */
+  box-shadow: 0 0 8px rgba(160, 32, 240, 0.2);
+}
+
+/* Purple Button */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #a020f0;
+  /* Brand Purple */
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+button:hover {
+  background: #8219c4;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
+}
+
+/* Footer Link */
+.links {
+  margin-top: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #a020f0;
+  /* Purple Link */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 480px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}

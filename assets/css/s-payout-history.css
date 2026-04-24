@@ -1,0 +1,83 @@
+/* Premium Deep Dark Theme */
+body {
+  background-color: #05070a;
+  color: #e1e1e1;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* 4-Stat Boxes with Smooth Hover & Rounded Corners */
+.stat-card {
+  background: #0f1216;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.stat-card:hover {
+  transform: translateY(-8px);
+  border-color: #3b82f6;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Balanced Date Input */
+input[type="date"] {
+  background: #1a1f26;
+  color: #ffffff;
+  border: 1px solid #374151;
+  padding: 8px 12px;
+  border-radius: 10px;
+  outline: none;
+  color-scheme: dark;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Scrollable Table Container */
+.table-container {
+  max-height: 480px;
+  overflow-y: auto;
+  border-radius: 12px;
+  background: #0f1216;
+  border: 1px solid #1f2937;
+}
+.table-container::-webkit-scrollbar {
+  width: 6px;
+}
+.table-container::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 10px;
+}
+
+/* Dynamic Status Badges */
+.badge {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.status-completed {
+  color: #00c853;
+  background: rgba(0, 200, 83, 0.1);
+  border-color: rgba(0, 200, 83, 0.2);
+}
+.status-pending {
+  color: #ffab00;
+  background: rgba(255, 171, 0, 0.1);
+  border-color: rgba(255, 171, 0, 0.2);
+}
+
+/* Mail Track Icon Style */
+.mail-success {
+  color: #3b82f6;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}

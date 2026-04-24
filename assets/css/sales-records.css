@@ -1,0 +1,81 @@
+/* कैलेंडर इनपुट को प्रीमियम और ब्राइट बनाने के लिए */
+.date-input {
+  background: #1a1f26;
+  color: #ffffff;
+  border: 1px solid #374151;
+  padding: 6px 12px;
+  border-radius: 8px;
+  outline: none;
+  font-size: 13px;
+  color-scheme: dark; /* ये डिफ़ॉल्ट कैलेंडर को डार्क/ब्राइट बैलेंस करेगा */
+}
+
+/* कैलेंडर के लोगो (Icon) को थोड़ा बड़ा और साफ़ करने के लिए */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* लोगो को सफ़ेद/ब्राइट करने के लिए */
+  font-size: 18px; /* लोगो का साइज़ बड़ा कर दिया */
+  cursor: pointer;
+}
+
+/* एकदम प्रीमियम गहरा डार्क थीम */
+body {
+  background-color: #05070a;
+  color: #e1e1e1;
+  font-family: "Inter", sans-serif;
+}
+
+.stat-card {
+  background: #0f1216;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: #3b82f6;
+}
+
+/* कैलेंडर डार्क मोड में साफ़ दिखेगा */
+input[type="date"] {
+  background: #1a1f26;
+  color: #ffffff;
+  border: 1px solid #374151;
+  padding: 5px;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* Scrollable Table - DB जैसा फील */
+.table-container {
+  max-height: 450px; /* फिक्स्ड हाइट ताकि स्क्रॉल दिखे */
+  overflow-y: auto;
+  background: #0f1216;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+}
+.table-container::-webkit-scrollbar {
+  width: 6px;
+}
+.table-container::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 10px;
+}
+
+/* Dynamic Colors based on DB */
+.status-success {
+  color: #00c853;
+  background: rgba(0, 200, 83, 0.1);
+  border: 1px solid rgba(0, 200, 83, 0.2);
+}
+.status-pending {
+  color: #ffab00;
+  background: rgba(255, 171, 0, 0.1);
+  border: 1px solid rgba(255, 171, 0, 0.2);
+}
+.badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

@@ -1,0 +1,151 @@
+/* --- PREMIUM THEME CSS --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #0d0d0d; /* Deep Black */
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* Header Section */
+.about-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.about-header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #a020f0, #ff4757);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.about-header p {
+  color: #b0b0b0;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 3-Card Feature Grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 100px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(160, 32, 240, 0.2);
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.4s all ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-15px);
+  background: rgba(160, 32, 240, 0.08);
+  border-color: #a020f0;
+  box-shadow: 0 10px 30px rgba(160, 32, 240, 0.2);
+}
+
+.feature-card .icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.feature-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #a020f0;
+}
+
+.feature-card p {
+  color: #d1d1d1;
+  font-size: 0.95rem;
+}
+
+/* Who We Are Content */
+.content-section {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 50px;
+  border-radius: 30px;
+  border-left: 5px solid #a020f0;
+}
+
+.content-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+}
+
+.content-section p {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin-bottom: 20px;
+}
+
+.highlight-box {
+  background: rgba(160, 32, 240, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 30px 0;
+  border: 1px dashed #a020f0;
+}
+
+.highlight-box b {
+  color: #ff4757;
+}
+
+/* Back to Home Button */
+.back-home {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 12px 30px;
+  background: #a020f0;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.back-home:hover {
+  background: #8219c4;
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(160, 32, 240, 0.4);
+}
+
+@media (max-width: 768px) {
+  .about-header h1 {
+    font-size: 2.5rem;
+  }
+  .content-section {
+    padding: 30px;
+  }
+}

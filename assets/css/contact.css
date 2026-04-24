@@ -1,0 +1,113 @@
+/* =========================================
+           1. GLOBAL & BODY STYLING
+           ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #050505;
+  /* Aapka Body Color */
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* =========================================
+           2. CONTACT BOX (CONTAINER)
+           ========================================= */
+.contact-box {
+  width: 100%;
+  max-width: 550px;
+  padding: 40px;
+  text-align: center;
+  background: #1e293b;
+  /* Premium Dark Card */
+  border-radius: 24px;
+  border: 1px solid #334155;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  animation: popup 0.7s ease-out;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+           3. TEXT & CONTENT STYLING
+           ========================================= */
+h1 {
+  color: #a020f0;
+  /* Brand Purple */
+  font-size: 28px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+p {
+  color: #cbd5e1;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+b {
+  color: #a020f0;
+  /* Purple Labels */
+  font-weight: 600;
+}
+
+/* =========================================
+           4. PURPLE BUTTON STYLING
+           ========================================= */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 35px;
+  background-color: #a020f0;
+  /* Purple Button */
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  border: 1px solid #a020f0;
+}
+
+.btn:hover {
+  background: transparent;
+  color: #a020f0;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(160, 32, 240, 0.3);
+}
+
+/* Mobile Adjustments (Dimension Fix) */
+@media (max-width: 480px) {
+  .contact-box {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+    word-wrap: break-word;
+    /* Email/Address lambe ho toh mobile pe fix rahega */
+  }
+}
