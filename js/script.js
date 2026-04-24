@@ -1094,3 +1094,26 @@ function updateCountUI(number) {
 loadInitialCount();
 
 //Review Logic end..
+
+// after login replesh nav (account to user name )
+function updateNavbar() {
+  const username = localStorage.getItem("username");
+  const accountBtn = document.getElementById("navAccountBtn");
+
+  if (username && accountBtn) {
+    // User ka pehla naam nikaalo (e.g. "Mukesh Singh" -> "Mukesh")
+    const firstName = username.split(" ")[0];
+
+    // Button ka text update karo
+    accountBtn.innerHTML = `👤 ${firstName} <span class="triangle-icon">▼</span>`;
+
+    // Optional: Agar Login link ko hide karna hai login ke baad
+    const loginLink = document.querySelector('a[href="pages/login.html"]');
+    if (loginLink) {
+      loginLink.innerHTML = "🔄 Switch Account"; // Ya hide kar do: loginLink.style.display = 'none';
+    }
+  }
+}
+
+// Page load hote hi function chalao
+document.addEventListener("DOMContentLoaded", updateNavbar);
