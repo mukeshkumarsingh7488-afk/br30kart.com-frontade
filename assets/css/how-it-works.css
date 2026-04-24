@@ -133,11 +133,12 @@ body {
   border: none !important; /* Border hataya */
   padding: 0 !important; /* Padding khatam */
   color: #a020f0 !important; /* Purple color (apne hisab se change kar lena) */
-  text-decoration: underline; /* Neeche line taaki link lage */
+  text-decoration: none !important;
   font-size: 16px;
   cursor: pointer;
   display: inline-block;
   transition: 0.3s;
+  font-weight: bold;
 }
 
 .learn-more-link:hover {

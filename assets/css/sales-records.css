@@ -24,29 +24,35 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+/* 🚀 Stats Card Styling (Layout aur Color Safe) */
 .stat-card {
-  background: #0f1216;
-  border: 1px solid #1f2937;
-  border-radius: 16px;
-  transition: all 0.3s ease;
-}
-.stat-card {
-  padding: 1rem !important; /* p-4 ke liye */
+  background: #0f1216 !important; /* Tera Original Dark Color */
+  border: 1px solid #1f2937 !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important; /* Proper spacing ke liye */
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
   width: 100% !important;
+  box-sizing: border-box !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer;
 }
+
+/* Hover Effect (Color Safe) */
+.stat-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: #3b82f6 !important; /* Blue border on hover */
+}
+
+/* 🚀 Grid Fix: Sirf Desktop/Web ke liye 4 Columns */
 @media (min-width: 768px) {
   .grid.md\:grid-cols-4 {
     display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 1rem !important; /* gap-4 ke liye */
+    grid-template-columns: repeat(4, 1fr) !important; /* Ek line mein 4 fiks */
+    gap: 1.5rem !important; /* Boxes ke beech ka gap */
+    width: 100% !important;
   }
-}
-.stat-card:hover {
-  transform: translateY(-5px);
-  border-color: #3b82f6;
 }
 
 /* कैलेंडर डार्क मोड में साफ़ दिखेगा */
