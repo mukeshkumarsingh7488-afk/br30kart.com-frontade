@@ -225,3 +225,29 @@ async function logout() {
     window.location.href = "login.html";
   }
 }
+// region ━━━━━ 💎 USER STATUS & UPGRADE NUDGE INITIALIZED ━━━━━
+
+function updateUserStatus(userData) {
+  const vipContainer = document.getElementById("vipBadgeContainer");
+
+  if (userData.vip === true) {
+    // ✅ VIP User: Full Golden Look
+    vipContainer.innerHTML = `
+            <div class="vip-badge-gold">
+                <i class="fas fa-crown"></i> VIP GOLDEN PREMIUM
+            </div>
+        `;
+  } else {
+    // ❌ Normal User: "Standard" dikhao aur VIP ka lalach do
+    vipContainer.innerHTML = `
+            <div class="standard-badge">
+                <span class="status-label">Standard Member</span>
+                <a href="../pages/pricing.html" class="upgrade-link">
+                    Upgrade to VIP <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        `;
+  }
+}
+
+// 🏁 --- END OF STATUS MODULE ---
