@@ -238,29 +238,33 @@ function updateUserStatus(userData) {
   const vipContainer = document.getElementById("vipBadgeContainer");
   if (!vipContainer) return;
 
-  // LocalStorage ya API se jo role aa raha hai use check karo
-  const userRole = userData.role || "";
+  const userRole = (userData.role || "").toLowerCase(); // Taaki case-sensitive issue na ho
 
-  if (userRole === "vip") {
-    // ✅ VIP User Look
+  if (userRole === "admin") {
+    // 🛡️ ADMIN LOOK: Red/Dark Professional
+    vipContainer.innerHTML = `
+      <div class="admin-badge">
+          <i class="fas fa-user-shield"></i> SYSTEM MODERATOR
+      </div>
+      <p style="color: #ef4444; font-size: 10px; margin-top: 4px; font-weight: bold;">WELCOME ADMIN</p>`;
+  } else if (userRole === "seller") {
+    // 💼 SELLER LOOK: Blue/Cyan Professional
+    vipContainer.innerHTML = `
+      <div class="seller-badge">
+          <i class="fas fa-store"></i> VERIFIED SELLER
+      </div>`;
+  } else if (userRole === "vip") {
+    // 👑 VIP LOOK (Jo pehle se chal raha hai)
     vipContainer.innerHTML = `
       <div class="vip-badge-gold">
           <i class="fas fa-crown"></i> VIP GOLDEN PREMIUM
       </div>`;
-  } else if (userRole === "admin") {
-    // 🛡️ Admin Look (Optional)
-    vipContainer.innerHTML = `
-      <div class="admin-badge" style="background: #ef4444; color: #fff; padding: 5px 12px; border-radius: 50px; font-size: 11px; font-weight: bold;">
-          <i class="fas fa-user-shield"></i> SYSTEM ADMIN
-      </div>`;
   } else {
-    // ❌ Student ya Seller ke liye "Upgrade" wala lalach
+    // ❌ NORMAL/STUDENT LOOK
     vipContainer.innerHTML = `
       <div class="standard-badge">
-          <span class="status-label">Standard Member (${userRole})</span>
-          <a href="../pages/pricing.html" class="upgrade-link">
-              Upgrade to VIP <i class="fas fa-arrow-right"></i>
-          </a>
+          <span class="status-label">Standard Member</span>
+           <a href="../index.html#Premium-Trading-Courses" class="upgrade-link">Upgrade to VIP <i class="fas fa-arrow-right"></i></a>
       </div>`;
   }
 }
