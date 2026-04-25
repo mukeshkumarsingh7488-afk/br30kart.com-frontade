@@ -2,6 +2,11 @@ const API_URL = window.API_BASE_URL + "/api/auth";
 
 // 1. AUTH GUARD & DATA LOAD
 window.onload = async function () {
+  // --- 1. LOCAL STORAGE SE TURANT BADGE DIKHAO (FOR SPEED) ---
+  const savedRole = localStorage.getItem("role");
+  if (savedRole) {
+    updateUserStatus({ role: savedRole });
+  }
   const token = localStorage.getItem("token");
   console.log("🛑 Checking Token Status:", token ? "Active" : "Missing");
 
@@ -27,6 +32,8 @@ window.onload = async function () {
     if (!res.ok) throw new Error("Session Expired");
 
     const user = await res.json();
+
+    updateUserStatus(user);
 
     // UI Update logic
     const name = user.name || (user.user && user.user.name) || "User";
@@ -225,29 +232,37 @@ async function logout() {
     window.location.href = "login.html";
   }
 }
-// region ━━━━━ 💎 USER STATUS & UPGRADE NUDGE INITIALIZED ━━━━━
+// region ━━━━━ 👑 ROLE-BASED BADGE SYSTEM INITIALIZED ━━━━━
 
 function updateUserStatus(userData) {
   const vipContainer = document.getElementById("vipBadgeContainer");
+  if (!vipContainer) return;
 
-  if (userData.vip === true) {
-    // ✅ VIP User: Full Golden Look
+  // LocalStorage ya API se jo role aa raha hai use check karo
+  const userRole = userData.role || "";
+
+  if (userRole === "vip") {
+    // ✅ VIP User Look
     vipContainer.innerHTML = `
-            <div class="vip-badge-gold">
-                <i class="fas fa-crown"></i> VIP GOLDEN PREMIUM
-            </div>
-        `;
+      <div class="vip-badge-gold">
+          <i class="fas fa-crown"></i> VIP GOLDEN PREMIUM
+      </div>`;
+  } else if (userRole === "admin") {
+    // 🛡️ Admin Look (Optional)
+    vipContainer.innerHTML = `
+      <div class="admin-badge" style="background: #ef4444; color: #fff; padding: 5px 12px; border-radius: 50px; font-size: 11px; font-weight: bold;">
+          <i class="fas fa-user-shield"></i> SYSTEM ADMIN
+      </div>`;
   } else {
-    // ❌ Normal User: "Standard" dikhao aur VIP ka lalach do
+    // ❌ Student ya Seller ke liye "Upgrade" wala lalach
     vipContainer.innerHTML = `
-            <div class="standard-badge">
-                <span class="status-label">Standard Member</span>
-                <a href="../pages/pricing.html" class="upgrade-link">
-                    Upgrade to VIP <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        `;
+      <div class="standard-badge">
+          <span class="status-label">Standard Member (${userRole})</span>
+          <a href="../pages/pricing.html" class="upgrade-link">
+              Upgrade to VIP <i class="fas fa-arrow-right"></i>
+          </a>
+      </div>`;
   }
 }
 
-// 🏁 --- END OF STATUS MODULE ---
+// 🏁 --- END OF ROLE MODULE ---
