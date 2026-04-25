@@ -1,276 +1,380 @@
-
 <!doctype html>
 <html lang="en">
-<head>
-  <!-- =========================
+  <head>
+    <!-- =========================
        Google Tag Manager
   ========================== -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-TT7SLZ4L');
-  </script>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TT7SLZ4L");
+    </script>
 
-  <!-- =========================
+    <!-- =========================
        Basic Setup
   ========================== -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>BR30 Kart | India’s Multi-Seller Trading Education Marketplace</title>
+    <title>
+      BR30 Kart | India’s Multi-Seller Trading Education Marketplace
+    </title>
 
-  <!-- =========================
+    <!-- =========================
        SEO
   ========================== -->
-  <meta name="description"
-    content="BR30 Kart is a multi-seller trading education marketplace where top traders and experts sell courses and learners can buy verified trading education in India.">
+    <meta
+      name="description"
+      content="BR30 Kart is a multi-seller trading education marketplace where top traders and experts sell courses and learners can buy verified trading education in India."
+    />
 
-  <meta name="keywords"
-    content="BR30 Kart, trading marketplace, trading courses India, option trading, intraday trading, price action, SMC trading, trading mentorship, learn trading online">
+    <meta
+      name="keywords"
+      content="BR30 Kart, trading marketplace, trading courses India, option trading, intraday trading, price action, SMC trading, trading mentorship, learn trading online"
+    />
 
-  <meta name="author" content="BR30 Kart" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="BR30 Kart" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
 
-
-  <!-- =========================
+    <!-- =========================
        Canonical
   ========================== -->
-  <link rel="canonical" href="https://br30trader.com/" />
+    <link rel="canonical" href="https://br30trader.com/" />
 
-  <!-- =========================
+    <!-- =========================
        Favicon
   ========================== -->
-  <link rel="icon" href="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg" type="image/png" />
+    <link
+      rel="icon"
+      href="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+      type="image/png"
+    />
 
-  <!-- =========================
+    <!-- =========================
        Open Graph
   ========================== -->
-  <meta property="og:title" content="BR30 Kart | Multi-Seller Trading Education Platform" />
-  <meta property="og:description"
-    content="Buy and sell trading courses from verified expert traders on BR30 Kart marketplace." />
-  <meta property="og:image" content="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg" />
-  <meta property="og:url" content="https://br30trader.com/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="BR30 Kart" />
+    <meta
+      property="og:title"
+      content="BR30 Kart | Multi-Seller Trading Education Platform"
+    />
+    <meta
+      property="og:description"
+      content="Buy and sell trading courses from verified expert traders on BR30 Kart marketplace."
+    />
+    <meta
+      property="og:image"
+      content="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+    />
+    <meta property="og:url" content="https://br30trader.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BR30 Kart" />
 
-  <!-- =========================
+    <!-- =========================
        Twitter Card
   ========================== -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BR30 Kart | Trading Course Marketplace" />
-  <meta name="twitter:description"
-    content="India’s multi-seller trading education platform for learners and expert traders." />
-  <meta name="twitter:image" content="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="BR30 Kart | Trading Course Marketplace"
+    />
+    <meta
+      name="twitter:description"
+      content="India’s multi-seller trading education platform for learners and expert traders."
+    />
+    <meta
+      name="twitter:image"
+      content="https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg"
+    />
 
     <!-- ✅ Google Verification (ADD YOUR CODE) -->
-  <meta name="google-site-verification" content="u6_JlN-IlwPHN6vE3oG5rGPQdrqYgzFkbyLshK_RaHU" />
+    <meta
+      name="google-site-verification"
+      content="u6_JlN-IlwPHN6vE3oG5rGPQdrqYgzFkbyLshK_RaHU"
+    />
 
     <!-- ✅ Facebook Pixel (EDIT ID) -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
 
-    fbq('init', '977178398211683');
-    fbq('track', 'PageView');
-  </script>
+      fbq("init", "977178398211683");
+      fbq("track", "PageView");
+    </script>
 
-  <!-- ✅ Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BGGYNDEKH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-1BGGYNDEKH');
-  </script>
-  <!-- =========================
+    <!-- ✅ Google Analytics (GA4) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-1BGGYNDEKH"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-1BGGYNDEKH");
+    </script>
+    <!-- =========================
        Fonts & CSS
   ========================== -->
-  <!-- ✅ Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- ✅ Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <!-- ✅ Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-  <!-- ✅ SweetAlert -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <!-- ✅ SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
-  <!-- ✅ Trustpilot (optional but pro) -->
-  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-  <!-- =========================
+    <!-- ✅ Trustpilot (optional but pro) -->
+    <script
+      type="text/javascript"
+      src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+      async
+    ></script>
+    <!-- =========================
        Payment Gateway
   ========================== -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-  <!-- =========================
+    <!-- =========================
        Structured Data (Marketplace SEO)
   ========================== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "BR30 Kart",
-    "url": "https://br30trader.com/",
-    "logo": "https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg",
-    "founder": {
-      "@type": "Person",
-      "name": "Mukesh Raj"
-    },
-    "description": "Multi-seller trading education marketplace where expert traders sell courses and learners buy verified trading education.",
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "contactType": "support",
-      "email": "support.br30trader@gmail.com",
-      "availableLanguage": ["English", "Hindi"]
-    }],
-    "sameAs": [
-      "https://www.facebook.com/YOUR_PAGE",
-      "https://www.instagram.com/YOUR_PAGE",
-      "https://www.youtube.com/YOUR_CHANNEL",
-      "https://twitter.com/YOUR_HANDLE"
-    ]
-  }
-  </script>
- 
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BR30 Kart",
+        "url": "https://br30trader.com/",
+        "logo": "https://i.ibb.co/JRJ2Dv9W/BR30-LOGO.jpg",
+        "founder": {
+          "@type": "Person",
+          "name": "Mukesh Raj"
+        },
+        "description": "Multi-seller trading education marketplace where expert traders sell courses and learners buy verified trading education.",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "support",
+            "email": "support.br30trader@gmail.com",
+            "availableLanguage": ["English", "Hindi"]
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/YOUR_PAGE",
+          "https://www.instagram.com/YOUR_PAGE",
+          "https://www.youtube.com/YOUR_CHANNEL",
+          "https://twitter.com/YOUR_HANDLE"
+        ]
+      }
+    </script>
+  </head>
+
   <body>
-    
-      <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
- <header class="main-header">
-  <div class="header-container">
-    <!-- Logo Section -->
-    <div class="logo-title">
-      <a href="../index.html" style="display: flex; align-items: center; text-decoration: none">
-        <img src="images/BR30™  LOGO.jpeg" alt="logo" class="logo" style="width: 45px; height: 45px; border-radius: 8px" />
-        <h1 class="logo-text" style="margin-left: 10px; color: #ffffff !important">
-          <span class="purple">BR30</span> Kart
-        </h1>
-      </a>
-    </div>
-
-    <!-- 1. Mobile Sections Dropdown (Sirf Mobile par dikhega) -->
-    <div class="user-dropdown mobile-sections-dropdown">
-      <button class="dropdown-btn section-btn">
-        📂 Sections <span class="triangle-icon">▼</span>
-      </button>
-      <div class="dropdown-content">
-        <a href="#Premium-Trading-Courses"><span class="dot rules"></span> Premium</a>
-        <a href="#Trading-Standard-Course"><span class="dot ebook"></span> Standard</a>
-        <a href="#Crash-Course"><span class="dot graphics"></span> Crash</a>
-        <a href="#Other"><span class="dot graphics"></span> Other</a>
-        <a href="#pdfs"><span class="dot branding"></span> E-Books / PDF</a>
-      </div>
-    </div>
-
-    <!-- 2. Desktop Navigation (Desktop par waisa hi rahega) -->
-    <nav class="nav-pills desktop-nav">
-      <a href="#Premium-Trading-Courses" class="pill"><span class="dot rules"></span> Premium</a>
-      <a href="#Trading-Standard-Course" class="pill"><span class="dot ebook"></span> Standard</a>
-      <a href="#Crash-Course" class="pill"><span class="dot graphics"></span> Crash Course</a>
-      <a href="#Other" class="pill"><span class="dot graphics"></span> Other</a>
-      <a href="#pdfs" class="pill"><span class="dot branding"></span> E-Books / PDF</a>
-    </nav>
-
-    <!-- User Actions (Right Side) -->
-<div class="user-actions">
-  <div class="notification-container">
-    <div class="notification-icon" id="bellBtn">
-      <i class="bell-icon">🔔</i>
-      <span class="notif-count">0</span>
-    </div>
-
-    <!-- Notification Dropdown -->
-    <div class="notif-dropdown" id="notifDropdown">
-      <div class="notif-header">
-        <span>Notifications</span>
-        <button id="clearNotif">Clear All</button>
-      </div>
-      <div class="notif-body" id="notifBody">
-        <!-- JS से यहाँ डेटा आएगा -->
-        <p class="empty-msg">No new notifications</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-      <!-- Account Dropdown -->
-      <div class="user-dropdown">
-        <button class="dropdown-btn" id="navAccountBtn">
-          👤 Account <span class="triangle-icon">▼</span>
-        </button>
-        <div class="dropdown-content">
-           <a href="index.html">🏠 Home</a>
-          <a href="pages/login.html">🔐 Login / Register</a>
-          <a href="pages/profile.html">👤 My Profile</a>
-          <a href="pages/mycourse.html">🛍️ My Course</a>
-          <a href="pages/disclaimer.html">⚠️ Disclaimer</a>
-          <a href="pages/verify.html">🎖️ Certificate</a>
-          <a href="pages/aboutbr30.html">🏢 About US</a>
-             <a href="pages/how-it-works.html">⚙️ How it Works</a>
-          <a href="pages/seller-analytics.html" id="sellerDashLink">📤 Seller Dashboard</a>
-          <hr />
-          <a href="pages/learn-more.html" class="learn">🔍 Learn More</a>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="main-header">
+      <div class="header-container">
+        <!-- Logo Section -->
+        <div class="logo-title">
+          <a
+            href="../index.html"
+            style="display: flex; align-items: center; text-decoration: none"
+          >
+            <img
+              src="images/BR30™  LOGO.jpeg"
+              alt="logo"
+              class="logo"
+              style="width: 45px; height: 45px; border-radius: 8px"
+            />
+            <h1
+              class="logo-text"
+              style="margin-left: 10px; color: #ffffff !important"
+            >
+              <span class="purple">BR30</span>
+              Kart
+            </h1>
+          </a>
         </div>
+
+        <!-- 1. Mobile Sections Dropdown (Sirf Mobile par dikhega) -->
+        <div class="user-dropdown mobile-sections-dropdown">
+          <button class="dropdown-btn section-btn">
+            📂 Sections
+            <span class="triangle-icon">▼</span>
+          </button>
+          <div class="dropdown-content">
+            <a href="#Premium-Trading-Courses">
+              <span class="dot rules"></span>
+              Premium
+            </a>
+            <a href="#Trading-Standard-Course">
+              <span class="dot ebook"></span>
+              Standard
+            </a>
+            <a href="#Crash-Course">
+              <span class="dot graphics"></span>
+              Crash
+            </a>
+            <a href="#Other">
+              <span class="dot graphics"></span>
+              Other
+            </a>
+            <a href="#pdfs">
+              <span class="dot branding"></span>
+              E-Books / PDF
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Desktop Navigation (Desktop par waisa hi rahega) -->
+        <nav class="nav-pills desktop-nav">
+          <a href="#Premium-Trading-Courses" class="pill">
+            <span class="dot rules"></span>
+            Premium
+          </a>
+          <a href="#Trading-Standard-Course" class="pill">
+            <span class="dot ebook"></span>
+            Standard
+          </a>
+          <a href="#Crash-Course" class="pill">
+            <span class="dot graphics"></span>
+            Crash Course
+          </a>
+          <a href="#Other" class="pill">
+            <span class="dot graphics"></span>
+            Other
+          </a>
+          <a href="#pdfs" class="pill">
+            <span class="dot branding"></span>
+            E-Books / PDF
+          </a>
+        </nav>
+
+        <!-- User Actions (Right Side) -->
+        <div class="user-actions">
+          <div class="notification-container">
+            <div class="notification-icon" id="bellBtn">
+              <i class="bell-icon">🔔</i>
+              <span class="notif-count">0</span>
+            </div>
+
+            <!-- Notification Dropdown -->
+            <div class="notif-dropdown" id="notifDropdown">
+              <div class="notif-header">
+                <span>Notifications</span>
+                <button id="clearNotif">Clear All</button>
+              </div>
+              <div class="notif-body" id="notifBody">
+                <!-- JS से यहाँ डेटा आएगा -->
+                <p class="empty-msg">No new notifications</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Account Dropdown -->
+          <div class="user-dropdown">
+            <button class="dropdown-btn" id="navAccountBtn">
+              👤 Account
+              <span class="triangle-icon">▼</span>
+            </button>
+            <div class="dropdown-content">
+              <a href="index.html">🏠 Home</a>
+              <a href="pages/login.html">🔐 Login / Register</a>
+              <a href="pages/profile.html">👤 My Profile</a>
+              <a href="pages/mycourse.html">🛍️ My Course</a>
+              <a href="pages/disclaimer.html">⚠️ Disclaimer</a>
+              <a href="pages/verify.html">🎖️ Certificate</a>
+              <a href="pages/aboutbr30.html">🏢 About US</a>
+              <a href="pages/how-it-works.html">⚙️ How it Works</a>
+              <a href="pages/seller-analytics.html" id="sellerDashLink">
+                📤 Seller Dashboard
+              </a>
+              <hr />
+              <a href="pages/learn-more.html" class="learn">🔍 Learn More</a>
+            </div>
+          </div>
+        </div>
+        <!-- ✅ User Actions Closed -->
       </div>
-    </div>
-  </div>
-</header>
+      <!-- ✅ Header Container Closed -->
+    </header>
 
+    <!-- COURSES -->
+    <section id="Premium-Trading-Courses">
+      <h2>🎓 Premium Trading Courses:</h2>
+      <div id="Premium-Grid" class="grid"></div>
+    </section>
 
-<!-- COURSES -->
-<section id="Premium-Trading-Courses">
-  <h2>🎓 Premium Trading Courses:</h2>
-  <div id="Premium-Grid" class="grid"></div> 
-</section>
+    <!-- STANDARD -->
+    <section id="Trading-Standard-Course">
+      <h2>🎓 Trading Standard Course:</h2>
+      <div id="Standard-Grid" class="grid"></div>
+    </section>
 
-<!-- STANDARD -->
-<section id="Trading-Standard-Course">
-  <h2>🎓 Trading Standard Course:</h2>
-  <div id="Standard-Grid" class="grid"></div>
-</section>
+    <!-- CRASH COURSE -->
+    <section id="Crash-Course">
+      <h2>🎓 Crash Course:</h2>
+      <div id="Crash-Grid" class="grid"></div>
+    </section>
 
-<!-- CRASH COURSE -->
-<section id="Crash-Course">
-  <h2>🎓 Crash Course:</h2>
-  <div id="Crash-Grid" class="grid"></div>
-</section>
+    <section id="Other">
+      <h2>📂 Other:</h2>
+      <div id="Other-Grid" class="grid"></div>
+    </section>
 
-<section id="Other">
-  <h2>📂 Other:</h2>
-  <div id="Other-Grid" class="grid"></div>
-</section>
-
-<!-- PDF -->
-<section id="pdfs">
-  <h2>📘 E-Books / PDF:</h2>
-  <div id="PDF-Grid" class="grid"></div>
-</section>
-
-
-    <main></main>
+    <!-- PDF -->
+    <section id="pdfs">
+      <h2>📘 E-Books / PDF:</h2>
+      <div id="PDF-Grid" class="grid"></div>
+    </section>
 
     <!-- SELLER DETAIL POPUP (ZAROORI HAI) -->
     <div
@@ -358,67 +462,121 @@
           Close Details
         </button>
       </div>
-    </div>
 
       <!-- =========================================
          13. FOOTER REVIEW & FEEDBACK SECTION
     ========================================= -->
-  <!-- Highlight Stat -->
+      <!-- Highlight Stat -->
+      <h5
+        style="
+          margin: 0 0 10px 0;
+          font-size: 12px;
+          color: #888;
+          text-align: center;
+        "
+      >
+        6,000+ Happy Users in Last 3 Months.
+      </h5>
+      <div class="footer-review-section">
+        <div class="review-flex-container">
+          <!-- A. Share Your Experience: Review Form -->
+          <div class="review-form-box">
+            <h3>Share Your Experience</h3>
+            <form id="reviewForm">
+              <input
+                type="text"
+                id="userName"
+                placeholder="Your Name"
+                required
+              />
+              <select id="userRating">
+                <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+                <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+                <option value="3">⭐⭐⭐ (3 Stars)</option>
+              </select>
+              <textarea
+                id="userComment"
+                placeholder="Write your feedback here..."
+                required
+              ></textarea>
+              <button type="submit" id="submitBtn">Post Review</button>
+            </form>
+          </div>
 
-    <h5 style="margin: 0 0 10px 0; font-size: 12px; color: #888; text-align: center;">6,000+ Happy Users in Last 3 Months.</h5>
+          <!-- B. Community Highlights: Display Section (SCROLL ADDED) -->
+          <div class="review-list-box">
+            <!-- Header Section: Heading and Count Badge side by side -->
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 25px;
+                flex-wrap: nowrap;
+                width: 100%;
+              "
+            >
+              <!-- 1. Heading Part -->
+              <h3
+                style="
+                  margin: 0;
+                  color: #fff;
+                  font-size: 15px;
+                  white-space: nowrap;
+                  flex-shrink: 0;
+                "
+              >
+                Community Highlights
+                <span style="font-weight: normal; font-size: 12px; color: #888">
+                  (Top Review)
+                </span>
+              </h3>
 
-  <div class="footer-review-section">
-    <div class="review-flex-container">
+              <!-- 2. Dynamic Total Box -->
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 5px;
+                  flex-shrink: 0;
+                "
+              >
+                <span style="color: #fff; font-size: 12px; opacity: 0.9">
+                  Total
+                </span>
+                <div
+                  style="
+                    background: #00ff88;
+                    color: #000;
+                    padding: 2px 10px;
+                    border-radius: 4px;
+                    font-weight: bold;
+                    font-size: 11px;
+                    min-width: 45px;
+                    text-align: center;
+                    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+                  "
+                >
+                  <span id="countNumber" style="color: #000 !important"></span>
+                </div>
+              </div>
+            </div>
 
-      <!-- A. Share Your Experience: Review Form -->
-      <div class="review-form-box">
-        <h3>Share Your Experience</h3>
-        <form id="reviewForm">
-          <input type="text" id="userName" placeholder="Your Name" required>
-          <select id="userRating">
-            <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
-            <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
-            <option value="3">⭐⭐⭐ (3 Stars)</option>
-          </select>
-          <textarea id="userComment" placeholder="Write your feedback here..." required></textarea>
-          <button type="submit" id="submitBtn">Post Review</button>
-        </form>
+            <!-- रिव्यूज का एरिया -->
+            <div
+              id="reviewDisplay"
+              style="max-height: 320px; overflow-y: auto; padding-right: 5px"
+            >
+              <!-- Reviews yahan load honge -->
+            </div>
+          </div>
+          <!-- review-list-box ends -->
+        </div>
+        <!-- review-flex-container ends -->
       </div>
-
-      <!-- B. Community Highlights: Display Section (SCROLL ADDED) -->
-<div class="review-list-box">
-  <!-- Header Section: Heading and Count Badge side by side -->
-<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 25px; flex-wrap: nowrap; width: 100%;">
-    
-    <!-- 1. Heading Part -->
-    <h3 style="margin: 0; color: #fff; font-size: 15px; white-space: nowrap; flex-shrink: 0;">
-      Community Highlights <span style="font-weight: normal; font-size: 12px; color: #888;">(Top Review)</span>
-    </h3>
-
-    <!-- 2. Dynamic Total Box -->
-    <div style="display: flex; align-items: center; gap: 5px; flex-shrink: 0;">
-        <span style="color: #fff; font-size: 12px; opacity: 0.9;">Total</span>
-<div style="background: #00ff88; color: #000; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 11px; min-width: 45px; text-align: center; box-shadow: 0 0 10px rgba(0,255,136,0.3);">
-    <span id="countNumber" style="color: #000 !important;"></span>
-</div>
+      <!-- footer-review-section ends -->
     </div>
-    
-</div>
-
-  <!-- रिव्यूज का एरिया -->
-  <div id="reviewDisplay" style="max-height: 350px; overflow-y: auto;">
-    <!-- Reviews yahan load honge -->
-  </div>
-</div>
-
-  <!-- 3. रिव्यूज का डिब्बा -->
-  <div id="reviewDisplay" style="max-height: 320px; overflow-y: auto; padding-right: 5px;">
-    <!-- Reviews यहाँ आएँगे -->
-  </div>
-</div>
-
-    </div> <!-- review-flex-container ends -->
-  </div> <!-- footer-review-section ends -->
+    <!-- sellerDetailModal ends -->
 
     <!-- ../index.html ke liye -->
     <script src="./js/config.js"></script>
@@ -432,23 +590,28 @@
         <h3>🎓 Course Highlights</h3>
         <div class="highlights-grid">
           <a href="pages/besictoadvance.html" class="h-item">
-            <i class="fas fa-chart-line"></i> Basic to Advanced
+            <i class="fas fa-chart-line"></i>
+            Basic to Advanced
           </a>
 
           <a href="pages/livemarketanalysis.html" class="h-item">
-            <i class="fas fa-video"></i> Live Market Analysis
+            <i class="fas fa-video"></i>
+            Live Market Analysis
           </a>
 
           <a href="pages/riskmanagement.html" class="h-item">
-            <i class="fas fa-shield-alt"></i> Risk Management
+            <i class="fas fa-shield-alt"></i>
+            Risk Management
           </a>
 
           <a href="pages/lifetimeaccess.html" class="h-item">
-            <i class="fas fa-infinity"></i> Lifetime Access
+            <i class="fas fa-infinity"></i>
+            Lifetime Access
           </a>
 
           <a href="pages/supportcommunity.html" class="h-item">
-            <i class="fas fa-users"></i> Support Community
+            <i class="fas fa-users"></i>
+            Support Community
           </a>
         </div>
       </div>
@@ -459,7 +622,10 @@
       <div class="footer-container">
         <!-- Section 1: Brand Info -->
         <div class="footer-box brand-info">
-          <h2 class="footer-logo">BR30<span>TRADER</span></h2>
+          <h2 class="footer-logo">
+            BR30
+            <span>TRADER</span>
+          </h2>
           <p>
             Empowering traders with logic, psychology, and high-performance
             marketplace solutions. Join India's elite trading community.
@@ -499,7 +665,7 @@
               />
             </a>
             <!-- Telegram -->
-            <a href="https://t.me" target="_blank">
+            <a href="https://t.me/yourusername" target="_blank">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
                 width="22"
@@ -507,7 +673,7 @@
               />
             </a>
             <!-- WhatsApp -->
-            <a href="https://chat.whatsapp.com" target="_blank">
+            <a href="https://wa.me/6200986380" target="_blank">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
                 width="22"
@@ -515,14 +681,22 @@
               />
             </a>
             <!-- Gmail -->
-             <a href="mailto:support.br30trader@gmail.com?subject=Support%20Request&body=Hello%20Support%20Team%2C%0A%0AI%20need%20help%20regarding%20your%20services.%0A%0AThanks" target="_blank">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
-              width="22"
-              style="margin: 0 5px; background: white; border-radius: 50%; padding: 4px;"
-              alt="Gmail"
-            />
-         </a>
+            <a
+              href="mailto:support.br30trader@gmail.com?subject=Support%20Request&body=Hello%20Support%20Team%2C%0A%0AI%20need%20help%20regarding%20your%20services.%0A%0AThanks"
+              target="_blank"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+                width="22"
+                style="
+                  margin: 0 5px;
+                  background: white;
+                  border-radius: 50%;
+                  padding: 4px;
+                "
+                alt="Gmail"
+              />
+            </a>
           </div>
         </div>
 
@@ -551,25 +725,30 @@
         </div>
 
         <!-- Section 4: Contact Info -->
-     <div class="footer-box contact-details">
-  <h3>Get In Touch</h3>
+        <div class="footer-box contact-details">
+          <h3>Get In Touch</h3>
 
-<p>
-  <i class="fas fa-envelope"></i>
-  <a 
-    href="mailto:mukeshkumarsingh7488@gmail.com?subject=Web%20Service%20Inquiry&body=Hello%20Mukesh%2C%0A%0AMujhe%20aapki%20web%20services%20ke%20baare%20mein%20jaankari%20chahiye.%0A%0AKripya%20details%20share%20karein.%0A%0AThanks"
-    target="_blank"
-    class="mail-link"
-  >
-    mukeshkumarsingh7488@gmail.com
-  </a>
-</p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a
+              href="mailto:mukeshkumarsingh7488@gmail.com?subject=Web%20Service%20Inquiry&body=Hello%20Mukesh%2C%0A%0AMujhe%20aapki%20web%20services%20ke%20baare%20mein%20jaankari%20chahiye.%0A%0AKripya%20details%20share%20karein.%0A%0AThanks"
+              target="_blank"
+              class="mail-link"
+            >
+              mukeshkumarsingh7488@gmail.com
+            </a>
+          </p>
 
-  <p><i class="fas fa-map-marker-alt"></i> Based in India 🇮🇳</p>
-  <p class="built-by">Built with ❤️ by <span>Mukesh Raj</span></p>
-</div>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            Based in India 🇮🇳
+          </p>
+          <p class="built-by">
+            Built with ❤️ by
+            <span>Mukesh Raj</span>
+          </p>
+        </div>
       </div>
-
       <!-- Bottom Copyright Bar -->
       <div class="footer-bottom">
         <p>
@@ -578,6 +757,6 @@
         </p>
       </div>
     </footer>
-
+    <script src="../js/security.js"></script>
   </body>
 </html>
