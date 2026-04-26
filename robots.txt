@@ -24,6 +24,7 @@ Disallow: /pages/watch.html
 
 # 🚀 Allow public pages
 Allow: /pages/about.html
+Allow: /index.html
 Allow: /pages/aboutbr30.html
 Allow: /pages/besictoadvance.html
 Allow: /pages/contact.html
