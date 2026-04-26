@@ -23,7 +23,24 @@ Disallow: /pages/view-alart.html
 Disallow: /pages/watch.html
 
 # 🚀 Allow public pages
-Allow: /pages/
+Allow: /pages/about.html
+Allow: /pages/aboutbr30.html
+Allow: /pages/besictoadvance.html
+Allow: /pages/contact.html
+Allow: /pages/disclaimer.html
+Allow: /pages/how-it-works.html
+Allow: /pages/learn-more.html
+Allow: /pages/lifetimeaccess.html
+Allow: /pages/livemarketanalysis.html
+Allow: /pages/premiumcourse.html
+Allow: /pages/privacy.html
+Allow: /pages/refund.html
+Allow: /pages/riskmanagement.html
+Allow: /pages/service.html
+Allow: /pages/supportcommunity.html
+Allow: /pages/terms.html
+Allow: /pages/verify.html
+Allow: /pages/learn-more.html
 
 # 🧠 Main sitemap
-Sitemap: https://br30kart.com/sitemap.xml
+Sitemap: https://br-30-kart.vercel.app//sitemap.xml
