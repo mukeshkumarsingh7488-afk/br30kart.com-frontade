@@ -232,8 +232,8 @@ async function logout() {
     window.location.href = "login.html";
   }
 }
-// region ━━━━━ 👑 ROLE-BASED BADGE SYSTEM INITIALIZED ━━━━━
 
+// region ━━━━━ 👑 ROLE-BASED BADGE SYSTEM INITIALIZED ━━━━━
 function updateUserStatus(userData) {
   const vipContainer = document.getElementById("vipBadgeContainer");
   if (!vipContainer) return;
@@ -268,5 +268,4 @@ function updateUserStatus(userData) {
       </div>`;
   }
 }
-
 // 🏁 --- END OF ROLE MODULE ---

@@ -1,3 +1,4 @@
+//#region
 // 🔥 MUKESH KING - ADMIN ONLY ACCESS (Elite Security)
 (function protectAdminDashboard() {
   const role = localStorage.getItem("userRole");
@@ -3334,3 +3335,4 @@ document.querySelectorAll(".nav-item").forEach((item) => {
     }
   });
 });
+//#endregion

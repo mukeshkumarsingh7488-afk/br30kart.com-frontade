@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Master Admin | BR30 TRADER</title>
     <link rel="stylesheet" href="https://cloudflare.com" />
-        <!-- ✅ Icons -->
+    <!-- ✅ Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
-<link rel="stylesheet" href="../assets/css/admin-course.css" />
+    <link rel="stylesheet" href="../assets/css/admin-course.css" />
     <!-- sweet alart (swal, chart, pdf, etc.) -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -19,37 +19,43 @@
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   </head>
 
-<body>
+  <body>
     <!-- ✅ GTM noscript -->
-  <noscript>
-    <iframe
-      src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
-      height="0"
-      width="0"
-      style="display: none; visibility: hidden"
-    ></iframe>
-  </noscript>
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TT7SLZ4L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
 
     <main class="full-page-admin">
-        <!-- TOP HEADER -->
-        <header class="admin-header-v2">
-            <div class="header-left">
-                <button class="back-btn" onclick="window.location.href='admin-dashboard.html'">
-                    <i class="fas fa-arrow-left"></i> BACK TO HOME
-                </button>
-                <div class="title-group">
-                    <h1>🎓 COURSE MANAGEMENT PANEL 👑</h1>
-                    <p>Controll all course library, prices, and visibility.</p>
-                </div>
-            </div>
-            
-            <div class="admin-info-badge">
-                <span id="adminName" style="font-size: 13px;">mukeshkumarsingh7488@gmail.com</span>
-                <div class="dot-online"></div>
-            </div>
-        </header>
+      <!-- TOP HEADER -->
+      <header class="admin-header-v2">
+        <div class="header-left">
+          <button
+            class="back-btn"
+            onclick="window.location.href = 'admin-dashboard.html'"
+          >
+            <i class="fas fa-arrow-left"></i>
+            BACK TO HOME
+          </button>
+          <div class="title-group">
+            <h1>🎓 COURSE MANAGEMENT PANEL 👑</h1>
+            <p>Controll all course library, prices, and visibility.</p>
+          </div>
+        </div>
 
-    <!-- 🔥 ADMIN CONTROL BAR (Search & Filters) -->
+        <div class="admin-info-badge">
+          <span id="adminName" style="font-size: 13px">
+            mukeshkumarsingh7488@gmail.com
+          </span>
+          <div class="dot-online"></div>
+        </div>
+      </header>
+
+      <!-- 🔥 ADMIN CONTROL BAR (Search & Filters) -->
       <!-- Main Filter Bar -->
       <div
         style="
@@ -236,97 +242,144 @@
         </div>
       </div>
 
+      <!-- STATS SECTION -->
+      <section class="stats-row">
+        <div class="stat-box">
+          <h3 id="totalProducts">0</h3>
+          <p>Total Live Courses</p>
+        </div>
+        <div class="stat-box hidden-stat">
+          <h3 id="hiddenProducts">0</h3>
+          <p>Courses Approve Pending</p>
+        </div>
+        <div class="stat-box">
+          <h3 id="hiddendraf">0</h3>
+          <p>Courses Hidden/Draft</p>
+        </div>
+      </section>
 
-        <!-- STATS SECTION -->
-        <section class="stats-row">
-            <div class="stat-box">
-                <h3 id="totalProducts">0</h3>
-                <p>Total Live Courses</p>
-            </div>
-            <div class="stat-box hidden-stat">
-                <h3 id="hiddenProducts">0</h3>
-                <p>Courses Approve Pending</p>
-            </div>
-               <div class="stat-box">
-                <h3 id="hiddendraf">0</h3>
-                <p>Courses Hidden/Draft</p>
-            </div>
-        </section>
+      <!-- DATA TABLE -->
+      <section class="table-card">
+        <div class="table-responsive">
+          <table class="master-table">
+            <thead>
+              <tr>
+                <!-- 1. Select All Checkbox -->
+                <th style="width: 40px">
+                  <input
+                    type="checkbox"
+                    id="selectAll"
+                    style="cursor: pointer; width: 18px; height: 18px"
+                  />
+                </th>
 
-        <!-- DATA TABLE -->
-        <section class="table-card">
-           <div class="table-responsive">
-            <table class="master-table">
-             <thead>
-    <tr>
-        <!-- 1. Select All Checkbox -->
-        <th style="width: 40px;">
-            <input type="checkbox" id="selectAll" style="cursor: pointer; width: 18px; height: 18px;">
-        </th>
-        
-        <th>Date</th>
-        <th>Title & Category</th>
-        <th>Object Id</th>
-        <th>Seller Info</th>
-        <th>Price</th>
-        <th>Off %</th>
-        <th>Status</th>
+                <th>Date</th>
+                <th>Title & Category</th>
+                <th>Object Id</th>
+                <th>Seller Info</th>
+                <th>Price</th>
+                <th>Off %</th>
+                <th>Status</th>
 
-        <!-- 2. Bulk Action Dropdown in Header -->
-        <th style="text-align: center; min-width: 250px;">
-            <div style="display: flex; align-items: center; gap: 8px; justify-content: center;">
-                <span style="font-size: 11px; color: #aaa; text-transform: uppercase;">Bulk:</span>
-                <select id="bulkActionSelect" style="background: #1a1a1a; color: #fff; border: 1px solid #444; padding: 5px; border-radius: 4px; outline: none; cursor: pointer;">
-                    <option value="">-- Action --</option>
-                    <option value="approve">Approve</option>
-                    <option value="unapprove">Unapprove</option>
-                    <option value="hide">Hide</option>
-                    <option value="unhide">Unhide</option>
-                    <option value="bestseller">Mark Bestseller</option>
-                    <option value="remove_bestseller">Remove Bestseller</option>
-                    <option value="del_coupon">Delete Coupon</option>
-                    <option value="delete">Delete All</option>
-                </select>
-                <button id="applyBulkAction" style="background: #a020f0; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.3s;">
-                    Apply
-                </button>
-            </div>
-        </th>
-    </tr>
+                <!-- 2. Bulk Action Dropdown in Header -->
+                <th style="text-align: center; min-width: 250px">
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      justify-content: center;
+                    "
+                  >
+                    <span
+                      style="
+                        font-size: 11px;
+                        color: #aaa;
+                        text-transform: uppercase;
+                      "
+                    >
+                      Bulk:
+                    </span>
+                    <select
+                      id="bulkActionSelect"
+                      style="
+                        background: #1a1a1a;
+                        color: #fff;
+                        border: 1px solid #444;
+                        padding: 5px;
+                        border-radius: 4px;
+                        outline: none;
+                        cursor: pointer;
+                      "
+                    >
+                      <option value="">-- Action --</option>
+                      <option value="approve">Approve</option>
+                      <option value="unapprove">Unapprove</option>
+                      <option value="hide">Hide</option>
+                      <option value="unhide">Unhide</option>
+                      <option value="bestseller">Mark Bestseller</option>
+                      <option value="remove_bestseller">
+                        Remove Bestseller
+                      </option>
+                      <option value="del_coupon">Delete Coupon</option>
+                      <option value="delete">Delete All</option>
+                    </select>
+                    <button
+                      id="applyBulkAction"
+                      style="
+                        background: #a020f0;
+                        color: white;
+                        border: none;
+                        padding: 5px 12px;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition: 0.3s;
+                      "
+                    >
+                      Apply
+                    </button>
+                  </div>
 
-       <!-- 3. Actions column header fix -->
-          <th>Quick Actions</th>
-        </tr>
-      </thead>
+                  <!-- 3. Actions column header fix -->
+                </th>
 
-                <tbody id="adminProductList">
-                    <!-- Sample Row for Design Check -->
-                    <tr>
-                        <td>18-04-2026</td>
-                        <td><b>Crypto Masterclass</b><br><small style="color: var(--text-grey);">Premium</small></td>
-                        <td class="obj-id">69db4b67606a...</td>
-                        <td>Mukesh Kumar<br><small>mukesh@br30.com</small></td>
-                        <td>₹17,400</td>
-                        <td>20%</td>
-                        <td><span class="status-live">LIVE</span></td>
-                        <td class="admin-ctrl-btns">
-                            <button class="btn-sm btn-hide">Hide</button>
-                            <button class="btn-sm btn-coupon">Del Coupon</button>
-                            <button class="btn-sm btn-del">Delete</button>
-                        </td>
-                         <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        <tbody id="adminProductList">
-    <!-- Aapka dynamic data yahan aayega -->
-</tbody>
+                <th>Quick Actions</th>
+              </tr>
+            </thead>
 
+            <tbody id="adminProductList">
+              <!-- Sample Row for Design Check -->
+              <tr>
+                <td>18-04-2026</td>
+                <td>
+                  <b>Crypto Masterclass</b>
+                  <br />
+                  <small style="color: var(--text-grey)">Premium</small>
+                </td>
+                <td class="obj-id">69db4b67606a...</td>
+                <td>
+                  Mukesh Kumar
+                  <br />
+                  <small>mukesh@br30.com</small>
+                </td>
+                <td>₹17,400</td>
+                <td>20%</td>
+                <td><span class="status-live">LIVE</span></td>
+                <td class="admin-ctrl-btns">
+                  <button class="btn-sm btn-hide">Hide</button>
+                  <button class="btn-sm btn-coupon">Del Coupon</button>
+                  <button class="btn-sm btn-del">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
 
     <script src="../js/config.js"></script>
     <script src="../js/admin.js"></script>
-  <script src="../js/security.js"></script>
+    <script src="../js/security.js"></script>
   </body>
 </html>
