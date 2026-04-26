@@ -993,22 +993,6 @@ h2 {
   letter-spacing: 1px !important;
 }
 
-.footer-review-section {
-  display: flex !important; /* Forcefully dikhao */
-  visibility: visible !important;
-  opacity: 1 !important;
-  min-height: 500px !important;
-  position: relative !important;
-  z-index: 9999 !important;
-  background: #111827 !important; /* Dark background taaki nazar aaye */
-  margin-top: 100px !important;
-}
-
-.review-flex-container {
-  display: flex !important;
-  flex-wrap: wrap !important;
-}
-
 /* 🔥 FLEX CONTAINER FIX */
 .review-flex-container {
   display: flex;
