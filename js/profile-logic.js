@@ -159,12 +159,20 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
   const token = localStorage.getItem("token");
 
   if (!newName) {
-    return Swal.fire("Warning", "Name cannot be empty!", "warning");
+    return Swal.fire({
+      icon: "warning",
+      title: "Name Required",
+      text: "Please enter a valid name!",
+      background: "#111827",
+      color: "#fff",
+    });
   }
 
   try {
+    // ⏳ Loading State
     Swal.fire({
-      title: "Saving...",
+      title: "Updating Profile...",
+      allowOutsideClick: false,
       background: "#111827",
       color: "#fff",
       didOpen: () => {
@@ -182,35 +190,47 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
     });
 
     const data = await res.json();
+    console.log("📥 Server Response:", data); // Debugging ke liye
 
     if (res.ok) {
+      // ✅ Sahi field check karo (data.name ya data.user.name)
       const finalName = data.name || (data.user && data.user.name) || newName;
-      document.getElementById("userName").innerText = finalName;
 
-      // Reset UI
+      // UI Update
+      document.getElementById("userName").innerText = finalName;
       document.getElementById("userName").style.display = "block";
       document.getElementById("editName").style.display = "none";
       document.getElementById("editBtn").style.display = "inline-block";
       document.getElementById("saveBtn").style.display = "none";
 
-      // LocalStorage Sync
+      // 🔄 Sync LocalStorage
       let userData = JSON.parse(localStorage.getItem("userData")) || {};
       userData.name = finalName;
       localStorage.setItem("userData", JSON.stringify(userData));
 
+      // 🎉 Success Message
       Swal.fire({
         icon: "success",
-        title: "Name Updated!",
-        timer: 1500,
+        title: "Success!",
+        text: "Your profile name has been updated.",
+        timer: 2000,
         showConfirmButton: false,
         background: "#111827",
         color: "#fff",
       });
     } else {
-      throw new Error(data.msg || "Update failed");
+      // ❌ Backend error ko handle karein (message ya msg)
+      throw new Error(data.message || data.msg || "Server rejected the update");
     }
   } catch (err) {
-    Swal.fire("Error", err.message, "error");
+    console.error("❌ Update Error:", err);
+    Swal.fire({
+      icon: "error",
+      title: "Update Failed",
+      text: err.message,
+      background: "#111827",
+      color: "#fff",
+    });
   }
 });
 
