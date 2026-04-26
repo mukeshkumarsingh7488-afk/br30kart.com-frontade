@@ -993,6 +993,13 @@ h2 {
   letter-spacing: 1px !important;
 }
 
+.footer-review-section {
+  display: block !important;
+  visibility: visible !important;
+  min-height: 400px;
+  background: #000; /* Taaki dikhe ki kahan hai */
+}
+
 /* 🔥 FLEX CONTAINER FIX */
 .review-flex-container {
   display: flex;

@@ -1,3 +1,4 @@
+//#region
 const API_BASE = `${window.API_BASE_URL}/api/reviews`;
 
 let allReviews = []; // Global data for searching
@@ -150,3 +151,4 @@ function resetAllFilters() {
   // Refresh data from backend
   fetchReviews();
 }
+//#endregion
