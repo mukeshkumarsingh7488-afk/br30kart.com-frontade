@@ -342,6 +342,38 @@ function toggleDropdown(event, id) {
     dropdown.style.display === "block" ? "none" : "block";
 }
 
+// serch logic
+// ━━━━━ 🔍 SELLER SEARCH & TRACKER LOGIC ━━━━━
+
+function searchSeller() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const tableBody = document.getElementById("studentTrackerBody");
+  const rows = tableBody.getElementsByTagName("tr");
+
+  for (let i = 0; i < rows.length; i++) {
+    const sellerName =
+      rows[i].getElementsByTagName("td")[1]?.innerText.toLowerCase() || "";
+    const sellerEmail =
+      rows[i].getElementsByTagName("td")[2]?.innerText.toLowerCase() || "";
+
+    if (sellerName.includes(input) || sellerEmail.includes(input)) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
+  }
+}
+
+// Clear Search Function
+function clearSearch() {
+  const input = document.getElementById("searchInput");
+  input.value = "";
+  searchSeller();
+  input.focus();
+}
+
+// 🏁 --- END OF SEARCH MODULE ---
+
 document.addEventListener("click", () => {
   document
     .querySelectorAll(".course-dropdown-list")
