@@ -15,7 +15,7 @@ document.addEventListener("keydown", function (e) {
 // 🚫 DevTools detect + redirect
 setInterval(() => {
   if (window.outerWidth - window.innerWidth > 160) {
-    window.location.href = "https://br30kart.com";
+    window.location.href = "https://br-30-kart.vercel.app/";
   }
 }, 1000);
 
