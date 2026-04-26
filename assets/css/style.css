@@ -994,10 +994,19 @@ h2 {
 }
 
 .footer-review-section {
-  display: block !important;
+  display: flex !important; /* Forcefully dikhao */
   visibility: visible !important;
-  min-height: 400px;
-  background: #000; /* Taaki dikhe ki kahan hai */
+  opacity: 1 !important;
+  min-height: 500px !important;
+  position: relative !important;
+  z-index: 9999 !important;
+  background: #111827 !important; /* Dark background taaki nazar aaye */
+  margin-top: 100px !important;
+}
+
+.review-flex-container {
+  display: flex !important;
+  flex-wrap: wrap !important;
 }
 
 /* 🔥 FLEX CONTAINER FIX */
