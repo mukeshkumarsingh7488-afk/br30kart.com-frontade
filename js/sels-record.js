@@ -537,7 +537,7 @@ async function exportToPDF() {
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
 
-    const logoUrl = "../images/BR30™  LOGO.jpeg";
+    const logoUrl = "../https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png";
     try {
       doc.addImage(logoUrl, "JPEG", pageWidth - 110, 25, 70, 50);
     } catch (e) {
