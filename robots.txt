@@ -44,4 +44,4 @@ Allow: /pages/verify.html
 Allow: /pages/learn-more.html
 
 # 🧠 Main sitemap
-Sitemap: https://br-30-kart.vercel.app//sitemap.xml
+Sitemap: https://br-30-kart.vercel.app/sitemap.xml
