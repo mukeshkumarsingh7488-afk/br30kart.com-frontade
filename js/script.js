@@ -90,19 +90,8 @@ function renderDynamicSection(sectionId, items) {
     const sEmail = item.sellerEmail ? item.sellerEmail.trim() : "";
     const sName = item.sellerName || "Official Seller";
 
-    // --- ⏱️ TEST LOGIC: 5 MINUTE EXPIRY ---
-    const now = new Date().getTime();
-    const createdTime = new Date(
-      item.createdAt || item.couponCreatedAt,
-    ).getTime();
-    const expiryTime = createdTime + 5 * 60 * 1000; // 5 मिनट जोड़ रहे हैं
-
+    // ✅ बैकएंड से आ रहा डिस्काउंट ही असली है, उसे सीधा इस्तेमाल करो
     let discount = item.discount || 0;
-
-    // अगर 5 मिनट बीत चुके हैं, तो डिस्काउंट को ज़ीरो कर दो
-    if (now > expiryTime) {
-      discount = 0;
-    }
 
     const finalPriceValue = item.price - (item.price * discount) / 100;
 
