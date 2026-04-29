@@ -89,12 +89,8 @@ function renderDynamicSection(sectionId, items) {
   items.forEach((item) => {
     const sEmail = item.sellerEmail ? item.sellerEmail.trim() : "";
     const sName = item.sellerName || "Official Seller";
-
-    // ✅ बैकएंड से आ रहा डिस्काउंट ही असली है, उसे सीधा इस्तेमाल करो
     let discount = item.discount || 0;
-
     const finalPriceValue = item.price - (item.price * discount) / 100;
-
     // 🔥 BEST SELLER LOGIC: Check if product is featured
     const isFeatured =
       item.isFeatured === true || String(item.isFeatured) === "true";
@@ -191,8 +187,8 @@ function startCountdown(productId, createdAt) {
   if (!timerElement) return;
 
   // 7 din baad ki expiry date
-  const expiryDate = new Date(createdAt).getTime() + 7 * 24 * 60 * 60 * 1000;
-
+  // const expiryDate = new Date(createdAt).getTime() + 7 * 24 * 60 * 60 * 1000;
+  const expiryTime = startTime + 5 * 60 * 1000;
   const x = setInterval(function () {
     const now = new Date().getTime();
     const distance = expiryDate - now;
