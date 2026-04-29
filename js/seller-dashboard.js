@@ -865,11 +865,6 @@ async function saveGlobalCoupon() {
 function displayGlobalStatus(code, per) {
   const list = document.getElementById("couponList");
 
-  if (courseId && courseId !== "null") {
-    list.innerHTML = "";
-    return;
-  }
-
   list.innerHTML = `
         <div style="background: rgba(251, 191, 36, 0.1); border: 1px dashed #fbbf24; padding: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
             <div>
@@ -1178,13 +1173,16 @@ async function loadMyManageContent() {
                 </div>`;
     });
 
-    // 🔥 REFRESH FIX: Agar koi discount active hai, toh Global Sale box wapas dikhao
-    if (globalDiscountFound > 0) {
+    // 🔥 REFRESH FIX: Agar glonle discount active hai, toh Global Sale box wapas dikhao
+    const globalProduct = products.find(
+      (p) => p.discount > 0 && p.discountSource === "global",
+    );
+
+    if (globalProduct) {
       if (typeof displayGlobalStatus === "function") {
-        displayGlobalStatus("ACTIVE MEGA SALE", globalDiscountFound);
+        displayGlobalStatus("ACTIVE MEGA SALE", globalProduct.discount);
       }
     } else {
-      // Agar sab 0 hai toh box hata do
       const couponBox = document.getElementById("couponList");
       if (couponBox) couponBox.innerHTML = "";
     }
