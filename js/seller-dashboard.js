@@ -1173,16 +1173,13 @@ async function loadMyManageContent() {
                 </div>`;
     });
 
-    // 🔥 REFRESH FIX: Agar glonle discount active hai, toh Global Sale box wapas dikhao
-    const globalProduct = products.find(
-      (p) => p.discount > 0 && p.discountSource === "global",
-    );
-
-    if (globalProduct) {
+    // 🔥 REFRESH FIX: Agar koi discount active hai, toh Global Sale box wapas dikhao
+    if (globalDiscountFound > 0) {
       if (typeof displayGlobalStatus === "function") {
-        displayGlobalStatus("ACTIVE MEGA SALE", globalProduct.discount);
+        displayGlobalStatus("ACTIVE MEGA SALE", globalDiscountFound);
       }
     } else {
+      // Agar sab 0 hai toh box hata do
       const couponBox = document.getElementById("couponList");
       if (couponBox) couponBox.innerHTML = "";
     }
