@@ -180,21 +180,16 @@ style.innerHTML = `
 document.head.appendChild(style);
 
 // function buy btn no login no click
-
-// coupen countdown and apply logicc
 function startCountdown(productId, createdAt) {
   const timerElement = document.getElementById(`timer-${productId}`);
   if (!timerElement) return;
 
-  // 7 din baad ki expiry date
-  // const expiryDate = new Date(createdAt).getTime() + 7 * 24 * 60 * 60 * 1000;
   const startTime = new Date(createdAt).getTime();
-  const expiryTime = startTime + 5 * 60 * 1000;
+  const expiryTime = startTime + 7 * 24 * 60 * 60 * 1000;
   const x = setInterval(function () {
     const now = new Date().getTime();
     const distance = expiryTime - now;
 
-    // Time calculations
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
@@ -572,13 +567,11 @@ async function buyNow(product) {
       });
       return;
     }
-
-    // 🕒 2. DYNAMIC DISCOUNT & EXPIRY CHECK (5 MINUTE TEST)
     const now = new Date().getTime();
     const startTime = new Date(
       product.couponCreatedAt || product.createdAt,
     ).getTime();
-    const expiryTime = startTime + 5 * 60 * 1000;
+    const expiryTime = startTime + 7 * 24 * 60 * 60 * 1000;
 
     let finalPrice;
     let appliedDiscount = 0;
@@ -638,6 +631,13 @@ async function buyNow(product) {
       },
       theme: {
         color: "#00FFAB",
+      },
+
+      modal: {
+        ondismiss: function () {
+          console.log("Payment window closed by user");
+          Swal.close();
+        },
       },
 
       handler: async function (paymentResponse) {
