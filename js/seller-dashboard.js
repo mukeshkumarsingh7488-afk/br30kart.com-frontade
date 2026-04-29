@@ -864,6 +864,12 @@ async function saveGlobalCoupon() {
 // 2. Active Sale Status dikhane ke liye
 function displayGlobalStatus(code, per) {
   const list = document.getElementById("couponList");
+
+  if (courseId && courseId !== "null") {
+    list.innerHTML = "";
+    return;
+  }
+
   list.innerHTML = `
         <div style="background: rgba(251, 191, 36, 0.1); border: 1px dashed #fbbf24; padding: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
             <div>
