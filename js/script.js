@@ -557,8 +557,9 @@ async function openCouponPrompt(id) {
 // --- 🚀 FULLY AUTOMATIC PAYTM PAYMENT SYSTEM ---
 async function buyNow(product) {
   try {
-    // 🔐 1. LOGIN CHECK
+    // 🔐 1. LOGIN CHECK FIRST (IMPORTANT)
     const token = localStorage.getItem("token");
+
     if (!token) {
       Swal.fire({
         icon: "warning",
@@ -566,7 +567,8 @@ async function buyNow(product) {
         text: "Please login first to continue purchase",
         confirmButtonText: "Login Now",
       }).then(() => {
-        window.location.href = "/pages/login.html";
+        const LOGIN_URL = "/pages/login.html";
+        window.location.href = LOGIN_URL;
       });
       return;
     }
@@ -576,29 +578,34 @@ async function buyNow(product) {
     const startTime = new Date(
       product.couponCreatedAt || product.createdAt,
     ).getTime();
-    // ⚡ अभी टेस्ट के लिए 5 मिनट है, बाद में (7 * 24 * 60 * 60 * 1000) कर देना 7 दिन के लिए
     const expiryTime = startTime + 5 * 60 * 1000;
 
     let finalPrice;
     let appliedDiscount = 0;
 
-    // चेक करें कि डिस्काउंट अभी भी वैलिड है या नहीं
     if (now < expiryTime && product.discount > 0) {
       appliedDiscount = product.discount;
       finalPrice = product.price - (product.price * appliedDiscount) / 100;
     } else {
-      finalPrice = product.price; // ऑफर खत्म, असली दाम लगेगा
+      finalPrice = product.price;
     }
 
-    // 🔥 3. SHOW PROCESSING UI
+    console.log("Processing payment for:", product.title);
+
+    const discountPercentage = 20;
+    const discountAmount = (product.price * discountPercentage) / 100;
+    const finalPrice = product.price - discountAmount;
+
+    // 🔥 LOADING
     Swal.fire({
       title: "Processing Payment...",
-      text: `Payable Amount: ₹${finalPrice.toFixed(0)}`,
+      text: "Please wait...",
       allowOutsideClick: false,
-      didOpen: () => Swal.showLoading(),
+      didOpen: () => {
+        Swal.showLoading();
+      },
     });
 
-    // 📦 4. CREATE ORDER ON BACKEND
     const response = await fetch(
       `${CONFIG.BASE_API_URL}/payment/create-order`,
       {
@@ -624,7 +631,6 @@ async function buyNow(product) {
 
     const data = await response.json();
 
-    // 💳 5. RAZORPAY OPTIONS
     const options = {
       key: data.key,
       amount: data.amount,
@@ -635,7 +641,9 @@ async function buyNow(product) {
       prefill: {
         email: localStorage.getItem("userEmail") || "",
       },
-      theme: { color: "#00FFAB" },
+      theme: {
+        color: "#00FFAB",
+      },
 
       handler: async function (paymentResponse) {
         try {
@@ -645,7 +653,6 @@ async function buyNow(product) {
             didOpen: () => Swal.showLoading(),
           });
 
-          // 🛡️ 6. VERIFY PAYMENT ON BACKEND
           const verifyRes = await fetch(
             `${CONFIG.BASE_API_URL}/verify-payment`,
             {
@@ -670,6 +677,7 @@ async function buyNow(product) {
               timer: 2000,
               showConfirmButton: false,
             });
+
             setTimeout(() => {
               window.location.href = "/pages/mycourse.html";
             }, 2000);
