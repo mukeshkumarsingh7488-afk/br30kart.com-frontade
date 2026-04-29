@@ -60,3 +60,16 @@ footer {
   padding: 20px;
   background: #020617;
 }
+
+.center-text {
+  display: flex;
+  justify-content: center;
+}
+
+.center-text p {
+  font-size: 14px;
+  color: #ccc;
+  max-width: 800px;
+  text-align: center;
+  margin: 10px 0 0;
+}

@@ -129,10 +129,10 @@ body {
 }
 
 .learn-more-link {
-  background: none !important; /* Background hataya */
-  border: none !important; /* Border hataya */
-  padding: 0 !important; /* Padding khatam */
-  color: #a020f0 !important; /* Purple color (apne hisab se change kar lena) */
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  color: #a020f0 !important;
   text-decoration: none !important;
   font-size: 16px;
   cursor: pointer;
@@ -142,6 +142,19 @@ body {
 }
 
 .learn-more-link:hover {
-  color: #fff !important; /* Hover par safed ho jayega */
-  text-decoration: none; /* Underline hat jayegi */
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.center-text {
+  display: flex;
+  justify-content: center;
+}
+
+.center-text p {
+  font-size: 14px;
+  color: #ccc;
+  max-width: 800px;
+  text-align: center;
+  margin: 10px 0 0;
 }

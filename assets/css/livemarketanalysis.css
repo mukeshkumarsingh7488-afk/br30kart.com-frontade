@@ -124,3 +124,16 @@ h1 {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
 }
+
+.center-paragraph {
+  display: flex;
+  justify-content: center;
+}
+
+.center-paragraph p {
+  color: var(--text-gray);
+  max-width: 800px;
+  text-align: center;
+  margin: 0;
+  font-size: 14px;
+}

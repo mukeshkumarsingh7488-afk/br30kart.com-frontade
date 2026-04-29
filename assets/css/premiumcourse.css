@@ -169,3 +169,16 @@ body {
     font-size: 2rem;
   }
 }
+
+.center-text {
+  display: flex;
+  justify-content: center;
+}
+
+.center-text p {
+  color: #ccc;
+  max-width: 800px;
+  text-align: center;
+  margin: 10px 0 0;
+  font-size: 14px;
+}
