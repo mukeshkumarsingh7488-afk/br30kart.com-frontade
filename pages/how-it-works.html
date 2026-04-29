@@ -94,14 +94,38 @@
       {
         "@context": "https://schema.org",
         "@type": "HowTo",
+        "@id": "https://br-30-kart.vercel.app/pages/how-it-works.html#howto",
+
         "name": "How BR30 Kart Works",
         "description": "Learn how BR30 Kart marketplace works to buy and sell trading courses easily with expert traders across India.",
 
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://br-30-kart.vercel.app/pages/how-it-works.html"
+        },
+
         "publisher": {
           "@type": "Organization",
+          "@id": "https://br-30-kart.vercel.app/#organization",
+
           "name": "BR30 Kart",
           "url": "https://br-30-kart.vercel.app/",
-          "logo": "https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
+
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
+          }
+        },
+
+        "about": {
+          "@type": "Organization",
+          "name": "BR30 Kart",
+          "parentOrganization": {
+            "@type": "Organization",
+            "@id": "https://my-frontend-eight-roan.vercel.app/#organization",
+            "name": "BR30 Trader",
+            "url": "https://my-frontend-eight-roan.vercel.app/"
+          }
         },
 
         "contactPoint": {
@@ -109,11 +133,6 @@
           "contactType": "customer support",
           "email": "support.br30kart@gmail.com",
           "availableLanguage": ["English", "Hindi"]
-        },
-
-        "isPartOf": {
-          "@type": "Organization",
-          "name": "BR30 Trader"
         },
 
         "step": [

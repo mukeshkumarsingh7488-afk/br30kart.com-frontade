@@ -86,15 +86,36 @@
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
+        "@id": "https://br-30-kart.vercel.app/pages/disclaimer.html#webpage",
+
         "name": "Disclaimer | BR30 Kart",
         "url": "https://br-30-kart.vercel.app/pages/disclaimer.html",
         "description": "Official disclaimer page of BR30 Kart explaining educational purpose, risk warning, and liability terms.",
 
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "BR30 Kart",
+          "url": "https://br-30-kart.vercel.app/"
+        },
+
         "publisher": {
           "@type": "Organization",
-          "name": "Disclaimer",
+          "@id": "https://br-30-kart.vercel.app/#organization",
+
+          "name": "BR30 Kart",
           "url": "https://br-30-kart.vercel.app/",
-          "logo": "https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
+
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
+          },
+
+          "parentOrganization": {
+            "@type": "Organization",
+            "@id": "https://my-frontend-eight-roan.vercel.app/#organization",
+            "name": "BR30 Trader",
+            "url": "https://my-frontend-eight-roan.vercel.app/"
+          }
         },
 
         "about": {
@@ -102,22 +123,11 @@
           "name": "Trading Education Disclaimer"
         },
 
-        "isPartOf": {
-          "@type": "Organization",
-          "name": "BR30 Trader"
-        },
-
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer support",
           "email": "support.br30kart@gmail.com",
           "availableLanguage": ["English", "Hindi"]
-        },
-
-        "mainEntity": {
-          "@type": "Organization",
-          "name": "BR30 Kart",
-          "url": "https://br-30-kart.vercel.app/"
         }
       }
     </script>

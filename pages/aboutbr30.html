@@ -95,46 +95,52 @@
       {
         "@context": "https://schema.org",
         "@type": "AboutPage",
+        "@id": "https://br-30-kart.vercel.app/pages/aboutbr30.html#about",
+
         "name": "About BR30 Kart",
         "url": "https://br-30-kart.vercel.app/pages/aboutbr30.html",
-        "description": "Learn about BR30 Kart, a multi-seller digital marketplace for creators and learners.",
+        "description": "Learn about BR30 Kart and its connection with BR30 Trader ecosystem for trading education and digital marketplace services.",
 
         "mainEntity": {
           "@type": "Organization",
+          "@id": "https://br-30-kart.vercel.app/#organization",
+
           "name": "BR30 Kart",
           "url": "https://br-30-kart.vercel.app/",
-          "logo": "https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png",
-          "description": "BR30 Kart is the official multi-seller trading course marketplace by BR30 Trader, where expert traders sell verified trading courses and learners access quality education.",
+
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
+          },
+
+          "description": "BR30 Kart is a digital marketplace and learning platform that is part of the BR30 Trader ecosystem, providing access to trading education and creator-led courses.",
 
           "founder": {
             "@type": "Person",
             "name": "Mukesh Raj"
           },
 
-          "about": {
+          "parentOrganization": {
             "@type": "Organization",
-            "name": "BR30 Kart"
-          },
-
-          "isPartOf": {
-            "@type": "Organization",
-            "name": "BR30 Trader"
-          },
-
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer support",
-            "email": "support.br30kart@gmail.com",
-            "availableLanguage": ["English", "Hindi"]
+            "@id": "https://my-frontend-eight-roan.vercel.app/#organization",
+            "name": "BR30 Trader",
+            "url": "https://my-frontend-eight-roan.vercel.app/"
           },
 
           "sameAs": [
             "https://www.facebook.com/share/1DDJYGYYDf/",
             "https://www.instagram.com/br30Traderofficial?igsh=MWN5eHBscWY5bXFvMw==",
             "https://youtube.com/@mukeshkumarsingh4665?si=YirQA-CLVvJ3Y3sH",
-            "https://t.me/https://t.me/+hBAT4kWo63A4ZWY1",
+            "https://t.me/+hBAT4kWo63A4ZWY1",
             "https://chat.whatsapp.com/B4t82SWBcgOIZTeQXp1wDI"
-          ]
+          ],
+
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "support.br30kart@gmail.com",
+            "availableLanguage": ["English", "Hindi"]
+          }
         }
       }
     </script>
