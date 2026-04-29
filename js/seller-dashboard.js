@@ -953,22 +953,15 @@ async function stopMegaSale() {
 }
 
 // 2. Active Coupon ko UI par dikhane ke liye
-function displayCoupon(code, per, expiryDate) {
+function displayCoupon(code, per) {
   const list = document.getElementById("couponList");
   if (!list) return;
 
-  const now = new Date();
-  const expiry = new Date(expiryDate);
-  const isExpired = now > expiry;
-
   list.innerHTML = `
-        <div class="active-coupon-card" style="margin-top:15px; border: 1px solid ${isExpired ? "#ff4d4d" : "#00ffcc"}; padding:10px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; background:${isExpired ? "rgba(255,77,77,0.05)" : "rgba(0,255,204,0.05)"};">
+        <div class="active-coupon-card" style="margin-top:15px; border:1px solid #00ffcc; padding:10px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; background:rgba(0,255,204,0.05);">
             <div>
-                <span style="color: ${isExpired ? "#ff4d4d" : "#00ffcc"}; font-weight: bold;">
-                    ${isExpired ? "EXPIRED" : "LIVE"}: ${code}
-                </span> 
+                <span style="color: #00ffcc; font-weight: bold;">LIVE: ${code}</span> 
                 <small style="margin-left:10px; color: #fff;">(${per}% OFF on All)</small>
-                ${isExpired ? '<br><small style="color:red;">यह कूपन अब काम नहीं करेगा</small>' : ""}
             </div>
             <button onclick="deleteGlobalCoupon()" class="delete-btn" style="background:none; border:none; cursor:pointer; font-size:18px;">🗑️</button>
         </div>`;

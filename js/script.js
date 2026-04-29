@@ -591,11 +591,6 @@ async function buyNow(product) {
     }
 
     console.log("Processing payment for:", product.title);
-
-    const discountPercentage = 20;
-    const discountAmount = (product.price * discountPercentage) / 100;
-    const finalPrice = product.price - discountAmount;
-
     // 🔥 LOADING
     Swal.fire({
       title: "Processing Payment...",
