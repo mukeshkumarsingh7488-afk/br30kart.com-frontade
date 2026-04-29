@@ -188,10 +188,11 @@ function startCountdown(productId, createdAt) {
 
   // 7 din baad ki expiry date
   // const expiryDate = new Date(createdAt).getTime() + 7 * 24 * 60 * 60 * 1000;
+  const startTime = new Date(createdAt).getTime();
   const expiryTime = startTime + 5 * 60 * 1000;
   const x = setInterval(function () {
     const now = new Date().getTime();
-    const distance = expiryDate - now;
+    const distance = expiryTime - now;
 
     // Time calculations
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
