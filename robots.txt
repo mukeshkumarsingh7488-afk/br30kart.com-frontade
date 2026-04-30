@@ -10,7 +10,9 @@ Disallow: /pages/admin-orders.html
 Disallow: /pages/forgot.html
 Disallow: /pages/login.html
 Disallow: /pages/profile.html
+Disallow: /pages/mycourse.html
 Disallow: /pages/register.html
+Disallow: /pages/revew.html
 Disallow: /pages/reset.html
 Disallow: /pages/s-bestseller.html
 Disallow: /pages/s-payout-history.html
@@ -41,7 +43,7 @@ Allow: /pages/service.html
 Allow: /pages/supportcommunity.html
 Allow: /pages/terms.html
 Allow: /pages/verify.html
-Allow: /pages/learn-more.html
+Allow: /pages/view-seller-program.html
 
 # 🧠 Main sitemap
 Sitemap: https://br-30-kart.vercel.app/sitemap.xml
