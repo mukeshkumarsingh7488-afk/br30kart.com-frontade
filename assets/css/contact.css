@@ -111,3 +111,35 @@ b {
     /* Email/Address lambe ho toh mobile pe fix rahega */
   }
 }
+/* =========================================
+        SUPPORT PAGE HEADING STYLE (h3)
+========================================= */
+.contact-box h3 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  border-left: 4px solid #a020f0;
+  padding-left: 10px;
+  text-align: left;
+}
+.contact-box {
+  text-align: left;
+}
+.contact-box p {
+  margin-bottom: 12px;
+}
+.contact-box .desc {
+  color: #ccc;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+.contact-box .subtext {
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+.contact-box p {
+  word-break: break-word;
+}

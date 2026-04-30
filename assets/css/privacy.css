@@ -92,3 +92,28 @@ p {
     /* Choti screen par clean dikhega */
   }
 }
+/* =========================================
+           LEGAL HEADINGS (h3) STYLING
+        ========================================= */
+.box h3 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  border-left: 4px solid #a020f0;
+  padding-left: 10px;
+  text-align: left;
+}
+.box p {
+  text-align: left;
+}
+.box p {
+  margin-bottom: 15px;
+}
+.box strong {
+  color: #a020f0;
+}
+.box {
+  text-align: left;
+}

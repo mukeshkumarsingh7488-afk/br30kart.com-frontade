@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Checkout | BR30 Kart</title>
+
+    <style>
+      body {
+        background: #050505;
+        color: white;
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .checkout-box {
+        background: #111;
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px solid #0f8;
+        width: 400px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .item-info {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 15px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #333;
+        background: #000;
+        color: #fff;
+        outline: none;
+      }
+
+      .pay-btn {
+        background: #0f8;
+        color: #000;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        width: 100%;
+        font-size: 16px;
+        transition: 0.3s ease;
+        margin-top: 15px;
+      }
+
+      .pay-btn:hover {
+        background: #00cc6a;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="checkout-box">
+      <h2>🛒 Order Summary</h2>
+
+      <div class="item-info">
+        <p id="courseName">Course: Basic to Advanced</p>
+        <h3 id="coursePrice">Price: ₹34</h3>
+      </div>
+
+      <div style="text-align: left">
+        <label>Name:</label>
+        <input type="text" id="userName" placeholder="Your Name" />
+      </div>
+
+      <button class="pay-btn" onclick="startPayment()">Proceed to Pay</button>
+    </div>
+
+    <!-- ✅ Correct Razorpay Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+      function startPayment() {
+        const name = document.getElementById("userName").value;
+
+        if (!name) {
+          alert("Please enter your name");
+          return;
+        }
+
+        const options = {
+          key: "YOUR_RAZORPAY_KEY", // 🔥 yahan apna key daalna
+          amount: 3400, // ₹34 = 3400 paise
+          currency: "INR",
+          name: "BR30 Kart",
+          description: "Course Purchase",
+          handler: function (response) {
+            alert("Payment Successful! ID: " + response.razorpay_payment_id);
+            console.log(response);
+          },
+          prefill: {
+            name: name,
+          },
+          theme: {
+            color: "#0f8",
+          },
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.open();
+      }
+    </script>
+  </body>
+</html>

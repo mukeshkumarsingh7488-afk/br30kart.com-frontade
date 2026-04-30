@@ -93,3 +93,28 @@ b {
     font-size: 14px;
   }
 }
+/* =========================================
+        LEGAL HEADINGS (h3) STYLE FIX
+========================================= */
+.box h3 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  border-left: 4px solid #a020f0;
+  padding-left: 10px;
+  text-align: left;
+}
+.box {
+  text-align: left;
+}
+.box p {
+  margin-bottom: 15px;
+}
+.box p b {
+  font-weight: 600;
+}
+.box strong {
+  color: #a020f0;
+}
