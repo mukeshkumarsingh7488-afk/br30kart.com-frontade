@@ -1,6 +1,3 @@
-/* =========================================
-           GLOBAL & BODY STYLING (Dark Theme)
-        ========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -9,74 +6,117 @@
 }
 
 body {
-  background-color: #050505;
-  /* Aapka Body Color */
-  color: #ffffff;
+  background: #050505;
+  color: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
-/* =========================================
-           TERMS BOX (Responsive & Clean)
-        ========================================= */
-.box {
+/* =========================
+   MAIN LEGAL CONTAINER
+========================= */
+.policy-container {
+  max-width: 950px;
   width: 100%;
-  max-width: 600px;
-  /* Desktop width limit */
-  padding: 40px;
-  text-align: center;
   background: #1e293b;
-  /* Premium Dark Card */
-  border-radius: 20px;
   border: 1px solid #334155;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  animation: fadeIn 0.6s ease-out;
+  border-radius: 22px;
+  padding: 45px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  animation: fadeUp 0.6s ease-in-out;
 }
 
-@keyframes fadeIn {
+/* Smooth entry animation */
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(25px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-h1 {
+/* =========================
+   TITLE SECTION
+========================= */
+.policy-title h1 {
+  font-size: 32px;
   color: #a020f0;
-  /* Brand Purple */
-  font-size: 28px;
-  margin-bottom: 25px;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.policy-title .meta {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   PARAGRAPH TEXT
+========================= */
+.policy-body p {
+  font-size: 16px;
+  color: #cbd5e1;
+  line-height: 1.9;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+.policy-body h3 {
+  font-size: 18px;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 12px;
+  font-weight: 600;
+
+  border-left: 4px solid #a020f0;
+  padding-left: 12px;
+}
+
+/* =========================
+   LIST STYLING
+========================= */
+.policy-body ul {
+  margin-left: 22px;
+  margin-bottom: 15px;
+}
+
+.policy-body ul li {
+  font-size: 15px;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* =========================
+   STRONG / B TAG
+========================= */
+.policy-body b {
+  color: #a020f0;
   font-weight: 600;
 }
 
-p {
-  color: #cbd5e1;
-  /* Soft White */
-  font-size: 16px;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-/* =========================================
-           PURPLE BUTTON STYLING
-        ========================================= */
+/* =========================
+   BACK BUTTON
+========================= */
 .btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 12px 35px;
-  background-color: #a020f0;
-  /* Purple Button */
-  color: white;
+  margin-top: 30px;
+  padding: 13px 32px;
+  background: #a020f0;
+  color: #fff;
   text-decoration: none;
+  border-radius: 12px;
   font-weight: 600;
-  border-radius: 10px;
   transition: 0.3s ease;
   border: 1px solid #a020f0;
 }
@@ -85,44 +125,26 @@ p {
   background: transparent;
   color: #a020f0;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
+  box-shadow: 0 12px 30px rgba(160, 32, 240, 0.35);
 }
 
-/* Mobile Adjustments (Dimensions Fix) */
-@media (max-width: 480px) {
-  .box {
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 768px) {
+  .policy-container {
     padding: 30px 20px;
   }
 
-  h1 {
-    font-size: 22px;
+  .policy-title h1 {
+    font-size: 24px;
   }
 
-  p {
+  .policy-body p {
     font-size: 14px;
-    text-align: justify;
-    /* Cleaner look on mobile */
   }
-}
 
-h3 {
-  color: #ffffff;
-  font-size: 18px;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  border-left: 4px solid #a020f0;
-  padding-left: 10px;
-}
-.box p {
-  text-align: left;
-}
-.box p {
-  margin-bottom: 15px;
-}
-.box {
-  text-align: left;
-}
-.box strong {
-  color: #a020f0;
+  .policy-body h3 {
+    font-size: 16px;
+  }
 }
