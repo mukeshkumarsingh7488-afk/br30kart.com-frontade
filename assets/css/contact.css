@@ -1,6 +1,3 @@
-/* =========================================
-           1. GLOBAL & BODY STYLING
-           ========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -9,82 +6,130 @@
 }
 
 body {
-  background-color: #050505;
-  /* Aapka Body Color */
-  color: #ffffff;
+  background: #050505;
+  color: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
-/* =========================================
-           2. CONTACT BOX (CONTAINER)
-           ========================================= */
-.contact-box {
+/* =========================
+   MAIN CONTAINER
+========================= */
+.contact-container {
+  max-width: 850px;
   width: 100%;
-  max-width: 550px;
-  padding: 40px;
-  text-align: center;
   background: #1e293b;
-  /* Premium Dark Card */
-  border-radius: 24px;
   border: 1px solid #334155;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  animation: popup 0.7s ease-out;
+  border-radius: 22px;
+  padding: 45px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  animation: fadeUp 0.6s ease;
 }
 
-@keyframes popup {
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(25px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* =========================================
-           3. TEXT & CONTENT STYLING
-           ========================================= */
-h1 {
+/* =========================
+   HEADER
+========================= */
+.contact-header h1 {
+  text-align: center;
   color: #a020f0;
-  /* Brand Purple */
-  font-size: 28px;
-  margin-bottom: 25px;
-  font-weight: 600;
+  font-size: 30px;
+  margin-bottom: 5px;
 }
 
-p {
+.contact-header .meta {
+  text-align: center;
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+/* =========================
+   TEXT STYLING
+========================= */
+.desc {
   color: #cbd5e1;
   font-size: 16px;
   line-height: 1.8;
   margin-bottom: 15px;
 }
 
-b {
-  color: #a020f0;
-  /* Purple Labels */
-  font-weight: 600;
+.subtext {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
-/* =========================================
-           4. PURPLE BUTTON STYLING
-           ========================================= */
+/* =========================
+   SECTION HEADINGS
+========================= */
+.contact-body h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 12px;
+  border-left: 4px solid #a020f0;
+  padding-left: 10px;
+}
+
+/* =========================
+   INFO CARD (NEW FEATURE)
+========================= */
+.info-card {
+  background: #0f172a;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.info-card b {
+  color: #a020f0;
+}
+
+/* =========================
+   LIST
+========================= */
+ul {
+  margin-left: 20px;
+  color: #cbd5e1;
+}
+
+ul li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+/* =========================
+   BUTTON
+========================= */
 .btn {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 35px;
-  background-color: #a020f0;
-  /* Purple Button */
+  margin-top: 25px;
+  padding: 13px 32px;
+  background: #a020f0;
   color: white;
   text-decoration: none;
   border-radius: 12px;
   font-weight: 600;
-  transition: 0.3s ease;
+  transition: 0.3s;
   border: 1px solid #a020f0;
 }
 
@@ -92,54 +137,22 @@ b {
   background: transparent;
   color: #a020f0;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(160, 32, 240, 0.3);
+  box-shadow: 0 10px 25px rgba(160, 32, 240, 0.35);
 }
 
-/* Mobile Adjustments (Dimension Fix) */
-@media (max-width: 480px) {
-  .contact-box {
-    padding: 30px 20px;
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 600px) {
+  .contact-container {
+    padding: 25px 18px;
   }
 
-  h1 {
+  .contact-header h1 {
     font-size: 24px;
   }
 
-  p {
+  .desc {
     font-size: 14px;
-    word-wrap: break-word;
-    /* Email/Address lambe ho toh mobile pe fix rahega */
   }
-}
-/* =========================================
-        SUPPORT PAGE HEADING STYLE (h3)
-========================================= */
-.contact-box h3 {
-  color: #ffffff;
-  font-size: 18px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  border-left: 4px solid #a020f0;
-  padding-left: 10px;
-  text-align: left;
-}
-.contact-box {
-  text-align: left;
-}
-.contact-box p {
-  margin-bottom: 12px;
-}
-.contact-box .desc {
-  color: #ccc;
-  font-size: 15px;
-  margin-bottom: 12px;
-}
-.contact-box .subtext {
-  color: #aaa;
-  font-size: 13px;
-  margin-bottom: 15px;
-}
-.contact-box p {
-  word-break: break-word;
 }
