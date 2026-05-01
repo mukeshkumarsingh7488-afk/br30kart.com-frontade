@@ -271,11 +271,23 @@
           </div>
           <h2>WhatsApp Support</h2>
           <p>सिर्फ मैसेज करें। तुरंत रिप्लाई के लिए अपना Query लिखकर भेजें।</p>
-          <a href="https://wa.me/916200986380" class="whatsapp-btn">
-            Chat on WhatsApp
+          <a
+            href="https://wa.me/916200986380?text=Hello%20BR30%20Support%20Team%2C%20mujhe%20help%20chahiye..."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="whatsapp-btn"
+          >
+            💬 Chat on WhatsApp
           </a>
+
           <p style="margin-top: 10px; font-weight: bold; color: var(--white)">
-            +91 6200986380
+            <a
+              href="tel:+916200986380"
+              id="contactNumber"
+              style="color: var(--white); text-decoration: none"
+            >
+              📞 +91 6200986380
+            </a>
           </p>
         </div>
       </div>
@@ -291,10 +303,33 @@
 
       <div class="back-btn-container">
         <div style="text-align: center">
-          <a href="../index.html" class="btn-home">⬅ Back to Home</a>
+          <a
+            href="../index.html"
+            class="btn-home"
+            title="Go back to the homepage"
+            aria-label="Go back to the homepage"
+          >
+            ← Back to Home
+          </a>
         </div>
       </div>
-      <script src="../js/security.js"></script>
     </div>
+    <script>
+      const contact = document.getElementById("contactNumber");
+
+      contact.addEventListener("click", function (e) {
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        if (!isMobile) {
+          e.preventDefault();
+
+          const message = encodeURIComponent(
+            "Hello BR30 Support Team, mujhe help chahiye...",
+          );
+
+          window.open(`https://wa.me/916200986380?text=${message}`, "_blank");
+        }
+      });
+    </script>
   </body>
 </html>

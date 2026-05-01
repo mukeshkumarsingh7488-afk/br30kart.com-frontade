@@ -194,11 +194,23 @@
         <div class="info-card">
           <p>
             <b>Email:</b>
-            support.br30trader@gmail.com
+            <a
+              href="mailto:support.br30trader@gmail.com?subject=Support%20Request&body=Hello%20BR30%20Support%20Team,%0A%0AMujhe%20help%20chahiye%20regarding%20..."
+              style="text-decoration: none; color: inherit"
+            >
+              support.br30trader@gmail.com
+            </a>
           </p>
+
           <p>
             <b>Phone:</b>
-            +91 6200986380
+            <a
+              href="tel:+916200986380"
+              id="contactNumber"
+              style="text-decoration: none; color: inherit"
+            >
+              +91 6200986380
+            </a>
           </p>
           <p>
             <b>Address:</b>
@@ -215,10 +227,34 @@
           <li>Clearly mention your issue or order ID</li>
           <li>Avoid multiple duplicate messages</li>
         </ul>
-
-        <a href="../index.html" class="btn">Back Home</a>
+        <hr />
+        <p>Funded & Built by Mukesh Raj | BR30 Trader</p>
+        <a
+          href="../index.html"
+          class="btn"
+          title="Go back to the homepage"
+          aria-label="Go back to the homepage"
+        >
+          ← Back to Home
+        </a>
       </div>
     </div>
-    <script src="../js/security.js"></script>
+    <script>
+      const contact = document.getElementById("contactNumber");
+
+      contact.addEventListener("click", function (e) {
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        if (!isMobile) {
+          e.preventDefault();
+
+          const message = encodeURIComponent(
+            "Hello BR30 Support Team, mujhe help chahiye...",
+          );
+
+          window.open(`https://wa.me/916200986380?text=${message}`, "_blank");
+        }
+      });
+    </script>
   </body>
 </html>
