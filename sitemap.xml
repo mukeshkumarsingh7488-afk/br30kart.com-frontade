@@ -3,7 +3,7 @@
 
   <!-- 🏠 Home -->
   <url>
-    <loc>https://br-30-kart.vercel.app/index.html</loc>
+    <loc>https://br-30-kart.vercel.app/</loc>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
   </url>
