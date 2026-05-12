@@ -1290,3 +1290,45 @@ select {
 .mail-link:hover::after {
   width: 100%;
 }
+.social-multi a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin: 5px;
+  border-radius: 50%;
+  background: #111;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* icon image fix */
+.social-multi a img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* hover effect common */
+.social-multi a:hover {
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* X (Twitter) */
+.social-multi a[href*="x.com"]:hover {
+  background: #000;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Threads */
+.social-multi a[href*="threads"]:hover {
+  background: #000;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+/* LinkedIn */
+.social-multi a[href*="linkedin"]:hover {
+  background: #0a66c2;
+  box-shadow: 0 0 12px rgba(10, 102, 194, 0.5);
+}
