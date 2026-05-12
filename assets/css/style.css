@@ -884,6 +884,59 @@ h2 {
   padding-left: 5px;
 }
 
+/* 1. सोशल कंटेनर सेटिंग्स (फिक्स्ड स्पेसिंग और एलाइनमेंट) */
+.social-multi {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.social-multi a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #111;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-multi a img {
+  display: block;
+  width: 20px;
+  height: auto;
+}
+
+.social-multi a i.fa-threads {
+  font-size: 20px;
+  color: #ffffff !important;
+  display: inline-block;
+  line-height: 1;
+}
+
+.social-multi a:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  box-shadow: 0 6px 15px rgba(0, 114, 255, 0.4);
+}
+
+.social-multi a:nth-child(7):hover {
+  background: #000000;
+}
+
+.social-multi a:nth-child(8):hover {
+  background: #000000;
+}
+
+.social-multi a:nth-child(9):hover {
+  background: #0a66c2;
+}
+
 .contact-details p {
   font-size: 0.9rem;
   color: #d1d1d1;
