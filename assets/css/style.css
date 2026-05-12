@@ -1290,7 +1290,3 @@ select {
 .mail-link:hover::after {
   width: 100%;
 }
-
-.social-multi a i {
-  font-size: 20px;
-}
