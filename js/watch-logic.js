@@ -1,3 +1,4 @@
+//#region
 let player;
 let currentCourseName = "";
 
@@ -10,61 +11,47 @@ const courseId = params.get("id");
 
 console.log("📥 Course ID:", courseId);
 
-// 🔐 AUTH CHECK
 if (!token) {
   window.location.href = "login.html";
 }
-
 if (!courseId) {
   alert("Invalid Course!");
   window.location.href = "mycourse.html";
 }
 
-// 🎥 YOUTUBE ID EXTRACTOR
 function getYTID(url) {
   try {
     if (!url) return null;
     const u = new URL(url);
-
     if (u.hostname.includes("youtu.be")) return u.pathname.slice(1);
     if (u.pathname.includes("/shorts/")) return u.pathname.split("/shorts/")[1];
-
     return u.searchParams.get("v");
   } catch {
     return null;
   }
 }
 
-// ✅ YT READY
 function onYouTubeIframeAPIReady() {
   console.log("✅ YouTube Ready");
   loadCourseContent();
 }
 
-// 🚀 LOAD COURSE
 async function loadCourseContent() {
   try {
     console.log("📡 Loading course...");
-
     const res = await fetch(`${API}/${courseId}`, {
       headers: { "x-auth-token": token },
     });
-
     if (res.status === 401 || res.status === 403) {
       alert("Access Denied!");
       window.location.href = "../index.html";
       return;
     }
-
     const course = await res.json();
     console.log("📦 Course:", course);
-
     currentCourseName = course.title;
     document.getElementById("course-title").innerText = course.title;
-
-    // 💥🔥 FINAL FIX (DUAL SUPPORT)
     let lessons = [];
-
     if (Array.isArray(course.lessons) && course.lessons.length > 0) {
       lessons = course.lessons;
     } else if (course.videoLink) {
@@ -75,28 +62,20 @@ async function loadCourseContent() {
         },
       ];
     }
-
     if (!lessons.length) {
       document.getElementById("playlist").innerHTML = "❌ No videos found";
       return;
     }
-
-    // 🎬 FIRST VIDEO LOAD
     loadVideo(lessons[0]);
-
-    // 📚 PLAYLIST
     renderPlaylist(lessons);
   } catch (err) {
     console.error("❌ Error:", err);
   }
 }
 
-// 🎬 LOAD VIDEO
 function loadVideo(lesson, index) {
   const videoId = getYTID(lesson.videoUrl);
-
   if (!videoId) return;
-
   if (!player) {
     player = new YT.Player("main-video-iframe", {
       videoId: videoId,
@@ -107,18 +86,10 @@ function loadVideo(lesson, index) {
   } else {
     player.loadVideoById(videoId);
   }
-
-  // Title update karo
   const titleEl = document.getElementById("current-video-title");
   if (titleEl) titleEl.innerText = lesson.lessonTitle;
-
-  // 🔥 ACTIVE CLASS (SAFE VERSION)
   const videoItems = document.querySelectorAll(".video-item");
-
-  // Pehle saari active classes hatao
   videoItems.forEach((el) => el.classList.remove("active"));
-
-  // 🛑 FIX: Check karo ki ye index wala element asli mein exist karta hai ya nahi
   if (videoItems[index]) {
     videoItems[index].classList.add("active");
   } else {
@@ -126,7 +97,6 @@ function loadVideo(lesson, index) {
   }
 }
 
-// 📚 PLAYLIST
 function renderPlaylist(lessons) {
   const html = lessons
     .map(
@@ -138,13 +108,9 @@ function renderPlaylist(lessons) {
   `,
     )
     .join("");
-
   document.getElementById("playlist").innerHTML = html;
-
   const container = document.getElementById("playlist");
   container.innerHTML = html;
-
-  // 🔥 SAFE CLICK HANDLER (NO JSON BUG)
   container.querySelectorAll(".video-item").forEach((el) => {
     el.addEventListener("click", () => {
       const index = el.getAttribute("data-index");
@@ -153,21 +119,17 @@ function renderPlaylist(lessons) {
   });
 }
 
-// 🎯 VIDEO END
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.ENDED) {
     document.getElementById("cert-overlay").style.display = "flex";
   }
 }
 
-// 🏆 CERTIFICATE (UNCHANGED)
 async function submitCertificate() {
   const name = document.getElementById("certName").value;
   const mobile = document.getElementById("certMobile").value;
   const btn = document.querySelector(".claim-btn");
-
   if (!name) return alert("Enter full name");
-
   btn.innerText = "Generating...";
   btn.disabled = true;
   console.log("📤 Sending to Backend:", {
@@ -189,9 +151,7 @@ async function submitCertificate() {
         courseName: currentCourseName,
       }),
     });
-
     const data = await res.json();
-
     if (data.success) {
       Swal.fire({
         title: "🏆 Certificate Ready!",
@@ -207,7 +167,6 @@ async function submitCertificate() {
           window.open(data.downloadUrl, "_blank");
         }
       });
-
       document.getElementById("cert-overlay").style.display = "none";
     }
   } catch (err) {
@@ -218,3 +177,4 @@ async function submitCertificate() {
     btn.disabled = false;
   }
 }
+//#endregion

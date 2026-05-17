@@ -15,126 +15,51 @@
       })(window, document, "script", "dataLayer", "GTM-5CDWCQ5S");
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- Basic -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Title -->
     <title>Reset Password | BR30 Kart</title>
-
-    <!-- Security -->
     <meta name="robots" content="noindex, nofollow" />
-
-    <!-- No cache (important for auth pages) -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-store, no-cache, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-      type="image/png"
-    />
-
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <!-- Styles -->
+    <link rel="icon" href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/reset.css" />
-
-    <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-
-    <!-- Open Graph (optional UI only) -->
     <meta property="og:title" content="Reset Password | BR30 Kart" />
-    <meta
-      property="og:description"
-      content="Securely reset your BR30 Kart account password."
-    />
-    <meta
-      property="og:image"
-      content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-    />
+    <meta property="og:description" content="Securely reset your BR30 Kart account password." />
+    <meta property="og:image" content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BR30 Kart" />
   </head>
-
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="container">
       <h2 class="login-heading">Reset Password</h2>
-
-      <!-- Browser signal ke liye FORM tag zaroori hai -->
       <form id="resetForm" onsubmit="resetPassword(event)">
         <label>Registered Email</label>
         <div class="input-box">
-          <!-- name="email" aur autocomplete="username" Google ko hint deta hai -->
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="example@mail.com"
-            autocomplete="username"
-            required
-          />
+          <input id="email" name="email" type="email" placeholder="example@mail.com" autocomplete="username" required />
         </div>
-
         <label>Reset OTP/Token</label>
         <div class="input-box">
-          <input
-            id="token"
-            name="token"
-            type="text"
-            placeholder="Enter 6-digit OTP"
-            required
-          />
+          <input id="token" name="token" type="text" placeholder="Enter 6-digit OTP" required />
         </div>
-
         <label>New Password</label>
         <div class="input-box">
-          <!-- autocomplete="new-password" se 'Save/Update Password' ka prompt aata hai -->
-          <input
-            id="newPassword"
-            name="password"
-            type="password"
-            placeholder="8+ chars, 1 Special"
-            autocomplete="new-password"
-            required
-          />
+          <input id="newPassword" name="password" type="password" placeholder="8+ chars, 1 Special" autocomplete="new-password" required />
         </div>
-
-        <!-- Button type submit hona chahiye -->
         <button type="submit" id="resetBtn">Update Password</button>
       </form>
-
       <div class="links">
         <a href="login.html">Back to Login</a>
       </div>
     </div>
-
     <script src="../js/config.js"></script>
     <script src="../js/reset-logic.js"></script>
   </body>

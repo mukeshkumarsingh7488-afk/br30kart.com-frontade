@@ -17,56 +17,21 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Title -->
     <title>Seller Dashboard | BR30 Kart</title>
-
-    <!-- Private page security -->
     <meta name="robots" content="noindex, nofollow" />
-
-    <!-- Prevent caching (important for dashboard data) -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-store, no-cache, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-      type="image/png"
-    />
-    <!-- ✅ Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
-    <!-- ✅ SweetAlert -->
+    <link rel="icon" href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/seller-dashboard.css" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-    <!-- Optional Open Graph -->
     <meta property="og:title" content="Seller Dashboard | BR30 Kart" />
-    <meta
-      property="og:description"
-      content="Manage your products, sales, and performance on BR30 Kart seller dashboard."
-    />
-    <meta
-      property="og:image"
-      content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-    />
+    <meta property="og:description" content="Manage your products, sales, and performance on BR30 Kart seller dashboard." />
+    <meta property="og:image" content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BR30 Kart" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -74,817 +39,183 @@
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <!-- 1. SELLER MODAL (Profile Setup) -->
-    <div
-      id="sellerModal"
-      style="
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        z-index: 9999;
-        justify-content: center;
-        align-items: center;
-      "
-    >
-      <div
-        class="db-card"
-        style="
-          width: 90%;
-          max-width: 500px;
-          background: #0f1218;
-          padding: 25px;
-          border-radius: 20px;
-          border: 1px solid #3b82f6;
-          box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-        "
-      >
-        <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-          "
-        >
+    <div id="sellerModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 9999; justify-content: center; align-items: center">
+      <div class="db-card" style="width: 90%; max-width: 500px; background: #0f1218; padding: 25px; border-radius: 20px; border: 1px solid #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.2)">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px">
           <h3 style="margin: 0; color: #3b82f6">
             <i class="fas fa-user-circle"></i>
             Seller Profile Setup
           </h3>
-          <button
-            type="button"
-            onclick="toggleSellerView()"
-            id="toggleBtn"
-            style="
-              background: #3b82f6;
-              color: #fff;
-              border: none;
-              padding: 6px 15px;
-              border-radius: 20px;
-              font-size: 11px;
-              font-weight: bold;
-              cursor: pointer;
-            "
-          >
-            Login (Old User)
-          </button>
+          <button type="button" onclick="toggleSellerView()" id="toggleBtn" style="background: #3b82f6; color: #fff; border: none; padding: 6px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; cursor: pointer">Login (Old User)</button>
         </div>
-
-        <!-- Registration Form -->
         <form id="sellerRegForm">
           <input type="text" id="sName" placeholder="Full Name" required />
-          <input
-            type="email"
-            id="sEmail"
-            placeholder="Email Address"
-            required
-          />
-          <label style="font-size: 11px; color: #64748b; margin-top: 10px">
-            Profile Picture:
-          </label>
+          <input type="email" id="sEmail" placeholder="Email Address" required />
+          <label style="font-size: 11px; color: #64748b; margin-top: 10px">Profile Picture:</label>
           <input type="file" id="sPhoto" accept="image/*" />
           <input type="text" id="sAddress" placeholder="Location" required />
-          <textarea
-            id="sBio"
-            placeholder="Short Bio"
-            style="
-              width: 100%;
-              background: #05070a;
-              color: white;
-              border-radius: 10px;
-              padding: 12px;
-              margin: 10px 0;
-              border: 1px solid #1f2937;
-              height: 80px;
-              outline: none;
-            "
-          ></textarea>
+          <textarea id="sBio" placeholder="Short Bio" style="width: 100%; background: #05070a; color: white; border-radius: 10px; padding: 12px; margin: 10px 0; border: 1px solid #1f2937; height: 80px; outline: none"></textarea>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">
             <input type="url" id="sYT" placeholder="YouTube Link" />
             <input type="url" id="sIG" placeholder="Instagram Link" />
           </div>
           <div style="display: flex; gap: 10px; margin-top: 20px">
-            <button
-              type="submit"
-              class="btn-prime"
-              style="
-                background: #3b82f6;
-                color: white;
-                padding: 12px;
-                border-radius: 10px;
-                flex: 1;
-                font-weight: bold;
-              "
-            >
-              Save Profile
-            </button>
-            <button
-              type="button"
-              onclick="closeSellerModal()"
-              class="btn"
-              style="
-                background: #1f2937;
-                color: white;
-                padding: 12px;
-                border-radius: 10px;
-                border: 1px solid #374151;
-              "
-            >
-              Close
-            </button>
+            <button type="submit" class="btn-prime" style="background: #3b82f6; color: white; padding: 12px; border-radius: 10px; flex: 1; font-weight: bold">Save Profile</button>
+            <button type="button" onclick="closeSellerModal()" class="btn" style="background: #1f2937; color: white; padding: 12px; border-radius: 10px; border: 1px solid #374151">Close</button>
           </div>
         </form>
-
-        <!-- Login Form -->
         <form id="sellerLoginForm" style="display: none">
-          <p style="color: #94a3b8; font-size: 13px; margin-bottom: 15px">
-            Email ya Seller ID select karke login kare 🔥
-          </p>
-
-          <!-- SELECT TYPE -->
-          <select
-            id="loginType"
-            onchange="switchLoginType()"
-            style="
-              width: 100%;
-              padding: 12px;
-              margin-bottom: 10px;
-              border-radius: 10px;
-              background: #111827;
-              color: white;
-              border: 1px solid #374151;
-            "
-            onchange="switchLoginType()"
-          >
+          <p style="color: #94a3b8; font-size: 13px; margin-bottom: 15px">Email ya Seller ID select karke login kare 🔥</p>
+          <select id="loginType" onchange="switchLoginType()" style="width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 10px; background: #111827; color: white; border: 1px solid #374151" onchange="switchLoginType()">
             <option value="email">Login via Email</option>
             <option value="sellerId">Login via Seller ID</option>
           </select>
-
-          <!-- INPUT FIELD -->
-          <input
-            type="text"
-            id="loginEmail"
-            placeholder="Auto Filled"
-            readonly
-            style="width: 100%"
-          />
-
+          <input type="text" id="loginEmail" placeholder="Auto Filled" readonly style="width: 100%" />
           <div style="display: flex; gap: 10px; margin-top: 20px">
-            <button
-              type="submit"
-              class="btn-prime"
-              style="
-                background: #3b82f6;
-                color: white;
-                padding: 12px;
-                border-radius: 10px;
-                flex: 1;
-                font-weight: bold;
-              "
-            >
-              Fetch Profile
-            </button>
-
-            <button
-              type="button"
-              onclick="toggleSellerView()"
-              class="btn"
-              style="
-                background: #1f2937;
-                color: white;
-                padding: 12px;
-                border-radius: 10px;
-                border: 1px solid #374151;
-              "
-            >
-              Back
-            </button>
+            <button type="submit" class="btn-prime" style="background: #3b82f6; color: white; padding: 12px; border-radius: 10px; flex: 1; font-weight: bold">Fetch Profile</button>
+            <button type="button" onclick="toggleSellerView()" class="btn" style="background: #1f2937; color: white; padding: 12px; border-radius: 10px; border: 1px solid #374151">Back</button>
           </div>
         </form>
       </div>
     </div>
-
-    <!-- 2. MAIN DASHBOARD CONTAINER -->
     <div class="dashboard-container">
-      <!-- Header -->
-      <div
-        class="header"
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 40px;
-          border-bottom: 1px solid #1f2937;
-          padding-bottom: 25px;
-          position: relative;
-        "
-      >
-        <!-- 🚀 CENTER LOGO & NAME (यहाँ चिपकाओ) -->
-        <div
-          style="
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          "
-        >
-          <img
-            src="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-            alt="Logo"
-            style="height: 40px; margin-bottom: 5px"
-          />
-          <div
-            style="
-              font-size: 16px;
-              font-weight: 900;
-              color: #fff;
-              letter-spacing: -0.5px;
-              font-family: sans-serif;
-            "
-          >
+      <div class="header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; border-bottom: 1px solid #1f2937; padding-bottom: 25px; position: relative">
+        <div style="position: absolute; left: 50%; top: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center">
+          <img src="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" alt="Logo" style="height: 40px; margin-bottom: 5px" />
+          <div style="font-size: 16px; font-weight: 900; color: #fff; letter-spacing: -0.5px; font-family: sans-serif">
             BR30
             <span style="color: #3b82f6">KART</span>
           </div>
         </div>
         <div>
-          <h1
-            style="
-              font-size: 28px;
-              font-weight: 900;
-              letter-spacing: -1px;
-              margin-bottom: 5px;
-            "
-          >
+          <h1 style="font-size: 28px; font-weight: 900; letter-spacing: -1px; margin-bottom: 5px">
             🚀 COURSE
             <span style="color: #3b82f6">CONTROL PANEL</span>
           </h1>
-          <div
-            id="activeProfileBox"
-            style="color: #3b82f6; font-size: 13px; font-weight: 600"
-          >
+          <div id="activeProfileBox" style="color: #3b82f6; font-size: 13px; font-weight: 600">
             <i class="fas fa-id-badge"></i>
             <span id="sellerDisplayName">Checking Profile...</span>
           </div>
         </div>
-
-        <!-- Header Buttons Section -->
-        <div
-          style="
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            align-items: flex-end;
-          "
-        >
-          <!-- 🔥 IMPORTANT: Sales & Payout Tracker Button (Green) -->
-          <button
-            onclick="location = 'seller-analytics.html'"
-            class="btn"
-            style="
-              background: #00c853;
-              color: #000;
-              font-weight: 900;
-              font-size: 12px;
-              width: 100%;
-              border-radius: 10px;
-              padding: 10px 20px;
-              box-shadow: 0 4px 10px rgba(0, 200, 83, 0.2);
-            "
-          >
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end">
+          <button onclick="location = 'seller-analytics.html'" class="btn" style="background: #00c853; color: #000; font-weight: 900; font-size: 12px; width: 100%; border-radius: 10px; padding: 10px 20px; box-shadow: 0 4px 10px rgba(0, 200, 83, 0.2)">
             <i class="fas fa-chart-line"></i>
             BACK TO DASHBORD
           </button>
-
           <div style="display: flex; gap: 8px">
-            <!-- Manage Profile Button (Yellow) -->
-            <button
-              onclick="openSellerModal()"
-              class="btn"
-              style="
-                background: #fbbf24;
-                color: #000;
-                font-weight: bold;
-                font-size: 12px;
-                border-radius: 10px;
-                padding: 10px 15px;
-              "
-            >
+            <button onclick="openSellerModal()" class="btn" style="background: #fbbf24; color: #000; font-weight: bold; font-size: 12px; border-radius: 10px; padding: 10px 15px">
               <i class="fas fa-user-cog"></i>
               Manage Profile
             </button>
-            <!-- Back to Home Button -->
-            <a
-              href="../index.html"
-              class="btn btn-home"
-              style="
-                background: #1f2937;
-                color: #fff;
-                font-weight: bold;
-                font-size: 12px;
-                border-radius: 10px;
-                padding: 10px 15px;
-                border: 1px solid #374151;
-              "
-            >
+            <a href="../index.html" class="btn btn-home" style="background: #1f2937; color: #fff; font-weight: bold; font-size: 12px; border-radius: 10px; padding: 10px 15px; border: 1px solid #374151">
               <i class="fas fa-home"></i>
               Back to Home
             </a>
           </div>
         </div>
       </div>
-
       <div class="grid-2">
-        <!-- 1. UPLOAD SECTION -->
         <div class="db-card">
           <h3 style="color: #3b82f6">
             <i class="fas fa-cloud-upload-alt"></i>
             Upload New Content
           </h3>
           <form id="uploadForm">
-            <input
-              type="text"
-              id="title"
-              placeholder="Course/Product Title"
-              required
-            />
+            <input type="text" id="title" placeholder="Course/Product Title" required />
             <select id="category" required>
               <option value="">Select Category</option>
-              <option value="Premium-Trading-Courses">
-                🎓 Premium Trading Courses
-              </option>
-              <option value="Trading-Standard-Course">
-                🎓 Trading Standard Course
-              </option>
+              <option value="Premium-Trading-Courses">🎓 Premium Trading Courses</option>
+              <option value="Trading-Standard-Course">🎓 Trading Standard Course</option>
               <option value="Crash-Course">🎓 Crash Course</option>
               <option value="Other">📂 Other</option>
               <option value="pdfs">📘 E-Books / PDF</option>
             </select>
-            <input
-              type="number"
-              id="price"
-              placeholder="MRP Price (₹)"
-              required
-            />
-            <input
-              type="url"
-              id="videoLink"
-              placeholder="Video/Drive Link"
-              required
-            />
-
-            <label style="font-size: 11px; color: #64748b; margin-top: 15px">
-              Thumbnail Image (Required):
-            </label>
+            <input type="number" id="price" placeholder="MRP Price (₹)" required />
+            <input type="url" id="videoLink" placeholder="Video/Drive Link" required />
+            <label style="font-size: 11px; color: #64748b; margin-top: 15px">Thumbnail Image (Required):</label>
             <input type="file" id="thumbInput" accept="image/*" required />
-
-            <button
-              type="submit"
-              class="btn btn-prime"
-              style="
-                background: #3b82f6;
-                color: white;
-                width: 100%;
-                padding: 15px;
-                border-radius: 12px;
-                font-weight: 900;
-                margin-top: 20px;
-                transition: 0.3s;
-              "
-            >
-              PUBLISH TO STORE
-            </button>
+            <button type="submit" class="btn btn-prime" style="background: #3b82f6; color: white; width: 100%; padding: 15px; border-radius: 12px; font-weight: 900; margin-top: 20px; transition: 0.3s">PUBLISH TO STORE</button>
           </form>
         </div>
-
-        <!-- 🔥 EDIT MODAL (Ye missing tha) -->
-        <div
-          id="editModal"
-          style="
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-          "
-        >
-          <div
-            style="
-              background: #111827;
-              padding: 25px;
-              border-radius: 15px;
-              width: 90%;
-              max-width: 450px;
-              border: 1px solid #3b82f6;
-              box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-            "
-          >
-            <h2
-              style="
-                color: white;
-                margin-bottom: 20px;
-                font-size: 18px;
-                text-align: center;
-              "
-            >
-              ✏️ Edit Course Details
-            </h2>
-
-            <!-- Hidden ID (Zaruri hai update ke liye) -->
+        <div id="editModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 9999; justify-content: center; align-items: center">
+          <div style="background: #111827; padding: 25px; border-radius: 15px; width: 90%; max-width: 450px; border: 1px solid #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3)">
+            <h2 style="color: white; margin-bottom: 20px; font-size: 18px; text-align: center">✏️ Edit Course Details</h2>
             <input type="hidden" id="editId" />
             <input type="hidden" id="editThumbUrl" />
-
             <div style="margin-bottom: 15px">
-              <label
-                style="
-                  color: #94a3b8;
-                  font-size: 12px;
-                  display: block;
-                  margin-bottom: 5px;
-                "
-              >
-                Course Title
-              </label>
-              <input
-                type="text"
-                id="editTitle"
-                style="
-                  width: 100%;
-                  background: #1f2937;
-                  color: white;
-                  border: 1px solid #334155;
-                  padding: 10px;
-                  border-radius: 8px;
-                  outline: none;
-                "
-              />
+              <label style="color: #94a3b8; font-size: 12px; display: block; margin-bottom: 5px">Course Title</label>
+              <input type="text" id="editTitle" style="width: 100%; background: #1f2937; color: white; border: 1px solid #334155; padding: 10px; border-radius: 8px; outline: none" />
             </div>
-
             <div style="margin-bottom: 15px">
-              <label
-                style="
-                  color: #94a3b8;
-                  font-size: 12px;
-                  display: block;
-                  margin-bottom: 5px;
-                "
-              >
-                Price (₹)
-              </label>
-              <input
-                type="number"
-                id="editPrice"
-                style="
-                  width: 100%;
-                  background: #1f2937;
-                  color: white;
-                  border: 1px solid #334155;
-                  padding: 10px;
-                  border-radius: 8px;
-                  outline: none;
-                "
-              />
+              <label style="color: #94a3b8; font-size: 12px; display: block; margin-bottom: 5px">Price (₹)</label>
+              <input type="number" id="editPrice" style="width: 100%; background: #1f2937; color: white; border: 1px solid #334155; padding: 10px; border-radius: 8px; outline: none" />
             </div>
-
             <div style="margin-bottom: 15px">
-              <label
-                style="
-                  color: #94a3b8;
-                  font-size: 12px;
-                  display: block;
-                  margin-bottom: 5px;
-                "
-              >
-                Video Link / URL
-              </label>
-              <input
-                type="text"
-                id="editUrl"
-                style="
-                  width: 100%;
-                  background: #1f2937;
-                  color: white;
-                  border: 1px solid #334155;
-                  padding: 10px;
-                  border-radius: 8px;
-                  outline: none;
-                "
-              />
+              <label style="color: #94a3b8; font-size: 12px; display: block; margin-bottom: 5px">Video Link / URL</label>
+              <input type="text" id="editUrl" style="width: 100%; background: #1f2937; color: white; border: 1px solid #334155; padding: 10px; border-radius: 8px; outline: none" />
             </div>
-
             <div style="margin-bottom: 20px">
-              <label
-                style="
-                  color: #94a3b8;
-                  font-size: 12px;
-                  display: block;
-                  margin-bottom: 5px;
-                "
-              >
-                New Thumbnail (Optional)
-              </label>
-              <input
-                type="file"
-                id="editThumbFile"
-                style="width: 100%; color: #94a3b8; font-size: 12px"
-              />
+              <label style="color: #94a3b8; font-size: 12px; display: block; margin-bottom: 5px">New Thumbnail (Optional)</label>
+              <input type="file" id="editThumbFile" style="width: 100%; color: #94a3b8; font-size: 12px" />
             </div>
-
             <div style="display: flex; gap: 12px">
-              <button
-                onclick="updateProduct()"
-                style="
-                  flex: 2;
-                  background: #3b82f6;
-                  color: white;
-                  padding: 12px;
-                  border: none;
-                  border-radius: 8px;
-                  cursor: pointer;
-                  font-weight: bold;
-                  font-size: 14px;
-                "
-              >
-                SAVE CHANGES
-              </button>
-              <button
-                onclick="
-                  document.getElementById('editModal').style.display = 'none'
-                "
-                style="
-                  flex: 1;
-                  background: #374151;
-                  color: white;
-                  padding: 12px;
-                  border: none;
-                  border-radius: 8px;
-                  cursor: pointer;
-                  font-size: 14px;
-                "
-              >
-                CANCEL
-              </button>
+              <button onclick="updateProduct()" style="flex: 2; background: #3b82f6; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px">SAVE CHANGES</button>
+              <button onclick="document.getElementById('editModal').style.display = 'none'" style="flex: 1; background: #374151; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px">CANCEL</button>
             </div>
           </div>
         </div>
-
-        <!-- 2. SALES TRACKER -->
         <div class="db-card">
           <h3>📊 Lifetime Sale</h3>
           <div class="total-earning">
             ₹
             <span id="totalSalesAmount">0</span>
           </div>
-          <p style="color: var(--text-dim); font-size: 14px">
-            Total items sold through your store link.
-          </p>
-
-          <div
-            style="
-              margin-top: 25px;
-              padding-top: 20px;
-              border-top: 1px solid #334155;
-            "
-          >
-            <label style="display: block; margin-bottom: 10px">
-              Filter Sales by Date:
-            </label>
-
-            <div
-              style="
-                display: flex;
-                gap: 10px;
-                align-items: center;
-                flex-wrap: wrap;
-              "
-            >
-              <input
-                type="date"
-                id="startDate"
-                style="flex: 1; min-width: 130px"
-              />
-              <input
-                type="date"
-                id="endDate"
-                style="flex: 1; min-width: 130px"
-              />
-
-              <!-- Apply Filter Button -->
+          <p style="color: var(--text-dim); font-size: 14px">Total items sold through your store link.</p>
+          <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #334155">
+            <label style="display: block; margin-bottom: 10px">Filter Sales by Date:</label>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap">
+              <input type="date" id="startDate" style="flex: 1; min-width: 130px" />
+              <input type="date" id="endDate" style="flex: 1; min-width: 130px" />
               <div style="display: flex; gap: 10px; align-items: center">
-                <!-- Apply Button -->
-                <button
-                  onclick="applyFilter()"
-                  style="
-                    background-color: #22c55e;
-                    color: white;
-                    border: none;
-                    padding: 10px 30px;
-                    border-radius: 12px;
-                    font-weight: bold;
-                    font-size: 16px;
-                    cursor: pointer;
-                    text-transform: uppercase;
-                  "
-                >
-                  APPLY
-                </button>
-
-                <!-- Refresh Button -->
-                <button
-                  onclick="refreshSales()"
-                  style="
-                    background-color: #334155;
-                    color: white;
-                    border: none;
-                    width: 45px;
-                    height: 45px;
-                    border-radius: 10px;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
+                <button onclick="applyFilter()" style="background-color: #22c55e; color: white; border: none; padding: 10px 30px; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; text-transform: uppercase">APPLY</button>
+                <button onclick="refreshSales()" style="background-color: #334155; color: white; border: none; width: 45px; height: 45px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center">
+                  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="23 4 23 10 17 10"></polyline>
                     <polyline points="1 20 1 14 7 14"></polyline>
-                    <path
-                      d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
-                    ></path>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
                   </svg>
                 </button>
               </div>
-
-              <!-- Small CSV Button -->
-              <button
-                onclick="downloadReport()"
-                class="btn btn-csv"
-                style="
-                  padding: 10px 15px;
-                  background: #3b82f6;
-                  color: white;
-                  border: none;
-                  border-radius: 5px;
-                  cursor: pointer;
-                "
-              >
-                📥 Download Sales Report (CSV)
-              </button>
+              <button onclick="downloadReport()" class="btn btn-csv" style="padding: 10px 15px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer">📥 Download Sales Report (CSV)</button>
             </div>
-
-            <!-- 3. GLOBAL MEGA SALE MANAGER -->
-            <h3 style="margin-top: 40px; color: #fbbf24">
-              🎊 Global Mega Sale (All Courses)
-            </h3>
-            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 15px">
-              Yahan se discount dalne par aapke **SAARE** courses par ek saath
-              offer lag jayega.
-            </p>
-
+            <h3 style="margin-top: 40px; color: #fbbf24">🎊 Global Mega Sale (All Courses)</h3>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 15px">Yahan se discount dalne par aapke **SAARE** courses par ek saath offer lag jayega.</p>
             <div style="display: flex; gap: 10px">
-              <input
-                type="text"
-                id="cCode"
-                placeholder="Sale Name (e.g. DIWALI50)"
-              />
-              <input
-                type="number"
-                id="cPercent"
-                placeholder="Discount % (e.g. 20)"
-              />
+              <input type="text" id="cCode" placeholder="Sale Name (e.g. DIWALI50)" />
+              <input type="number" id="cPercent" placeholder="Discount % (e.g. 20)" />
             </div>
-
-            <button
-              onclick="saveGlobalCoupon()"
-              class="btn btn-prime"
-              style="
-                background: #fbbf24;
-                color: #000;
-                font-weight: bold;
-                margin-top: 10px;
-              "
-            >
-              🚀 Launch Mega Sale on All Courses
-            </button>
-
-            <div id="couponList" style="margin-top: 20px">
-              <!-- Active Global Coupon yahan dikhega -->
-            </div>
+            <button onclick="saveGlobalCoupon()" class="btn btn-prime" style="background: #fbbf24; color: #000; font-weight: bold; margin-top: 10px">🚀 Launch Mega Sale on All Courses</button>
+            <div id="couponList" style="margin-top: 20px"></div>
           </div>
         </div>
       </div>
-
-      <!-- SEARCH SECTION -->
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          margin-top: 50px;
-          margin-bottom: 25px;
-          background: #0f1218;
-          padding: 20px;
-          border-radius: 16px;
-          border: 1px solid #1f2937;
-        "
-      >
-        <h3
-          style="margin: 0; white-space: nowrap; color: white; font-size: 16px"
-        >
+      <div style="display: flex; align-items: center; margin-top: 50px; margin-bottom: 25px; background: #0f1218; padding: 20px; border-radius: 16px; border: 1px solid #1f2937">
+        <h3 style="margin: 0; white-space: nowrap; color: white; font-size: 16px">
           <i class="fas fa-tasks"></i>
           Manage Content
         </h3>
-
-        <div
-          style="
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-          "
-        >
-          <input
-            type="text"
-            id="courseSearch"
-            placeholder="🔍 Search course by title..."
-            onkeyup="filterCourses()"
-            style="
-              width: 85%;
-              max-width: 450px;
-              padding: 12px 25px;
-              border-radius: 30px;
-              background: #05070a;
-              color: white;
-              border: 1px solid #3b82f6;
-              font-size: 14px;
-              outline: none;
-              transition: 0.3s;
-            "
-          />
-
-          <!-- Image jaisa Premium Square Refresh Button -->
-          <button
-            onclick="refreshSearch()"
-            style="
-              width: 42px;
-              height: 42px;
-              border-radius: 10px;
-              background: #2d333b;
-              border: 1px solid #3d444d;
-              color: white;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              transition: 0.3s;
-            "
-            onmouseover="this.style.background = '#3d444d'"
-            onmouseout="this.style.background = '#2d333b'"
-          >
+        <div style="flex-grow: 1; display: flex; justify-content: center; align-items: center; gap: 12px">
+          <input type="text" id="courseSearch" placeholder="🔍 Search course by title..." onkeyup="filterCourses()" style="width: 85%; max-width: 450px; padding: 12px 25px; border-radius: 30px; background: #05070a; color: white; border: 1px solid #3b82f6; font-size: 14px; outline: none; transition: 0.3s" />
+          <button onclick="refreshSearch()" style="width: 42px; height: 42px; border-radius: 10px; background: #2d333b; border: 1px solid #3d444d; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s" onmouseover="this.style.background = '#3d444d'" onmouseout="this.style.background = '#2d333b'">
             <i class="fas fa-sync-alt" style="font-size: 16px"></i>
           </button>
         </div>
-
         <div style="width: 150px"></div>
       </div>
-
-      <!-- Courses Container -->
-      <div
-        id="myContentList"
-        style="
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          margin-bottom: 50px;
-        "
-      ></div>
+      <div id="myContentList" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 50px"></div>
     </div>
     <script src="../js/config.js"></script>
     <script src="../js/seller-dashboard.js"></script>

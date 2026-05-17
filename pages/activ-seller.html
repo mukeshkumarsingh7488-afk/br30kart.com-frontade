@@ -17,62 +17,27 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Title -->
     <title>BR30 | Active Seller Tracker</title>
-
-    <!-- Private admin security -->
     <meta name="robots" content="noindex, nofollow" />
-
-    <!-- No cache (VERY IMPORTANT for KYC data) -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-store, no-cache, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-      type="image/png"
-    />
-
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link rel="icon" href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <!-- ✅ SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-
-    <!-- Optional Open Graph (UI only, not indexable) -->
     <meta property="og:title" content="Seller KYC Documents | BR30 Kart" />
-    <meta
-      property="og:description"
-      content="Secure seller identity verification documents panel for BR30 Kart admin."
-    />
-    <meta
-      property="og:image"
-      content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-    />
+    <meta property="og:description" content="Secure seller identity verification documents panel for BR30 Kart admin." />
+    <meta property="og:image" content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BR30 Kart" />
-    <!-- style -->
     <link rel="stylesheet" href="../assets/css/activ-seller.css" />
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="admin-header">
@@ -82,28 +47,9 @@
       </div>
       <div class="search-box">
         <i class="fas fa-search"></i>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search seller by name or email..."
-          onkeyup="searchSeller()"
-        />
+        <input type="text" id="searchInput" placeholder="Search seller by name or email..." onkeyup="searchSeller()" />
       </div>
-      <button
-        onclick="clearSearch()"
-        style="
-          background: #2d333b;
-          border: 1px solid #3d444d;
-          color: white;
-          width: 38px;
-          height: 38px;
-          border-radius: 8px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        "
-      >
+      <button onclick="clearSearch()" style="background: #2d333b; border: 1px solid #3d444d; color: white; width: 38px; height: 38px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center">
         <i class="fas fa-sync-alt"></i>
       </button>
       <a href="admin-dashboard.html" class="btn-back">
@@ -111,15 +57,9 @@
         Back to Dashboard
       </a>
     </div>
-
     <div class="table-section">
-      <div
-        class="table-header"
-        style="padding: 15px; background: #111; border-bottom: 1px solid #222"
-      >
-        <h2 style="margin: 0; color: #00ff88; font-size: 18px">
-          Seller Activity Tracker 🚀
-        </h2>
+      <div class="table-header" style="padding: 15px; background: #111; border-bottom: 1px solid #222">
+        <h2 style="margin: 0; color: #00ff88; font-size: 18px">Seller Activity Tracker 🚀</h2>
       </div>
       <div class="scroll-container">
         <table>
@@ -133,48 +73,28 @@
               <th>Quick Actions</th>
             </tr>
           </thead>
-          <tbody id="sellerTrackerBody">
-            <!-- Data JS se load hoga -->
-          </tbody>
+          <tbody id="sellerTrackerBody"></tbody>
         </table>
       </div>
-
       <div id="noData" class="status-msg" style="display: none">
         <i class="fas fa-user-slash fa-2x"></i>
         <br />
         Koi active seller nahi mila.
       </div>
     </div>
-
-    <!-- 🔥 Alert / Mail Modal -->
     <div id="alertModal" class="modal" style="display: none">
       <div class="modal-box">
         <h3>Send Elite Alert 📧</h3>
-        <p
-          id="alertUserEmail"
-          style="color: #00ff88; font-size: 12px; margin-bottom: 10px"
-        ></p>
-
+        <p id="alertUserEmail" style="color: #00ff88; font-size: 12px; margin-bottom: 10px"></p>
         <div class="input-group">
-          <textarea
-            id="alertMessage"
-            placeholder="Bhai, kya message bhejna hai? (e.g. Upload more courses)"
-          ></textarea>
+          <textarea id="alertMessage" placeholder="Bhai, kya message bhejna hai? (e.g. Upload more courses)"></textarea>
         </div>
-
         <div class="btns">
           <button onclick="closeAlertModal()" id="cancel">Cancel</button>
-          <button
-            onclick="confirmSendAlert()"
-            id="sendBtn"
-            style="background: #00ff88; color: #000"
-          >
-            Send Alert Now
-          </button>
+          <button onclick="confirmSendAlert()" id="sendBtn" style="background: #00ff88; color: #000">Send Alert Now</button>
         </div>
       </div>
     </div>
-    <!-- JS Files Connect -->
     <script src="../js/config.js"></script>
     <script src="../js/active-seller-logic.js"></script>
   </body>

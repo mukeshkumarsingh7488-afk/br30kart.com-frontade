@@ -13,7 +13,6 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
-
 .kyc-container {
   background: #161b22;
   width: 100%;
@@ -24,7 +23,6 @@ body {
   border: 1px solid #30363d;
   margin: 20px 0;
 }
-
 .header {
   text-align: center;
   margin-bottom: 25px;
@@ -38,7 +36,6 @@ body {
   color: #8b949e;
   font-size: 0.9rem;
 }
-
 .section-header {
   color: #a020f0;
   font-size: 1rem;
@@ -48,7 +45,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
 .form-group {
   margin-bottom: 15px;
 }
@@ -58,7 +54,6 @@ label {
   font-size: 0.85rem;
   color: #c9d1d9;
 }
-
 input {
   width: 100%;
   padding: 12px;
@@ -69,13 +64,10 @@ input {
   outline: none;
   transition: 0.3s;
 }
-
 input:focus {
   border-color: #a020f0;
   box-shadow: 0 0 5px rgba(160, 32, 240, 0.3);
 }
-
-/* File Upload Styling */
 .file-upload {
   position: relative;
   background: #0d1117;
@@ -103,7 +95,6 @@ input:focus {
   font-size: 0.8rem;
   color: #8b949e;
 }
-
 .btn-submit {
   width: 100%;
   padding: 14px;
@@ -125,7 +116,6 @@ input:focus {
   background: #4b2c63;
   cursor: not-allowed;
 }
-
 .note {
   background: rgba(255, 71, 87, 0.1);
   color: #ff4757;
@@ -136,7 +126,6 @@ input:focus {
   text-align: center;
   border: 1px solid rgba(255, 71, 87, 0.2);
 }
-
 .back-link {
   display: block;
   text-align: center;

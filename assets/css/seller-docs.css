@@ -1,18 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 body {
   background-color: #0d0d0d;
   color: #fff;
   padding: 20px;
 }
-/* Header & Search Area */
 .admin-header {
   display: flex;
   justify-content: space-between;
@@ -22,7 +19,7 @@ body {
   padding-bottom: 15px;
 }
 .logo {
-  color: #00ff88; /* 🔥 Green Logo */
+  color: #00ff88;
   font-weight: 900;
   font-size: 1.6rem;
   letter-spacing: 2px;
@@ -31,12 +28,10 @@ body {
 .logo span {
   color: #fff;
 }
-
 .search-box {
   position: relative;
   width: 500px;
 }
-
 .search-box input {
   width: 100%;
   padding: 12px 45px;
@@ -47,13 +42,11 @@ body {
   outline: none;
   transition: 0.3s all ease;
 }
-/* 🔥 Pink to Neon Green Focus Fix */
 .search-box input:focus {
   border-color: #00ff88;
   background: #161b22;
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
 }
-
 .search-box i {
   position: absolute;
   left: 15px;
@@ -61,15 +54,12 @@ body {
   color: #00ff88;
   font-size: 1.1rem;
 }
-
-/* Table Header H2 Fix (Pink to Green) */
 .table-header h2 {
   font-size: 1.4rem;
   color: #00ff88 !important;
   font-weight: 600;
   letter-spacing: 1px;
 }
-/* Table Styling */
 .table-section {
   display: flex;
   flex-direction: column;
@@ -92,7 +82,6 @@ body {
   font-size: 1.2rem;
   color: #00ff88;
 }
-
 .scroll-container {
   overflow-x: auto;
   flex: 1;
@@ -104,7 +93,6 @@ table thead {
   z-index: 100;
   background: #1a1a1a;
 }
-
 table th {
   padding: 12px 15px;
   text-align: left;
@@ -143,8 +131,6 @@ td {
 tr:hover {
   background: #1c2128;
 }
-
-/* Document Images */
 .doc-preview {
   width: 50px;
   height: 35px;
@@ -160,8 +146,6 @@ tr:hover {
   z-index: 10;
   position: relative;
 }
-
-/* Action Buttons */
 .action-btns {
   display: flex;
   gap: 8px;
@@ -179,8 +163,6 @@ button {
 button:active {
   transform: scale(0.95);
 }
-
-/* Status Badges */
 .badge {
   padding: 4px 8px;
   border-radius: 20px;
@@ -198,8 +180,6 @@ button:active {
   color: #d29922;
   border: 1px solid #d29922;
 }
-
-/* 🔙 Back to Dashboard Button - Elite Green Version */
 .btn-back {
   color: #00ff88;
   text-decoration: none;
@@ -214,8 +194,6 @@ button:active {
   background: rgba(0, 255, 136, 0.05);
   transition: all 0.3s ease-in-out;
 }
-
-/* 🔥 Hover Effect Logic */
 .btn-back:hover {
   background: #00ff88;
   color: #000 !important;
@@ -223,23 +201,18 @@ button:active {
   transform: translateX(-5px);
   border-color: #00ff88;
 }
-
 .btn-back i {
   font-size: 12px;
   transition: transform 0.3s ease;
 }
-
 .btn-back:hover i {
   transform: scale(1.2);
 }
-
 .status-msg {
   text-align: center;
   padding: 50px;
   color: #8b949e;
 }
-/* reject btn css */
-/* Modal background */
 #rejectModal {
   display: none;
   position: fixed;
@@ -252,8 +225,6 @@ button:active {
   align-items: center;
   justify-content: center;
 }
-
-/* Modal box */
 .modal-box {
   background: #222;
   padding: 25px;
@@ -262,8 +233,6 @@ button:active {
   color: white;
   border: 1px solid #444;
 }
-
-/* Checkbox FIX */
 #reasonOptions input[type="checkbox"] {
   display: inline-block !important;
   appearance: auto !important;
@@ -271,8 +240,6 @@ button:active {
   height: 16px;
   cursor: pointer;
 }
-
-/* Label style */
 #reasonOptions label {
   display: flex;
   align-items: center;
@@ -280,26 +247,21 @@ button:active {
   margin-bottom: 10px;
   cursor: pointer;
 }
-
-/* Buttons */
 .btns {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
-
 .btns button {
   padding: 8px 15px;
   cursor: pointer;
 }
-
 #confirmRejectBtn {
   background: #ff4d4d;
   color: white;
   border: none;
   border-radius: 5px;
 }
-
 #cancel {
   background: #00d2ff !important;
   color: white !important;

@@ -4,7 +4,6 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 body {
   background: #050505;
   color: #fff;
@@ -12,10 +11,6 @@ body {
   justify-content: center;
   padding: 40px 20px;
 }
-
-/* =========================
-   MAIN LEGAL CONTAINER
-========================= */
 .policy-container {
   max-width: 950px;
   width: 100%;
@@ -26,8 +21,6 @@ body {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
   animation: fadeUp 0.6s ease-in-out;
 }
-
-/* Smooth entry animation */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -38,10 +31,6 @@ body {
     transform: translateY(0);
   }
 }
-
-/* =========================
-   TITLE SECTION
-========================= */
 .policy-title h1 {
   font-size: 32px;
   color: #a020f0;
@@ -49,17 +38,12 @@ body {
   margin-bottom: 10px;
   letter-spacing: 0.5px;
 }
-
 .policy-title .meta {
   text-align: center;
   color: #9ca3af;
   font-size: 13px;
   margin-bottom: 30px;
 }
-
-/* =========================
-   PARAGRAPH TEXT
-========================= */
 .policy-body p {
   font-size: 16px;
   color: #cbd5e1;
@@ -67,47 +51,29 @@ body {
   margin-bottom: 15px;
   text-align: left;
 }
-
-/* =========================
-   SECTION HEADINGS
-========================= */
 .policy-body h3 {
   font-size: 18px;
   color: #ffffff;
   margin-top: 30px;
   margin-bottom: 12px;
   font-weight: 600;
-
   border-left: 4px solid #a020f0;
   padding-left: 12px;
 }
-
-/* =========================
-   LIST STYLING
-========================= */
 .policy-body ul {
   margin-left: 22px;
   margin-bottom: 15px;
 }
-
 .policy-body ul li {
   font-size: 15px;
   color: #cbd5e1;
   margin-bottom: 8px;
   line-height: 1.6;
 }
-
-/* =========================
-   STRONG / B TAG
-========================= */
 .policy-body b {
   color: #a020f0;
   font-weight: 600;
 }
-
-/* =========================
-   BACK BUTTON
-========================= */
 .btn {
   display: inline-block;
   margin-top: 30px;
@@ -120,30 +86,22 @@ body {
   transition: 0.3s ease;
   border: 1px solid #a020f0;
 }
-
 .btn:hover {
   background: transparent;
   color: #a020f0;
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(160, 32, 240, 0.35);
 }
-
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
 @media (max-width: 768px) {
   .policy-container {
     padding: 30px 20px;
   }
-
   .policy-title h1 {
     font-size: 24px;
   }
-
   .policy-body p {
     font-size: 14px;
   }
-
   .policy-body h3 {
     font-size: 16px;
   }

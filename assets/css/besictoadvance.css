@@ -6,7 +6,6 @@
   --text-gray: #a1a1aa;
   --white: #ffffff;
 }
-
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-dark);
@@ -14,36 +13,28 @@ body {
   margin: 0;
   padding: 40px 20px;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 header {
   text-align: center;
   margin-bottom: 60px;
 }
-
 h1 {
   font-size: 3.5rem;
   margin: 0;
   background: linear-gradient(to right, #fff, var(--primary-purple));
   background-clip: text;
-  /* Standard Property */
   -webkit-background-clip: text;
-  /* For Chrome/Safari */
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
 }
-
-/* 6 Box Grid System */
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 25px;
 }
-
 .module-card {
   background: var(--card-bg);
   padding: 30px;
@@ -53,13 +44,11 @@ h1 {
   overflow: hidden;
   transition: all 0.4s ease;
 }
-
 .module-card:hover {
   transform: translateY(-10px);
   border-color: var(--primary-purple);
   box-shadow: 0 15px 30px var(--accent-glow);
 }
-
 .module-card::before {
   content: "";
   position: absolute;
@@ -69,7 +58,6 @@ h1 {
   height: 4px;
   background: var(--primary-purple);
 }
-
 .module-card h2 {
   color: var(--primary-purple);
   font-size: 1.4rem;
@@ -77,12 +65,10 @@ h1 {
   display: flex;
   align-items: center;
 }
-
 .module-card ul {
   list-style: none;
   padding: 0;
 }
-
 .module-card li {
   margin-bottom: 15px;
   color: var(--text-gray);
@@ -90,7 +76,6 @@ h1 {
   display: flex;
   align-items: flex-start;
 }
-
 .module-card li svg {
   width: 18px;
   height: 18px;
@@ -99,18 +84,15 @@ h1 {
   flex-shrink: 0;
   margin-top: 3px;
 }
-
 .back-btn-container {
   text-align: center;
   margin-top: 60px;
 }
-
 .back-btn {
   display: inline-block;
   margin-top: 10px;
   padding: 12px 35px;
   background-color: #a020f0;
-  /* Purple Button */
   color: white;
   text-decoration: none;
   font-weight: 600;
@@ -118,19 +100,16 @@ h1 {
   transition: 0.3s ease;
   border: 1px solid #a020f0;
 }
-
 .back-btn:hover {
   background: transparent;
   color: #a020f0;
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
 }
-
 .center-text {
   display: flex;
   justify-content: center;
 }
-
 .center-text p {
   font-size: 14px;
   color: #ccc;

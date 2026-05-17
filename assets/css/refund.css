@@ -4,7 +4,6 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 body {
   background: #050505;
   color: #fff;
@@ -12,10 +11,6 @@ body {
   justify-content: center;
   padding: 40px 20px;
 }
-
-/* =========================
-   MAIN CONTAINER
-========================= */
 .policy-container {
   max-width: 900px;
   width: 100%;
@@ -25,27 +20,18 @@ body {
   padding: 40px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
-
-/* =========================
-   HEADER SECTION
-========================= */
 .policy-title h1 {
   color: #a020f0;
   font-size: 30px;
   margin-bottom: 10px;
   text-align: center;
 }
-
 .policy-title .meta {
   color: #aaa;
   font-size: 13px;
   text-align: center;
   margin-bottom: 25px;
 }
-
-/* =========================
-   CONTENT TEXT
-========================= */
 .policy-body p {
   color: #cbd5e1;
   font-size: 16px;
@@ -53,10 +39,6 @@ body {
   margin-bottom: 15px;
   text-align: left;
 }
-
-/* =========================
-   HEADINGS (LEGAL STYLE)
-========================= */
 .policy-body h3 {
   color: #ffffff;
   font-size: 18px;
@@ -66,24 +48,15 @@ body {
   border-left: 4px solid #a020f0;
   padding-left: 10px;
 }
-
-/* =========================
-   LIST STYLE
-========================= */
 .policy-body ul {
   margin-left: 20px;
   margin-bottom: 15px;
   color: #cbd5e1;
 }
-
 .policy-body ul li {
   margin-bottom: 8px;
   line-height: 1.6;
 }
-
-/* =========================
-   BUTTON
-========================= */
 .btn {
   display: inline-block;
   margin-top: 25px;
@@ -96,30 +69,22 @@ body {
   transition: 0.3s ease;
   border: 1px solid #a020f0;
 }
-
 .btn:hover {
   background: transparent;
   color: #a020f0;
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(160, 32, 240, 0.3);
 }
-
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
 @media (max-width: 600px) {
   .policy-container {
     padding: 25px 18px;
   }
-
   .policy-title h1 {
     font-size: 24px;
   }
-
   .policy-body p {
     font-size: 14px;
   }
-
   .policy-body h3 {
     font-size: 16px;
   }

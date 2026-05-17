@@ -1,13 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
-/* 🔙 Back to Dashboard Button - Elite Green Version */
 .btn-back {
   color: #00ff88;
   text-decoration: none;
@@ -26,33 +23,27 @@
   background: rgba(255, 187, 51, 0.1);
   color: #ffbb33;
 }
-/* 🔥 Hover Effect Logic */
 .btn-back:hover {
-  background: #00ff88; /* Poora button green ho jayega */
-  color: #000 !important; /* Text kaali ho jayegi contrast ke liye */
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4); /* Neon Glow */
-  transform: translateX(-5px); /* Thoda sa piche hilega stylish look ke liye */
+  background: #00ff88;
+  color: #000 !important;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+  transform: translateX(-5px);
   border-color: #00ff88;
 }
-
 .btn-back i {
   font-size: 12px;
   transition: transform 0.3s ease;
 }
-
 .btn-back:hover i {
   transform: scale(1.2);
 }
-
 body {
   background-color: #0d0d0d;
   color: #fff;
   padding: 20px;
-  width: 100%; /* 🔥 Full display stretch */
+  width: 100%;
   overflow-x: hidden;
 }
-
-/* --- Header & Search Area (Elite Green Theme) --- */
 .admin-header {
   display: flex;
   justify-content: space-between;
@@ -61,25 +52,21 @@ body {
   border-bottom: 1px solid #1c1c1c;
   padding: 15px 10px;
 }
-
 .logo {
-  color: #00ff88; /* 🔥 Green Logo */
+  color: #00ff88;
   font-weight: 900;
   font-size: 1.6rem;
   letter-spacing: 2px;
   text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
-
 .logo span {
   color: #fff;
   font-weight: 300;
 }
-
 .search-box {
   position: relative;
-  width: 500px; /* Thoda wide kiya taaki full display me achha lage */
+  width: 500px;
 }
-
 .search-box input {
   width: 100%;
   padding: 12px 45px;
@@ -90,81 +77,66 @@ body {
   outline: none;
   transition: 0.3s all ease;
 }
-
-/* 🔥 Pink to Neon Green Focus Fix */
 .search-box input:focus {
   border-color: #00ff88;
   background: #161b22;
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
 }
-
 .search-box i {
   position: absolute;
   left: 15px;
   top: 14px;
-  color: #00ff88; /* 🔥 Icon bhi green kar diya */
+  color: #00ff88;
   font-size: 1.1rem;
 }
-
-/* Table Header H2 Fix (Pink to Green) */
 .table-header h2 {
   font-size: 1.4rem;
   color: #00ff88 !important;
   font-weight: 600;
   letter-spacing: 1px;
 }
-
-/* 🏆 Table Styling - ULTRA WIDE MODIFICATION */
 .table-section {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 150px); /* 100% स्क्रीन हाइट माइनस हेडर का स्पेस */
+  height: calc(100vh - 150px);
   margin: 20px;
   background: #000;
   border: 1px solid #222;
   border-radius: 12px;
   overflow: hidden;
 }
-
 .table-header {
-  padding: 20px 0; /* Header alignment sahi kiya */
+  padding: 20px 0;
   border-bottom: 1px solid #30363d;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .table-header h2 {
   font-size: 1.2rem;
   color: #a020f0;
 }
-
 .scroll-container {
   flex: 1;
   overflow-y: auto;
   background: #0a0a0a;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
   min-width: 900px;
 }
-
 thead {
   position: sticky;
   top: 0;
   z-index: 10;
   background: #111;
 }
-
-/* 🔥 Column Width Fix: Pehle column ko bolna hoga ki baki bachi jagah le le */
 th:first-child,
 td:first-child {
   width: 30%;
   min-width: 300px;
 }
-
 th,
 td {
   padding: 18px 15px !important;
@@ -172,19 +144,15 @@ td {
   white-space: nowrap;
   border-bottom: 1px solid #30363d;
 }
-
 th {
   background: #0d1117;
   color: #8b949e;
   font-size: 12px;
   text-transform: uppercase;
 }
-
 tr:hover {
   background: #1c2128;
 }
-
-/* 🚀 Global Stretch */
 body,
 .admin-container {
   width: 100% !important;
@@ -192,10 +160,6 @@ body,
   padding: 0 !important;
   margin: 0 !important;
 }
-
-/* --- Modified Part One (Ultra Wide Fix) --- */
-
-/* Neon Buttons */
 .btn-neon {
   width: 32px;
   height: 32px;
@@ -222,21 +186,16 @@ body,
   color: #ff4444;
   border: 1px solid #ff4444;
 }
-
 .btn-neon:hover {
   transform: scale(1.1);
   box-shadow: 0 0 15px currentColor;
 }
-
-/* 🔥 ULTRA WIDE FIX: Admin container ko full breadth di hai */
 .admin-container {
   width: 100% !important;
-  max-width: 100% !important; /* Kisi bhi limit ko todne ke liye */
+  max-width: 100% !important;
   padding: 0 30px !important;
   margin: 0 !important;
 }
-
-/* Course Dropdown List */
 .course-dropdown-list {
   display: none;
   position: absolute;
@@ -256,7 +215,6 @@ body,
   display: block !important;
   animation: fadeIn 0.2s ease-in-out;
 }
-
 .course-mini-card {
   display: flex;
   gap: 12px;
@@ -300,7 +258,6 @@ body,
   color: #777;
   margin-top: 2px;
 }
-
 .c-btn {
   background: none;
   border: none;
@@ -318,7 +275,6 @@ body,
   transform: scale(1.2);
   text-shadow: 0 0 10px currentColor;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -329,7 +285,6 @@ body,
     transform: translateY(0);
   }
 }
-
 .status-tag {
   padding: 4px 12px;
   border-radius: 5px;
@@ -345,7 +300,6 @@ body,
   background: rgba(255, 68, 68, 0.1);
   color: #ff4444;
 }
-
 .view-btn {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid #333;
@@ -367,20 +321,16 @@ body,
   color: #00ff88 !important;
   background: rgba(0, 255, 136, 0.05) !important;
 }
-/* 1. टेबल रो को पतला करना */
 #sellerTrackerBody tr td {
-  padding: 8px 12px !important; /* ऊपर-नीचे की जगह कम की गई */
+  padding: 8px 12px !important;
   vertical-align: middle;
 }
-
 .action-flex {
   display: flex;
-  flex-direction: row; /* वर्टिकल से हॉरिजॉन्टल */
+  flex-direction: row;
   gap: 8px;
   justify-content: flex-start;
 }
-
-/* 3. Hide/Unhide बटन के कलर्स */
 .c-btn {
   padding: 6px 10px;
   border: none;
@@ -388,39 +338,28 @@ body,
   cursor: pointer;
   transition: 0.3s;
 }
-
-/* Visible - Green with Eye */
 .c-btn.is-visible {
   background-color: #22c55e !important;
 }
-
-/* Hidden - Red with Eye-Slash */
 .c-btn.is-hidden {
   background-color: #ef4444 !important;
 }
-
 .btn-neon {
   padding: 6px 10px;
   font-size: 12px;
 }
-
-/* 1. क्विक एक्शन्स को एक लाइन में करना */
 .action-flex {
   display: flex !important;
-  flex-direction: row !important; /* वर्टिकल से हॉरिजॉन्टल */
+  flex-direction: row !important;
   gap: 8px !important;
   align-items: center;
   justify-content: center;
 }
-
-/* 2. टेबल रो को स्लिम (पतला) करना */
 #sellerTrackerBody tr td {
-  padding: 6px 12px !important; /* कम पैडिंग = पतली रो */
+  padding: 6px 12px !important;
   font-size: 13px;
   vertical-align: middle;
 }
-
-/* 3. सेलर नेम और ईमेल को छोटा और साफ दिखाना */
 .seller-info-cell {
   line-height: 1.2;
 }

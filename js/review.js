@@ -1,26 +1,17 @@
 //#region
 const API_BASE = `${window.API_BASE_URL}/api/reviews`;
 
-let allReviews = []; // Global data for searching
+let allReviews = [];
 
-// 1. Fetch Reviews
-/**
- * @function fetchReviews
- * @description Fetches all reviews from the database and updates the UI stats.
- */
 async function fetchReviews() {
   try {
     const res = await fetch(`${API_BASE}/all`);
     if (!res.ok) throw new Error(`Fetch failed with status: ${res.status}`);
-
     allReviews = await res.json();
-
-    // Update Total Review Count Display
     const statReviewsElem = document.getElementById("statReviews");
     if (statReviewsElem) {
       statReviewsElem.innerText = allReviews.length.toLocaleString("en-IN");
     }
-
     renderReviews(allReviews);
   } catch (error) {
     console.error("Critical Error:", error);
@@ -31,19 +22,13 @@ async function fetchReviews() {
   }
 }
 
-// 2. Render Function (इसमें कोई बदलाव नहीं, पहले जैसा ही है)
 function renderReviews(data) {
   const list = document.getElementById("review-list");
-  list.innerHTML =
-    data.length === 0
-      ? "<p style='text-align:center;'>No reviews found!</p>"
-      : "";
-
+  list.innerHTML = data.length === 0 ? "<p style='text-align:center;'>No reviews found!</p>" : "";
   data.forEach((rev) => {
     const card = document.createElement("div");
     card.className = "review-card";
     const currentStatus = rev.status || "approved";
-
     card.innerHTML = `
               <div class="header">
                   <div class="user-info">${rev.username} <span class="stars">${"★".repeat(rev.rating)}</span></div>
@@ -53,13 +38,11 @@ function renderReviews(data) {
               <div class="admin-reply-text">
                   ${rev.adminReply ? `<span style="color:#00ffa3; font-size:0.9rem"><strong>Admin:</strong> ${rev.adminReply}</span>` : ""}
               </div>
-
               <div class="actions">
                   <button class="btn-reply" onclick="toggleReplyBox(event, '${rev._id}')">Reply</button>
                   <button class="btn-hide" onclick="toggleStatus('${rev._id}')">${currentStatus === "approved" ? "Hide" : "Show"}</button>
                   <button class="btn-delete" onclick="deleteReview('${rev._id}')">Delete</button>
               </div>
-
               <div class="reply-box" id="reply-box-${rev._id}" onclick="event.stopPropagation()">
                   <textarea id="input-${rev._id}" placeholder="Apna jawab likho..."></textarea>
                   <button class="btn-reply" style="margin-top:8px; width:100%; background:var(--primary); color:black" onclick="submitReply('${rev._id}')">Send Reply</button>
@@ -69,16 +52,12 @@ function renderReviews(data) {
   });
 }
 
-// 3. Search Logic
 function searchReviews() {
   const searchTerm = document.getElementById("searchUser").value.toLowerCase();
-  const filtered = allReviews.filter((rev) =>
-    rev.username.toLowerCase().includes(searchTerm),
-  );
+  const filtered = allReviews.filter((rev) => rev.username.toLowerCase().includes(searchTerm));
   renderReviews(filtered);
 }
 
-// 4. Hide/Show Logic (Click Fix)
 async function toggleStatus(id) {
   try {
     const res = await fetch(`${API_BASE}/status/${id}`, {
@@ -91,7 +70,6 @@ async function toggleStatus(id) {
   }
 }
 
-// 5. Delete Logic
 async function deleteReview(id) {
   if (confirm("Pakka delete karna hai bhai?")) {
     await fetch(`${API_BASE}/delete/${id}`, { method: "DELETE" });
@@ -99,14 +77,11 @@ async function deleteReview(id) {
   }
 }
 
-// 6. Pro Reply Box Logic (Toggle & Auto-Close)
 function toggleReplyBox(event, id) {
-  event.stopPropagation(); // Page click ko rokne ke liye
+  event.stopPropagation();
   const box = document.getElementById(`reply-box-${id}`);
   const isAlreadyOpen = box.style.display === "block";
-
-  closeAllReplyBoxes(); // Pehle baaki sab band karo
-
+  closeAllReplyBoxes();
   if (!isAlreadyOpen) {
     box.style.display = "block";
   }
@@ -121,7 +96,6 @@ function closeAllReplyBoxes(event) {
 async function submitReply(id) {
   const replyText = document.getElementById(`input-${id}`).value;
   if (!replyText) return alert("Bhai kuch likho to!");
-
   try {
     await fetch(`${API_BASE}/update/${id}`, {
       method: "PUT",
@@ -134,21 +108,13 @@ async function submitReply(id) {
     alert("Reply failed!");
   }
 }
-
 fetchReviews();
 
-/**
- * @function resetAllFilters
- * @description Clears search filter and re-fetches latest data.
- */
 function resetAllFilters() {
   const searchInput = document.getElementById("searchUser");
-
   if (searchInput) {
     searchInput.value = "";
   }
-
-  // Refresh data from backend
   fetchReviews();
 }
 //#endregion

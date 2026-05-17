@@ -14,7 +14,6 @@ body {
   margin: 0 auto;
   padding: 60px 20px;
 }
-
 .header {
   text-align: center;
   margin-bottom: 60px;
@@ -28,15 +27,12 @@ body {
   color: #888;
   font-size: 1.2rem;
 }
-
-/* Two Column Layout for Buyer & Seller */
 .roles-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   margin-top: 40px;
 }
-
 .role-card {
   background: rgba(255, 255, 255, 0.03);
   border: 2px solid rgba(160, 32, 240, 0.1);
@@ -49,7 +45,6 @@ body {
   transform: translateY(-10px);
   background: rgba(160, 32, 240, 0.05);
 }
-
 .role-card h2 {
   color: #ff4757;
   font-size: 2rem;
@@ -61,8 +56,6 @@ body {
 .role-card.seller h2 {
   color: #a020f0;
 }
-
-/* Step List Style */
 .steps {
   list-style: none;
 }
@@ -92,8 +85,6 @@ body {
   color: #b0b0b0;
   font-size: 0.95rem;
 }
-
-/* Admin Verification Highlight */
 .admin-check {
   background: rgba(255, 71, 87, 0.1);
   border: 1px dashed #ff4757;
@@ -103,7 +94,6 @@ body {
   font-size: 0.9rem;
   color: #ffb8b8;
 }
-
 .cta-box {
   text-align: center;
   margin-top: 60px;
@@ -121,13 +111,11 @@ body {
   font-weight: bold;
   margin-top: 20px;
 }
-
 @media (max-width: 850px) {
   .roles-container {
     grid-template-columns: 1fr;
   }
 }
-
 .learn-more-link {
   background: none !important;
   border: none !important;
@@ -140,17 +128,14 @@ body {
   transition: 0.3s;
   font-weight: bold;
 }
-
 .learn-more-link:hover {
   color: #fff !important;
   text-decoration: none;
 }
-
 .center-text {
   display: flex;
   justify-content: center;
 }
-
 .center-text p {
   font-size: 14px;
   color: #ccc;

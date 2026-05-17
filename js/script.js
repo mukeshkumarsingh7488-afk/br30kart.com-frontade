@@ -1,70 +1,40 @@
-// --- BR30 KART DYNAMIC FRONTEND LOGIC ---
-// Seller dashbord cheak roal cheak (security porpose)
-/* ============================================
-   Socket.io Connection Setup (admin Alart)
-  ===========================================*/
+//#region
 if (!window.API_BASE_URL) {
   window.API_BASE_URL = "https://br30kart-api.onrender.com";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const role = localStorage.getItem("userRole"); // Options: 'admin', 'seller', 'student'
+  const role = localStorage.getItem("userRole");
   const sellerBtn = document.getElementById("sellerDashLink");
-
   if (sellerBtn) {
-    // 🛡️ LEVEL 1 SECURITY: Role-Based UI Access
     const allowedRoles = ["admin", "seller"];
-
     if (!allowedRoles.includes(role)) {
-      // Hide the link if the user is not an Admin or Seller
       sellerBtn.style.display = "none";
-      console.log(
-        "%c[SECURITY] Dashboard link restricted for student role.",
-        "color: #ff9800; font-weight: bold;",
-      );
+      console.log("%c[SECURITY] Dashboard link restricted for student role.", "color: #ff9800; font-weight: bold;");
     } else {
-      // Ensure the button is visible for authorized users
       sellerBtn.style.display = "flex";
-      console.log(
-        `%c[AUTH] Access granted for role: ${role.toUpperCase()}`,
-        "color: #4caf50; font-weight: bold;",
-      );
+      console.log(`%c[AUTH] Access granted for role: ${role.toUpperCase()}`, "color: #4caf50; font-weight: bold;");
     }
   }
 });
 
-// 1. Database se Live Data load karne wala main function
 async function loadLiveStore() {
   try {
     console.log("Fetching data from Atlas... 🚀");
-
     const response = await fetch(`${CONFIG.BASE_API_URL}/products`);
     const allProducts = await response.json();
-
-    // 🔥 DOUBLE CHECK:
-    // 1. isVisible 'false' नहीं होना चाहिए (Show होना चाहिए)
-    // 2. isApproved 'true' होना चाहिए (Admin से पास होना चाहिए)
     const visibleProducts = allProducts.filter((p) => {
       const isShow = p.isVisible !== false && p.isVisible !== "false";
       const isApproved = p.isApproved === true || p.isApproved === "true";
-
-      // दोनों सच होने चाहिए तभी स्टोर पर दिखेगा
       return isShow && isApproved;
     });
-
     const categories = {
-      Premium: visibleProducts.filter(
-        (p) => p.category === "Premium-Trading-Courses",
-      ),
-      Standard: visibleProducts.filter(
-        (p) => p.category === "Trading-Standard-Course",
-      ),
+      Premium: visibleProducts.filter((p) => p.category === "Premium-Trading-Courses"),
+      Standard: visibleProducts.filter((p) => p.category === "Trading-Standard-Course"),
       Crash: visibleProducts.filter((p) => p.category === "Crash-Course"),
       Other: visibleProducts.filter((p) => p.category === "Other"),
       pdfs: visibleProducts.filter((p) => p.category === "pdfs"),
     };
-
-    // रेंडरिंग के लिए अब सिर्फ Approved और Visible प्रोडक्ट्स ही जाएंगे
     renderDynamicSection("Premium-Grid", categories.Premium);
     renderDynamicSection("Standard-Grid", categories.Standard);
     renderDynamicSection("Crash-Grid", categories.Crash);
@@ -75,26 +45,20 @@ async function loadLiveStore() {
   }
 }
 
-// 2. Render Function (HTML Cards banane ke liye)
 function renderDynamicSection(sectionId, items) {
   const container = document.getElementById(sectionId);
   if (!container) return;
-
   if (items.length === 0) {
     container.innerHTML = `<p style="color:gray; padding:20px; font-size:14px;">Jald hi naya content aayega... 🚀</p>`;
     return;
   }
-
   let html = "";
   items.forEach((item) => {
     const sEmail = item.sellerEmail ? item.sellerEmail.trim() : "";
     const sName = item.sellerName || "Official Seller";
     let discount = item.discount || 0;
     const finalPriceValue = item.price - (item.price * discount) / 100;
-    // 🔥 BEST SELLER LOGIC: Check if product is featured
-    const isFeatured =
-      item.isFeatured === true || String(item.isFeatured) === "true";
-
+    const isFeatured = item.isFeatured === true || String(item.isFeatured) === "true";
     html += `
             <div class="card" id="card-${item._id}">
                 <img class="thumb" src="${item.thumbnail}" alt="thumb">
@@ -104,18 +68,15 @@ function renderDynamicSection(sectionId, items) {
                         By ${sName} 
                         <a href="javascript:void(0)" class="learn-link" onclick="openSeller('${sEmail}')">(Learn More)</a>
                     </div>
-                    
                     <div class="discount-box">
                         <span class="promo-badge-${item._id}" id="badge-${item._id}">
                             ${discount > 0 ? `🔥 ${discount}% OFF` : "🔥 Special Deal"}
                         </span>
                         <button class="apply-btn" onclick="applyDirectDiscount('${item._id}', ${item.price}, ${discount})">Apply</button>
                     </div>
-
                     <div id="timer-${item._id}" class="timer-text" style="font-size: 11px; color: #ffcc00; margin-bottom: 10px;">
                         ${discount > 0 ? "Loading timer..." : ""}
                     </div>
-
                     <!-- 🔥 PRICE + BEST SELLER TAG SECTION -->
                     <div class="price-container" style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
                         <div style="display: flex; align-items: baseline; gap: 8px;">
@@ -124,7 +85,6 @@ function renderDynamicSection(sectionId, items) {
                                 ${discount > 0 ? `₹${finalPriceValue.toFixed(0)}` : `₹${item.price}`}
                             </span>
                         </div>
-
                         <!-- ✅ NEW PLACEMENT: Golden Blinking Best Seller Tag -->
                         ${
                           isFeatured
@@ -149,23 +109,19 @@ function renderDynamicSection(sectionId, items) {
                             : ""
                         }
                     </div>
-
                     <button class="btn buy" onclick='buyNow(${JSON.stringify(item)})'>
                         Buy Now
                     </button>
                 </div>
             </div>
         `;
-
     if (discount > 0 && item.couponCreatedAt) {
       setTimeout(() => startCountdown(item._id, item.couponCreatedAt), 100);
     }
   });
-
   container.innerHTML = html;
 }
 
-// 🎨 Golden Blinking Animation (प्रोफेशनल लुक के लिए)
 const style = document.createElement("style");
 style.innerHTML = `
   .best-seller-blink {
@@ -179,7 +135,6 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
-// function buy btn no login no click
 function startCountdown(productId, createdAt) {
   const timerElement = document.getElementById(`timer-${productId}`);
   if (!timerElement) return;
@@ -191,9 +146,7 @@ function startCountdown(productId, createdAt) {
     const distance = expiryTime - now;
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-    );
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
@@ -207,9 +160,7 @@ function startCountdown(productId, createdAt) {
   }, 1000);
 }
 
-// Simple Apply Button Logic
 function applyDirectDiscount(id, price, discount) {
-  // 1. Check if discount exists
   if (!discount || discount <= 0) {
     return Swal.fire({
       toast: true,
@@ -223,8 +174,6 @@ function applyDirectDiscount(id, price, discount) {
       color: "#fff",
     });
   }
-
-  // 2. Success Toast for Discount Applied
   Swal.fire({
     toast: true,
     position: "top-end",
@@ -240,26 +189,16 @@ function applyDirectDiscount(id, price, discount) {
       popup: "animate__animated animate__fadeInRight",
     },
   });
-
-  console.log(
-    `%c[OFFER] ${discount}% Discount synced for Product ID: ${id}`,
-    "color: #00ffcc; font-weight: bold;",
-  );
+  console.log(`%c[OFFER] ${discount}% Discount synced for Product ID: ${id}`, "color: #00ffcc; font-weight: bold;");
 }
-
-// Sabse pehle store load karo
 window.onload = loadLiveStore;
 
-// Function to fetch Seller Details from Atlas (Database) and Open Modal
 async function openSellerModal() {
   const modal = document.getElementById("sellerModal");
   const sellerEmail = localStorage.getItem("sellerEmail");
-
   if (!modal) {
     return console.error("❌ UI Error: 'sellerModal' ID not found in the DOM.");
   }
-
-  // 1. Initial State: Show Loading Toast
   Swal.fire({
     toast: true,
     position: "top-end",
@@ -270,28 +209,15 @@ async function openSellerModal() {
     background: "#111827",
     color: "#fff",
   });
-
   try {
-    // 2. Open Modal with a smooth display
     modal.style.display = "flex";
     modal.style.opacity = "0";
-
     setTimeout(() => {
       modal.style.transition = "opacity 0.3s ease";
       modal.style.opacity = "1";
     }, 10);
-
-    // 3. Pre-fill data if sellerEmail exists
     if (sellerEmail) {
-      console.log(
-        `%c[ATLAS] Syncing profile for: ${sellerEmail}`,
-        "color: #3b82f6; font-weight: bold;",
-      );
-
-      // Yahan aap apna fetch logic call kar sakte ho:
-      // const res = await fetch(`${CONFIG.BASE_API_URL}/get-seller-data/${sellerEmail}`);
-      // const data = await res.json();
-      // if(data) fillFormFields(data);
+      console.log(`%c[ATLAS] Syncing profile for: ${sellerEmail}`, "color: #3b82f6; font-weight: bold;");
     }
   } catch (err) {
     console.error("Critical error while opening modal:", err);
@@ -305,34 +231,24 @@ async function openSellerModal() {
   }
 }
 
-// Function to Close Modal smoothly
 function closeSellerModal() {
   const modal = document.getElementById("sellerModal");
-
   if (modal) {
-    // 1. Smooth Fade-out
     modal.style.transition = "opacity 0.3s ease";
     modal.style.opacity = "0";
-
-    // 2. Clear data after animation finishes
     setTimeout(() => {
       modal.style.display = "none";
-      console.log(
-        "%c[UI] Seller Modal Closed Successfully",
-        "color: #6b7280; font-weight: bold;",
-      );
+      console.log("%c[UI] Seller Modal Closed Successfully", "color: #6b7280; font-weight: bold;");
     }, 300);
   } else {
     console.warn("Attempted to close modal, but #sellerModal was not found.");
   }
 }
 
-// 🔥 GLOBAL UX: Close modal on Escape key press
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeSellerModal();
 });
 
-// 🔥 GLOBAL UX: Close when clicking outside the modal content
 window.addEventListener("click", (e) => {
   const modal = document.getElementById("sellerModal");
   if (e.target === modal) closeSellerModal();
@@ -342,17 +258,9 @@ function closeSellerModal() {
   document.getElementById("sellerModal").style.display = "none";
 }
 
-// lern more btn pe db se seller ka detail mangao
 async function openSeller(email) {
-  // 1. Clean the email input
   const cleanEmail = email ? email.trim() : "";
-  console.log(
-    "%c[FETCH] Searching Seller Identity:",
-    "color: #3b82f6; font-weight: bold;",
-    cleanEmail,
-  );
-
-  // 2. Validation Check
+  console.log("%c[FETCH] Searching Seller Identity:", "color: #3b82f6; font-weight: bold;", cleanEmail);
   if (!cleanEmail || cleanEmail === "null" || cleanEmail === "undefined") {
     return Swal.fire({
       icon: "error",
@@ -362,9 +270,7 @@ async function openSeller(email) {
       color: "#fff",
     });
   }
-
   try {
-    // 3. Show Loading Spinner
     Swal.fire({
       title: "Syncing Profile...",
       text: "Fetching seller credentials from Atlas...",
@@ -375,37 +281,19 @@ async function openSeller(email) {
         Swal.showLoading();
       },
     });
-
-    const res = await fetch(
-      `${CONFIG.BASE_API_URL}/products/seller-info/${cleanEmail}`,
-    );
+    const res = await fetch(`${CONFIG.BASE_API_URL}/products/seller-info/${cleanEmail}`);
     const seller = await res.json();
-
     if (!seller || !seller.name) {
       throw new Error(`Profile not found for: ${cleanEmail}`);
     }
-
-    // 4. Update Modal UI
-    document.getElementById("modalSellerName").innerText =
-      "👑 " + seller.name.toUpperCase();
+    document.getElementById("modalSellerName").innerText = "👑 " + seller.name.toUpperCase();
     document.getElementById("modalSellerEmail").innerText = seller.email;
-    document.getElementById("modalSellerBio").innerText =
-      seller.bio || "No biography available.";
-    document.getElementById("modalSellerAddress").innerText =
-      "📍 Location: " + (seller.address || "Global");
-
-    // 5. Build Social Links (Professional Style)
+    document.getElementById("modalSellerBio").innerText = seller.bio || "No biography available.";
+    document.getElementById("modalSellerAddress").innerText = "📍 Location: " + (seller.address || "Global");
     let socialHTML = "";
-    if (seller.youtube)
-      socialHTML += `<a href="${seller.youtube}" target="_blank" style="background:#ff0000; color:#fff; padding:6px 12px; border-radius:6px; text-decoration:none; margin-right:8px; font-size:12px; font-weight:bold;">YOUTUBE</a>`;
-    if (seller.instagram)
-      socialHTML += `<a href="${seller.instagram}" target="_blank" style="background:linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color:#fff; padding:6px 12px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:bold;">INSTAGRAM</a>`;
-
-    document.getElementById("modalSocialLinks").innerHTML =
-      socialHTML ||
-      "<span style='color:#6b7280;'>No social profiles linked.</span>";
-
-    // 6. Success: Close Loader and Show Modal
+    if (seller.youtube) socialHTML += `<a href="${seller.youtube}" target="_blank" style="background:#ff0000; color:#fff; padding:6px 12px; border-radius:6px; text-decoration:none; margin-right:8px; font-size:12px; font-weight:bold;">YOUTUBE</a>`;
+    if (seller.instagram) socialHTML += `<a href="${seller.instagram}" target="_blank" style="background:linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color:#fff; padding:6px 12px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:bold;">INSTAGRAM</a>`;
+    document.getElementById("modalSocialLinks").innerHTML = socialHTML || "<span style='color:#6b7280;'>No social profiles linked.</span>";
     Swal.close();
     const detailModal = document.getElementById("sellerDetailModal");
     if (detailModal) detailModal.style.display = "flex";
@@ -421,40 +309,26 @@ async function openSeller(email) {
   }
 }
 
-// Hide learn btn model
 function closeSellerModal() {
   const modal = document.getElementById("sellerDetailModal");
-
   if (modal) {
-    // 1. Smooth Fade-out Effect
     modal.style.transition = "opacity 0.3s ease";
     modal.style.opacity = "0";
-
-    // 2. Delay display none until animation finishes
     setTimeout(() => {
       modal.style.display = "none";
-      modal.style.opacity = "1"; // Reset opacity for next time
-      console.log(
-        "%c[UI] Seller Detail Modal Closed Successfully",
-        "color: #6b7280; font-weight: bold;",
-      );
+      modal.style.opacity = "1";
+      console.log("%c[UI] Seller Detail Modal Closed Successfully", "color: #6b7280; font-weight: bold;");
     }, 300);
   } else {
-    console.error(
-      "❌ UI Error: Element with ID 'sellerDetailModal' not found in the DOM.",
-    );
+    console.error("❌ UI Error: Element with ID 'sellerDetailModal' not found in the DOM.");
   }
 }
 
-//db se user ka sabhi course mangwao dashbord me
 async function loadMyContent() {
   const email = localStorage.getItem("sellerEmail");
   const res = await fetch(`${CONFIG.BASE_API_URL}/products`);
   const all = await res.json();
-
-  // Sirf is seller ke products filter karo
   const myItems = all.filter((p) => p.sellerEmail === email);
-
   let html = "";
   myItems.forEach((item) => {
     html += `
@@ -466,7 +340,6 @@ async function loadMyContent() {
                         <div style="font-size:12px; color:#00ffcc;">₹${item.price} | Discount: ${item.discount}%</div>
                     </div>
                 </div>
-                
                 <div style="display:flex; gap:10px;">
                     <button onclick="openCouponPrompt('${item._id}')" class="apply-btn" style="background:#fbbf24; color:#000;">🎟️ Set %</button>
                     <button onclick="openEditModal('${item._id}', '${item.title}', ${item.price}, '${item.videoLink}')" class="apply-btn">✏️ Edit</button>
@@ -475,13 +348,10 @@ async function loadMyContent() {
             </div>
         `;
   });
-  document.getElementById("myContentList").innerHTML =
-    html || "<p>No content uploaded yet.</p>";
+  document.getElementById("myContentList").innerHTML = html || "<p>No content uploaded yet.</p>";
 }
 
-// individual Coupon Set Logic (No Code, Only %)
 async function openCouponPrompt(id) {
-  // 1. Professional Input Dialog
   const { value: percent } = await Swal.fire({
     title: "Set Course Discount",
     input: "number",
@@ -496,18 +366,13 @@ async function openCouponPrompt(id) {
       max: 100,
       step: 1,
     },
-    // Validation: Check if input is empty or out of range
     inputValidator: (value) => {
       if (!value) return "Please enter a number!";
       if (value < 0 || value > 100) return "Enter a value between 0 and 100!";
     },
   });
-
-  // If admin cancels or doesn't provide value, stop here
   if (percent === undefined) return;
-
   try {
-    // 2. Show Loading Spinner
     Swal.fire({
       title: "Applying Discount...",
       allowOutsideClick: false,
@@ -517,18 +382,12 @@ async function openCouponPrompt(id) {
         Swal.showLoading();
       },
     });
-
-    const res = await fetch(
-      `${CONFIG.BASE_API_URL}/products/update-discount/${id}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ discount: parseInt(percent) }),
-      },
-    );
-
+    const res = await fetch(`${CONFIG.BASE_API_URL}/products/update-discount/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ discount: parseInt(percent) }),
+    });
     if (res.ok) {
-      // 3. Success Toast
       Swal.fire({
         icon: "success",
         title: "Discount Updated!",
@@ -538,7 +397,6 @@ async function openCouponPrompt(id) {
         background: "#111827",
         color: "#fff",
       });
-
       if (typeof loadMyContent === "function") loadMyContent();
     } else {
       throw new Error("Failed to update database.");
@@ -549,12 +407,9 @@ async function openCouponPrompt(id) {
   }
 }
 
-// --- 🚀 FULLY AUTOMATIC PAYTM PAYMENT SYSTEM ---
 async function buyNow(product) {
   try {
-    // 🔐 1. LOGIN CHECK FIRST (IMPORTANT)
     const token = localStorage.getItem("token");
-
     if (!token) {
       Swal.fire({
         icon: "warning",
@@ -568,23 +423,17 @@ async function buyNow(product) {
       return;
     }
     const now = new Date().getTime();
-    const startTime = new Date(
-      product.couponCreatedAt || product.createdAt,
-    ).getTime();
+    const startTime = new Date(product.couponCreatedAt || product.createdAt).getTime();
     const expiryTime = startTime + 7 * 24 * 60 * 60 * 1000;
-
     let finalPrice;
     let appliedDiscount = 0;
-
     if (now < expiryTime && product.discount > 0) {
       appliedDiscount = product.discount;
       finalPrice = product.price - (product.price * appliedDiscount) / 100;
     } else {
       finalPrice = product.price;
     }
-
     console.log("Processing payment for:", product.title);
-    // 🔥 LOADING
     Swal.fire({
       title: "Processing Payment...",
       text: "Please wait...",
@@ -593,21 +442,16 @@ async function buyNow(product) {
         Swal.showLoading();
       },
     });
-
-    const response = await fetch(
-      `${CONFIG.BASE_API_URL}/payment/create-order`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          amount: finalPrice,
-          productId: product._id,
-          buyerEmail: localStorage.getItem("userEmail"),
-          sellerEmail: product.sellerEmail,
-        }),
-      },
-    );
-
+    const response = await fetch(`${CONFIG.BASE_API_URL}/payment/create-order`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount: finalPrice,
+        productId: product._id,
+        buyerEmail: localStorage.getItem("userEmail"),
+        sellerEmail: product.sellerEmail,
+      }),
+    });
     if (!response.ok) {
       Swal.fire({
         icon: "error",
@@ -616,9 +460,7 @@ async function buyNow(product) {
       });
       return;
     }
-
     const data = await response.json();
-
     const options = {
       key: data.key,
       amount: data.amount,
@@ -632,14 +474,12 @@ async function buyNow(product) {
       theme: {
         color: "#00FFAB",
       },
-
       modal: {
         ondismiss: function () {
           console.log("Payment window closed by user");
           Swal.close();
         },
       },
-
       handler: async function (paymentResponse) {
         try {
           Swal.fire({
@@ -647,23 +487,18 @@ async function buyNow(product) {
             allowOutsideClick: false,
             didOpen: () => Swal.showLoading(),
           });
-
-          const verifyRes = await fetch(
-            `${CONFIG.BASE_API_URL}/verify-payment`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                razorpay_order_id: paymentResponse.razorpay_order_id,
-                razorpay_payment_id: paymentResponse.razorpay_payment_id,
-                razorpay_signature: paymentResponse.razorpay_signature,
-                productId: product._id,
-                buyerEmail: localStorage.getItem("userEmail"),
-                amount: finalPrice,
-              }),
-            },
-          );
-
+          const verifyRes = await fetch(`${CONFIG.BASE_API_URL}/verify-payment`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              razorpay_order_id: paymentResponse.razorpay_order_id,
+              razorpay_payment_id: paymentResponse.razorpay_payment_id,
+              razorpay_signature: paymentResponse.razorpay_signature,
+              productId: product._id,
+              buyerEmail: localStorage.getItem("userEmail"),
+              amount: finalPrice,
+            }),
+          });
           if (verifyRes.ok) {
             Swal.fire({
               icon: "success",
@@ -672,7 +507,6 @@ async function buyNow(product) {
               timer: 2000,
               showConfirmButton: false,
             });
-
             setTimeout(() => {
               window.location.href = "/pages/mycourse.html";
             }, 2000);
@@ -693,7 +527,6 @@ async function buyNow(product) {
         }
       },
     };
-
     const rzp = new Razorpay(options);
     rzp.open();
   } catch (err) {
@@ -706,17 +539,13 @@ async function buyNow(product) {
   }
 }
 
-// 1. Socket Connection
 let socket;
 if (typeof io !== "undefined") {
   socket = io(window.API_BASE_URL);
   console.log("✅ Socket Client Connected!");
-
-  // Real-time Event Listener
   socket.on("new_notification", (data) => {
     allNotifications.unshift(data);
     renderNotifications();
-
     Swal.fire({
       title: data.title,
       text: data.message,
@@ -730,7 +559,6 @@ if (typeof io !== "undefined") {
   console.error("❌ Socket.io CDN missing in HTML!");
 }
 
-// 2. State & Elements (Puraana Logic)
 let allNotifications = [];
 const getNotifElements = () => ({
   bell: document.getElementById("bellBtn"),
@@ -740,24 +568,18 @@ const getNotifElements = () => ({
   clearBtn: document.getElementById("clearNotif"),
 });
 
-// 3. UI Render Function (Ab ye Exact Product ID pe jump karega 🚀)
 function renderNotifications() {
   const { countBadge, notifBody } = getNotifElements();
   const count = allNotifications.length;
-
   if (countBadge) {
     countBadge.innerText = count;
     countBadge.style.display = count > 0 ? "block" : "none";
   }
-
   if (notifBody) {
     if (count > 0) {
       notifBody.innerHTML = allNotifications
         .map((item) => {
-          // 🔥 MAGIC: Category ke bajaye Seedhe Product ID pe bhejenge
-          // Iske liye aapke Product Card ki ID uski Database ID honi chahiye
           const targetId = `card-${item.productId || item._id}`;
-
           return `
                 <div class="notif-item" onclick="location.hash='card-${item.productId || item._id}';">
         <p><strong>${item.title}</strong></p>
@@ -768,37 +590,25 @@ function renderNotifications() {
         })
         .join("");
     } else {
-      notifBody.innerHTML =
-        '<p style="padding:15px; text-align:center; color:#888;">No new notifications</p>';
+      notifBody.innerHTML = '<p style="padding:15px; text-align:center; color:#888;">No new notifications</p>';
     }
   }
 }
 
-// 4. Fetch Old Notifications (Aapka Token wala Logic)
 async function fetchOldNotifications() {
   try {
     const token = localStorage.getItem("token");
-
-    // Agar token nahi hai, to bypass kar do (Ya login page pe bhejo)
     if (!token) {
-      console.warn(
-        "⚠️ User not logged in, but fetching public notifications...",
-      );
+      console.warn("⚠️ User not logged in, but fetching public notifications...");
     }
-
-    const response = await fetch(
-      `${CONFIG.BASE_API_URL}/products/notifications`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-auth-token": token || "", // Token bhej rahe hain agar hai to
-        },
+    const response = await fetch(`${CONFIG.BASE_API_URL}/products/notifications`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": token || "",
       },
-    );
-
+    });
     if (!response.ok) throw new Error("Fetch failed");
-
     allNotifications = await response.json();
     renderNotifications();
   } catch (err) {
@@ -806,36 +616,28 @@ async function fetchOldNotifications() {
   }
 }
 
-// 5. Initialize & Events
 document.addEventListener("DOMContentLoaded", () => {
   const { bell, dropdown, clearBtn } = getNotifElements();
-
   if (bell) {
     bell.onclick = (e) => {
       e.stopPropagation();
       console.log("🔔 Bell Clicked!");
       const isOpen = dropdown.classList.toggle("show");
-
-      // 🔥 MOBILE SCROLL LOCK: Agar mobile pe dropdown khula hai to body scroll band
       if (window.innerWidth <= 768) {
         if (isOpen) {
-          document.body.style.overflow = "hidden"; // Page lock
+          document.body.style.overflow = "hidden";
         } else {
-          document.body.style.overflow = "auto"; // Page unlock
+          document.body.style.overflow = "auto";
         }
       }
     };
   }
-
   if (clearBtn) {
     clearBtn.onclick = (e) => {
       e.stopPropagation();
-      allNotifications = []; // Local clear
+      allNotifications = [];
       renderNotifications();
-
-      // Clear hone ke baad scroll wapas on kar dena (Safety ke liye)
       document.body.style.overflow = "auto";
-
       Swal.fire({
         toast: true,
         position: "top-end",
@@ -846,22 +648,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
   }
-
-  // Dropdown ke bahar click karne par band karna aur scroll on karna
   document.onclick = (e) => {
     if (dropdown && dropdown.classList.contains("show")) {
       dropdown.classList.remove("show");
-      document.body.style.overflow = "auto"; // Unlock scroll
+      document.body.style.overflow = "auto";
     }
   };
-
   fetchOldNotifications();
 });
 
-// Right click block
 document.addEventListener("contextmenu", (e) => e.preventDefault());
 
-// F12 + DevTools block ===========================================================
 document.onkeydown = function (e) {
   if (e.keyCode == 123) return false;
   if (e.ctrlKey && e.shiftKey && e.keyCode == 73) return false;
@@ -874,56 +671,35 @@ setInterval(() => {
   }
 }, 1000);
 
-//==============================================================================
-/* =========================================
-   3.  Review submil & LOADING LOGIC   
-========================================= */
-// 2. Main Submit Event
 document.getElementById("reviewForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-
-  // 1. Latest User Data nikaalo
   const storedData = localStorage.getItem("userData");
   if (!storedData) {
     alert("Please, Login first!");
     window.location.href = "pages/login.html";
     return;
   }
-
   const user = JSON.parse(storedData);
-
-  // 2. Clear IDs nikaalo (Multiple checks for safety)
-  const finalUserId =
-    user._id || user.id || (user.user && (user.user._id || user.user.id));
-
-  // 3. 🚨 PROFILE PIC FIX: Direct Cloudinary URL uthao
-  // Agar profile page par update hua hai, toh wahi url yahan use hoga
-  const latestProfilePic =
-    user.profilePic || (user.user && user.user.profilePic) || "";
-
+  const finalUserId = user._id || user.id || (user.user && (user.user._id || user.user.id));
+  const latestProfilePic = user.profilePic || (user.user && user.user.profilePic) || "";
   const data = {
     username: document.getElementById("userName").value.trim(),
     rating: document.getElementById("userRating").value,
     comment: document.getElementById("userComment").value.trim(),
     userId: finalUserId,
-    profilePic: latestProfilePic, // Ye ab Cloudinary ka direct link (http...) bhejega
+    profilePic: latestProfilePic,
   };
-
-  console.log("📝 Posting Review with Data:", data); // Debugging ke liye
-
+  console.log("📝 Posting Review with Data:", data);
   try {
     const response = await fetch(`${window.API_BASE_URL}/api/reviews/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-
     const result = await response.json();
-
     if (response.ok) {
       alert("Thanks for your review! ✅");
       document.getElementById("reviewForm").reset();
-      // Yahan function ka naam check kar lena (loadTopReviews ya fetchReviews)
       if (typeof loadTopReviews === "function") loadTopReviews();
     } else {
       alert(result.message || "Error while posting review!");
@@ -934,44 +710,30 @@ document.getElementById("reviewForm").addEventListener("submit", async (e) => {
   }
 });
 
-// ✅ 1. Updated loadTopReviews function (Inside logic updated for outside-click)
 async function loadTopReviews() {
   try {
-    // 1. Pehle variable define karo
     const apiUrl = `${window.API_BASE_URL.replace(/\/$/, "")}/api/reviews/top10`;
-
-    // 2. Ab isse log aur fetch karo
     console.log("Calling API:", apiUrl);
     const response = await fetch(apiUrl);
-
     const data = await response.json();
     console.log("Full Data Received:", data);
-
-    // 2. BACKEND CHANGE: अब डेटा 'data.reviews' के अंदर है
     const reviews = data.reviews || [];
     const totalCount = data.totalCount || 0;
-
-    // 🔥 3. UI UPDATE: यहाँ आपका नया काउंट सेट होगा
     const countElement = document.getElementById("countNumber");
     if (countElement) {
       countElement.innerText = totalCount;
     }
-
     const displayArea = document.getElementById("reviewDisplay");
-
     if (!reviews || reviews.length === 0) {
-      displayArea.innerHTML =
-        "<p style='color:gray; font-size:12px;'>No reviews yet.</p>";
+      displayArea.innerHTML = "<p style='color:gray; font-size:12px;'>No reviews yet.</p>";
       return;
     }
-
     const BASE_URL = `${window.API_BASE_URL}`;
     displayArea.innerHTML = reviews
       .map((r) => {
         const userName = (r.userId && r.userId.name) || r.username || "User";
         let rawPath = (r.userId && r.userId.profilePic) || r.profilePic || "";
         let profileImg;
-
         if (rawPath && typeof rawPath === "string" && rawPath.length > 5) {
           if (rawPath.startsWith("http")) {
             profileImg = rawPath;
@@ -982,11 +744,7 @@ async function loadTopReviews() {
         } else {
           profileImg = `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=00ff88&color=000&bold=true&size=128`;
         }
-
-        const adminReplyBtn = r.adminReply
-          ? `<span onclick="window.toggleReplyBox(event, '${r._id}')" style="color:#00ff88; font-size:10px; cursor:pointer; text-decoration:underline; margin-left:8px; font-weight:normal;">View Reply</span>`
-          : "";
-
+        const adminReplyBtn = r.adminReply ? `<span onclick="window.toggleReplyBox(event, '${r._id}')" style="color:#00ff88; font-size:10px; cursor:pointer; text-decoration:underline; margin-left:8px; font-weight:normal;">View Reply</span>` : "";
         const adminReplyContent = r.adminReply
           ? `<div id="reply-box-${r._id}" class="reply-box-item" style="display:none; margin-top:8px; padding:8px; background:rgba(0,255,136,0.1); border-left:2px solid #00ff88; border-radius:4px; font-size:12px; color:#00ff88;">
               <strong style="color:#fff;">Admin:</strong> ${r.adminReply}
@@ -1019,37 +777,27 @@ async function loadTopReviews() {
   }
 }
 
-// ✅ 2. Pro Toggle Logic (Outside Click Support)
 window.toggleReplyBox = function (event, id) {
-  event.stopPropagation(); // Stop click from reaching window listener immediately
+  event.stopPropagation();
   const box = document.getElementById(`reply-box-${id}`);
   const allBoxes = document.querySelectorAll(".reply-box-item");
-
-  // Close all other open boxes first
   allBoxes.forEach((b) => {
     if (b.id !== `reply-box-${id}`) b.style.display = "none";
   });
-
   if (box) {
-    box.style.display =
-      box.style.display === "none" || box.style.display === ""
-        ? "block"
-        : "none";
+    box.style.display = box.style.display === "none" || box.style.display === "" ? "block" : "none";
   }
 };
 
-// ✅ 3. Global Click Listener to close box when clicking outside
 window.addEventListener("click", function (event) {
   const allBoxes = document.querySelectorAll(".reply-box-item");
   allBoxes.forEach((box) => {
-    // If click is outside the box and not on a 'View Reply' button, close it
     if (box.style.display === "block" && !box.contains(event.target)) {
       box.style.display = "none";
     }
   });
 });
 
-// Baki ka Enter Key logic
 const commentBox = document.getElementById("userComment");
 if (commentBox) {
   commentBox.addEventListener("keydown", function (e) {
@@ -1061,15 +809,10 @@ if (commentBox) {
 }
 loadTopReviews();
 
-// --- Review Count Logic ---
-
-// 1. पेज लोड होते ही डेटाबेस से शुरूआती काउंट लाने के लिए
 async function loadInitialCount() {
   try {
     const response = await fetch(`${window.API_BASE_URL}/api/reviews/top10`);
     const data = await response.json();
-
-    // बैकएंड अब 'totalCount' भेज रहा है,
     if (data.totalCount !== undefined) {
       updateCountUI(data.totalCount);
     }
@@ -1078,54 +821,36 @@ async function loadInitialCount() {
   }
 }
 
-// 2. सॉकेट के ज़रिए रियल-टाइम अपडेट सुनना
 socket.on("updateTotalReviewCount", (newCount) => {
   console.log("Naya review aaya! New Count:", newCount);
   updateCountUI(newCount);
 });
 
-// 3. UI को अपडेट करने वाला फंक्शन (एनीमेशन के साथ)
 function updateCountUI(number) {
   const countElement = document.getElementById("countNumber");
   if (!countElement) return;
-
   const cleanNumber = Number(String(number).replace(/[^0-9.-]+/g, "")) || 0;
-
   const formattedNumber = new Intl.NumberFormat("en-IN").format(cleanNumber);
-
-  // 🔥 yaha change
   countElement.textContent = formattedNumber;
-
   countElement.classList.add("count-update-flash");
   setTimeout(() => {
     countElement.classList.remove("count-update-flash");
   }, 1000);
 }
-
-// फंक्शन कॉल करें
 loadInitialCount();
 
-//Review Logic end..
-
-// after login replesh nav (account to user name )
 function updateNavbar() {
   const username = localStorage.getItem("username");
   const accountBtn = document.getElementById("navAccountBtn");
-
   if (username && accountBtn) {
-    // User ka pehla naam nikaalo (e.g. "Mukesh Singh" -> "Mukesh")
     const firstName = username.split(" ")[0];
-
-    // Button ka text update karo
     accountBtn.innerHTML = `👤 ${firstName} <span class="triangle-icon">▼</span>`;
-
-    // Optional: Agar Login link ko hide karna hai login ke baad
     const loginLink = document.querySelector('a[href="pages/login.html"]');
     if (loginLink) {
-      loginLink.innerHTML = "🔄 Switch Account"; // Ya hide kar do: loginLink.style.display = 'none';
+      loginLink.innerHTML = "🔄 Switch Account";
     }
   }
 }
 
-// Page load hote hi function chalao
 document.addEventListener("DOMContentLoaded", updateNavbar);
+//#endregion

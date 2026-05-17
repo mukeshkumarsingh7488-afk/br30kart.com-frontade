@@ -6,7 +6,6 @@ body {
   padding: 20px;
   text-align: center;
 }
-
 .verify-card {
   max-width: 500px;
   margin: 40px auto;
@@ -16,14 +15,11 @@ body {
   border: 2px solid #00ff88;
   box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
 }
-
 h2 {
   color: #00ff88;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-
-/* Input & Button */
 input {
   width: 90%;
   padding: 15px;
@@ -35,7 +31,6 @@ input {
   font-weight: bold;
   text-align: center;
 }
-
 button {
   width: 100%;
   padding: 15px;
@@ -48,13 +43,10 @@ button {
   text-transform: uppercase;
   transition: 0.3s;
 }
-
 button:hover {
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
   transform: scale(1.02);
 }
-
-/* 📸 Camera Section */
 #reader {
   width: 100%;
   border-radius: 15px;
@@ -62,8 +54,6 @@ button:hover {
   margin-top: 20px;
   border: 1px dashed #00ff88;
 }
-
-/* ✅ Result Section */
 #result-box {
   display: none;
   margin-top: 25px;
@@ -74,7 +64,6 @@ button:hover {
   text-align: left;
   animation: fadeIn 0.5s ease;
 }
-
 .status-tag {
   background: #00ff88;
   color: #000;
@@ -83,13 +72,11 @@ button:hover {
   font-weight: 900;
   font-size: 12px;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);

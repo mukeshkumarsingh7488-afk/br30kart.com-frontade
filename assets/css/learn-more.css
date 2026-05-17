@@ -14,7 +14,6 @@ body {
   margin: 0 auto;
   padding: 50px 20px;
 }
-
 .header {
   text-align: center;
   margin-bottom: 60px;
@@ -29,8 +28,6 @@ body {
   color: #888;
   font-size: 1.1rem;
 }
-
-/* Steps Section */
 .step-container {
   position: relative;
   margin-top: 40px;
@@ -71,14 +68,8 @@ body {
 .step-content p {
   color: #ccc;
 }
-
-/* VIP Badge Section */
 .vip-highlight {
-  background: linear-gradient(
-    135deg,
-    rgba(160, 32, 240, 0.2),
-    rgba(255, 71, 87, 0.2)
-  );
+  background: linear-gradient(135deg, rgba(160, 32, 240, 0.2), rgba(255, 71, 87, 0.2));
   padding: 40px;
   border-radius: 25px;
   text-align: center;
@@ -105,7 +96,6 @@ body {
   background: #ff6b81;
   box-shadow: 0 0 20px rgba(255, 71, 87, 0.5);
 }
-
 .back-home {
   display: block;
   text-align: center;
@@ -116,7 +106,6 @@ body {
 .back-home:hover {
   color: #fff;
 }
-
 @media (max-width: 600px) {
   .step {
     flex-direction: column;

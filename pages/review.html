@@ -15,195 +15,48 @@
       })(window, document, "script", "dataLayer", "GTM-5CDWCQ5S");
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- ✅ Basic -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- 🔒 SEO OFF (Admin page) -->
     <title>Admin Review Panel | BR30 Trader</title>
     <meta name="robots" content="noindex, nofollow" />
-
-    <!-- 🔐 No Cache -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-store, no-cache, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
-    <!-- ✅ Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
-    <!-- ✅ Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- ✅ Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/review.css" />
-
-    <!-- ✅ SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
   </head>
-
   <body onclick="closeAllReplyBoxes(event)">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <div
-      style="
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: #000;
-        width: 100%;
-        margin: 0;
-        padding: 10px 0;
-        border-bottom: 2px solid #222;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-      "
-    >
-      <!-- Main Header Container -->
-      <div
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 20px;
-        "
-      >
-        <h2
-          style="
-            margin: 0;
-            font-size: 18px;
-            color: #00ff88;
-            white-space: nowrap;
-          "
-        >
-          Review Management Panel
-        </h2>
-
-        <div
-          style="
-            background: #1a1a1a;
-            padding: 5px 12px;
-            border-radius: 6px;
-            border-left: 3px solid #00ff88;
-            min-width: 100px;
-            text-align: center;
-          "
-        >
-          <small
-            style="
-              color: #888;
-              text-transform: uppercase;
-              font-size: 9px;
-              display: block;
-            "
-          >
-            Total Reviews
-          </small>
-          <span
-            id="statReviews"
-            style="color: #00ff88; font-size: 16px; font-weight: bold"
-          >
-            0
-          </span>
+    <div style="position: sticky; top: 0; z-index: 1000; background: #000; width: 100%; margin: 0; padding: 10px 0; border-bottom: 2px solid #222; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6)">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px">
+        <h2 style="margin: 0; font-size: 18px; color: #00ff88; white-space: nowrap">Review Management Panel</h2>
+        <div style="background: #1a1a1a; padding: 5px 12px; border-radius: 6px; border-left: 3px solid #00ff88; min-width: 100px; text-align: center">
+          <small style="color: #888; text-transform: uppercase; font-size: 9px; display: block">Total Reviews</small>
+          <span id="statReviews" style="color: #00ff88; font-size: 16px; font-weight: bold">0</span>
         </div>
-
-        <a
-          href="admin-dashboard.html"
-          style="
-            background: #2563eb;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: bold;
-            text-decoration: none;
-          "
-        >
-          DASHBOARD
-        </a>
+        <a href="admin-dashboard.html" style="background: #2563eb; color: white; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: bold; text-decoration: none">DASHBOARD</a>
       </div>
-
-      <!-- 2. Search Bar + Refresh Button (Centered) -->
-      <div
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          padding: 5px 20px 10px 20px;
-        "
-      >
-        <input
-          type="text"
-          id="searchUser"
-          placeholder="🔍 Search by username..."
-          onkeyup="searchReviews()"
-          style="
-            width: 40%; /* Half width */
-            min-width: 200px;
-            padding: 10px;
-            border-radius: 8px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            color: white;
-            outline: none;
-          "
-        />
-
-        <!-- Refresh Button -->
-        <button
-          onclick="resetAllFilters()"
-          style="
-            background: #2d333b;
-            border: 1px solid #3d444d;
-            color: white;
-            width: 38px;
-            height: 38px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-          "
-          onmouseover="this.style.background = '#3d444d'"
-          onmouseout="this.style.background = '#2d333b'"
-        >
+      <div style="display: flex; justify-content: center; align-items: center; gap: 10px; padding: 5px 20px 10px 20px">
+        <input type="text" id="searchUser" placeholder="🔍 Search by username..." onkeyup="searchReviews()" style="width: 40%; /* Half width */ min-width: 200px; padding: 10px; border-radius: 8px; background: #1a1a1a; border: 1px solid #333; color: white; outline: none" />
+        <button onclick="resetAllFilters()" style="background: #2d333b; border: 1px solid #3d444d; color: white; width: 38px; height: 38px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s" onmouseover="this.style.background = '#3d444d'" onmouseout="this.style.background = '#2d333b'">
           <i class="fas fa-sync-alt"></i>
         </button>
       </div>
-
       <style>
         body {
           margin: 0 !important;
           padding: 0 !important;
         }
       </style>
-
-      <div id="review-list">
-        <!-- Reviews yahan load honge -->
-      </div>
+      <div id="review-list"></div>
     </div>
-
     <script src="../js/config.js"></script>
     <script src="../js/review.js"></script>
   </body>

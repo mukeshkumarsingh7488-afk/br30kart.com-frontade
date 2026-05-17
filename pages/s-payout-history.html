@@ -15,70 +15,34 @@
       })(window, document, "script", "dataLayer", "GTM-5CDWCQ5S");
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- ✅ Basic -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- 🔐 Title -->
     <title>Payout History | BR30 Kart</title>
-
-    <!-- 🔒 Private Page -->
     <meta name="robots" content="noindex, nofollow" />
-
-    <!-- 🔐 No Cache -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-store, no-cache, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
-    <!-- 🔐 Extra Security -->
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-
-    <!-- ✅ Favicon -->
     <link rel="icon" href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" />
-
-    <!-- ✅ Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-    <!-- ✅ Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/s-payout-history.css" />
-
-    <!-- sweet alart-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <!-- ✅ SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
   </head>
   <body class="p-6">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <!-- Header Section -->
-    <div
-      class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4"
-    >
+    <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
       <div class="flex items-center gap-6">
-        <a
-          href="seller-analytics.html"
-          class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-bold text-xs flex items-center gap-2 transition shadow-lg"
-        >
+        <a href="seller-analytics.html" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-bold text-xs flex items-center gap-2 transition shadow-lg">
           <i class="fas fa-arrow-left"></i>
           BACK TO DASHBOARD
         </a>
@@ -87,133 +51,66 @@
           <span class="text-green-500">HISTORY</span>
         </h1>
       </div>
-
-      <div
-        class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center justify-center"
-      >
-        <!-- लोगो ऊपर (Path Fixed) -->
-        <img
-          src="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-          alt="Logo"
-          class="h-10 w-auto object-contain mb-1"
-        />
-
-        <!-- नाम नीचे -->
-        <span
-          class="text-sm font-black tracking-widest text-white uppercase leading-none"
-        >
+      <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center justify-center">
+        <img src="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" alt="Logo" class="h-10 w-auto object-contain mb-1" />
+        <span class="text-sm font-black tracking-widest text-white uppercase leading-none">
           BR30
           <span class="text-blue-500">KART</span>
         </span>
       </div>
-
-      <!-- Search & Refresh Wrapper -->
       <div class="flex items-center gap-2 w-full md:w-auto">
         <div class="relative w-full md:w-80">
-          <i
-            class="fas fa-search absolute left-4 top-3 text-gray-500 text-sm"
-          ></i>
-          <input
-            type="text"
-            id="payoutSearch"
-            oninput="applyPayoutFilters()"
-            placeholder="Search by Order or Course..."
-            class="bg-[#111827] border border-gray-700 text-white pl-11 pr-4 py-2.5 rounded-xl text-sm w-full outline-none focus:border-blue-500 transition-all"
-          />
+          <i class="fas fa-search absolute left-4 top-3 text-gray-500 text-sm"></i>
+          <input type="text" id="payoutSearch" oninput="applyPayoutFilters()" placeholder="Search by Order or Course..." class="bg-[#111827] border border-gray-700 text-white pl-11 pr-4 py-2.5 rounded-xl text-sm w-full outline-none focus:border-blue-500 transition-all" />
         </div>
-
-        <!-- Image jaisa Premium Square Refresh Button -->
-        <button
-          onclick="resetSearch()"
-          class="bg-[#2d333b] hover:bg-[#3d444d] text-white p-2.5 rounded-xl transition-all border border-gray-700 flex items-center justify-center min-w-[42px] h-[42px]"
-          title="Clear Search"
-        >
+        <button onclick="resetSearch()" class="bg-[#2d333b] hover:bg-[#3d444d] text-white p-2.5 rounded-xl transition-all border border-gray-700 flex items-center justify-center min-w-[42px] h-[42px]" title="Clear Search">
           <i class="fas fa-sync-alt text-sm"></i>
         </button>
       </div>
     </div>
-
-    <!-- 4 Dynamic Stats Boxes -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
       <div class="stat-card p-6 border-l-4 border-l-green-500">
-        <p class="text-gray-500 text-[10px] font-bold uppercase mb-2">
-          Total Paid Amount
-        </p>
+        <p class="text-gray-500 text-[10px] font-bold uppercase mb-2">Total Paid Amount</p>
         <h2 class="text-3xl font-black text-white" id="totalPaid">₹0</h2>
       </div>
       <div class="stat-card p-6 border-l-4 border-l-yellow-500">
-        <p class="text-gray-500 text-[10px] font-bold uppercase mb-2">
-          Pending Payout
-        </p>
-        <h2 class="text-3xl font-black text-yellow-500" id="totalPending">
-          ₹0
-        </h2>
+        <p class="text-gray-500 text-[10px] font-bold uppercase mb-2">Pending Payout</p>
+        <h2 class="text-3xl font-black text-yellow-500" id="totalPending">₹0</h2>
       </div>
       <div class="stat-card p-6 border-l-4 border-l-red-500">
-        <p class="text-gray-500 text-[10px] font-bold uppercase mb-2">
-          Platform Fee (20%)
-        </p>
+        <p class="text-gray-500 text-[10px] font-bold uppercase mb-2">Platform Fee (20%)</p>
         <h2 class="text-3xl font-black text-red-500" id="totalFees">₹0</h2>
       </div>
       <div class="stat-card p-6 border-l-4 border-l-blue-500">
-        <p class="text-gray-500 text-[10px] font-bold uppercase mb-2">
-          Course Count
-        </p>
+        <p class="text-gray-500 text-[10px] font-bold uppercase mb-2">Course Count</p>
         <h2 class="text-3xl font-black text-blue-400" id="mailCount">0</h2>
       </div>
     </div>
-
-    <!-- Master Filter Bar -->
-    <div
-      class="bg-[#0f1216] p-4 rounded-xl mb-6 flex flex-wrap items-center justify-center gap-4 border border-[#1f2937]"
-    >
+    <div class="bg-[#0f1216] p-4 rounded-xl mb-6 flex flex-wrap items-center justify-center gap-4 border border-[#1f2937]">
       <div class="flex items-center gap-2">
-        <label class="text-[10px] text-gray-500 font-bold uppercase">
-          From:
-        </label>
+        <label class="text-[10px] text-gray-500 font-bold uppercase">From:</label>
         <input type="date" id="startDate" />
       </div>
       <div class="flex items-center gap-2">
         <label class="text-[10px] text-gray-500 font-bold uppercase">To:</label>
         <input type="date" id="endDate" />
       </div>
-      <button
-        onclick="applyPayoutFilters()"
-        class="bg-green-600 hover:bg-green-700 text-white px-8 py-2 rounded-lg font-bold text-xs uppercase transition"
-      >
-        Apply
-      </button>
-
-      <button
-        onclick="resetFilters()"
-        class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition"
-        title="Refresh"
-      >
+      <button onclick="applyPayoutFilters()" class="bg-green-600 hover:bg-green-700 text-white px-8 py-2 rounded-lg font-bold text-xs uppercase transition">Apply</button>
+      <button onclick="resetFilters()" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition" title="Refresh">
         <i class="fas fa-sync-alt"></i>
       </button>
-
-      <button
-        onclick="exportToPDF()"
-        class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-bold text-xs flex items-center gap-2 shadow-lg"
-      >
+      <button onclick="exportToPDF()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-bold text-xs flex items-center gap-2 shadow-lg">
         <i class="fas fa-file-pdf"></i>
         PDF
       </button>
-      <button
-        onclick="window.printCSV()"
-        class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-bold text-xs flex items-center gap-2 shadow-lg"
-      >
+      <button onclick="window.printCSV()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-bold text-xs flex items-center gap-2 shadow-lg">
         <i class="fas fa-file-pdf"></i>
         CSV
       </button>
     </div>
-
-    <!-- Scrollable Payout Table -->
     <div class="table-container">
       <table class="w-full text-left">
-        <thead
-          class="sticky top-0 bg-[#161b22] text-gray-400 text-[10px] font-bold uppercase z-10"
-        >
+        <thead class="sticky top-0 bg-[#161b22] text-gray-400 text-[10px] font-bold uppercase z-10">
           <tr>
             <th class="px-6 py-5">Payout Date</th>
             <th class="px-6 py-5">Course Details</th>
@@ -224,9 +121,7 @@
             <th class="px-6 py-5 text-center">Payout Status</th>
           </tr>
         </thead>
-        <tbody id="payoutTableBody" class="divide-y divide-[#1f2937]">
-          <!-- Rows will be injected by JavaScript -->
-        </tbody>
+        <tbody id="payoutTableBody" class="divide-y divide-[#1f2937]"></tbody>
       </table>
     </div>
     <script src="../js/config.js"></script>

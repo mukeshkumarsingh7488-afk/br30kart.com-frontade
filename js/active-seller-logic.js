@@ -1,10 +1,6 @@
 //#region
-// ==========================================
-// 🏆 BR30 ELITE TRACKER ENGINE v3.0 (ULTRA)
-// ==========================================
-// active seller controll pannel
 const token = localStorage.getItem("token");
-// api request
+
 async function apiRequest(url, method = "GET", body = null) {
   try {
     const res = await fetch(url, {
@@ -16,7 +12,6 @@ async function apiRequest(url, method = "GET", body = null) {
       body: body ? JSON.stringify(body) : null,
       cache: "no-store",
     });
-
     const data = await res.json();
     return { ok: res.ok, data };
   } catch (err) {
@@ -30,58 +25,36 @@ async function loadSellerTracker() {
   const tbody = document.getElementById("sellerTrackerBody");
   const noData = document.getElementById("noData");
   if (!tbody) return;
-
   try {
-    const res = await fetch(
-      `${window.API_BASE_URL}/api/admin/seller-tracker?t=${new Date().getTime()}`,
-      {
-        headers: { "x-auth-token": token },
-      },
-    );
-
+    const res = await fetch(`${window.API_BASE_URL}/api/admin/seller-tracker?t=${new Date().getTime()}`, {
+      headers: { "x-auth-token": token },
+    });
     const sellers = await res.json();
-
     tbody.innerHTML = "";
-
     if (!sellers || sellers.length === 0) {
       noData.style.display = "block";
       return;
     }
     noData.style.display = "none";
-
     let html = "";
-
     sellers.forEach((seller) => {
-      const lastSeen = seller.lastLogin
-        ? new Date(seller.lastLogin).toLocaleString("en-IN")
-        : "Never Active";
-
-      const statusHTML = seller.isBlocked
-        ? `<span class="status-tag tag-blocked">Blocked 🚫</span>`
-        : `<span class="status-tag tag-active">Active ✅</span>`;
-
+      const lastSeen = seller.lastLogin ? new Date(seller.lastLogin).toLocaleString("en-IN") : "Never Active";
+      const statusHTML = seller.isBlocked ? `<span class="status-tag tag-blocked">Blocked 🚫</span>` : `<span class="status-tag tag-active">Active ✅</span>`;
       let courseOptions =
         seller.courseList && seller.courseList.length > 0
           ? seller.courseList
               .map((course) => {
                 const courseId = course._id || course.id;
-                // ✅ एकदम सटीक चेक: अगर isVisible 'false' है तो Hidden
-                const isHidden =
-                  course.isVisible === false ||
-                  String(course.isVisible) === "false";
-
+                const isHidden = course.isVisible === false || String(course.isVisible) === "false";
                 return `
     <li class="course-mini-card" id="card-${courseId}" style="display: flex; align-items: center; gap: 12px; padding: 10px; border-bottom: 1px solid #1e293b;">
       <img src="${course.thumbnail}" class="c-thumb" style="width: 50px; height: 35px; border-radius: 4px; object-fit: cover;" onerror="this.src='../images/placeholder.jpg'">
-      
       <div class="c-details" style="flex: 1;">
         <div class="c-name" style="font-weight: 700; color: #f8fafc; font-size: 13px;">${course.title}</div>
         <div style="font-size: 9px; color: #64748b;">ID: ${courseId}</div>
         <div style="font-size: 11px; color: #00ff88; margin-top: 2px;">₹${course.price} | <span style="color:#ffbb33">${course.discount}% OFF</span></div>
       </div>
-
       <div class="c-actions" style="display: flex; gap: 6px;">
-        <!-- 🔥 SMART TOGGLE BUTTON: Live (Green/Eye) vs Hidden (Red/Eye-Slash) -->
         <button 
           onclick="toggleCourse('${courseId}')"
            data-id="${courseId}" 
@@ -93,11 +66,9 @@ async function loadSellerTracker() {
             box-shadow: 0 0 10px ${isHidden ? "rgba(239, 68, 68, 0.3)" : "rgba(34, 197, 94, 0.3)"};
           "
           title="${isHidden ? "Click to Live" : "Click to Hide"}">
-          
           <i class="fas ${isHidden ? "fa-eye-slash" : "fa-eye"}"></i>
           <span>${isHidden ? "HIDDEN" : "LIVE"}</span>
         </button>
-
         <button onclick="deleteCourse('${courseId}')" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; padding: 6px 8px; border-radius: 6px; cursor: pointer;">
           <i class="fas fa-trash"></i>
         </button>
@@ -107,11 +78,9 @@ async function loadSellerTracker() {
 
               .join("")
           : "<div style='padding:20px; color:gray;'>Empty Inventory.</div>";
-
       const hasCourses = seller.courseCount > 0;
       tbody.innerHTML += `
 <tr>
-
   <!-- 👤 NAME + EMAIL -->
   <td>
     <div style="font-weight:bold; color:#00ff88; font-size:14px;">
@@ -121,19 +90,16 @@ async function loadSellerTracker() {
       ${seller.email}
     </div>
   </td>
-
   <!-- ⏰ LAST SEEN -->
   <td style="font-size:12px; color:#e2e8f0;">
     ${lastSeen}
   </td>
-
   <!-- 📦 COURSE COUNT -->
   <td>
     <span class="count-badge">
       ${seller.courseCount}
     </span>
   </td>
-
   <!-- 📚 COURSE DROPDOWN -->
   <td style="position:relative;">
     <button
@@ -144,22 +110,18 @@ async function loadSellerTracker() {
       ${hasCourses ? "View List" : "No Course"}
       <i class="fas ${hasCourses ? "fa-chevron-down" : "fa-ban"}"></i>
     </button>
-
     <ul id="drop-${seller._id}" class="course-dropdown-list">
       <div class="dropdown-header">Seller's Inventory</div>
       ${courseOptions}
     </ul>
   </td>
-
   <!-- 📊 STATUS -->
   <td>
     ${statusHTML}
   </td>
-
   <!-- ⚡ ACTION BUTTONS (IMPROVED) -->
   <td>
     <div class="action-flex">
-
       <!-- 📧 ALERT -->
       <button
         onclick="sendSellerAlert('${seller.email}', '${seller.name}')"
@@ -168,7 +130,6 @@ async function loadSellerTracker() {
       >
         <i class="fas fa-paper-plane"></i>
       </button>
-
       <!-- 🚫 BLOCK / UNBLOCK (SAFE BOOLEAN FIX) -->
    <button
     onclick="handleBlock('${seller._id}', ${seller.isBlocked ? true : false})"
@@ -177,7 +138,6 @@ async function loadSellerTracker() {
 >
     <i class="fas ${seller.isBlocked ? "fa-unlock" : "fa-user-slash"}"></i>
 </button>
-
       <!-- 🗑️ DELETE -->
       <button
         onclick="handleDelete('${seller.email}')"
@@ -186,10 +146,8 @@ async function loadSellerTracker() {
       >
         <i class="fas fa-trash-alt"></i>
       </button>
-
     </div>
   </td>
-
 </tr>`;
     });
   } catch (err) {
@@ -197,17 +155,12 @@ async function loadSellerTracker() {
   }
 }
 
-// ==========================================
-// 🏆 ELITE ACTION FUNCTIONS (100% WORKING)
-// ==========================================
-
-// 📧 1. SEND ALERT MAIL (Ultra Pro Alert)
+// SEND ALERT MAIL (Ultra Pro Alert)
 window.sendSellerAlert = async (email, name) => {
   const { value: text } = await Swal.fire({
     title: `<span style="color:#00ff88">Send Alert to ${name}</span>`,
     input: "textarea",
-    inputPlaceholder:
-      "Bhai, kya message bhejna hai? (e.g. Upload more courses)",
+    inputPlaceholder: "Bhai, kya message bhejna hai? (e.g. Upload more courses)",
     showCancelButton: true,
     confirmButtonColor: "#00ff88",
     cancelButtonColor: "#ff4444",
@@ -215,7 +168,6 @@ window.sendSellerAlert = async (email, name) => {
     color: "#fff",
     inputAttributes: { "aria-label": "Type your message" },
   });
-
   if (text) {
     Swal.fire({
       title: "Dispatching Mail...",
@@ -224,20 +176,15 @@ window.sendSellerAlert = async (email, name) => {
       background: "#0a0a0a",
       color: "#fff",
     });
-
     try {
-      const res = await fetch(
-        `${window.API_BASE_URL}/api/admin/send-seller-alert`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-auth-token": token,
-          },
-          body: JSON.stringify({ email, name, message: text }),
+      const res = await fetch(`${window.API_BASE_URL}/api/admin/send-seller-alert`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": token,
         },
-      );
-
+        body: JSON.stringify({ email, name, message: text }),
+      });
       const data = await res.json();
       if (data.success) {
         Swal.fire({
@@ -261,11 +208,9 @@ window.sendSellerAlert = async (email, name) => {
   }
 };
 
-// 🚫 1. DYNAMIC BLOCK/UNBLOCK (FIXED)
+// DYNAMIC BLOCK/UNBLOCK (FIXED)
 async function handleBlock(id, isBlocked, role = "seller") {
-  // 🚩 Purana email wala URL hata kar naya bulk-update wala URL use karein
   const actionType = isBlocked ? "unblock_seller" : "block_seller";
-
   const confirm = await Swal.fire({
     title: isBlocked ? "Unblock Seller?" : "Block Seller?",
     text: `Bhai, kya is seller ko ${isBlocked ? "unblock" : "block"} karna hai?`,
@@ -276,24 +221,17 @@ async function handleBlock(id, isBlocked, role = "seller") {
     background: "#111",
     color: "#fff",
   });
-
   if (confirm.isConfirmed) {
     try {
-      // ✅ Naya Route Call: Jo User Management mein use ho raha hai
-      const res = await fetch(
-        `${CONFIG.BASE_API_URL}/admin/bulk-update-users`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "x-auth-token": localStorage.getItem("token"),
-          },
-          body: JSON.stringify({ ids: [id], action: actionType }), // 🔑 ID bhej rahe hain email nahi
+      const res = await fetch(`${CONFIG.BASE_API_URL}/admin/bulk-update-users`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": localStorage.getItem("token"),
         },
-      );
-
+        body: JSON.stringify({ ids: [id], action: actionType }),
+      });
       const data = await res.json();
-
       if (res.ok) {
         Swal.fire({
           icon: "success",
@@ -302,7 +240,7 @@ async function handleBlock(id, isBlocked, role = "seller") {
           timer: 1500,
           showConfirmButton: false,
         });
-        loadSellerTracker(); // Table refresh
+        loadSellerTracker();
       } else {
         Swal.fire("Error", data.message || "Server Error", "error");
       }
@@ -313,7 +251,7 @@ async function handleBlock(id, isBlocked, role = "seller") {
   }
 }
 
-// 🗑️ 3. DELETE SELLER (Permanent Action)
+// DELETE SELLER (Permanent Action)
 window.handleDelete = async (email) => {
   const confirm = await Swal.fire({
     title: "⚠️ DANGER ZONE",
@@ -326,14 +264,8 @@ window.handleDelete = async (email) => {
     background: "#0a0a0a",
     color: "#fff",
   });
-
   if (!confirm.isConfirmed) return;
-
-  const { ok, data } = await apiRequest(
-    `${window.API_BASE_URL}/api/admin/delete-seller/${encodeURIComponent(email)}`,
-    "DELETE",
-  );
-
+  const { ok, data } = await apiRequest(`${window.API_BASE_URL}/api/admin/delete-seller/${encodeURIComponent(email)}`, "DELETE");
   if (ok && data.success) {
     await Swal.fire({
       title: "Deleted 💀",
@@ -342,7 +274,6 @@ window.handleDelete = async (email) => {
       background: "#0a0a0a",
       color: "#fff",
     });
-
     loadSellerTracker();
   } else {
     Swal.fire("Error", data.msg || "Delete failed", "error");
@@ -352,17 +283,12 @@ window.handleDelete = async (email) => {
 // Helper: Dropdown Toggle
 window.toggleDropdown = function (event, id) {
   event.stopPropagation();
-
   console.log("Dropdown clicked:", id);
-
   const el = document.getElementById(`drop-${id}`);
-
   if (!el) {
     console.error("Dropdown not found:", id);
     return;
   }
-
-  // close others
   document.querySelectorAll(".course-dropdown-list").forEach((list) => {
     if (list.id !== `drop-${id}`) {
       list.classList.remove("show-dropdown");
@@ -374,16 +300,10 @@ window.toggleDropdown = function (event, id) {
 
 // Kahin bhi click karne par dropdown band karne ka logic
 window.addEventListener("click", function (event) {
-  // Check karo: Kya click dropdown box ya 'View List' button ke BAHAR hua hai?
-  if (
-    !event.target.closest(".course-dropdown-list") &&
-    !event.target.closest(".view-btn")
-  ) {
-    // Agar bahar click hua hai, toh saare khule huye dropdowns se class hata do
+  if (!event.target.closest(".course-dropdown-list") && !event.target.closest(".view-btn")) {
     document.querySelectorAll(".course-dropdown-list").forEach((list) => {
       list.classList.remove("show-dropdown");
     });
-
     console.log("Global Click: Closing all dropdowns");
   }
 });
@@ -396,17 +316,13 @@ window.deleteCourse = async (courseId) => {
     icon: "warning",
     showCancelButton: true,
   });
-
   if (!result.isConfirmed) return;
-
   try {
     const res = await fetch(`${window.API_BASE_URL}/api/products/${courseId}`, {
       method: "DELETE",
       headers: { "x-auth-token": token },
     });
-
     const data = await res.json();
-
     if (res.ok && data.success !== false) {
       Swal.fire("Deleted!", "Course removed", "success");
       loadSellerTracker();
@@ -420,55 +336,40 @@ window.deleteCourse = async (courseId) => {
 // hide/unhide course dropdown
 window.toggleCourse = async (courseId) => {
   try {
-    const res = await fetch(
-      `${window.API_BASE_URL}/api/products/toggle-visibility/${courseId}`,
-      {
-        method: "PUT",
-        headers: { "x-auth-token": token },
-        cache: "no-store",
-      },
-    );
-
+    const res = await fetch(`${window.API_BASE_URL}/api/products/toggle-visibility/${courseId}`, {
+      method: "PUT",
+      headers: { "x-auth-token": token },
+      cache: "no-store",
+    });
     const data = await res.json();
-
     if (!res.ok) {
       Swal.fire("Error", data.msg || "Update failed", "error");
       return;
     }
-
     const isLive = String(data.isVisible) === "true";
-
     const btn = document.querySelector(`[data-id="${courseId}"]`);
-
     if (btn) {
       btn.style.background = isLive ? "#22c55e" : "#ef4444";
-
       btn.innerHTML = `
         <i class="fas ${isLive ? "fa-eye" : "fa-eye-slash"}"></i>
         <span>${isLive ? "Live" : "Hidden"}</span>
       `;
     }
-
-    // ✅ प्रोफेशनल सेंटर पॉपअप (Center Modal Style)
     Swal.fire({
       icon: isLive ? "success" : "warning",
       title: isLive ? "Visibility: LIVE 🔥" : "Visibility: HIDDEN 🚫",
       html: `
         <div style="font-size: 14px; color: #94a3b8; margin-top: 10px;">
-          ${
-            isLive
-              ? "The course is now <b>Public</b>. All students can see and purchase it from the store."
-              : "The course is now <b>Private</b>. It has been hidden from the student storefront."
-          }
+          ${isLive ? "The course is now <b>Public</b>. All students can see and purchase it from the store." : "The course is now <b>Private</b>. It has been hidden from the student storefront."}
         </div>
       `,
-      background: "#111827", // डार्क प्रीमियम थीम
+      background: "#111827",
       color: "#f8fafc",
       showConfirmButton: false,
       timer: 2000,
       timerProgressBar: true,
       showClass: {
-        popup: "animate__animated animate__zoomIn", // अगर Animate.css है तो ज़ूम इफ़ेक्ट आएगा
+        popup: "animate__animated animate__zoomIn",
       },
       hideClass: {
         popup: "animate__animated animate__fadeOutDown",
@@ -490,12 +391,9 @@ window.toggleCourse = async (courseId) => {
 document.addEventListener("click", async (e) => {
   const btn = e.target.closest(".toggle-btn");
   if (!btn) return;
-
   e.preventDefault();
-
   const courseId = btn.dataset.id;
   if (!courseId) return;
-
   await toggleCourse(courseId);
 });
 
@@ -503,16 +401,12 @@ document.addEventListener("click", async (e) => {
 function searchSeller() {
   const input = document.getElementById("searchInput");
   const filter = input.value.toLowerCase();
-
   const tbody = document.getElementById("sellerTrackerBody");
   const rows = tbody.getElementsByTagName("tr");
-
   for (let i = 0; i < rows.length; i++) {
     const firstCell = rows[i].getElementsByTagName("td")[0];
-
     if (firstCell) {
       const textValue = firstCell.textContent || firstCell.innerText;
-
       if (textValue.toLowerCase().indexOf(filter) > -1) {
         rows[i].style.display = "";
       } else {
@@ -527,9 +421,7 @@ function clearSearch() {
   const input = document.getElementById("searchInput");
   const tbody = document.getElementById("sellerTrackerBody");
   const rows = tbody.getElementsByTagName("tr");
-
   input.value = "";
-
   for (let i = 0; i < rows.length; i++) {
     rows[i].style.display = "";
   }
@@ -537,5 +429,4 @@ function clearSearch() {
 }
 
 document.addEventListener("DOMContentLoaded", loadSellerTracker);
-// end active seller controll function
 //#endregion

@@ -1,3 +1,4 @@
+//#region
 const API_URL = window.API_BASE_URL + "/api/auth";
 
 function togglePassword() {
@@ -11,11 +12,9 @@ function togglePassword() {
 function validateInput(name, email, pass) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-
   if (name.length < 3) return "Name must be at least 3 characters!";
   if (!emailRegex.test(email)) return "Please enter a valid email address!";
-  if (!passRegex.test(pass))
-    return "Password needs 8+ chars with at least 1 special character!";
+  if (!passRegex.test(pass)) return "Password needs 8+ chars with at least 1 special character!";
   return null;
 }
 
@@ -25,10 +24,8 @@ function startTimer() {
   const resendBtn = document.getElementById("resendBtn");
   const timerText = document.getElementById("timerText");
   const timerDisplay = document.getElementById("timer");
-
   if (resendBtn) resendBtn.style.display = "none";
   if (timerText) timerText.style.display = "block";
-
   clearInterval(timerInterval);
   timerInterval = setInterval(() => {
     if (timeLeft <= 0) {
@@ -42,15 +39,12 @@ function startTimer() {
   }, 1000);
 }
 
-// --- 1. HANDLE REGISTRATION (Request OTP) ---
 async function handleRegister(e) {
   if (e) e.preventDefault();
-
   const regBtn = document.getElementById("regBtn");
   const name = document.getElementById("username").value.trim();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
-
   const error = validateInput(name, email, password);
   if (error) {
     return Swal.fire({
@@ -61,11 +55,9 @@ async function handleRegister(e) {
       color: "#fff",
     });
   }
-
   try {
     regBtn.disabled = true;
     regBtn.innerText = "Sending OTP... ⏳";
-
     Swal.fire({
       title: "Sending OTP...",
       text: "Please wait while we verify your email.",
@@ -76,15 +68,12 @@ async function handleRegister(e) {
         Swal.showLoading();
       },
     });
-
     const res = await fetch(`${window.API_BASE_URL}/api/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
     });
-
     const data = await res.json();
-
     if (res.ok) {
       await Swal.fire({
         icon: "success",
@@ -95,7 +84,6 @@ async function handleRegister(e) {
         background: "#111827",
         color: "#fff",
       });
-
       document.getElementById("register-section").style.display = "none";
       document.getElementById("otp-section").style.display = "block";
       startTimer();
@@ -115,17 +103,13 @@ async function handleRegister(e) {
   }
 }
 
-// --- 2. HANDLE VERIFICATION (Verify OTP) ---
 async function handleVerify(e) {
   if (e) e.preventDefault();
-
   const verifyBtn = document.getElementById("verifyBtn");
   const otpInput = document.getElementById("otpInput");
   const emailInput = document.getElementById("email");
-
   const otp = otpInput ? otpInput.value.trim() : "";
   const email = emailInput ? emailInput.value.trim() : "";
-
   if (otp.length < 6) {
     return Swal.fire({
       icon: "warning",
@@ -135,11 +119,9 @@ async function handleVerify(e) {
       color: "#fff",
     });
   }
-
   try {
     verifyBtn.disabled = true;
     verifyBtn.innerText = "Verifying... ⏳";
-
     Swal.fire({
       title: "Verifying OTP...",
       allowOutsideClick: false,
@@ -149,15 +131,12 @@ async function handleVerify(e) {
         Swal.showLoading();
       },
     });
-
     const res = await fetch(`${window.API_BASE_URL}/api/auth/verify-otp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, otp }),
     });
-
     const data = await res.json();
-
     if (res.ok) {
       await Swal.fire({
         icon: "success",
@@ -189,24 +168,21 @@ function resendOTP() {
   handleRegister();
 }
 
-// Enter Key Listener
 document.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    const isOtpVisible =
-      document.getElementById("otp-section")?.style.display === "block";
+    const isOtpVisible = document.getElementById("otp-section")?.style.display === "block";
     if (isOtpVisible) handleVerify();
     else handleRegister();
   }
 });
-// Seller button pe click karte hi hard verification page pe bhej do
+
 function redirectToSeller() {
   window.location.href = "seller-register.html";
 }
 
-// Buyer ke liye role set rahega (backend ko batane ke liye)
 let currentRole = "student";
 function setRole(role) {
   currentRole = role;
   document.getElementById("buyerTab").classList.add("active");
-  // Agar hum ek hi page pe dono rakhte to switch logic yahan aata
 }
+//#endregion

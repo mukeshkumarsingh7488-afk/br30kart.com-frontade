@@ -1,18 +1,9 @@
-/**
- * BR30 Sales Records Logic
- * 100% Dynamic - No Hardcoding
- */
-// BR30security cheak
-// 🔥 MUKESH KING - IRON WALL SECURITY (SweetAlert Edition)
+//#region
 (async function protectPage() {
   const role = localStorage.getItem("userRole");
   const allowed = ["admin", "seller"];
-
   if (!allowed.includes(role)) {
-    // 1. Hide the entire page content instantly
     document.documentElement.style.display = "none";
-
-    // 2. Professional Security Alert
     await Swal.fire({
       icon: "error",
       title: "Access Denied",
@@ -25,23 +16,18 @@
       allowOutsideClick: false,
       allowEscapeKey: false,
     });
-
-    // 3. Kick out to index page
     window.location.href = "../index.html";
   }
 })();
 
-// 1. API URL Config से उठाना
 const BASE_URL = CONFIG.BASE_API_URL;
-let allOrdersData = []; // ग्लोबल डेटा स्टोर करने के लिए
+let allOrdersData = [];
 
-// 2. पेज लोड होते ही Initialization
 document.addEventListener("DOMContentLoaded", () => {
   const email = localStorage.getItem("sellerEmail") || "";
   loadSalesData(email);
 });
 
-// 3. Status के हिसाब से CSS Class (UI Decoration)
 function getStatusClass(status) {
   const s = (status || "").toString().toLowerCase().trim();
   if (s === "success" || s === "completed") return "status-success";
@@ -49,117 +35,64 @@ function getStatusClass(status) {
   return "status-failed";
 }
 
-// 4. Database से डेटा फेच करना
 async function loadSalesData(email) {
   if (!email) return;
   try {
-    const response = await fetch(
-      `${window.API_BASE_URL}/api/seller/sales-records?sellerEmail=${email}`,
-    );
+    const response = await fetch(`${window.API_BASE_URL}/api/seller/sales-records?sellerEmail=${email}`);
     const result = await response.json();
-
     if (result.success) {
-      allOrdersData = result.data.orders; // डेटा ग्लोबल वेरिएबल में डाला
-      applyFilters(); // डेटा दिखाने के लिए फिल्टर कॉल किया
+      allOrdersData = result.data.orders;
+      applyFilters();
     }
   } catch (err) {
     console.error("Fetch Error:", err);
   }
 }
 
-// 5. मास्टर फिल्टर और कैलकुलेशन (Search + Date + Stats)
 function applyFilters() {
   console.log("🔥 applyFilters RUN ho raha hai");
-  const searchTerm = document
-    .getElementById("courseSearch")
-    .value.toLowerCase();
+  const searchTerm = document.getElementById("courseSearch").value.toLowerCase();
   const fromDate = document.getElementById("startDate").value;
   const toDate = document.getElementById("endDate").value;
   const tableBody = document.getElementById("salesTableBody");
-
-  // --- Filter Logic ---
   let filtered = allOrdersData.filter((order) => {
-    const matchesSearch = (order.productName || "")
-      .toLowerCase()
-      .includes(searchTerm);
-
-    // Date Fix for Comparison
+    const matchesSearch = (order.productName || "").toLowerCase().includes(searchTerm);
     const orderDate = new Date(order.createdAt).toISOString().split("T")[0];
-    const matchesDate =
-      (!fromDate || orderDate >= fromDate) && (!toDate || orderDate <= toDate);
-
+    const matchesDate = (!fromDate || orderDate >= fromDate) && (!toDate || orderDate <= toDate);
     return matchesSearch && matchesDate;
   });
-
-  // --- Calculations ---
   let totalRevenue = 0;
   let pendingAmount = 0;
-
   filtered.forEach((order) => {
     const amt = Number(order.amount) || 0;
     totalRevenue += amt;
-
-    // पेंडिंग लॉजिक: DB के 'payoutStatus' के हिसाब से (Small/Capital सब चलेगा)
     const pStatus = (order.payoutStatus || "").toString().toLowerCase().trim();
     if (pStatus === "pending") {
-      pendingAmount += amt * 0.8; // सेलर का 80% हिस्सा जो पेंडिंग है
+      pendingAmount += amt * 0.8;
     }
   });
-
-  // --- UI Update (4 Boxes) ---
-  if (document.getElementById("totalRevenue"))
-    document.getElementById("totalRevenue").innerText =
-      `₹${totalRevenue.toLocaleString()}`;
-
-  if (document.getElementById("sellerPayout"))
-    document.getElementById("sellerPayout").innerText =
-      `₹${(totalRevenue * 0.8).toLocaleString()}`;
-
-  if (document.getElementById("platformFee"))
-    document.getElementById("platformFee").innerText =
-      `₹${(totalRevenue * 0.2).toLocaleString()}`;
-
-  if (document.getElementById("pendingAmount"))
-    document.getElementById("pendingAmount").innerText =
-      `₹${pendingAmount.toLocaleString()}`;
-
-  // --- Table Rendering ---
+  if (document.getElementById("totalRevenue")) document.getElementById("totalRevenue").innerText = `₹${totalRevenue.toLocaleString()}`;
+  if (document.getElementById("sellerPayout")) document.getElementById("sellerPayout").innerText = `₹${(totalRevenue * 0.8).toLocaleString()}`;
+  if (document.getElementById("platformFee")) document.getElementById("platformFee").innerText = `₹${(totalRevenue * 0.2).toLocaleString()}`;
+  if (document.getElementById("pendingAmount")) document.getElementById("pendingAmount").innerText = `₹${pendingAmount.toLocaleString()}`;
   tableBody.innerHTML = "";
   if (filtered.length === 0) {
     tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 20px;">No records found. 📂</td></tr>`;
     return;
   }
-
   let html = "";
-
   filtered.forEach((order, i) => {
     console.log("👉 FULL ORDER:", order);
     console.log("🆔 orderId:", order.orderId);
     console.log("🆔 orderID:", order.orderID);
     console.log("🆔 _id:", order._id);
-
-    // 🔥 STRONG ID FIX
-    const displayOrderID =
-      order?.orderId ||
-      order?.orderID ||
-      (order?._id ? order._id.toString().slice(-6).toUpperCase() : "N/A");
-
+    const displayOrderID = order?.orderId || order?.orderID || (order?._id ? order._id.toString().slice(-6).toUpperCase() : "N/A");
     const pStat = (order?.payoutStatus || "pending").toLowerCase();
     const sStat = (order?.status || "pending").toLowerCase();
-
-    const getSStatColor = (s) =>
-      s === "success"
-        ? "text-green-400 bg-green-400/10 border-green-400/20"
-        : "text-yellow-400 bg-yellow-400/10 border-yellow-400/20";
-
-    const getPStatColor = (p) =>
-      p === "completed"
-        ? "text-blue-400 bg-blue-400/10 border-blue-400/20"
-        : "text-orange-400 bg-orange-400/10 border-orange-400/20";
-
+    const getSStatColor = (s) => (s === "success" ? "text-green-400 bg-green-400/10 border-green-400/20" : "text-yellow-400 bg-yellow-400/10 border-yellow-400/20");
+    const getPStatColor = (p) => (p === "completed" ? "text-blue-400 bg-blue-400/10 border-blue-400/20" : "text-orange-400 bg-orange-400/10 border-orange-400/20");
     html += `
       <tr class="group hover:bg-[#0f172a] transition-all duration-300 border-b border-[#1e293b]">
-        
         <!-- 📅 Date -->
         <td class="px-6 py-5">
           <div class="text-xs text-gray-500 font-mono">
@@ -174,7 +107,6 @@ function applyFilters() {
             }
           </div>
         </td>
-
         <!-- 📚 Course + ID -->
         <td class="px-6 py-5">
           <div class="flex flex-col">
@@ -186,35 +118,30 @@ function applyFilters() {
             </span>
           </div>
         </td>
-
         <!-- 👤 Student -->
         <td class="px-6 py-5">
           <span class="text-sm text-slate-300 italic">
             ${order?.customerName || "Guest User"}
           </span>
         </td>
-
         <!-- 💳 Payment -->
         <td class="px-6 py-5">
           <span class="px-3 py-1 rounded-full text-[10px] font-black border ${getSStatColor(sStat)}">
             ${sStat}
           </span>
         </td>
-
         <!-- 💰 Amount -->
         <td class="px-6 py-5 text-right">
           <span class="text-sm font-black text-white">
             ₹${Number(order?.amount || 0).toLocaleString("en-IN")}
           </span>
         </td>
-
         <!-- 🏦 Payout -->
         <td class="px-6 py-5 text-center">
           <span class="px-3 py-1 rounded-md text-[9px] font-extrabold border ${getPStatColor(pStat)}">
             ${pStat}
           </span>
         </td>
-
       </tr>
     `;
   });
@@ -222,20 +149,15 @@ function applyFilters() {
   tableBody.innerHTML = html;
 }
 
-// 6. फिल्टर रीसेट करना
 function resetFilters() {
   document.getElementById("startDate").value = "";
   document.getElementById("endDate").value = "";
   document.getElementById("courseSearch").value = "";
-
   applyFilters();
 }
 
-// CSV DOWNLOAD KARNE KE LIYE
 async function exportCSV() {
   const table = document.querySelector("table");
-
-  // 1. Check if table exists
   if (!table || table.rows.length <= 1) {
     return Swal.fire({
       icon: "warning",
@@ -245,8 +167,6 @@ async function exportCSV() {
       color: "#fff",
     });
   }
-
-  // 2. Confirm Export
   const result = await Swal.fire({
     title: "Download CSV?",
     text: "Do you want to export this sales record to a CSV file?",
@@ -258,10 +178,8 @@ async function exportCSV() {
     background: "#111827",
     color: "#fff",
   });
-
   if (result.isConfirmed) {
     try {
-      // 3. Show Loading
       Swal.fire({
         title: "Generating CSV...",
         background: "#111827",
@@ -271,37 +189,26 @@ async function exportCSV() {
           Swal.showLoading();
         },
       });
-
       let csv = [];
       const rows = table.querySelectorAll("tr");
-
       rows.forEach((row) => {
         let cols = row.querySelectorAll("td, th");
         let rowData = [];
-
         cols.forEach((col) => {
-          // Cleaning data to prevent CSV formatting issues
           let text = col.innerText.replace(/"/g, '""').replace(/\n/g, " ");
           rowData.push(`"${text}"`);
         });
-
         csv.push(rowData.join(","));
       });
-
-      // 4. File Creation & Download
       const csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
       const downloadLink = document.createElement("a");
       const fileName = `BR30_Elite_Sales_Record_${new Date().toISOString().split("T")[0]}.csv`;
-
       downloadLink.download = fileName;
       downloadLink.href = window.URL.createObjectURL(csvFile);
       downloadLink.style.display = "none";
-
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
-
-      // 5. Success Toast
       Swal.fire({
         icon: "success",
         title: "Export Successful!",
@@ -326,133 +233,87 @@ async function exportCSV() {
   }
 }
 
-// Event Listeners
-document
-  .getElementById("courseSearch")
-  ?.addEventListener("input", loadSalesData);
+document.getElementById("courseSearch")?.addEventListener("input", loadSalesData);
 window.onload = loadSalesData;
 
-// serch and date filter
+let allDataSales = [];
 
-/**
- * BR30 SALES RECORD SYSTEM
- * Features: Search, Date Filter, 4-Stats Box, PDF Export
- */
-
-let allDataSales = []; // डेटाबेस से आए पूरे डेटा को यहाँ रखेंगे
-
-// 1. पेज लोड होते ही डेटा फेच करना
 window.onload = loadSalesData;
 
 async function loadSalesData() {
   const email = localStorage.getItem("sellerEmail");
   if (!email) return;
-
   try {
-    const response = await fetch(
-      `${window.API_BASE_URL}/api/seller/sales-records?sellerEmail=${email}`,
-    );
+    const response = await fetch(`${window.API_BASE_URL}/api/seller/sales-records?sellerEmail=${email}`);
     const result = await response.json();
-
     if (result.success) {
-      allDataSales = result.data.orders; // डेटा स्टोर किया
-      applyFilters(); // डेटा को टेबल और बॉक्स में दिखाने के लिए फिल्टर कॉल किया
+      allDataSales = result.data.orders;
+      applyFilters();
     }
   } catch (err) {
     console.error("DB Load Error:", err);
   }
 }
-// 2. मास्टर फिल्टर फंक्शन (सर्च और डेट के हिसाब से डेटा और बॉक्सेस अपडेट करना)
+
 function applyFilters() {
   const tableBody = document.getElementById("salesTableBody");
   const searchInput = document.getElementById("courseSearch");
   const fromInput = document.getElementById("startDate");
   const toInput = document.getElementById("endDate");
-
-  // Safety check: Agar elements na milein toh crash na ho
   const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : "";
   const from = fromInput ? fromInput.value : "";
   const to = toInput ? toInput.value : "";
-
-  // --- 1. Combined Filter Logic (Title + Date) ---
   let filtered = allDataSales.filter((item) => {
-    // Search Matching (Title)
-    const matchesSearch = (item.productName || "")
-      .toLowerCase()
-      .includes(searchTerm);
-
-    // Date Logic Fix (Local Timezone use karein)
+    const matchesSearch = (item.productName || "").toLowerCase().includes(searchTerm);
     if (!from && !to) return matchesSearch;
-
     const d = new Date(item.createdAt);
     const year = d.getFullYear();
     const month = String(d.getMonth() + 1).padStart(2, "0");
     const day = String(d.getDate()).padStart(2, "0");
-    const saleDateStr = `${year}-${month}-${day}`; // Format: YYYY-MM-DD
-
-    const matchesDate =
-      (!from || saleDateStr >= from) && (!to || saleDateStr <= to);
-
+    const saleDateStr = `${year}-${month}-${day}`;
+    const matchesDate = (!from || saleDateStr >= from) && (!to || saleDateStr <= to);
     return matchesSearch && matchesDate;
   });
-
-  // --- 2. Calculations & Stats Update ---
   let totalRevenue = 0;
   let totalEarnings = 0;
-
   let platformFee = 0;
   let pendingAmount = 0;
-
   filtered.forEach((order) => {
     const amt = Number(order.amount) || 0;
     const comm = Number(order.platformCommission) || 0;
     const earn = Number(order.sellerEarnings) || 0;
-
     totalRevenue += amt;
     platformFee += comm;
     totalEarnings += earn;
-
     const pStat = (order.payoutStatus || "").toString().toLowerCase().trim();
     if (pStat === "pending") {
       pendingAmount += earn;
     }
   });
-
-  // UI Boxes Update
   const updateText = (id, val) => {
     const el = document.getElementById(id);
     if (el) el.innerText = val;
   };
-
   updateText("totalRevenue", `₹${totalRevenue.toLocaleString()}`);
   updateText("sellerPayout", `₹${totalEarnings.toLocaleString()}`);
   updateText("platformFee", `₹${platformFee.toLocaleString()}`);
   updateText("pendingAmount", `₹${pendingAmount.toLocaleString()}`);
-
-  // --- 3. Table Rendering ---
   tableBody.innerHTML = "";
-
   if (filtered.length === 0) {
     tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 20px;">No records found. 📂</td></tr>`;
     return;
   }
-
   filtered.forEach((order) => {
     const payStatus = (order.status || "").toLowerCase().trim();
     const payoutStatus = (order.payoutStatus || "").toLowerCase().trim();
-
-    const payClass =
-      payStatus === "success" ? "status-success" : "status-pending";
-    const payoutClass =
-      payoutStatus === "completed" ? "status-success" : "status-pending";
-
+    const payClass = payStatus === "success" ? "status-success" : "status-pending";
+    const payoutClass = payoutStatus === "completed" ? "status-success" : "status-pending";
     tableBody.innerHTML += `
       <tr class="hover:bg-[#0a0c10] transition border-b border-[#1f2937]">
     <!-- 1. Sale Date -->
     <td class="px-6 py-4 text-xs text-gray-500 font-medium">
         ${new Date(order.createdAt).toLocaleDateString("en-GB")}
     </td>
-
     <!-- 2. Course Title & ID -->
     <td class="px-6 py-4 text-sm uppercase">
         <div class="font-bold text-white">${order.productName}</div>
@@ -461,33 +322,27 @@ function applyFilters() {
     Order ID: ${order.orderId || "N/A"}
 </div>
     </td>
-
     <!-- 3. Student Name -->
     <td class="px-6 py-4 text-sm text-blue-400 font-semibold">
         ${order.customerName || "N/A"}
     </td>
-
     <!-- 4. Payment Status -->
     <td class="px-6 py-4">
         <span class="badge ${payClass}">${order.status}</span>
     </td>
-
     <!-- 5. Amount -->
     <td class="px-6 py-4 font-black text-white text-right">
         ₹${Number(order.amount).toLocaleString()}
     </td>
-
     <!-- 6. Payout Status -->
     <td class="px-6 py-4 text-center">
         <span class="badge ${payoutClass}">${order.payoutStatus}</span>
     </td>
 </tr>
-
         `;
   });
 }
 
-// 3. फिल्टर रीसेट करने का फंक्शन
 function resetFilters() {
   document.getElementById("startDate").value = "";
   document.getElementById("endDate").value = "";
@@ -495,14 +350,12 @@ function resetFilters() {
   applyFilters();
 }
 
-// 4. PDF एक्सपोर्ट (डार्क थीम के साथ)
 function downloadPDF() {
-  window.print(); // सबसे बेस्ट तरीका UI को वैसा ही रखने के लिए जैसा दिख रहा है
+  window.print();
 }
 
-//#region pdf template custom
+//#region pdf
 async function exportToPDF() {
-  // 1. Initial Confirmation Alert
   const confirmResult = await Swal.fire({
     title: "Generate Payout Report?",
     text: "This will create a professional 6-column sales ledger in Landscape mode.",
@@ -515,10 +368,7 @@ async function exportToPDF() {
     background: "#111827",
     color: "#fff",
   });
-
   if (!confirmResult.isConfirmed) return;
-
-  // 2. Show Loading Spinner
   Swal.fire({
     title: "Processing Report...",
     text: "Please wait while we prepare your transaction history.",
@@ -529,37 +379,28 @@ async function exportToPDF() {
       Swal.showLoading();
     },
   });
-
   try {
     const { jsPDF } = window.jspdf;
-    // 🔥 LANDSCAPE MODE ('l') for 6 columns
     const doc = new jsPDF("l", "pt", "a4");
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
-
     const logoUrl = "../https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png";
     try {
       doc.addImage(logoUrl, "JPEG", pageWidth - 110, 25, 70, 50);
     } catch (e) {
       console.warn("Logo mission, skipping image rendering...");
     }
-
-    // --- 1. HEADER ---
     doc.setFontSize(24);
     doc.setTextColor(59, 130, 246);
     doc.setFont("helvetica", "bold");
     doc.text("BR30 TRADER ACADEMY", 40, 50);
-
     doc.setFontSize(9);
     doc.setTextColor(100);
     doc.setFont("helvetica", "normal");
     doc.text("OFFICIAL PAYOUT & SALES HISTORY REPORT", 40, 68);
     doc.line(40, 85, pageWidth - 40, 85);
-
-    // --- 2. 6-COLUMN HEADER ---
     doc.setFillColor(59, 130, 246);
     doc.rect(40, 100, pageWidth - 80, 28, "F");
-
     doc.setFontSize(8.5);
     doc.setTextColor(255);
     doc.setFont("helvetica", "bold");
@@ -569,14 +410,10 @@ async function exportToPDF() {
     doc.text("Payment Status", 460, 118);
     doc.text("Amount", 580, 118);
     doc.text("Payout (80%)", 700, 118);
-
-    // --- 3. DATA ROWS ---
     const tableBody = document.getElementById("salesTableBody");
     if (!tableBody) throw new Error("Table body 'salesTableBody' not found!");
-
     const rows = tableBody.querySelectorAll("tr");
     let y = 145;
-
     rows.forEach((tr) => {
       const tds = tr.querySelectorAll("td");
       if (tds.length >= 5) {
@@ -585,50 +422,34 @@ async function exportToPDF() {
           doc.addPage();
           y = 50;
         }
-
         const date = tds[0].innerText.trim();
         const title = tds[1].innerText.trim().toUpperCase();
         const Student = tds[2].innerText.trim();
         const pStatus = tds[3].innerText.trim().toUpperCase();
         const amount = tds[4].innerText.replace("₹", "Rs. ").trim();
-
-        // 80% Payout Calculation
-        const payoutValue =
-          "Rs. " +
-          (
-            parseFloat(amount.replace("Rs. ", "").replace(",", "")) * 0.8 || 0
-          ).toLocaleString();
-
+        const payoutValue = "Rs. " + (parseFloat(amount.replace("Rs. ", "").replace(",", "")) * 0.8 || 0).toLocaleString();
         doc.setFontSize(8);
         doc.setTextColor(50);
         doc.setFont("helvetica", "normal");
-
         doc.text(date, 50, y);
         doc.setFont("helvetica", "bold");
         doc.text(title.substring(0, 30), 140, y);
         doc.setFont("helvetica", "normal");
         doc.text(Student.substring(0, 25), 310, y);
-
-        doc.setTextColor(5, 150, 105); // Success Green
+        doc.setTextColor(5, 150, 105);
         doc.text(pStatus, 460, y);
-
         doc.setTextColor(50);
         doc.text(amount, 580, y);
-
         doc.setFont("helvetica", "bold");
-        doc.setTextColor(59, 130, 246); // Payout Blue
+        doc.setTextColor(59, 130, 246);
         doc.text(payoutValue, 700, y);
-
         doc.setDrawColor(240);
         doc.line(40, y + 12, pageWidth - 40, y + 12);
         y += 28;
       }
     });
-
     addFooter(doc, pageWidth, pageHeight);
     doc.save(`BR30_Elite_Sales_Report_${Date.now()}.pdf`);
-
-    // 3. Success Notification
     Swal.fire({
       icon: "success",
       title: "Report Downloaded!",
@@ -651,32 +472,19 @@ async function exportToPDF() {
     });
   }
 }
-
-// --- 4. ULTRA PRO FOOTER ---
 function addFooter(doc, pageWidth, pageHeight) {
   const date = new Date().toLocaleString("en-GB");
   doc.setDrawColor(230, 230, 230);
   doc.line(40, pageHeight - 60, pageWidth - 40, pageHeight - 60);
-
   doc.setFontSize(7.5);
   doc.setTextColor(150);
   doc.setFont("helvetica", "italic");
-  doc.text(
-    "This is a computer-generated report. No physical signature is required.",
-    40,
-    pageHeight - 45,
-  );
-
+  doc.text("This is a computer-generated report. No physical signature is required.", 40, pageHeight - 45);
   doc.setFont("helvetica", "normal");
   doc.text(`Report Date: ${date}`, 40, pageHeight - 32);
-
   const pageNo = doc.internal.getNumberOfPages();
-  doc.text(
-    `Page ${pageNo} | BR30 TRADER OFFICIAL`,
-    pageWidth - 150,
-    pageHeight - 32,
-  );
+  doc.text(`Page ${pageNo} | BR30 TRADER OFFICIAL`, pageWidth - 150, pageHeight - 32);
 }
 
 //#endregion
-// uper ka function theek hai no issu
+//#endregion

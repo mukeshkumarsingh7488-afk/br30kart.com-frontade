@@ -18,369 +18,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sales Orders | BR30 ADMIN</title>
-    <!-- ✅ Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/admin-orders.css" />
-
-    <!-- sweet alart (swal, chart, pdf, etc.) -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   </head>
-
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <main class="full-page-admin">
-      <!-- TOP HEADER -->
       <header class="admin-header-v2">
         <div class="header-left">
-          <button
-            class="back-btn"
-            onclick="window.location.href = 'admin-dashboard.html'"
-          >
+          <button class="back-btn" onclick="window.location.href = 'admin-dashboard.html'">
             <i class="fas fa-arrow-left"></i>
             BACK TO HOME
           </button>
           <div class="title-group">
             <h1>💰 SALES & ORDERS LEDGER 📈</h1>
-            <p>
-              Track every transaction, student enrollment and seller payouts.
-            </p>
+            <p>Track every transaction, student enrollment and seller payouts.</p>
           </div>
         </div>
-
         <div class="admin-info-badge">
           <span id="adminName">mukeshkumarsingh7488@gmail.com</span>
           <div class="dot-online"></div>
         </div>
       </header>
-
-      <!-- 🔥 ADMIN CONTROL BAR (Search & Filters) -->
-      <!-- Main Filter Bar -->
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: #0f1216;
-          padding: 15px;
-          border-radius: 12px;
-          border: 1px solid #1f2937;
-          margin-bottom: 25px;
-        "
-      >
-        <!-- Search Section -->
-        <div
-          style="
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          "
-        >
-          <i
-            class="fas fa-search"
-            style="
-              position: absolute;
-              left: 12px;
-              color: #4b5563;
-              font-size: 14px;
-            "
-          ></i>
-          <input
-            type="text"
-            id="courseSearch"
-            oninput="searchTableLive()"
-            placeholder="mukeshkumarsingh7488@gmail.com"
-            style="
-              background: #111827;
-              border: 1px solid #374151;
-              color: white;
-              padding: 10px 15px 10px 40px;
-              border-radius: 8px;
-              width: 280px;
-              outline: none;
-              font-size: 13px;
-            "
-          />
-
-          <!-- Search Refresh Button (Grey Square) -->
-          <button
-            onclick="clearSearchOnly()"
-            style="
-              background: #2d333b;
-              border: 1px solid #3d444d;
-              color: white;
-              width: 38px;
-              height: 38px;
-              border-radius: 8px;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            "
-          >
+      <div style="display: flex; align-items: center; gap: 10px; background: #0f1216; padding: 15px; border-radius: 12px; border: 1px solid #1f2937; margin-bottom: 25px">
+        <div style="position: relative; display: flex; align-items: center; gap: 8px">
+          <i class="fas fa-search" style="position: absolute; left: 12px; color: #4b5563; font-size: 14px"></i>
+          <input type="text" id="courseSearch" oninput="searchTableLive()" placeholder="mukeshkumarsingh7488@gmail.com" style="background: #111827; border: 1px solid #374151; color: white; padding: 10px 15px 10px 40px; border-radius: 8px; width: 280px; outline: none; font-size: 13px" />
+          <button onclick="clearSearchOnly()" style="background: #2d333b; border: 1px solid #3d444d; color: white; width: 38px; height: 38px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center">
             <i class="fas fa-sync-alt"></i>
           </button>
         </div>
-
-        <!-- Date Section -->
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: 10px;
-          "
-        >
-          <input
-            type="date"
-            id="startDate"
-            style="
-              background: #111827;
-              border: 1px solid #374151;
-              color: white;
-              padding: 8px;
-              border-radius: 8px;
-              color-scheme: dark;
-              font-size: 13px;
-            "
-          />
-          <input
-            type="date"
-            id="endDate"
-            style="
-              background: #111827;
-              border: 1px solid #374151;
-              color: white;
-              padding: 8px;
-              border-radius: 8px;
-              color-scheme: dark;
-              font-size: 13px;
-            "
-          />
-
-          <!-- Apply Button (Green) -->
-          <button
-            onclick="applyFilters()"
-            style="
-              background: #22c55e;
-              color: white;
-              border: none;
-              padding: 10px 20px;
-              border-radius: 8px;
-              font-weight: bold;
-              cursor: pointer;
-              text-transform: uppercase;
-              font-size: 12px;
-            "
-          >
-            APPLY
-          </button>
-
-          <!-- Reset Button (Grey Square - Seam to Search Refresh) -->
-          <button
-            onclick="resetAllFilters()"
-            style="
-              background: #2d333b;
-              border: 1px solid #3d444d;
-              color: white;
-              width: 38px;
-              height: 38px;
-              border-radius: 8px;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            "
-          >
+        <div style="display: flex; align-items: center; gap: 8px; margin-left: 10px">
+          <input type="date" id="startDate" style="background: #111827; border: 1px solid #374151; color: white; padding: 8px; border-radius: 8px; color-scheme: dark; font-size: 13px" />
+          <input type="date" id="endDate" style="background: #111827; border: 1px solid #374151; color: white; padding: 8px; border-radius: 8px; color-scheme: dark; font-size: 13px" />
+          <button onclick="applyFilters()" style="background: #22c55e; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 12px">APPLY</button>
+          <button onclick="resetAllFilters()" style="background: #2d333b; border: 1px solid #3d444d; color: white; width: 38px; height: 38px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center">
             <i class="fas fa-sync-alt"></i>
           </button>
-          <!-- PDF Button (अब इसी लाइन में सेंटर में है) -->
-          <button
-            onclick="downloadtoPDF()"
-            style="
-              background: #dc3545 !important;
-              color: #fff !important;
-              border: none;
-              padding: 10px 18px;
-              border-radius: 8px;
-              font-weight: 800;
-              font-size: 12px;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              gap: 8px;
-            "
-          >
+          <button onclick="downloadtoPDF()" style="background: #dc3545 !important; color: #fff !important; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 8px">
             <i class="fas fa-file-pdf"></i>
             PDF
           </button>
-
-          <!-- 🔥 CSV Button (Fixed Background) -->
-          <button
-            onclick="downloadCSV()"
-            style="
-              background: #007bff !important;
-              color: #fff !important;
-              border: none;
-              padding: 10px 18px;
-              border-radius: 8px;
-              font-weight: 800;
-              font-size: 12px;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              gap: 8px;
-            "
-          >
+          <button onclick="downloadCSV()" style="background: #007bff !important; color: #fff !important; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 8px">
             <i class="fas fa-file-csv"></i>
             CSV
           </button>
         </div>
       </div>
-      <!-- 📊 SALES STATS SECTION -->
-      <section
-        class="stats-row"
-        style="display: flex; gap: 12px; margin-bottom: 25px; flex-wrap: wrap"
-      >
-        <!-- 1. Total Sales -->
-        <div
-          class="stat-box"
-          style="
-            border-left: 4px solid #00ffcc;
-            background: #0a0a0a;
-            padding: 15px;
-            border-radius: 10px;
-            flex: 1;
-            min-width: 200px;
-          "
-        >
+      <section class="stats-row" style="display: flex; gap: 12px; margin-bottom: 25px; flex-wrap: wrap">
+        <div class="stat-box" style="border-left: 4px solid #00ffcc; background: #0a0a0a; padding: 15px; border-radius: 10px; flex: 1; min-width: 200px">
           <h3 id="totalSalesCount" style="font-size: 24px; margin: 0">0</h3>
-          <p
-            style="
-              color: #94a3b8;
-              font-size: 10px;
-              margin-top: 5px;
-              text-transform: uppercase;
-            "
-          >
-            Total Sold
-          </p>
+          <p style="color: #94a3b8; font-size: 10px; margin-top: 5px; text-transform: uppercase">Total Sold</p>
         </div>
-
-        <!-- 2. Pending Count -->
-        <div
-          class="stat-box"
-          style="
-            border-left: 4px solid #ff4757;
-            background: #0a0a0a;
-            padding: 15px;
-            border-radius: 10px;
-            flex: 1;
-            min-width: 200px;
-          "
-        >
-          <h3
-            id="pendingPayoutsCount"
-            style="font-size: 24px; margin: 0; color: #ff4757"
-          >
-            0
-          </h3>
-          <p
-            style="
-              color: #94a3b8;
-              font-size: 10px;
-              margin-top: 5px;
-              text-transform: uppercase;
-            "
-          >
-            Pending Orders
-          </p>
+        <div class="stat-box" style="border-left: 4px solid #ff4757; background: #0a0a0a; padding: 15px; border-radius: 10px; flex: 1; min-width: 200px">
+          <h3 id="pendingPayoutsCount" style="font-size: 24px; margin: 0; color: #ff4757">0</h3>
+          <p style="color: #94a3b8; font-size: 10px; margin-top: 5px; text-transform: uppercase">Pending Orders</p>
         </div>
-
-        <!-- 3. Pending Amount (Naya Box) -->
-        <div
-          class="stat-box"
-          style="
-            border-left: 4px solid #a020f0;
-            background: #0a0a0a;
-            padding: 15px;
-            border-radius: 10px;
-            flex: 1;
-            min-width: 200px;
-          "
-        >
-          <h3
-            id="totalPendingAmount"
-            style="font-size: 24px; margin: 0; color: #a020f0"
-          >
-            ₹0
-          </h3>
-          <p
-            style="
-              color: #94a3b8;
-              font-size: 10px;
-              margin-top: 5px;
-              text-transform: uppercase;
-            "
-          >
-            Pending Payout ₹
-          </p>
+        <div class="stat-box" style="border-left: 4px solid #a020f0; background: #0a0a0a; padding: 15px; border-radius: 10px; flex: 1; min-width: 200px">
+          <h3 id="totalPendingAmount" style="font-size: 24px; margin: 0; color: #a020f0">₹0</h3>
+          <p style="color: #94a3b8; font-size: 10px; margin-top: 5px; text-transform: uppercase">Pending Payout ₹</p>
         </div>
-
-        <!-- 4. Completed Amount -->
-        <div
-          class="stat-box"
-          style="
-            border-left: 4px solid #fbbf24;
-            background: #0a0a0a;
-            padding: 15px;
-            border-radius: 10px;
-            flex: 1;
-            min-width: 200px;
-          "
-        >
-          <h3
-            id="totalRevenueAmount"
-            style="font-size: 24px; margin: 0; color: #fbbf24"
-          >
-            ₹0
-          </h3>
-          <p
-            style="
-              color: #94a3b8;
-              font-size: 10px;
-              margin-top: 5px;
-              text-transform: uppercase;
-            "
-          >
-            Completed Payout ₹
-          </p>
+        <div class="stat-box" style="border-left: 4px solid #fbbf24; background: #0a0a0a; padding: 15px; border-radius: 10px; flex: 1; min-width: 200px">
+          <h3 id="totalRevenueAmount" style="font-size: 24px; margin: 0; color: #fbbf24">₹0</h3>
+          <p style="color: #94a3b8; font-size: 10px; margin-top: 5px; text-transform: uppercase">Completed Payout ₹</p>
         </div>
       </section>
-
-      <!-- DATA TABLE -->
       <section class="table-card">
         <div class="table-card-scroll">
-          <table
-            class="master-table"
-            style="width: 100%; border-collapse: collapse"
-          >
+          <table class="master-table" style="width: 100%; border-collapse: collapse">
             <thead>
               <tr>
                 <th>Sale Date</th>
@@ -393,7 +106,6 @@
               </tr>
             </thead>
             <tbody id="adminOrderList">
-              <!-- Sample Row for Design Check -->
               <tr>
                 <td>18-04-2026</td>
                 <td>
@@ -420,7 +132,6 @@
         </div>
       </section>
     </main>
-
     <script src="../js/config.js"></script>
     <script src="../js/admin.js"></script>
   </body>

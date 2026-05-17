@@ -17,54 +17,20 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Title -->
     <title>Seller KYC Registration | BR30 Kart</title>
-
-    <!-- SEO -->
-    <meta
-      name="description"
-      content="Register as a seller on BR30 Kart. Complete KYC verification and start listing your products on our platform."
-    />
-
+    <meta name="description" content="Register as a seller on BR30 Kart. Complete KYC verification and start listing your products on our platform." />
     <meta name="robots" content="index, follow" />
-
-    <!-- Optional (recommended for form safety) -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-store, no-cache, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-      type="image/png"
-    />
-
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
+    <link rel="icon" href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/seller-register.css" />
-
-    <!-- Open Graph -->
     <meta property="og:title" content="Seller KYC Registration | BR30 Kart" />
-    <meta
-      property="og:description"
-      content="Join BR30 Kart as a seller and complete your KYC registration."
-    />
-    <meta
-      property="og:image"
-      content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-    />
+    <meta property="og:description" content="Join BR30 Kart as a seller and complete your KYC registration." />
+    <meta property="og:image" content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BR30 Kart" />
-    <!-- sweet alart & pdf-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
@@ -72,12 +38,7 @@
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="kyc-container">
@@ -85,164 +46,72 @@
         <h1>Seller Registration 💼</h1>
         <p>Apna business account setup karein.</p>
       </div>
-
       <form id="sellerRegForm">
-        <!-- Personal Info -->
         <div class="section-header">1. Personal Info</div>
         <div class="form-group">
           <label>Full Name (As per Documents)</label>
           <input type="text" id="name" placeholder="Enter Full Name" required />
         </div>
-        <!-- Email Section with OTP -->
         <div class="form-group">
           <label>Email Address</label>
           <div style="display: flex; gap: 10px">
-            <input
-              type="email"
-              id="email"
-              placeholder="example@mail.com"
-              required
-              style="flex: 1"
-            />
-            <button
-              type="button"
-              id="sendOtpBtn"
-              onclick="sendOTP()"
-              style="padding: 10px; cursor: pointer"
-            >
-              Send OTP
-            </button>
+            <input type="email" id="email" placeholder="example@mail.com" required style="flex: 1" />
+            <button type="button" id="sendOtpBtn" onclick="sendOTP()" style="padding: 10px; cursor: pointer">Send OTP</button>
           </div>
         </div>
-
         <div id="otpSection" class="form-group" style="display: none">
           <label>Enter 6-Digit OTP</label>
           <div style="display: flex; gap: 10px">
-            <input
-              type="text"
-              id="otpInput"
-              placeholder="123456"
-              maxlength="6"
-            />
-            <button
-              type="button"
-              onclick="verifyOTP()"
-              style="
-                padding: 10px;
-                background: #28a745;
-                color: white;
-                border: none;
-              "
-            >
-              Verify
-            </button>
+            <input type="text" id="otpInput" placeholder="123456" maxlength="6" />
+            <button type="button" onclick="verifyOTP()" style="padding: 10px; background: #28a745; color: white; border: none">Verify</button>
           </div>
         </div>
-
         <div class="form-group">
           <label>Create Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Min. 8 Characters"
-            required
-          />
+          <input type="password" id="password" placeholder="Min. 8 Characters" required />
         </div>
-
         <div class="section-header">2. Identity Verification</div>
         <div class="form-group">
           <label>Aadhar Number</label>
-          <input
-            type="text"
-            id="aadharNo"
-            placeholder="12-digit Aadhar Number"
-            maxlength="12"
-            pattern="\d{12}"
-            title="Please enter 12 digit aadhar number"
-            required
-          />
+          <input type="text" id="aadharNo" placeholder="12-digit Aadhar Number" maxlength="12" pattern="\d{12}" title="Please enter 12 digit aadhar number" required />
         </div>
-
         <div class="form-group">
           <label>Aadhar Front Side</label>
           <div class="file-upload">
             <span id="frontText">📁 Click to upload Front Side</span>
-            <input
-              type="file"
-              id="aadharFront"
-              accept="image/*"
-              required
-              onchange="updateFileName('aadharFront', 'frontText')"
-            />
+            <input type="file" id="aadharFront" accept="image/*" required onchange="updateFileName('aadharFront', 'frontText')" />
           </div>
         </div>
-
         <div class="form-group">
           <label>Aadhar Back Side</label>
           <div class="file-upload">
             <span id="backText">📁 Click to upload Back Side</span>
-            <input
-              type="file"
-              id="aadharBack"
-              accept="image/*"
-              required
-              onchange="updateFileName('aadharBack', 'backText')"
-            />
+            <input type="file" id="aadharBack" accept="image/*" required onchange="updateFileName('aadharBack', 'backText')" />
           </div>
         </div>
-
-        <!-- Bank Details -->
         <div class="section-header">3. Bank Details (Payouts)</div>
         <div class="form-group">
           <label>Bank Name</label>
-          <input
-            type="text"
-            id="bankName"
-            placeholder="e.g. State Bank of India"
-            required
-          />
+          <input type="text" id="bankName" placeholder="e.g. State Bank of India" required />
         </div>
-
         <div class="form-group">
           <label>Account Number</label>
-          <input
-            type="text"
-            id="accountNo"
-            placeholder="Enter Bank Account Number"
-            required
-          />
+          <input type="text" id="accountNo" placeholder="Enter Bank Account Number" required />
         </div>
-
         <div class="form-group">
           <label>IFSC Code</label>
           <input type="text" id="ifscCode" placeholder="SBIN000XXXX" required />
         </div>
-
         <div class="form-group">
           <label>Cancelled Cheque or Passbook Photo</label>
           <div class="file-upload">
             <span id="bankDocText">📁 Upload Cheque/Passbook Copy</span>
-            <input
-              type="file"
-              id="bankDoc"
-              accept="image/*"
-              required
-              onchange="updateFileName('bankDoc', 'bankDocText')"
-            />
+            <input type="file" id="bankDoc" accept="image/*" required onchange="updateFileName('bankDoc', 'bankDocText')" />
           </div>
         </div>
-
-        <div class="note">
-          ⚠️ Verification status aapko email par mil jayega (24-48 Hours).
-        </div>
-
-        <button type="submit" class="btn-submit" id="submitBtn">
-          Submit Application
-        </button>
-
-        <a href="login.html" class="back-link">
-          Already have a seller account? Login
-        </a>
+        <div class="note">⚠️ Verification status aapko email par mil jayega (24-48 Hours).</div>
+        <button type="submit" class="btn-submit" id="submitBtn">Submit Application</button>
+        <a href="login.html" class="back-link">Already have a seller account? Login</a>
       </form>
     </div>
     <script src="../js/config.js"></script>

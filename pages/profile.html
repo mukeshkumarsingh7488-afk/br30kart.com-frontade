@@ -15,110 +15,44 @@
       })(window, document, "script", "dataLayer", "GTM-5CDWCQ5S");
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- Basic -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Title -->
     <title>My Profile | BR30 Kart</title>
-
-    <!-- Security: Private page -->
     <meta name="robots" content="noindex, nofollow" />
-
-    <!-- Cache control (important for user data pages) -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-store, no-cache, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-      type="image/png"
-    />
-
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
+    <link rel="icon" href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/profile.css" />
-
-    <!-- sweet alart-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <!-- ✅ SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-    <!-- Optional: Open Graph (only for UI consistency, not SEO index) -->
     <meta property="og:title" content="My Profile | BR30 Kart" />
-    <meta
-      property="og:description"
-      content="User profile dashboard on BR30 Kart platform."
-    />
-    <meta
-      property="og:image"
-      content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-    />
+    <meta property="og:description" content="User profile dashboard on BR30 Kart platform." />
+    <meta property="og:image" content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BR30 Kart" />
   </head>
-
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="profile-card">
-      <!-- User Avatar Section -->
       <div class="photo-container">
-        <img
-          id="profilePic"
-          src=""
-          class="profile-pic"
-          alt="Profile"
-          onclick="document.getElementById('fileInput').click()"
-          style="cursor: pointer"
-        />
+        <img id="profilePic" src="" class="profile-pic" alt="Profile" onclick="document.getElementById('fileInput').click()" style="cursor: pointer" />
         <label for="fileInput" class="upload-label">📷</label>
-        <input
-          type="file"
-          id="fileInput"
-          style="display: none"
-          accept="image/*"
-        />
+        <input type="file" id="fileInput" style="display: none" accept="image/*" />
       </div>
-
-      <!-- ✅ VIP Badge Yahan Dikhega -->
       <div id="vipBadgeContainer"></div>
       <h2 id="userName">Loading...</h2>
       <p id="userEmail">Loading...</p>
-
       <div class="edit-box">
-        <input
-          type="text"
-          id="editName"
-          placeholder="Enter New Name"
-          style="display: none"
-        />
+        <input type="text" id="editName" placeholder="Enter New Name" style="display: none" />
       </div>
-
       <div class="buttons">
         <button id="editBtn">Edit Profile</button>
         <button id="saveBtn" style="display: none">Save Changes</button>
@@ -126,7 +60,6 @@
         <a href="../index.html" class="back-home">Back to Home</a>
       </div>
     </div>
-
     <script src="../js/config.js"></script>
     <script src="../js/profile-logic.js"></script>
   </body>

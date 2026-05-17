@@ -1,56 +1,41 @@
-/* =========================================
-           1. GLOBAL & BODY STYLES (Dark Theme)
-        ========================================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 body {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #050505;
-  /* Aapka Body Color */
   padding: 20px;
 }
-
-/* =========================================
-           2. PROFILE CARD (Responsive)
-        ========================================= */
 .profile-card {
   width: 100%;
   max-width: 360px;
   padding: 30px;
   background: #1e293b;
-  /* Card Color */
   border: 1px solid #334155;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   color: white;
 }
-
-/* Profile Pic Section */
 .photo-container {
   position: relative;
   display: inline-block;
   margin-bottom: 20px;
 }
-
 .profile-pic {
   width: 110px;
   height: 110px;
   border-radius: 50%;
   border: 3px solid #a020f0;
-  /* Purple Border */
   object-fit: cover;
   background: #050505;
 }
-
 .upload-label {
   position: absolute;
   bottom: 5px;
@@ -67,20 +52,16 @@ body {
   border: 2px solid #1e293b;
   font-size: 14px;
 }
-
-/* Text & Inputs */
 h2 {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 5px;
 }
-
 p#userEmail {
   font-size: 14px;
   color: #94a3b8;
   margin-bottom: 25px;
 }
-
 .edit-box input {
   width: 100%;
   padding: 12px;
@@ -92,21 +73,15 @@ p#userEmail {
   color: white;
   text-align: center;
 }
-
 .edit-box input:focus {
   border-color: #a020f0;
 }
-
-/* =========================================
-           3. BUTTONS & LINKS
-        ========================================= */
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 10px;
 }
-
 button {
   width: 100%;
   padding: 12px;
@@ -117,31 +92,24 @@ button {
   transition: 0.3s ease;
   font-size: 15px;
 }
-
-/* Primary Purple Buttons */
 #editBtn,
 #saveBtn {
   background: #a020f0;
   color: white;
 }
-
-/* Logout Button (Outline style) */
 #logoutBtn {
   background: transparent;
   border: 1px solid #f87171;
   color: #f87171;
 }
-
 button:hover {
   transform: translateY(-2px);
   opacity: 0.9;
 }
-
 #logoutBtn:hover {
   background: #f87171;
   color: white;
 }
-
 .back-home {
   text-decoration: none;
   color: #a020f0;
@@ -150,24 +118,13 @@ button:hover {
   margin-top: 15px;
   display: inline-block;
 }
-
-/* Mobile Fixes */
 @media (max-width: 480px) {
   .profile-card {
     padding: 25px 20px;
   }
 }
-
-/* --- VIP Badge Style (Pehle wala) --- */
 .vip-badge-gold {
-  background: linear-gradient(
-    45deg,
-    #bf953f,
-    #fcf6ba,
-    #b38728,
-    #fbf5b7,
-    #aa771c
-  );
+  background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
   color: #000;
   padding: 5px 15px;
   border-radius: 50px;
@@ -178,8 +135,6 @@ button:hover {
   display: inline-block;
   margin-bottom: 10px;
 }
-
-/* --- Standard Badge & Upgrade Nudge --- */
 .standard-badge {
   display: flex;
   flex-direction: column;
@@ -187,16 +142,14 @@ button:hover {
   gap: 5px;
   margin-bottom: 15px;
 }
-
 .status-label {
-  color: #888; /* Thoda fika color taaki 'VIP' ki value badhe */
+  color: #888;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
 }
-
 .upgrade-link {
-  background: rgba(168, 85, 247, 0.1); /* Purple tint */
+  background: rgba(168, 85, 247, 0.1);
   color: #a855f7;
   border: 1px dashed #a855f7;
   padding: 4px 10px;
@@ -204,17 +157,14 @@ button:hover {
   font-size: 11px;
   text-decoration: none;
   font-weight: bold;
-  animation: pulse-purple 2s infinite; /* User ka dhyan khinchne ke liye */
+  animation: pulse-purple 2s infinite;
   transition: 0.3s;
 }
-
 .upgrade-link:hover {
   background: #a855f7;
   color: #fff;
   border-style: solid;
 }
-
-/* Upgrade button ke liye animation */
 @keyframes pulse-purple {
   0% {
     transform: scale(1);
@@ -229,8 +179,6 @@ button:hover {
     box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
   }
 }
-
-/* 🛡️ Admin Badge Style */
 .admin-badge {
   background: linear-gradient(45deg, #7f1d1d, #ef4444, #7f1d1d);
   color: #fff;
@@ -243,8 +191,6 @@ button:hover {
   display: inline-block;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
-/* 💼 Seller Badge Style */
 .seller-badge {
   background: linear-gradient(45deg, #0c4a6e, #0ea5e9, #0c4a6e);
   color: #fff;

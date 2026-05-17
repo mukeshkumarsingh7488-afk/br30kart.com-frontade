@@ -15,168 +15,62 @@
       })(window, document, "script", "dataLayer", "GTM-5CDWCQ5S");
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- ✅ Basic -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- 🔐 SECURITY FIRST -->
     <meta name="robots" content="noindex, nofollow, noarchive" />
-    <meta
-      http-equiv="Cache-Control"
-      content="no-store, no-cache, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
-
-    <!-- ✅ Title -->
     <title>Reset Password | BR30 Kart</title>
-
-    <!-- ✅ Minimal Description (no SEO push needed) -->
-    <meta
-      name="description"
-      content="Securely reset your BR30 Kart account password."
-    />
-
-    <!-- ✅ Favicon -->
+    <meta name="description" content="Securely reset your BR30 Kart account password." />
     <link rel="icon" href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" />
-
-    <!-- ✅ Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- ✅ Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-
-    <!-- ✅ CSS (as per your structure) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/forgot.css" />
-
-    <!-- ✅ SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-
-    <!-- ✅ Config -->
     <script src="../assets/js/config.js"></script>
-    <!-- sweet alart-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   </head>
-
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="container">
       <h2 class="login-heading">Reset Password</h2>
-
-      <!-- SECTION 1: REQUEST OTP (Wrapped in FORM) -->
       <form id="request-section" onsubmit="handleRequestOTP(event)">
-        <p
-          style="
-            text-align: center;
-            font-size: 13px;
-            color: #94a3b8;
-            margin-bottom: 15px;
-          "
-        >
-          Enter email to receive reset code.
-        </p>
+        <p style="text-align: center; font-size: 13px; color: #94a3b8; margin-bottom: 15px">Enter email to receive reset code.</p>
         <label>Email Address</label>
         <div class="input-box">
-          <!-- name="email" added -->
-          <input
-            id="resetEmail"
-            name="email"
-            type="email"
-            placeholder="example@mail.com"
-            autocomplete="username"
-            required
-          />
+          <input id="resetEmail" name="email" type="email" placeholder="example@mail.com" autocomplete="username" required />
         </div>
         <button type="submit" id="reqBtn">Send Reset OTP</button>
       </form>
-
-      <!-- SECTION 2: RESET PASSWORD (Wrapped in FORM) -->
-      <form
-        id="reset-section"
-        style="display: none"
-        onsubmit="handleResetPassword(event)"
-      >
+      <form id="reset-section" style="display: none" onsubmit="handleResetPassword(event)">
         <label>6-Digit OTP</label>
         <div class="input-box">
-          <input
-            id="resetOtp"
-            name="otp"
-            type="number"
-            placeholder="Ex: 123456"
-            required
-          />
+          <input id="resetOtp" name="otp" type="number" placeholder="Ex: 123456" required />
         </div>
-
         <label>New Password</label>
         <div class="input-box">
-          <!-- autocomplete="new-password" is key for Google Prompt -->
-          <input
-            id="newPassword"
-            name="password"
-            type="password"
-            placeholder="8+ chars, 1 Special"
-            autocomplete="new-password"
-            required
-          />
-          <span
-            class="toggle-btn"
-            id="toggleBtn"
-            onclick="togglePassword()"
-            style="cursor: pointer"
-          >
-            👁️
-          </span>
+          <input id="newPassword" name="password" type="password" placeholder="8+ chars, 1 Special" autocomplete="new-password" required />
+          <span class="toggle-btn" id="toggleBtn" onclick="togglePassword()" style="cursor: pointer">👁️</span>
         </div>
-
         <button type="submit" id="resetBtn">Update Password</button>
-
-        <!-- Resend Timer -->
         <div style="text-align: center; margin-top: 15px">
           <p id="timerText" style="font-size: 12px; color: #94a3b8">
             Resend in
             <span id="timer">30</span>
             s
           </p>
-          <button
-            type="button"
-            id="resendBtn"
-            onclick="handleRequestOTP(event)"
-            style="
-              display: none;
-              background: none;
-              color: #3b82f6;
-              border: none;
-              cursor: pointer;
-              text-decoration: underline;
-              font-size: 13px;
-            "
-          >
-            Resend OTP
-          </button>
+          <button type="button" id="resendBtn" onclick="handleRequestOTP(event)" style="display: none; background: none; color: #3b82f6; border: none; cursor: pointer; text-decoration: underline; font-size: 13px">Resend OTP</button>
         </div>
       </form>
-
       <div class="links">
         <a href="login.html">Back to Login</a>
       </div>
     </div>
-
     <script src="../js/config.js"></script>
     <script src="../js/forgot-logic.js"></script>
   </body>

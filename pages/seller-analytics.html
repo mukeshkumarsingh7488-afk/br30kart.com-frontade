@@ -17,65 +17,29 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Title -->
     <title>Seller Analytics | BR30 Kart</title>
-
-    <!-- Private page security -->
     <meta name="robots" content="noindex, nofollow" />
-
-    <!-- No cache (important for analytics data) -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-store, no-cache, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-      type="image/png"
-    />
-    <!-- ✅ SweetAlert -->
+    <link rel="icon" href="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" type="image/png" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-    <!-- ✅ Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/seller-analytics.css" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-    <!-- Optional Open Graph -->
     <meta property="og:title" content="Seller Analytics | BR30 Kart" />
-    <meta
-      property="og:description"
-      content="Private seller analytics dashboard for BR30 Kart sellers."
-    />
-    <meta
-      property="og:image"
-      content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-    />
+    <meta property="og:description" content="Private seller analytics dashboard for BR30 Kart sellers." />
+    <meta property="og:image" content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BR30 Kart" />
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <!-- Updated Sidebar Menu with 5 Pro Buttons -->
     <div class="sidebar">
       <div class="logo">
         <div class="logo-main">
@@ -84,158 +48,63 @@
         </div>
         <div class="logo-sub" id="sellerIdText">Loading...</div>
       </div>
-
       <nav>
-        <!-- 1. Overview Button -->
         <button class="side-btn active" onclick="loadSection('overview')">
           <i class="fas fa-th-large"></i>
           Overview
         </button>
-
-        <button
-          class="side-btn"
-          onclick="location.href = 'seller-dashboard.html'"
-        >
+        <button class="side-btn" onclick="location.href = 'seller-dashboard.html'">
           <i class="fas fa-tachometer-alt"></i>
           Course Control Panel
         </button>
-
-        <!-- 2. Sales Records Button -->
         <button class="side-btn" onclick="location = 'sales-records.html'">
           <i class="fas fa-history"></i>
           Sales Records
         </button>
-
-        <!-- 3. Payout History Button -->
         <button class="side-btn" onclick="location = 's-payout-history.html'">
           <i class="fas fa-wallet"></i>
           Payout History
         </button>
-
-        <!-- 4. Best Sellers Button -->
         <button class="side-btn" onclick="location = 's-bestseller.html'">
           <i class="fas fa-star"></i>
           Best Sellers
         </button>
-
-        <!-- Divider Line -->
         <hr style="border: 0.5px solid #222; margin: 20px 0" />
-
-        <!-- 5. Back to Dashboard Button (Yellowish for Focus) -->
-        <button
-          class="side-btn"
-          style="color: #ffca28"
-          onclick="window.location.href = '../index.html'"
-        >
+        <button class="side-btn" style="color: #ffca28" onclick="window.location.href = '../index.html'">
           <i class="fas fa-arrow-alt-circle-left"></i>
           Back to Home
         </button>
       </nav>
     </div>
-
     <div class="main-content">
-      <!-- 🔥 MAIN HEADER: Title, Logo, and Filters all in ONE line -->
-      <div
-        class="header"
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 100%;
-          border-bottom: 1px solid #1f2937;
-          padding-bottom: 15px;
-          margin-bottom: 30px;
-          flex-wrap: nowrap;
-        "
-      >
-        <!-- 1. LEFT: Title -->
+      <div class="header" style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-bottom: 1px solid #1f2937; padding-bottom: 15px; margin-bottom: 30px; flex-wrap: nowrap">
         <div style="flex: 1; min-width: 250px">
-          <h2
-            style="
-              font-size: 20px;
-              letter-spacing: 0.5px;
-              margin: 0;
-              white-space: nowrap;
-            "
-          >
-            Sales Analytics & Records 📈
-          </h2>
+          <h2 style="font-size: 20px; letter-spacing: 0.5px; margin: 0; white-space: nowrap">Sales Analytics & Records 📈</h2>
         </div>
-
-        <!-- 🚀 2. CENTER: Branding Logo -->
-        <div
-          style="
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            justify-content: center;
-          "
-        >
-          <img
-            src="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png"
-            alt="Logo"
-            style="
-              height: 35px;
-              width: auto;
-              filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3));
-            "
-          />
-          <div
-            style="
-              font-size: 12px;
-              font-weight: 900;
-              color: #fff;
-              letter-spacing: 1px;
-            "
-          >
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; justify-content: center">
+          <img src="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" alt="Logo" style="height: 35px; width: auto; filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3))" />
+          <div style="font-size: 12px; font-weight: 900; color: #fff; letter-spacing: 1px">
             BR30
             <span style="color: #3b82f6">KART</span>
           </div>
         </div>
-
-        <!-- 3. RIGHT: Filter Section -->
-        <div
-          class="filter-section"
-          style="
-            flex: 2;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            justify-content: flex-end;
-          "
-        >
+        <div class="filter-section" style="flex: 2; display: flex; gap: 8px; align-items: center; justify-content: flex-end">
           <input type="date" id="startDate" class="bright-date" />
           <input type="date" id="endDate" class="bright-date" />
-
-          <button
-            id="filterBtn"
-            class="btn-action update-btn"
-            onclick="fetchAnalyticsData()"
-          >
-            Apply
-          </button>
-
+          <button id="filterBtn" class="btn-action update-btn" onclick="fetchAnalyticsData()">Apply</button>
           <button class="btn-action reset-btn" onclick="resetFilters()">
             <i class="fas fa-sync-alt"></i>
           </button>
-
           <button onclick="exportToPDF()" class="btn-action pdf-btn">
             <i class="fas fa-file-pdf"></i>
             PDF
           </button>
-
           <button class="btn-action csv-btn" onclick="exportCSV()">
             <i class="fas fa-file-excel"></i>
             CSV
           </button>
         </div>
       </div>
-      <!-- ✅ Header Closed Properly -->
-
-      <!-- यहाँ से आपके Statistics Boxes और Table शुरू होंगे -->
-
       <div class="stats-grid">
         <div class="stat-card blue">
           <h3>Total Revenue</h3>
@@ -254,7 +123,6 @@
           <p id="adminFee">₹1,680</p>
         </div>
       </div>
-
       <div class="table-container">
         <div class="table-scroll">
           <table style="width: 100%; border-collapse: collapse">
@@ -267,14 +135,11 @@
                 <th>PayOut Status</th>
               </tr>
             </thead>
-            <tbody id="analyticsTableBody">
-              <!-- Data yahan load hoga -->
-            </tbody>
+            <tbody id="analyticsTableBody"></tbody>
           </table>
         </div>
       </div>
     </div>
-
     <script src="../js/config.js"></script>
     <script src="../js/seller-analytics.js"></script>
   </body>

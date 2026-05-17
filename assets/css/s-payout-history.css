@@ -1,12 +1,9 @@
-/* Premium Deep Dark Theme */
 body {
   background-color: #05070a;
   color: #e1e1e1;
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
 }
-
-/* 4-Stat Boxes with Smooth Hover & Rounded Corners */
 .stat-card {
   background: #0f1216;
   border: 1px solid #1f2937;
@@ -19,8 +16,6 @@ body {
   border-color: #3b82f6;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
-
-/* Balanced Date Input */
 input[type="date"] {
   background: #1a1f26;
   color: #ffffff;
@@ -35,8 +30,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 18px;
   cursor: pointer;
 }
-
-/* Scrollable Table Container */
 .table-container {
   max-height: 480px;
   overflow-y: auto;
@@ -51,8 +44,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background: #374151;
   border-radius: 10px;
 }
-
-/* Dynamic Status Badges */
 .badge {
   padding: 4px 12px;
   border-radius: 6px;
@@ -71,8 +62,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background: rgba(255, 171, 0, 0.1);
   border-color: rgba(255, 171, 0, 0.2);
 }
-
-/* Mail Track Icon Style */
 .mail-success {
   color: #3b82f6;
   font-size: 12px;

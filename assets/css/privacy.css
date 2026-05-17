@@ -4,7 +4,6 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 body {
   background: #050505;
   color: #fff;
@@ -12,10 +11,6 @@ body {
   justify-content: center;
   padding: 40px 20px;
 }
-
-/* =========================
-   MAIN LEGAL CONTAINER
-========================= */
 .policy-container {
   max-width: 900px;
   width: 100%;
@@ -26,8 +21,6 @@ body {
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
   animation: fadeIn 0.6s ease-in-out;
 }
-
-/* fade animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -38,27 +31,18 @@ body {
     transform: translateY(0);
   }
 }
-
-/* =========================
-   HEADER
-========================= */
 .policy-title h1 {
   color: #a020f0;
   font-size: 30px;
   text-align: center;
   margin-bottom: 10px;
 }
-
 .policy-title .meta {
   text-align: center;
   color: #aaa;
   font-size: 13px;
   margin-bottom: 25px;
 }
-
-/* =========================
-   CONTENT TEXT
-========================= */
 .policy-body p {
   color: #cbd5e1;
   font-size: 16px;
@@ -66,10 +50,6 @@ body {
   margin-bottom: 15px;
   text-align: left;
 }
-
-/* =========================
-   HEADINGS (LEGAL STYLE)
-========================= */
 .policy-body h3 {
   color: #ffffff;
   font-size: 18px;
@@ -79,25 +59,16 @@ body {
   border-left: 4px solid #a020f0;
   padding-left: 10px;
 }
-
-/* =========================
-   LIST STYLE
-========================= */
 .policy-body ul {
   margin-left: 20px;
   margin-bottom: 15px;
 }
-
 .policy-body ul li {
   color: #cbd5e1;
   font-size: 15px;
   margin-bottom: 8px;
   line-height: 1.6;
 }
-
-/* =========================
-   BUTTON STYLE
-========================= */
 .btn {
   display: inline-block;
   margin-top: 25px;
@@ -110,30 +81,22 @@ body {
   transition: 0.3s ease;
   border: 1px solid #a020f0;
 }
-
 .btn:hover {
   background: transparent;
   color: #a020f0;
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(160, 32, 240, 0.3);
 }
-
-/* =========================
-   RESPONSIVE (MOBILE)
-========================= */
 @media (max-width: 600px) {
   .policy-container {
     padding: 25px 18px;
   }
-
   .policy-title h1 {
     font-size: 24px;
   }
-
   .policy-body p {
     font-size: 14px;
   }
-
   .policy-body h3 {
     font-size: 16px;
   }

@@ -1,42 +1,30 @@
-//=============== Student Tracker (active Student pannel)=============
-// 👨‍🎓 Student Tracker - Master Logic (Professional Layout)
+//#region
 async function loadStudentTracker() {
   const tbody = document.getElementById("studentTrackerBody");
   const noData = document.getElementById("noData");
   if (!tbody) return;
-
   try {
-    const res = await fetch(
-      `${CONFIG.BASE_API_URL}/admin/student-tracker-data`,
-      {
-        headers: { "x-auth-token": localStorage.getItem("token") },
-      },
-    );
+    const res = await fetch(`${CONFIG.BASE_API_URL}/admin/student-tracker-data`, {
+      headers: { "x-auth-token": localStorage.getItem("token") },
+    });
     const result = await res.json();
     const students = result.students || [];
-
     tbody.innerHTML = "";
     if (students.length === 0) {
       if (noData) noData.style.display = "block";
       return;
     }
     if (noData) noData.style.display = "none";
-
     students.forEach((s) => {
       const isVip = s.role === "vip";
       const isBlocked = s.isBlocked === true;
       const boughtCount = s.purchasedCourses ? s.purchasedCourses.length : 0;
-
-      // 📚 Inventory Dropdown Logic (With Design Fix)
       let courseOptions =
         boughtCount > 0
           ? s.purchasedCourses
               .map((c) => {
                 const courseId = c._id || c.id;
-                const isHidden = s.hiddenCourses?.some(
-                  (h) => h.courseId.toString() === courseId.toString(),
-                );
-
+                const isHidden = s.hiddenCourses?.some((h) => h.courseId.toString() === courseId.toString());
                 return `
             <li class="course-mini-card" style="display:flex; align-items:center; gap:12px; padding:12px; border-bottom:1px solid #1e293b;">
               <img src="${c.thumbnail || "../images/placeholder.jpg"}" style="width:50px; height:35px; border-radius:6px; object-fit:cover;">
@@ -59,7 +47,6 @@ async function loadStudentTracker() {
               })
               .join("")
           : "<div style='padding:20px; color:gray; text-align:center;'>Empty Inventory.</div>";
-
       tbody.innerHTML += `
         <tr>
           <!-- 👤 Student Detail -->
@@ -67,13 +54,10 @@ async function loadStudentTracker() {
             <div style="font-weight:bold; color:#00ff88; font-size:14px;">${s.name} ${isVip ? "👑" : ""}</div>
             <div style="font-size:11px; color:#64748b;">${s.email}</div>
           </td>
-
           <!-- ⏰ Last Active -->
           <td style="font-size:12px; color:#e2e8f0;">${s.lastLogin ? new Date(s.lastLogin).toLocaleString() : "Never Active"}</td>
-
           <!-- 🔢 Count -->
           <td><span class="count-badge">${boughtCount}</span></td>
-
           <!-- 📚 View Inventory -->
           <td style="position:relative;">
             <button class="view-btn ${boughtCount > 0 ? "btn-has-courses" : ""}" onclick="toggleDropdown(event, '${s._id}')" ${boughtCount === 0 ? "disabled" : ""}>
@@ -84,12 +68,10 @@ async function loadStudentTracker() {
                 ${courseOptions}
             </ul>
           </td>
-
           <!-- 📊 Account Status -->
           <td>
             <span class="status-tag ${isBlocked ? "tag-blocked" : "tag-active"}">${isBlocked ? "Blocked 🚫" : "Active ✅"}</span>
           </td>
-
           <!-- ⚡ Quick Actions (Professional Flex) -->
           <td>
             <div class="action-flex">
@@ -115,9 +97,6 @@ async function loadStudentTracker() {
   }
 }
 
-// --- Logic Functions (Ye zaroor add karein) ---
-
-// 📢 1. Send Student Alert (Mail Popup)
 async function openStudentAlert(studentId, studentEmail, studentName) {
   const { value: formValues } = await Swal.fire({
     title: "Send Elite Alert 📧",
@@ -143,7 +122,6 @@ async function openStudentAlert(studentId, studentEmail, studentName) {
       };
     },
   });
-
   if (formValues) {
     Swal.fire({
       title: "Sending...",
@@ -153,23 +131,20 @@ async function openStudentAlert(studentId, studentEmail, studentName) {
       },
     });
     try {
-      const res = await fetch(
-        `${CONFIG.BASE_API_URL}/admin/send-student-alert`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-auth-token": localStorage.getItem("token"),
-          },
-          body: JSON.stringify({
-            userId: studentId,
-            studentEmail,
-            studentName,
-            reason: formValues.reason,
-            message: formValues.message,
-          }),
+      const res = await fetch(`${CONFIG.BASE_API_URL}/admin/send-student-alert`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": localStorage.getItem("token"),
         },
-      );
+        body: JSON.stringify({
+          userId: studentId,
+          studentEmail,
+          studentName,
+          reason: formValues.reason,
+          message: formValues.message,
+        }),
+      });
       if (res.ok) Swal.fire("Sent!", "Alert sent to student.", "success");
     } catch (err) {
       Swal.fire("Error", err.message, "error");
@@ -177,19 +152,12 @@ async function openStudentAlert(studentId, studentEmail, studentName) {
   }
 }
 
-// 🚫 Smart Block/Unblock (Handles both Student & VIP)
-// 🚫 Universal Block/Unblock (For Student & Seller Tracker)
 async function handleBlock(id, isBlocked, role) {
-  // 1. Backend switch case ke hisaab se sahi action name banaiye
-  // Example: block_student, unblock_seller, block_vip
   let actionType = isBlocked ? "unblock_" : "block_";
-
   if (role === "vip") actionType += "vip";
   else if (role === "seller") actionType += "seller";
-  else actionType += "student"; // Default for students
-
+  else actionType += "student";
   console.log("📡 Triggering Action:", actionType, "for User ID:", id);
-
   const confirm = await Swal.fire({
     title: isBlocked ? "Unblock User?" : "Block User?",
     text: `Bhai, kya is ${role} ko ${isBlocked ? "wapas access dena" : "block karna"} hai?`,
@@ -200,23 +168,17 @@ async function handleBlock(id, isBlocked, role) {
     background: "#111",
     color: "#fff",
   });
-
   if (confirm.isConfirmed) {
     try {
-      const res = await fetch(
-        `${CONFIG.BASE_API_URL}/admin/bulk-update-users`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "x-auth-token": localStorage.getItem("token"),
-          },
-          body: JSON.stringify({ ids: [id], action: actionType }), // 👈 IDs Array mein jayegi
+      const res = await fetch(`${CONFIG.BASE_API_URL}/admin/bulk-update-users`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": localStorage.getItem("token"),
         },
-      );
-
+        body: JSON.stringify({ ids: [id], action: actionType }),
+      });
       const data = await res.json();
-
       if (res.ok) {
         await Swal.fire({
           icon: "success",
@@ -225,7 +187,6 @@ async function handleBlock(id, isBlocked, role) {
           timer: 1500,
           showConfirmButton: false,
         });
-        // Current page ko reload karne ke liye function call
         if (typeof loadStudentTracker === "function") loadStudentTracker();
         if (typeof loadSellerTracker === "function") loadSellerTracker();
       } else {
@@ -237,10 +198,8 @@ async function handleBlock(id, isBlocked, role) {
   }
 }
 
-// 👑 3. Toggle VIP Status (Fixed ReferenceError)
 async function toggleVipStatus(id, currentRole) {
   const action = currentRole === "vip" ? "remove_vip" : "make_vip";
-
   const confirm = await Swal.fire({
     title: "Change Role?",
     text: `Do you want to ${currentRole === "vip" ? "Remove VIP" : "Make VIP"}?`,
@@ -248,20 +207,16 @@ async function toggleVipStatus(id, currentRole) {
     showCancelButton: true,
     confirmButtonColor: "#a020f0",
   });
-
   if (confirm.isConfirmed) {
     try {
-      const res = await fetch(
-        `${CONFIG.BASE_API_URL}/admin/bulk-update-users`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "x-auth-token": localStorage.getItem("token"),
-          },
-          body: JSON.stringify({ ids: [id], action: action }),
+      const res = await fetch(`${CONFIG.BASE_API_URL}/admin/bulk-update-users`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": localStorage.getItem("token"),
         },
-      );
+        body: JSON.stringify({ ids: [id], action: action }),
+      });
       if (res.ok) {
         Swal.fire("Updated!", "User role has been changed.", "success");
         loadStudentTracker();
@@ -293,17 +248,14 @@ async function deleteStudentCourse(userId, courseId) {
     confirmButtonColor: "#ef4444",
   });
   if (confirm.isConfirmed) {
-    const res = await fetch(
-      `${CONFIG.BASE_API_URL}/admin/delete-student-course`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          "x-auth-token": localStorage.getItem("token"),
-        },
-        body: JSON.stringify({ userId, courseId }),
+    const res = await fetch(`${CONFIG.BASE_API_URL}/admin/delete-student-course`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
       },
-    );
+      body: JSON.stringify({ userId, courseId }),
+    });
     if (res.ok) {
       Swal.fire("Removed!", "", "success");
       loadStudentTracker();
@@ -331,31 +283,22 @@ async function handleDelete(id) {
   }
 }
 
-// Dropdown Helper
 function toggleDropdown(event, id) {
   event.stopPropagation();
   const dropdown = document.getElementById(`drop-${id}`);
   document.querySelectorAll(".course-dropdown-list").forEach((d) => {
     if (d.id !== `drop-${id}`) d.style.display = "none";
   });
-  dropdown.style.display =
-    dropdown.style.display === "block" ? "none" : "block";
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
 }
-
-// serch logic
-// ━━━━━ 🔍 SELLER SEARCH & TRACKER LOGIC ━━━━━
 
 function searchSeller() {
   const input = document.getElementById("searchInput").value.toLowerCase();
   const tableBody = document.getElementById("studentTrackerBody");
   const rows = tableBody.getElementsByTagName("tr");
-
   for (let i = 0; i < rows.length; i++) {
-    const sellerName =
-      rows[i].getElementsByTagName("td")[1]?.innerText.toLowerCase() || "";
-    const sellerEmail =
-      rows[i].getElementsByTagName("td")[2]?.innerText.toLowerCase() || "";
-
+    const sellerName = rows[i].getElementsByTagName("td")[1]?.innerText.toLowerCase() || "";
+    const sellerEmail = rows[i].getElementsByTagName("td")[2]?.innerText.toLowerCase() || "";
     if (sellerName.includes(input) || sellerEmail.includes(input)) {
       rows[i].style.display = "";
     } else {
@@ -364,7 +307,6 @@ function searchSeller() {
   }
 }
 
-// Clear Search Function
 function clearSearch() {
   const input = document.getElementById("searchInput");
   input.value = "";
@@ -372,11 +314,8 @@ function clearSearch() {
   input.focus();
 }
 
-// 🏁 --- END OF SEARCH MODULE ---
-
 document.addEventListener("click", () => {
-  document
-    .querySelectorAll(".course-dropdown-list")
-    .forEach((d) => (d.style.display = "none"));
+  document.querySelectorAll(".course-dropdown-list").forEach((d) => (d.style.display = "none"));
 });
 document.addEventListener("DOMContentLoaded", loadStudentTracker);
+//#endregion

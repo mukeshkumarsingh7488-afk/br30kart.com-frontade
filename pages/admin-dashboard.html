@@ -15,26 +15,13 @@
       })(window, document, "script", "dataLayer", "GTM-5CDWCQ5S");
     </script>
     <!-- End Google Tag Manager -->
-    <!-- ✅ Basic -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- 🔒 SECURITY (IMPORTANT 🔥) -->
     <meta name="robots" content="noindex, nofollow" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <!-- ✅ Title -->
     <title>BR30 Kart Admin Panel</title>
-
-    <!-- ✅ Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/admin-dashboard.css" />
-
-    <!-- sweet alart (swal, chart, pdf, etc.) -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -43,12 +30,7 @@
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="sidebar">
@@ -56,252 +38,79 @@
         BR30
         <span>ADMIN</span>
       </div>
-      <ul
-        class="nav-links"
-        id="adminSidebar"
-        style="list-style: none; padding: 0; margin: 0"
-      >
-        <!-- JS Managed Items -->
-        <li
-          class="nav-item active"
-          data-target="overview"
-          style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 8px;
-          "
-        >
+      <ul class="nav-links" id="adminSidebar" style="list-style: none; padding: 0; margin: 0">
+        <li class="nav-item active" data-target="overview" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; transition: 0.3s; border-radius: 8px">
           <i class="fas fa-chart-line"></i>
           Overview
         </li>
-
-        <li
-          class="nav-item"
-          data-target="student"
-          style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            cursor: pointer;
-            border-radius: 8px;
-          "
-        >
+        <li class="nav-item" data-target="student" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px">
           <i class="fas fa-user-graduate"></i>
           Student Control
         </li>
-
-        <li
-          class="nav-item"
-          data-target="vip"
-          style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            cursor: pointer;
-            border-radius: 8px;
-          "
-        >
+        <li class="nav-item" data-target="vip" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px">
           <i class="fas fa-crown" style="color: gold"></i>
           VIP Control
         </li>
-
-        <li
-          class="nav-item"
-          data-target="seller"
-          style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            cursor: pointer;
-            border-radius: 8px;
-          "
-        >
+        <li class="nav-item" data-target="seller" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px">
           <i class="fas fa-store"></i>
           Seller Control
         </li>
-
-        <li
-          class="nav-item"
-          data-target="requests"
-          style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            cursor: pointer;
-            border-radius: 8px;
-          "
-        >
+        <li class="nav-item" data-target="requests" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px">
           <i class="fas fa-user-check"></i>
           Seller Requests
         </li>
-
-        <li
-          class="nav-item"
-          data-target="payouts"
-          style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            cursor: pointer;
-            border-radius: 8px;
-          "
-        >
+        <li class="nav-item" data-target="payouts" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; cursor: pointer; border-radius: 8px">
           <i class="fas fa-money-bill-wave"></i>
           Friday Payouts
         </li>
-
-        <!-- Direct Page Links -->
         <li style="padding: 0">
-          <a
-            href="seller-docs.html"
-            style="
-              text-decoration: none;
-              color: inherit;
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              padding: 12px 15px;
-              width: 100%;
-              border-radius: 8px;
-            "
-          >
+          <a href="seller-docs.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px">
             <i class="fas fa-file-invoice"></i>
             Seller Document
           </a>
         </li>
-
         <li style="padding: 0">
-          <a
-            href="admin-orders.html"
-            style="
-              text-decoration: none;
-              color: inherit;
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              padding: 12px 15px;
-              width: 100%;
-              border-radius: 8px;
-            "
-          >
+          <a href="admin-orders.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px">
             <i class="fas fa-receipt"></i>
             Order History
           </a>
         </li>
-
         <li style="padding: 0">
-          <a
-            href="admin-course.html"
-            style="
-              text-decoration: none;
-              color: inherit;
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              padding: 12px 15px;
-              width: 100%;
-              border-radius: 8px;
-            "
-          >
+          <a href="admin-course.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px">
             <i class="fas fa-cogs"></i>
             Course Control
           </a>
         </li>
-
         <li style="padding: 0">
-          <a
-            href="activ-seller.html"
-            style="
-              text-decoration: none;
-              color: inherit;
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              padding: 12px 15px;
-              width: 100%;
-              border-radius: 8px;
-            "
-          >
+          <a href="activ-seller.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px">
             <i class="fas fa-user-tie"></i>
             Activ Seller
           </a>
         </li>
-
         <li style="padding: 0">
-          <a
-            href="activ-student.html"
-            style="
-              text-decoration: none;
-              color: inherit;
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              padding: 12px 15px;
-              width: 100%;
-              border-radius: 8px;
-            "
-          >
+          <a href="activ-student.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px">
             <i class="fas fa-user-graduate"></i>
             Activ Student
           </a>
         </li>
-
         <li style="padding: 0">
-          <a
-            href="review.html"
-            style="
-              text-decoration: none;
-              color: inherit;
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              padding: 12px 15px;
-              width: 100%;
-              border-radius: 8px;
-            "
-          >
+          <a href="review.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px">
             <i class="fas fa-star-half-alt"></i>
             Review Management
           </a>
         </li>
-
         <li style="padding: 0">
-          <a
-            href="seller-dashboard.html"
-            target="_blank"
-            style="
-              text-decoration: none;
-              color: inherit;
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              padding: 12px 15px;
-              width: 100%;
-              border-radius: 8px;
-            "
-          >
+          <a href="seller-dashboard.html" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; padding: 12px 15px; width: 100%; border-radius: 8px">
             <i class="fas fa-tachometer-alt"></i>
             Seller Dashboard
           </a>
         </li>
       </ul>
     </div>
-
-    <!-- main content  -->
     <div class="main-content">
       <div class="top-header">
         <div class="header-left">
           <h2>User Management Panel 👑</h2>
-          <!-- Back to Home Button -->
           <a href="../index.html" class="back-btn" target="_blank">
             <i class="fas fa-arrow-left"></i>
             Back to Home
@@ -309,453 +118,95 @@
         </div>
         <div class="admin-email">mukeshkumarsingh7488@gmail.com</div>
       </div>
-
-      <!-- Search & Refresh Unit -->
-      <!-- Main Filter Bar -->
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: #0f1216;
-          padding: 15px;
-          border-radius: 12px;
-          border: 1px solid #1f2937;
-          margin-bottom: 25px;
-        "
-      >
-        <!-- Search Section -->
-        <div
-          style="
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          "
-        >
-          <i
-            class="fas fa-search"
-            style="
-              position: absolute;
-              left: 12px;
-              color: #4b5563;
-              font-size: 14px;
-            "
-          ></i>
-          <input
-            type="text"
-            id="courseSearch"
-            oninput="searchTableLive()"
-            placeholder="mukeshkumarsingh7488@gmail.com"
-            style="
-              background: #111827;
-              border: 1px solid #374151;
-              color: white;
-              padding: 10px 15px 10px 40px;
-              border-radius: 8px;
-              width: 280px;
-              outline: none;
-              font-size: 13px;
-            "
-          />
-
-          <!-- Search Refresh Button (Grey Square) -->
-          <button
-            onclick="clearSearchOnly()"
-            style="
-              background: #2d333b;
-              border: 1px solid #3d444d;
-              color: white;
-              width: 38px;
-              height: 38px;
-              border-radius: 8px;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            "
-          >
+      <div style="display: flex; align-items: center; gap: 10px; background: #0f1216; padding: 15px; border-radius: 12px; border: 1px solid #1f2937; margin-bottom: 25px">
+        <div style="position: relative; display: flex; align-items: center; gap: 8px">
+          <i class="fas fa-search" style="position: absolute; left: 12px; color: #4b5563; font-size: 14px"></i>
+          <input type="text" id="courseSearch" oninput="searchTableLive()" placeholder="mukeshkumarsingh7488@gmail.com" style="background: #111827; border: 1px solid #374151; color: white; padding: 10px 15px 10px 40px; border-radius: 8px; width: 280px; outline: none; font-size: 13px" />
+          <button onclick="clearSearchOnly()" style="background: #2d333b; border: 1px solid #3d444d; color: white; width: 38px; height: 38px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center">
             <i class="fas fa-sync-alt"></i>
           </button>
         </div>
-
-        <!-- Date Section -->
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: 10px;
-          "
-        >
-          <input
-            type="date"
-            id="startDate"
-            style="
-              background: #111827;
-              border: 1px solid #374151;
-              color: white;
-              padding: 8px;
-              border-radius: 8px;
-              color-scheme: dark;
-              font-size: 13px;
-            "
-          />
-          <input
-            type="date"
-            id="endDate"
-            style="
-              background: #111827;
-              border: 1px solid #374151;
-              color: white;
-              padding: 8px;
-              border-radius: 8px;
-              color-scheme: dark;
-              font-size: 13px;
-            "
-          />
-
-          <!-- Apply Button (Green) -->
-          <button
-            onclick="applyFilters()"
-            style="
-              background: #22c55e;
-              color: white;
-              border: none;
-              padding: 10px 20px;
-              border-radius: 8px;
-              font-weight: bold;
-              cursor: pointer;
-              text-transform: uppercase;
-              font-size: 12px;
-            "
-          >
-            APPLY
-          </button>
-
-          <!-- Reset Button (Grey Square - Seam to Search Refresh) -->
-          <button
-            onclick="resetAllFilters()"
-            style="
-              background: #2d333b;
-              border: 1px solid #3d444d;
-              color: white;
-              width: 38px;
-              height: 38px;
-              border-radius: 8px;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            "
-          >
+        <div style="display: flex; align-items: center; gap: 8px; margin-left: 10px">
+          <input type="date" id="startDate" style="background: #111827; border: 1px solid #374151; color: white; padding: 8px; border-radius: 8px; color-scheme: dark; font-size: 13px" />
+          <input type="date" id="endDate" style="background: #111827; border: 1px solid #374151; color: white; padding: 8px; border-radius: 8px; color-scheme: dark; font-size: 13px" />
+          <button onclick="applyFilters()" style="background: #22c55e; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 12px">APPLY</button>
+          <button onclick="resetAllFilters()" style="background: #2d333b; border: 1px solid #3d444d; color: white; width: 38px; height: 38px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center">
             <i class="fas fa-sync-alt"></i>
           </button>
         </div>
       </div>
-
-      <!-- STATS - 5 Boxes in One Line -->
-      <div
-        class="stats-grid"
-        style="
-          display: flex;
-          gap: 15px;
-          margin-bottom: 25px;
-          flex-wrap: wrap;
-          align-items: stretch;
-        "
-      >
-        <!-- 1. Students Card (IDs NOT CHANGED) -->
-        <div
-          class="stat-card"
-          style="
-            flex: 1;
-            min-width: 170px;
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #007bff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          "
-        >
-          <small
-            style="
-              color: #888;
-              text-transform: uppercase;
-              font-size: 11px;
-              letter-spacing: 1px;
-            "
-          >
-            Total Students
-          </small>
-          <h3
-            class="value"
-            id="totalUsers"
-            style="margin: 5px 0; color: #fff; font-size: 22px"
-          >
-            0
-          </h3>
+      <div class="stats-grid" style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; align-items: stretch">
+        <div class="stat-card" style="flex: 1; min-width: 170px; background: #1a1a1a; padding: 15px; border-radius: 10px; border-left: 4px solid #007bff; display: flex; flex-direction: column; justify-content: center">
+          <small style="color: #888; text-transform: uppercase; font-size: 11px; letter-spacing: 1px">Total Students</small>
+          <h3 class="value" id="totalUsers" style="margin: 5px 0; color: #fff; font-size: 22px">0</h3>
         </div>
-
-        <!-- 2. Sellers Card (IDs NOT CHANGED) -->
-        <div
-          class="stat-card"
-          style="
-            flex: 1;
-            min-width: 170px;
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #6f42c1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          "
-        >
-          <small
-            style="
-              color: #888;
-              text-transform: uppercase;
-              font-size: 11px;
-              letter-spacing: 1px;
-            "
-          >
-            Total Sellers
-          </small>
-          <h3
-            class="value"
-            id="totalSellers"
-            style="margin: 5px 0; color: #fff; font-size: 22px"
-          >
-            0
-          </h3>
+        <div class="stat-card" style="flex: 1; min-width: 170px; background: #1a1a1a; padding: 15px; border-radius: 10px; border-left: 4px solid #6f42c1; display: flex; flex-direction: column; justify-content: center">
+          <small style="color: #888; text-transform: uppercase; font-size: 11px; letter-spacing: 1px">Total Sellers</small>
+          <h3 class="value" id="totalSellers" style="margin: 5px 0; color: #fff; font-size: 22px">0</h3>
         </div>
-
-        <!-- 3. Total Sales -->
-        <div
-          class="stat-card"
-          style="
-            flex: 1.2;
-            min-width: 180px;
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #2ecc71;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          "
-        >
-          <small
-            style="
-              color: #888;
-              text-transform: uppercase;
-              font-size: 11px;
-              letter-spacing: 1px;
-            "
-          >
-            Total Sales
-          </small>
-          <h3
-            id="statSales"
-            style="margin: 5px 0; color: #2ecc71; font-size: 22px"
-          >
-            ₹0
-          </h3>
+        <div class="stat-card" style="flex: 1.2; min-width: 180px; background: #1a1a1a; padding: 15px; border-radius: 10px; border-left: 4px solid #2ecc71; display: flex; flex-direction: column; justify-content: center">
+          <small style="color: #888; text-transform: uppercase; font-size: 11px; letter-spacing: 1px">Total Sales</small>
+          <h3 id="statSales" style="margin: 5px 0; color: #2ecc71; font-size: 22px">₹0</h3>
         </div>
-
-        <!-- 4. Total Payout -->
-        <div
-          class="stat-card"
-          style="
-            flex: 1.2;
-            min-width: 180px;
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #ffcc00;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          "
-        >
-          <small
-            style="
-              color: #888;
-              text-transform: uppercase;
-              font-size: 11px;
-              letter-spacing: 1px;
-            "
-          >
-            Total Payout
-          </small>
-          <h3
-            id="statPayout"
-            style="margin: 5px 0; color: #ffcc00; font-size: 22px"
-          >
-            ₹0
-          </h3>
+        <div class="stat-card" style="flex: 1.2; min-width: 180px; background: #1a1a1a; padding: 15px; border-radius: 10px; border-left: 4px solid #ffcc00; display: flex; flex-direction: column; justify-content: center">
+          <small style="color: #888; text-transform: uppercase; font-size: 11px; letter-spacing: 1px">Total Payout</small>
+          <h3 id="statPayout" style="margin: 5px 0; color: #ffcc00; font-size: 22px">₹0</h3>
         </div>
-
-        <!-- 5. Fee Collected -->
-        <div
-          class="stat-card"
-          style="
-            flex: 1.2;
-            min-width: 180px;
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #ff4d4d;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          "
-        >
-          <small
-            style="
-              color: #888;
-              text-transform: uppercase;
-              font-size: 11px;
-              letter-spacing: 1px;
-            "
-          >
-            Fee Collected
-          </small>
-          <h3
-            id="statFee"
-            style="margin: 5px 0; color: #ff4d4d; font-size: 22px"
-          >
-            ₹0
-          </h3>
+        <div class="stat-card" style="flex: 1.2; min-width: 180px; background: #1a1a1a; padding: 15px; border-radius: 10px; border-left: 4px solid #ff4d4d; display: flex; flex-direction: column; justify-content: center">
+          <small style="color: #888; text-transform: uppercase; font-size: 11px; letter-spacing: 1px">Fee Collected</small>
+          <h3 id="statFee" style="margin: 5px 0; color: #ff4d4d; font-size: 22px">₹0</h3>
         </div>
       </div>
-
-      <!-- USER TABLE -->
       <div class="table-container">
         <div class="table-wrapper">
           <table style="width: 100%; border-collapse: collapse">
             <thead>
               <tr>
-                <!-- 1. Master Checkbox -->
                 <th style="width: 50px; text-align: center">
-                  <input
-                    type="checkbox"
-                    id="selectAllSellers"
-                    style="cursor: pointer; width: 18px; height: 18px"
-                  />
+                  <input type="checkbox" id="selectAllSellers" style="cursor: pointer; width: 18px; height: 18px" />
                 </th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Badge</th>
-
-                <!-- 2. Actions with Bulk Dropdown -->
                 <th style="min-width: 280px; text-align: center">
-                  <div
-                    style="
-                      display: flex;
-                      align-items: center;
-                      gap: 8px;
-                      justify-content: center;
-                    "
-                  >
+                  <div style="display: flex; align-items: center; gap: 8px; justify-content: center">
                     <span style="font-size: 11px; color: #aaa">BULK:</span>
-                    <select
-                      id="bulkSellerAction"
-                      style="
-                        background: #1a1a1a;
-                        color: #fff;
-                        border: 1px solid #444;
-                        padding: 4px;
-                        border-radius: 4px;
-                        font-size: 12px;
-                        outline: none;
-                        cursor: pointer;
-                      "
-                    >
+                    <select id="bulkSellerAction" style="background: #1a1a1a; color: #fff; border: 1px solid #444; padding: 4px; border-radius: 4px; font-size: 12px; outline: none; cursor: pointer">
                       <option value="">-- Select Action --</option>
-
-                      <!-- 🏪 SELLER SPECIFIC -->
                       <optgroup label="SELLER CONTROL">
-                        <option value="approve_seller">
-                          ✅ Approve Seller
-                        </option>
-                        <option value="unapprove_seller">
-                          ❌ Unapprove Seller
-                        </option>
+                        <option value="approve_seller">✅ Approve Seller</option>
+                        <option value="unapprove_seller">❌ Unapprove Seller</option>
                         <option value="block_seller">🚫 Block Seller</option>
-                        <option value="unblock_seller">
-                          🔓 Unblock Seller
-                        </option>
+                        <option value="unblock_seller">🔓 Unblock Seller</option>
                         <option value="delete_seller">🗑️ Delete Seller</option>
                       </optgroup>
-
-                      <!-- 💎 VIP SPECIFIC -->
                       <optgroup label="VIP CONTROL">
-                        <option value="make_vip">
-                          👑 Make VIP (All Roles)
-                        </option>
-                        <option value="remove_vip">
-                          👤 Remove VIP / Reset
-                        </option>
+                        <option value="make_vip">👑 Make VIP (All Roles)</option>
+                        <option value="remove_vip">👤 Remove VIP / Reset</option>
                         <option value="block_vip">🚫 Block VIP</option>
                         <option value="delete_vip">🗑️ Delete VIP</option>
                       </optgroup>
-
-                      <!-- 🎓 STUDENT SPECIFIC -->
                       <optgroup label="STUDENT CONTROL">
                         <option value="block_student">🚫 Block Student</option>
-                        <option value="delete_student">
-                          🗑️ Delete Student
-                        </option>
-                        <option value="reject_cert">
-                          📜 Reject Certificate
-                        </option>
+                        <option value="delete_student">🗑️ Delete Student</option>
+                        <option value="reject_cert">📜 Reject Certificate</option>
                       </optgroup>
-
-                      <!-- ⚠️ GLOBAL ACTIONS -->
                       <optgroup label="DANGER ZONE">
-                        <option value="make_seller">
-                          👨‍🏫 Make Seller (Convert)
-                        </option>
-                        <option value="delete_all">
-                          💀 Delete All Selected
-                        </option>
+                        <option value="make_seller">👨‍🏫 Make Seller (Convert)</option>
+                        <option value="delete_all">💀 Delete All Selected</option>
                       </optgroup>
                     </select>
-
-                    <button
-                      id="applyBulkSellerAction"
-                      style="
-                        background: #00ff88;
-                        color: #000;
-                        border: none;
-                        padding: 4px 12px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                        font-weight: bold;
-                        font-size: 12px;
-                      "
-                    >
-                      APPLY
-                    </button>
+                    <button id="applyBulkSellerAction" style="background: #00ff88; color: #000; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px">APPLY</button>
                   </div>
                 </th>
-
                 <th>Certificate 🎓</th>
               </tr>
             </thead>
-
-            <tbody id="tableBody">
-              <!-- Data yahan JS se aayega -->
-            </tbody>
+            <tbody id="tableBody"></tbody>
           </table>
         </div>
       </div>
     </div>
-
     <script src="../js/config.js"></script>
     <script src="../js/admin.js"></script>
   </body>
