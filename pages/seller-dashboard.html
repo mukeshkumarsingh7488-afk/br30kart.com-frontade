@@ -27,6 +27,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/seller-dashboard.css" />
+    <link rel="stylesheet" href="/assets/css/common.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <meta property="og:title" content="Seller Dashboard | BR30 Kart" />
@@ -42,6 +43,7 @@
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <div id="commonHeader"></div>
     <div id="sellerModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 9999; justify-content: center; align-items: center">
       <div class="db-card" style="width: 90%; max-width: 500px; background: #0f1218; padding: 25px; border-radius: 20px; border: 1px solid #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.2)">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px">
@@ -217,6 +219,8 @@
       </div>
       <div id="myContentList" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 50px"></div>
     </div>
+      <div id="commonFooter"></div>
+      <script src="/js/header-footer.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/seller-dashboard.js"></script>
   </body>

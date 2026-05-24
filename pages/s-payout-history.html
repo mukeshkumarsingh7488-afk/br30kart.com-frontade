@@ -30,6 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/s-payout-history.css" />
+    <link rel="stylesheet" href="/assets/css/common.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
@@ -40,6 +41,7 @@
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDWCQ5S" height="0" width="0" style="display: none; visibility: hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <div id="commonHeader"></div>
     <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
       <div class="flex items-center gap-6">
         <a href="seller-analytics.html" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-bold text-xs flex items-center gap-2 transition shadow-lg">
@@ -124,6 +126,8 @@
         <tbody id="payoutTableBody" class="divide-y divide-[#1f2937]"></tbody>
       </table>
     </div>
+      <div id="commonFooter"></div>
+      <script src="/js/header-footer.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/payout-logic.js"></script>
   </body>
