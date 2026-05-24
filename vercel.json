@@ -43,6 +43,7 @@
     { "source": "/verify", "destination": "/pages/verify.html" },
     { "source": "/view-alert", "destination": "/pages/view-alart.html" },
     { "source": "/seller-program", "destination": "/pages/view-seller-program.html" },
-    { "source": "/watch", "destination": "/pages/watch.html" }
+    { "source": "/watch", "destination": "/pages/watch.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
