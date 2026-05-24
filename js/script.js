@@ -657,7 +657,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchOldNotifications();
 });
 
-document.addEventListener("contextmenu", (e) => e.preventDefault());
+// document.addEventListener("contextmenu", (e) => e.preventDefault());
 
 document.onkeydown = function (e) {
   if (e.keyCode == 123) return false;
