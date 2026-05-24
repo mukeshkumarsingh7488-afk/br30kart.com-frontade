@@ -1,0 +1,257 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+
+    {
+      "source": "/about",
+      "destination": "/pages/about.html"
+    },
+    {
+      "source": "/about-br30",
+      "destination": "/pages/aboutbr30.html"
+    },
+
+    {
+      "source": "/active-seller",
+      "destination": "/pages/activ-seller.html"
+    },
+    {
+      "source": "/active-student",
+      "destination": "/pages/activ-student.html"
+    },
+
+    {
+      "source": "/admin-course",
+      "destination": "/pages/admin-course.html"
+    },
+    {
+      "source": "/admin-dashboard",
+      "destination": "/pages/admin-dashboard.html"
+    },
+    {
+      "source": "/admin-orders",
+      "destination": "/pages/admin-orders.html"
+    },
+
+    {
+      "source": "/basic-to-advance",
+      "destination": "/pages/besictoadvance.html"
+    },
+
+    {
+      "source": "/checkout",
+      "destination": "/pages/checkout.html"
+    },
+
+    {
+      "source": "/contact",
+      "destination": "/pages/contact.html"
+    },
+
+    {
+      "source": "/disclaimer",
+      "destination": "/pages/disclaimer.html"
+    },
+
+    {
+      "source": "/forgot-password",
+      "destination": "/pages/forgot.html"
+    },
+
+    {
+      "source": "/how-it-works",
+      "destination": "/pages/how-it-works.html"
+    },
+
+    {
+      "source": "/learn-more",
+      "destination": "/pages/learn-more.html"
+    },
+
+    {
+      "source": "/lifetime-access",
+      "destination": "/pages/lifetimeaccess.html"
+    },
+
+    {
+      "source": "/live-market-analysis",
+      "destination": "/pages/livemarketanalysis.html"
+    },
+
+    {
+      "source": "/login",
+      "destination": "/pages/login.html"
+    },
+
+    {
+      "source": "/my-course",
+      "destination": "/pages/mycourse.html"
+    },
+
+    {
+      "source": "/premium-course",
+      "destination": "/pages/premiumcourse.html"
+    },
+
+    {
+      "source": "/privacy-policy",
+      "destination": "/pages/privacy.html"
+    },
+
+    {
+      "source": "/profile",
+      "destination": "/pages/profile.html"
+    },
+
+    {
+      "source": "/refund-policy",
+      "destination": "/pages/refund.html"
+    },
+
+    {
+      "source": "/register",
+      "destination": "/pages/register.html"
+    },
+
+    {
+      "source": "/reset-password",
+      "destination": "/pages/reset.html"
+    },
+
+    {
+      "source": "/review",
+      "destination": "/pages/review.html"
+    },
+
+    {
+      "source": "/risk-management",
+      "destination": "/pages/riskmanagement.html"
+    },
+
+    {
+      "source": "/seller-bestseller",
+      "destination": "/pages/s-bestseller.html"
+    },
+
+    {
+      "source": "/seller-payout-history",
+      "destination": "/pages/s-payout-history.html"
+    },
+
+    {
+      "source": "/sales-records",
+      "destination": "/pages/sales-records.html"
+    },
+
+    {
+      "source": "/seller-analytics",
+      "destination": "/pages/seller-analytics.html"
+    },
+
+    {
+      "source": "/seller-dashboard",
+      "destination": "/pages/seller-dashboard.html"
+    },
+
+    {
+      "source": "/seller-docs",
+      "destination": "/pages/seller-docs.html"
+    },
+
+    {
+      "source": "/seller-register",
+      "destination": "/pages/seller-register.html"
+    },
+
+    {
+      "source": "/services",
+      "destination": "/pages/service.html"
+    },
+
+    {
+      "source": "/support-community",
+      "destination": "/pages/supportcommunity.html"
+    },
+
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/pages/terms.html"
+    },
+
+    {
+      "source": "/verify",
+      "destination": "/pages/verify.html"
+    },
+
+    {
+      "source": "/view-alert",
+      "destination": "/pages/view-alart.html"
+    },
+
+    {
+      "source": "/seller-program",
+      "destination": "/pages/view-seller-program.html"
+    },
+
+    {
+      "source": "/watch",
+      "destination": "/pages/watch.html"
+    },
+
+    {
+      "source": "/favicon.ico",
+      "destination": "/favicon.ico"
+    },
+
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+
+  "headers": [
+    {
+      "source": "/(.*)\\.(jpg|jpeg|png|webp|svg|css|js|ico|woff|woff2)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}
