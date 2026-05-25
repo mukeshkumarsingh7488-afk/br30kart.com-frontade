@@ -1,4 +1,5 @@
 //#region
+window.API_BASE_URL = "https://br30kart-api.onrender.com";
 const showAlert = (icon, title, text) => {
   if (typeof Swal !== "undefined") {
     Swal.fire({
@@ -46,6 +47,7 @@ async function handleLogin(e) {
       body: JSON.stringify({ email, password }),
     });
     const data = await res.json();
+    const role = (data.user.role || "").toLowerCase().trim();
     console.log(data);
     console.log(data.user.role);
     if (res.ok) {
@@ -84,6 +86,7 @@ async function handleLogin(e) {
       btn.disabled = false;
     }
   } catch (err) {
+    console.log("Retrying...");
     console.error("[AUTH] Server Error:", err);
     showAlert("error", "System Offline", "Unable to reach the authentication server.");
     btn.innerText = "Login to Account";
