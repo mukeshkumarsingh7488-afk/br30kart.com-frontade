@@ -84,6 +84,7 @@ function renderTable(sellers) {
 async function toggleVerification(userId, currentStatus) {
   const actionText = currentStatus === "active" ? "deactivate" : "activate";
   const themeColor = currentStatus === "active" ? "#d33" : "#28a745";
+
   const result = await Swal.fire({
     title: "Update Seller Status?",
     text: `Are you sure you want to ${actionText} this seller?`,
@@ -94,36 +95,43 @@ async function toggleVerification(userId, currentStatus) {
     confirmButtonText: `Yes, ${actionText}!`,
     cancelButtonText: "Cancel",
   });
-  if (result.isConfirmed) {
-    try {
-      Swal.fire({
-        title: "Updating...",
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-      });
-      const res = await fetch(`${CONFIG.BASE_API_URL}/admin/toggle-seller-status`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId }),
-      });
-      if (res.ok) {
-        Swal.fire({
-          title: "Success!",
-          text: `Seller status has been ${actionText}d.`,
-          icon: "success",
-          timer: 1500,
-          showConfirmButton: false,
-        });
-        fetchAllSellers();
-      } else {
-        throw new Error("Server responded with an error");
-      }
-    } catch (err) {
-      console.error("Toggle Error:", err);
-      Swal.fire("Update Failed", "Could not update status. Please try again.", "error");
+
+  if (!result.isConfirmed) return;
+
+  try {
+    Swal.fire({
+      title: "Updating...",
+      allowOutsideClick: false,
+      didOpen: () => Swal.showLoading(),
+    });
+
+    const res = await fetch(`${CONFIG.BASE_API_URL}/admin/toggle-seller-status`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId }),
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    console.log("Toggle status:", res.status);
+    console.log("Toggle response:", data);
+
+    if (!res.ok || data.success === false) {
+      throw new Error(data.message || data.msg || "Server responded with an error");
     }
+
+    await Swal.fire({
+      title: "Success!",
+      text: data.message || `Seller status has been ${actionText}d.`,
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+    });
+
+    fetchAllSellers();
+  } catch (err) {
+    console.error("Toggle Error:", err);
+    Swal.fire("Update Failed", err.message || "Could not update status. Please try again.", "error");
   }
 }
 

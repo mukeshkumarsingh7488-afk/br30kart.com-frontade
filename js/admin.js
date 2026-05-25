@@ -751,30 +751,6 @@ async function deleteUser(id) {
   }
 }
 
-async function updateFinancials() {
-  const start = document.getElementById("startDate")?.value;
-  const end = document.getElementById("endDate")?.value;
-  let url = `${CONFIG.BASE_API_URL}/admin/financial-stats`;
-  if (start && end) {
-    url += `?startDate=${start}&endDate=${end}`;
-  }
-  try {
-    const res = await fetch(url);
-    const result = await res.json();
-    if (result.success && result.data) {
-      const stats = Array.isArray(result.data) ? result.data[0] : result.data;
-      const salesEl = document.getElementById("statSales");
-      const payoutEl = document.getElementById("statPayout");
-      const feeEl = document.getElementById("statFee");
-      if (salesEl) salesEl.innerText = `₹${(stats.totalSales || 0).toLocaleString("en-IN")}`;
-      if (payoutEl) payoutEl.innerText = `₹${(stats.totalPayout || 0).toLocaleString("en-IN")}`;
-      if (feeEl) feeEl.innerText = `₹${(stats.feeCollected || 0).toLocaleString("en-IN")}`;
-    }
-  } catch (err) {
-    console.error("Financial Fetch Error:", err);
-  }
-}
-
 window.applyFilters = function () {
   updateFinancials();
 };
@@ -832,6 +808,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+async function updateFinancials() {
+  const start = document.getElementById("startDate")?.value;
+  const end = document.getElementById("endDate")?.value;
+  let url = `${CONFIG.BASE_API_URL}/admin/financial-stats`;
+  if (start && end) {
+    url += `?startDate=${start}&endDate=${end}`;
+  }
+  try {
+    const res = await fetch(url);
+    const result = await res.json();
+    if (result.success && result.data) {
+      const stats = Array.isArray(result.data) ? result.data[0] : result.data;
+      const salesEl = document.getElementById("statSales");
+      const payoutEl = document.getElementById("statPayout");
+      const feeEl = document.getElementById("statFee");
+      if (salesEl) salesEl.innerText = `₹${(stats.totalSales || 0).toLocaleString("en-IN")}`;
+      if (payoutEl) payoutEl.innerText = `₹${(stats.totalPayout || 0).toLocaleString("en-IN")}`;
+      if (feeEl) feeEl.innerText = `₹${(stats.feeCollected || 0).toLocaleString("en-IN")}`;
+    }
+  } catch (err) {
+    console.error("Financial Fetch Error:", err);
+  }
+}
 
 function setActiveNav(element) {
   document.querySelectorAll(".nav-links li").forEach((li) => {
@@ -907,6 +907,60 @@ async function loadPayouts(days = 7) {
         </div>
     `;
   setTimeframe(days);
+}
+
+async function processPayment(email, amount) {
+  const result = await Swal.fire({
+    title: "Confirm Payout",
+    html: `You are about to pay <b style="color: #28a745; font-size: 1.2rem;">₹${amount}</b><br>to <b>${email}</b>`,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#28a745",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, Pay Now!",
+    cancelButtonText: "Cancel",
+  });
+  if (result.isConfirmed) {
+    try {
+      Swal.fire({
+        title: "Processing Payment...",
+        text: "Please do not refresh the page.",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      const res = await fetch(`${CONFIG.BASE_API_URL}/admin/update-payout-status`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email }),
+      });
+      const result = await res.json();
+      if (result.success) {
+        await Swal.fire({
+          title: "Payment Successful! 💰",
+          text: `Status updated to 'Success' for ${email}`,
+          icon: "success",
+          confirmButtonText: "Great!",
+        });
+        location.reload();
+      } else {
+        Swal.fire({
+          title: "Payment Failed",
+          text: result.message || "The transaction could not be completed.",
+          icon: "error",
+        });
+      }
+    } catch (error) {
+      console.error("Payment Error:", error);
+
+      Swal.fire({
+        title: "Network Error",
+        text: "Could not connect to the payment server.",
+        icon: "error",
+      });
+    }
+  }
 }
 
 function refreshPayouts() {
@@ -1087,60 +1141,6 @@ function renderTable(data) {
         `;
     })
     .join("");
-}
-
-async function processPayment(email, amount) {
-  const result = await Swal.fire({
-    title: "Confirm Payout",
-    html: `You are about to pay <b style="color: #28a745; font-size: 1.2rem;">₹${amount}</b><br>to <b>${email}</b>`,
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#28a745",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, Pay Now!",
-    cancelButtonText: "Cancel",
-  });
-  if (result.isConfirmed) {
-    try {
-      Swal.fire({
-        title: "Processing Payment...",
-        text: "Please do not refresh the page.",
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-      });
-      const res = await fetch(`${CONFIG.BASE_API_URL}/admin/update-payout-status`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email }),
-      });
-      const result = await res.json();
-      if (result.success) {
-        await Swal.fire({
-          title: "Payment Successful! 💰",
-          text: `Status updated to 'Success' for ${email}`,
-          icon: "success",
-          confirmButtonText: "Great!",
-        });
-        location.reload();
-      } else {
-        Swal.fire({
-          title: "Payment Failed",
-          text: result.message || "The transaction could not be completed.",
-          icon: "error",
-        });
-      }
-    } catch (error) {
-      console.error("Payment Error:", error);
-
-      Swal.fire({
-        title: "Network Error",
-        text: "Could not connect to the payment server.",
-        icon: "error",
-      });
-    }
-  }
 }
 
 function toggleCustomDate() {
