@@ -40,19 +40,17 @@
 body {
   background-color: #0d0d0d;
   color: #fff;
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  width: 100%;
   overflow-x: hidden;
 }
 .admin-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-  background: #0d0d0d;
-  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #1c1c1c;
+  padding: 15px 10px;
 }
 .logo {
   color: #00ff88;
@@ -100,9 +98,8 @@ body {
 .table-section {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 120px);
-  margin: 20px 0;
-  height: auto;
+  height: calc(100vh - 150px);
+  margin: 20px;
   background: #000;
   border: 1px solid #222;
   border-radius: 12px;
@@ -156,6 +153,13 @@ th {
 tr:hover {
   background: #1c2128;
 }
+body,
+.admin-container {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
 .btn-neon {
   width: 32px;
   height: 32px;
@@ -187,10 +191,10 @@ tr:hover {
   box-shadow: 0 0 15px currentColor;
 }
 .admin-container {
-  width: 100%;
-  max-width: 100%;
-  padding: 100px 30px 30px 30px;
-  margin: 0;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 30px !important;
+  margin: 0 !important;
 }
 .course-dropdown-list {
   display: none;

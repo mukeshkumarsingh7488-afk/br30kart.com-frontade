@@ -14,29 +14,22 @@
   box-sizing: border-box;
 }
 body {
-  margin: 0;
-  padding: 0;
   background-color: var(--bg-black);
-  color: #fff;
+  color: #ffffff;
   font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 20px;
 }
 .full-page-admin {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 100px 20px 20px 20px;
 }
 .admin-header-v2 {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  background: #0d0d0d;
-  border-bottom: 1px solid #1c1c1c;
+  margin-bottom: 30px;
+  padding: 10px 0;
 }
 .header-left {
   display: flex;
