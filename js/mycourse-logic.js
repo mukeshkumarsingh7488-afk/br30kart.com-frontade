@@ -33,7 +33,7 @@ async function fetchMyCourses() {
         confirmButtonText: "Go to Login",
       });
       localStorage.clear();
-      window.location.href = "/login";
+      window.location.href = "login.html";
       return;
     }
     const data = await res.json();
