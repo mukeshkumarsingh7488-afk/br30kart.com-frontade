@@ -1,92 +1,174 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
-
-  "redirects": [
-    { "source": "/pages/about.html", "destination": "/about", "permanent": true },
-    { "source": "/pages/aboutbr30.html", "destination": "/about-br30", "permanent": true },
-    { "source": "/pages/activ-seller.html", "destination": "/active-seller", "permanent": true },
-    { "source": "/pages/activ-student.html", "destination": "/active-student", "permanent": true },
-    { "source": "/pages/admin-course.html", "destination": "/admin-course", "permanent": true },
-    { "source": "/pages/admin-dashboard.html", "destination": "/admin-dashboard", "permanent": true },
-    { "source": "/pages/admin-orders.html", "destination": "/admin-orders", "permanent": true },
-    { "source": "/pages/besictoadvance.html", "destination": "/basic-to-advance", "permanent": true },
-    { "source": "/pages/checkout.html", "destination": "/checkout", "permanent": true },
-    { "source": "/pages/contact.html", "destination": "/contact", "permanent": true },
-    { "source": "/pages/disclaimer.html", "destination": "/disclaimer", "permanent": true },
-    { "source": "/pages/forgot.html", "destination": "/forgot-password", "permanent": true },
-    { "source": "/pages/how-it-works.html", "destination": "/how-it-works", "permanent": true },
-    { "source": "/pages/learn-more.html", "destination": "/learn-more", "permanent": true },
-    { "source": "/pages/lifetimeaccess.html", "destination": "/lifetime-access", "permanent": true },
-    { "source": "/pages/livemarketanalysis.html", "destination": "/live-market-analysis", "permanent": true },
-    { "source": "/pages/login.html", "destination": "/login", "permanent": true },
-    { "source": "/pages/mycourse.html", "destination": "/my-course", "permanent": true },
-    { "source": "/pages/premiumcourse.html", "destination": "/premium-course", "permanent": true },
-    { "source": "/pages/privacy.html", "destination": "/privacy-policy", "permanent": true },
-    { "source": "/pages/profile.html", "destination": "/profile", "permanent": true },
-    { "source": "/pages/refund.html", "destination": "/refund-policy", "permanent": true },
-    { "source": "/pages/register.html", "destination": "/register", "permanent": true },
-    { "source": "/pages/reset.html", "destination": "/reset-password", "permanent": true },
-    { "source": "/pages/review.html", "destination": "/review", "permanent": true },
-    { "source": "/pages/riskmanagement.html", "destination": "/risk-management", "permanent": true },
-    { "source": "/pages/s-bestseller.html", "destination": "/seller-bestseller", "permanent": true },
-    { "source": "/pages/s-payout-history.html", "destination": "/seller-payout-history", "permanent": true },
-    { "source": "/pages/sales-records.html", "destination": "/sales-records", "permanent": true },
-    { "source": "/pages/seller-analytics.html", "destination": "/seller-analytics", "permanent": true },
-    { "source": "/pages/seller-dashboard.html", "destination": "/seller-dashboard", "permanent": true },
-    { "source": "/pages/seller-docs.html", "destination": "/seller-docs", "permanent": true },
-    { "source": "/pages/seller-register.html", "destination": "/seller-register", "permanent": true },
-    { "source": "/pages/service.html", "destination": "/services", "permanent": true },
-    { "source": "/pages/supportcommunity.html", "destination": "/support-community", "permanent": true },
-    { "source": "/pages/terms.html", "destination": "/terms-and-conditions", "permanent": true },
-    { "source": "/pages/verify.html", "destination": "/verify", "permanent": true },
-    { "source": "/pages/view-alart.html", "destination": "/view-alert", "permanent": true },
-    { "source": "/pages/view-seller-program.html", "destination": "/seller-program", "permanent": true },
-    { "source": "/pages/watch.html", "destination": "/watch", "permanent": true }
-  ],
-
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-
-    { "source": "/about", "destination": "/pages/about.html" },
-    { "source": "/about-br30", "destination": "/pages/aboutbr30.html" },
-    { "source": "/active-seller", "destination": "/pages/activ-seller.html" },
-    { "source": "/active-student", "destination": "/pages/activ-student.html" },
-    { "source": "/admin-course", "destination": "/pages/admin-course.html" },
-    { "source": "/admin-dashboard", "destination": "/pages/admin-dashboard.html" },
-    { "source": "/admin-orders", "destination": "/pages/admin-orders.html" },
-    { "source": "/basic-to-advance", "destination": "/pages/besictoadvance.html" },
-    { "source": "/checkout", "destination": "/pages/checkout.html" },
-    { "source": "/contact", "destination": "/pages/contact.html" },
-    { "source": "/disclaimer", "destination": "/pages/disclaimer.html" },
-    { "source": "/forgot-password", "destination": "/pages/forgot.html" },
-    { "source": "/how-it-works", "destination": "/pages/how-it-works.html" },
-    { "source": "/learn-more", "destination": "/pages/learn-more.html" },
-    { "source": "/lifetime-access", "destination": "/pages/lifetimeaccess.html" },
-    { "source": "/live-market-analysis", "destination": "/pages/livemarketanalysis.html" },
-    { "source": "/login", "destination": "/pages/login.html" },
-    { "source": "/my-course", "destination": "/pages/mycourse.html" },
-    { "source": "/premium-course", "destination": "/pages/premiumcourse.html" },
-    { "source": "/privacy-policy", "destination": "/pages/privacy.html" },
-    { "source": "/profile", "destination": "/pages/profile.html" },
-    { "source": "/refund-policy", "destination": "/pages/refund.html" },
-    { "source": "/register", "destination": "/pages/register.html" },
-    { "source": "/reset-password", "destination": "/pages/reset.html" },
-    { "source": "/review", "destination": "/pages/review.html" },
-    { "source": "/risk-management", "destination": "/pages/riskmanagement.html" },
-    { "source": "/seller-bestseller", "destination": "/pages/s-bestseller.html" },
-    { "source": "/seller-payout-history", "destination": "/pages/s-payout-history.html" },
-    { "source": "/sales-records", "destination": "/pages/sales-records.html" },
-    { "source": "/seller-analytics", "destination": "/pages/seller-analytics.html" },
-    { "source": "/seller-dashboard", "destination": "/pages/seller-dashboard.html" },
-    { "source": "/seller-docs", "destination": "/pages/seller-docs.html" },
-    { "source": "/seller-register", "destination": "/pages/seller-register.html" },
-    { "source": "/services", "destination": "/pages/service.html" },
-    { "source": "/support-community", "destination": "/pages/supportcommunity.html" },
-    { "source": "/terms-and-conditions", "destination": "/pages/terms.html" },
-    { "source": "/verify", "destination": "/pages/verify.html" },
-    { "source": "/view-alert", "destination": "/pages/view-alart.html" },
-    { "source": "/seller-program", "destination": "/pages/view-seller-program.html" },
-    { "source": "/watch", "destination": "/pages/watch.html" }
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/pages/about.html"
+    },
+    {
+      "source": "/about-br30",
+      "destination": "/pages/aboutbr30.html"
+    },
+    {
+      "source": "/active-seller",
+      "destination": "/pages/activ-seller.html"
+    },
+    {
+      "source": "/active-student",
+      "destination": "/pages/activ-student.html"
+    },
+    {
+      "source": "/admin-course",
+      "destination": "/pages/admin-course.html"
+    },
+    {
+      "source": "/admin-dashboard",
+      "destination": "/pages/admin-dashboard.html"
+    },
+    {
+      "source": "/admin-orders",
+      "destination": "/pages/admin-orders.html"
+    },
+    {
+      "source": "/basic-to-advance",
+      "destination": "/pages/besictoadvance.html"
+    },
+    {
+      "source": "/checkout",
+      "destination": "/pages/checkout.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/pages/contact.html"
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/pages/disclaimer.html"
+    },
+    {
+      "source": "/forgot-password",
+      "destination": "/pages/forgot.html"
+    },
+    {
+      "source": "/how-it-works",
+      "destination": "/pages/how-it-works.html"
+    },
+    {
+      "source": "/learn-more",
+      "destination": "/pages/learn-more.html"
+    },
+    {
+      "source": "/lifetime-access",
+      "destination": "/pages/lifetimeaccess.html"
+    },
+    {
+      "source": "/live-market-analysis",
+      "destination": "/pages/livemarketanalysis.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/pages/login.html"
+    },
+    {
+      "source": "/my-course",
+      "destination": "/pages/mycourse.html"
+    },
+    {
+      "source": "/premium-course",
+      "destination": "/pages/premiumcourse.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/pages/privacy.html"
+    },
+    {
+      "source": "/profile",
+      "destination": "/pages/profile.html"
+    },
+    {
+      "source": "/refund-policy",
+      "destination": "/pages/refund.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/pages/register.html"
+    },
+    {
+      "source": "/reset-password",
+      "destination": "/pages/reset.html"
+    },
+    {
+      "source": "/review",
+      "destination": "/pages/review.html"
+    },
+    {
+      "source": "/risk-management",
+      "destination": "/pages/riskmanagement.html"
+    },
+    {
+      "source": "/seller-bestseller",
+      "destination": "/pages/s-bestseller.html"
+    },
+    {
+      "source": "/seller-payout-history",
+      "destination": "/pages/s-payout-history.html"
+    },
+    {
+      "source": "/sales-records",
+      "destination": "/pages/sales-records.html"
+    },
+    {
+      "source": "/seller-analytics",
+      "destination": "/pages/seller-analytics.html"
+    },
+    {
+      "source": "/seller-dashboard",
+      "destination": "/pages/seller-dashboard.html"
+    },
+    {
+      "source": "/seller-docs",
+      "destination": "/pages/seller-docs.html"
+    },
+    {
+      "source": "/seller-register",
+      "destination": "/pages/seller-register.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/pages/service.html"
+    },
+    {
+      "source": "/support-community",
+      "destination": "/pages/supportcommunity.html"
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/pages/terms.html"
+    },
+    {
+      "source": "/verify",
+      "destination": "/pages/verify.html"
+    },
+    {
+      "source": "/view-alert",
+      "destination": "/pages/view-alart.html"
+    },
+    {
+      "source": "/seller-program",
+      "destination": "/pages/view-seller-program.html"
+    },
+    {
+      "source": "/watch",
+      "destination": "/pages/watch.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
