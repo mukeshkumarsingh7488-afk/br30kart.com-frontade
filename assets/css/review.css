@@ -9,7 +9,8 @@ body {
   font-family: "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
-  padding: 20px;
+  margin: 0;
+  padding: 0;
 }
 h2 {
   text-align: center;
@@ -19,13 +20,16 @@ h2 {
 .container {
   max-width: 900px;
   margin: 0 auto;
+  padding-top: 80px;
 }
 .search-container {
   position: sticky;
   top: 0;
   background: var(--bg);
   padding: 15px 0;
-  z-index: 100;
+  z-index: 999;
+  border-bottom: 1px solid #222;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 #searchUser {
   width: 100%;

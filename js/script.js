@@ -852,4 +852,19 @@ function updateNavbar() {
 }
 
 document.addEventListener("DOMContentLoaded", updateNavbar);
+
+const sellerLink = document.getElementById("sellerDashLink");
+
+sellerLink.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  this.classList.add("blink");
+
+  const url = this.href;
+
+  setTimeout(() => {
+    this.classList.remove("blink");
+    window.location.href = url;
+  }, 500);
+});
 //#endregion

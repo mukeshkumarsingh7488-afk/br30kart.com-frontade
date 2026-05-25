@@ -1074,3 +1074,24 @@ select {
 .mail-link:hover::after {
   width: 100%;
 }
+#sellerDashLink {
+  transition: all 0.3s ease;
+}
+#sellerDashLink.blink {
+  animation: blinkEffect 0.5s ease;
+}
+@keyframes blinkEffect {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  40% {
+    transform: scale(1.1);
+    background: rgba(0, 255, 163, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 163, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
