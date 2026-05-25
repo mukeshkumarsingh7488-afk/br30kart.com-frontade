@@ -5,12 +5,14 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  height: 100vh;
+  min-height: 100vh;
+  background-color: #050505;
+  padding: 0;
+  margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: #050505;
-  padding: 20px;
+  align-items: flex-start;
+  padding-top: 100px;
 }
 .container {
   width: 100%;

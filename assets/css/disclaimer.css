@@ -7,17 +7,16 @@
 body {
   background-color: #050505;
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 0;
 }
 .disclaimer-card {
   max-width: 800px;
+  width: calc(100% - 40px);
   background: #1e293b;
   border-radius: 20px;
   padding: 40px;
+  margin: 110px auto 60px;
   border: 1px solid rgba(255, 68, 68, 0.3);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   position: relative;

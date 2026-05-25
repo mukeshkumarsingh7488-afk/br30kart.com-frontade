@@ -5,12 +5,12 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #050505;
-  padding: 20px;
+  color: #ffffff;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 .container {
   width: 100%;
@@ -20,6 +20,7 @@ body {
   border-radius: 20px;
   border: 1px solid #334155;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  margin: 100px auto 60px;
 }
 .container h2 {
   text-align: center;

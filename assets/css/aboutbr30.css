@@ -12,7 +12,7 @@ body {
 }
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 90px auto 60px;
   padding: 60px 20px;
 }
 .about-header {

@@ -7,11 +7,9 @@
 body {
   background-color: #0d0d0d;
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 .kyc-container {
   background: #161b22;
@@ -21,7 +19,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border: 1px solid #30363d;
-  margin: 20px 0;
+  margin: 120px auto 60px;
 }
 .header {
   text-align: center;
