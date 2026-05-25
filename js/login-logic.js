@@ -38,26 +38,37 @@ async function handleLogin(e) {
   const password = document.getElementById("password").value;
   const btn = document.getElementById("loginBtn");
 
-  if (!email || !validateEmail(email)) return showAlert("error", "Invalid Access", "Please enter a valid email address!");
+  if (!email || !validateEmail(email)) {
+    return showAlert("error", "Invalid Access", "Please enter a valid email address!");
+  }
 
-  if (!password) return showAlert("error", "Security Check", "Password field cannot be empty!");
+  if (!password) {
+    return showAlert("error", "Security Check", "Password field cannot be empty!");
+  }
 
-  let res, data;
+  btn.innerText = "Authenticating... 🚀";
+  btn.disabled = true;
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
 
   try {
-    btn.innerText = "Authenticating... 🚀";
-    btn.disabled = true;
-
-    res = await fetch(`${window.API_BASE_URL}/api/auth/login`, {
+    const res = await fetch(`${window.API_BASE_URL}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
+      signal: controller.signal,
     });
 
-    data = await res.json();
-    console.log("RES:", res);
-    console.log("STATUS:", res.status);
-    console.log("DATA:", data);
+    clearTimeout(timeout);
+
+    let data;
+    try {
+      data = await res.json();
+    } catch {
+      throw new Error("Invalid server response");
+    }
+
     console.log("LOGIN RESPONSE:", data);
 
     if (!res.ok) {
@@ -65,6 +76,10 @@ async function handleLogin(e) {
     }
 
     const role = (data.user?.role || "").toLowerCase().trim();
+
+    if (!role) {
+      throw new Error("Role missing from server response");
+    }
 
     localStorage.clear();
     localStorage.setItem("token", data.token);
@@ -104,7 +119,15 @@ async function handleLogin(e) {
     }, 1200);
   } catch (err) {
     console.error("LOGIN ERROR:", err);
-    showAlert("error", "System Offline", "Server not reachable or slow response. Try again.");
+
+    let msg = "Server not reachable or slow response. Try again.";
+
+    if (err.name === "AbortError") {
+      msg = "Server is taking too long. Please retry.";
+    }
+
+    showAlert("error", "System Offline", msg);
+
     btn.innerText = "Login to Account";
     btn.disabled = false;
   }
