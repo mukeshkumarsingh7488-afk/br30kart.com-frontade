@@ -49,20 +49,15 @@ async function handleLogin(e) {
   btn.innerText = "Authenticating... 🚀";
   btn.disabled = true;
 
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10000);
-
   try {
     const res = await fetch(`${window.API_BASE_URL}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
-      signal: controller.signal,
     });
 
-    clearTimeout(timeout);
-
     let data;
+
     try {
       data = await res.json();
     } catch {
@@ -71,41 +66,35 @@ async function handleLogin(e) {
 
     console.log("LOGIN RESPONSE:", data);
 
-    if (!res.ok) {
-      throw new Error(data.msg || "Login failed");
+    if (!res.ok || !data || !data.user) {
+      throw new Error(data?.msg || "Login failed");
     }
 
-    const role = (data.user?.role || "").toLowerCase().trim();
+    const role = String(data.user.role || "")
+      .toLowerCase()
+      .trim();
 
     if (!role) {
-      throw new Error("Role missing from server response");
+      throw new Error("Role missing in response");
     }
 
     localStorage.clear();
     localStorage.setItem("token", data.token);
-    localStorage.setItem("userEmail", data.user.email);
     localStorage.setItem("userRole", role);
-    localStorage.setItem("username", data.user.name);
     localStorage.setItem("userData", JSON.stringify(data.user));
 
-    let welcomeMsg = "Accessing your profile...";
+    let msg = "Login Successful";
 
-    if (role === "admin") {
-      welcomeMsg = "Admin Verified. Opening Master Control Center...";
-    } else if (role === "seller") {
-      welcomeMsg = "Seller Verified. Preparing your Dashboard...";
-    } else {
-      welcomeMsg = "Student Login Successful. Opening Home...";
-    }
+    if (role === "admin") msg = "Admin Verified 🚀";
+    else if (role === "seller") msg = "Seller Verified 🚀";
+    else msg = "Student Login Successful 🚀";
 
     Swal.fire({
       icon: "success",
       title: "Authorized!",
-      text: welcomeMsg,
+      text: msg,
       timer: 1500,
       showConfirmButton: false,
-      background: "#111827",
-      color: "#fff",
     });
 
     setTimeout(() => {
@@ -120,13 +109,7 @@ async function handleLogin(e) {
   } catch (err) {
     console.error("LOGIN ERROR:", err);
 
-    let msg = "Server not reachable or slow response. Try again.";
-
-    if (err.name === "AbortError") {
-      msg = "Server is taking too long. Please retry.";
-    }
-
-    showAlert("error", "System Offline", msg);
+    showAlert("error", "System Offline", err.message || "Server not reachable");
 
     btn.innerText = "Login to Account";
     btn.disabled = false;
