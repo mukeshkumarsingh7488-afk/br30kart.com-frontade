@@ -31,6 +31,7 @@ function validateEmail(email) {
 }
 
 async function handleLogin(e) {
+  e.preventDefault();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
   const btn = document.getElementById("loginBtn");
