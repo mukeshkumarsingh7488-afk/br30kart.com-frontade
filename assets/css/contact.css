@@ -114,3 +114,23 @@ ul li {
     font-size: 14px;
   }
 }
+.email-link {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.email-link:hover {
+  color: #a020f0;
+  text-decoration: underline;
+}
+.phone-link {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s ease;
+}
+
+.phone-link:hover {
+  color: #a020f0;
+  text-decoration: underline;
+}
