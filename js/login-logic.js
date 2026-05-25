@@ -55,7 +55,9 @@ async function handleLogin(e) {
     });
 
     data = await res.json();
-
+    console.log("RES:", res);
+    console.log("STATUS:", res.status);
+    console.log("DATA:", data);
     console.log("LOGIN RESPONSE:", data);
 
     if (!res.ok) {
@@ -101,10 +103,8 @@ async function handleLogin(e) {
       }
     }, 1200);
   } catch (err) {
-    console.error("[AUTH ERROR]", err);
-
-    showAlert("error", "System Offline", "Unable to reach the authentication server. Please try again.");
-
+    console.error("LOGIN ERROR:", err);
+    showAlert("error", "System Offline", "Server not reachable or slow response. Try again.");
     btn.innerText = "Login to Account";
     btn.disabled = false;
   }
