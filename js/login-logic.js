@@ -46,6 +46,8 @@ async function handleLogin(e) {
       body: JSON.stringify({ email, password }),
     });
     const data = await res.json();
+    console.log(data);
+    console.log(data.user.role);
     if (res.ok) {
       console.log("%c[AUTH] Login Successful", "color: #10b981; font-weight: bold;");
       localStorage.clear();
@@ -67,15 +69,14 @@ async function handleLogin(e) {
         color: "#fff",
       });
       setTimeout(() => {
-        const role = data.user.role;
         if (role === "admin") {
-          window.location.href = "/admin-dashboard";
+          window.location.replace("/admin-dashboard");
         } else if (role === "seller") {
-          window.location.href = "/seller-dashboard";
+          window.location.replace("/seller-dashboard");
         } else {
-          window.location.href = "/";
+          window.location.replace("/");
         }
-      }, 1600);
+      }, 1200);
     } else {
       console.warn("[AUTH] Login Failed:", data.msg);
       showAlert("error", "Login Denied", data.msg || "Invalid email or password.");
