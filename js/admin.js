@@ -5,7 +5,7 @@
   if (role !== "admin") {
     document.documentElement.style.display = "none";
     console.warn("🚨 UNAUTHORIZED ACCESS ATTEMPT BLOCKED!");
-    window.location.replace("../index.html");
+    window.location.replace("/");
   }
 })();
 

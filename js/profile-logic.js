@@ -16,7 +16,7 @@ window.onload = async function () {
       background: "#111827",
       color: "#fff",
     });
-    window.location.href = "login.html";
+    window.location.href = "/login";
     return;
   }
   try {
@@ -47,7 +47,7 @@ window.onload = async function () {
   } catch (err) {
     console.error("Profile Load Error:", err);
     localStorage.clear();
-    window.location.href = "login.html";
+    window.location.href = "/login";
   }
 };
 
@@ -198,7 +198,7 @@ async function logout() {
   });
   if (result.isConfirmed) {
     localStorage.clear();
-    window.location.href = "login.html";
+    window.location.href = "/login";
   }
 }
 
@@ -226,7 +226,7 @@ function updateUserStatus(userData) {
     vipContainer.innerHTML = `
       <div class="standard-badge">
           <span class="status-label">Standard Member</span>
-           <a href="../index.html#Premium-Trading-Courses" class="upgrade-link">Upgrade to VIP <i class="fas fa-arrow-right"></i></a>
+        <a href="/#Premium-Trading-Courses" class="upgrade-link"> Upgrade to VIP <i class="fas fa-arrow-right"></i></a>
       </div>`;
   }
 }

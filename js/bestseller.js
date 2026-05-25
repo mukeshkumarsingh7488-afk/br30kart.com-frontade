@@ -5,7 +5,7 @@
   if (!allowed.includes(role)) {
     document.documentElement.style.display = "none";
     alert("🚨 ACCESS DENIED: Only Admin & Sellers Allowed!");
-    window.location.href = "../index.html";
+    window.location.href = "/";
   }
 })();
 

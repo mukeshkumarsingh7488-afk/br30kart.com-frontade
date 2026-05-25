@@ -26,7 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/seller-analytics.css" />
-    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <meta property="og:title" content="Seller Analytics | BR30 Kart" />
@@ -55,24 +55,24 @@
           <i class="fas fa-th-large"></i>
           Overview
         </button>
-        <button class="side-btn" onclick="location.href = 'seller-dashboard.html'">
+        <button class="side-btn" onclick="location.href = '/seller-dashboard'">
           <i class="fas fa-tachometer-alt"></i>
           Course Control Panel
         </button>
-        <button class="side-btn" onclick="location = 'sales-records.html'">
+        <button class="side-btn" onclick="location = '/sales-records'">
           <i class="fas fa-history"></i>
           Sales Records
         </button>
-        <button class="side-btn" onclick="location = 's-payout-history.html'">
+        <button class="side-btn" onclick="location = '/seller-payout-history'">
           <i class="fas fa-wallet"></i>
           Payout History
         </button>
-        <button class="side-btn" onclick="location = 's-bestseller.html'">
+        <button class="side-btn" onclick="location = '/seller-bestseller'">
           <i class="fas fa-star"></i>
           Best Sellers
         </button>
         <hr style="border: 0.5px solid #222; margin: 20px 0" />
-        <button class="side-btn" style="color: #ffca28" onclick="window.location.href = '../index.html'">
+        <button class="side-btn" style="color: #ffca28" onclick="window.location.href = '/'">
           <i class="fas fa-arrow-alt-circle-left"></i>
           Back to Home
         </button>
@@ -142,9 +142,12 @@
         </div>
       </div>
     </div>
-      <div id="commonFooter"></div>
-      <script src="/js/header-footer.js"></script>
-    <script src="../js/config.js"></script>
+    <div id="commonFooter"></div>
+    <script src="/js/config.js"></script>
+    <script src="/js/header-footer.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/notification.js"></script>
     <script src="../js/seller-analytics.js"></script>
   </body>
 </html>

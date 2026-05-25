@@ -147,7 +147,7 @@ async function handleVerify(e) {
         background: "#111827",
         color: "#fff",
       });
-      window.location.replace("login.html");
+      window.location.replace("/login");
     } else {
       throw new Error(data.msg || "Verification Failed!");
     }
@@ -177,7 +177,7 @@ document.addEventListener("keypress", (e) => {
 });
 
 function redirectToSeller() {
-  window.location.href = "seller-register.html";
+  window.location.href = "/seller-register";
 }
 
 let currentRole = "student";

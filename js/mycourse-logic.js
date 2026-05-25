@@ -33,7 +33,7 @@ async function fetchMyCourses() {
         confirmButtonText: "Go to Login",
       });
       localStorage.clear();
-      window.location.href = "login.html";
+      window.location.href = "/login";
       return;
     }
     const data = await res.json();
@@ -132,12 +132,12 @@ function renderEmptyState() {
       <div style="font-size:70px; margin-bottom:20px;">🎒</div>
       <h2 style="color:#fff;">Your Library is Empty</h2>
       <p style="color:#94a3b8; margin:20px 0;">You haven’t enrolled in any premium courses yet. Start your trading journey today!</p>
-      <button 
-        onclick="window.location.href='../index.html#Premium-Trading-Courses'"
-        style="background:#3b82f6; color:#fff; border:none; padding:14px 40px; border-radius:50px; font-weight:bold; cursor:pointer; font-size:16px;"
-      >
-        🚀 Browse Elite Courses
-      </button>
+ <button 
+  onclick="window.location.href='/#Premium-Trading-Courses'"
+  style="background:#3b82f6; color:#fff; border:none; padding:14px 40px; border-radius:50px; font-weight:bold; cursor:pointer; font-size:16px;"
+>
+  🚀 Browse Elite Courses
+</button>
     </div>
   `;
 }
@@ -145,6 +145,6 @@ function renderEmptyState() {
 function watchCourse(courseId) {
   if (!courseId) return;
   console.log("%c[REDIRECT] Opening course player...", "color: #3b82f6; font-weight: bold;");
-  window.location.href = `watch.html?id=${courseId}`;
+  window.location.href = `/watch?id=${courseId}`;
 }
 //#endregion

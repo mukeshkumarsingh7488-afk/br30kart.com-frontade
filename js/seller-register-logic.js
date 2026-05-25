@@ -1,6 +1,6 @@
 //#region
 if (localStorage.getItem("sellerId")) {
-  window.location.href = "seller-dashboard.html";
+  window.location.href = "/seller-dashboard";
 }
 
 let isEmailVerified = false;
@@ -113,7 +113,7 @@ document.getElementById("sellerRegForm").addEventListener("submit", async (e) =>
       localStorage.setItem("isSeller", "true");
       btn.innerHTML = "Success ✅";
       alert("🎉 Application Submitted!");
-      window.location.href = "seller-dashboard.html";
+      window.location.href = "/seller-dashboard";
     } else {
       alert("❌ " + (data.msg || data.error || "Registration failed"));
       btn.innerHTML = "Submit Application";

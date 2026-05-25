@@ -16,7 +16,7 @@
       allowOutsideClick: false,
       allowEscapeKey: false,
     });
-    window.location.href = "../index.html";
+    window.location.href = "/";
   }
 })();
 

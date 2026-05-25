@@ -33,7 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="../assets/css/login.css" />
-    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
   </head>
   <body>
@@ -58,12 +58,15 @@
         <button type="submit" id="loginBtn">Login to Account</button>
       </form>
       <div class="links">
-        <a href="pages/forgot.html">Forgot Password?</a>
-        <a href="pages/register.html">Register</a>
+        <a href="/forgot-password">Forgot Password?</a>
+        <a href="/register">Register</a>
       </div>
     </div>
+    <script src="/js/config.js"></script>
     <script src="/js/header-footer.js"></script>
-    <script src="../js/config.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/notification.js"></script>
     <script src="../js/login-logic.js"></script>
   </body>
 </html>

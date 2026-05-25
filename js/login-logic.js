@@ -31,7 +31,6 @@ function validateEmail(email) {
 }
 
 async function handleLogin(e) {
-  if (e) e.preventDefault();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
   const btn = document.getElementById("loginBtn");
@@ -69,11 +68,11 @@ async function handleLogin(e) {
       setTimeout(() => {
         const role = data.user.role;
         if (role === "admin") {
-          window.location.href = "admin-dashboard.html";
+          window.location.href = "/admin-dashboard";
         } else if (role === "seller") {
-          window.location.href = "seller-dashboard.html";
+          window.location.href = "/seller-dashboard";
         } else {
-          window.location.href = "../index.html";
+          window.location.href = "/";
         }
       }, 1600);
     } else {

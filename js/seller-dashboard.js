@@ -5,7 +5,7 @@
   if (!allowed.includes(role)) {
     document.body.style.display = "none";
     alert("Access Denied! Redirecting to Home...");
-    window.location.href = "../index.html";
+    window.location.href = "/";
   }
 })();
 
@@ -1359,7 +1359,7 @@ window.addEventListener("load", loadSalesTracker);
 function openSellerModal() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   if (!userData?.email) {
-    window.location.href = "login.html";
+    window.location.href = "/login";
     return;
   }
   document.getElementById("sellerModal").style.display = "flex";
@@ -1378,7 +1378,7 @@ document.getElementById("sellerLoginForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
   const userData = JSON.parse(localStorage.getItem("userData"));
   if (!userData?.email) {
-    window.location.href = "login.html";
+    window.location.href = "/login";
     return;
   }
   const inputEmail = document.getElementById("loginEmail")?.value;
@@ -1391,7 +1391,7 @@ document.getElementById("sellerLoginForm")?.addEventListener("submit", (e) => {
       color: "#fff",
     });
     localStorage.clear();
-    window.location.href = "login.html";
+    window.location.href = "/login";
     return;
   }
   fetchProfile(inputEmail);

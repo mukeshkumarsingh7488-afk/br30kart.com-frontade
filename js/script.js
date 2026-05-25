@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
-
 async function loadLiveStore() {
   try {
     console.log("Fetching data from Atlas... 🚀");
@@ -417,7 +416,7 @@ async function buyNow(product) {
         text: "Please login first to continue purchase",
         confirmButtonText: "Login Now",
       }).then(() => {
-        const LOGIN_URL = "/pages/login.html";
+        const LOGIN_URL = "/login";
         window.location.href = LOGIN_URL;
       });
       return;
@@ -508,7 +507,7 @@ async function buyNow(product) {
               showConfirmButton: false,
             });
             setTimeout(() => {
-              window.location.href = "/pages/mycourse.html";
+              window.location.href = "/my-course";
             }, 2000);
           } else {
             Swal.fire({
@@ -676,7 +675,7 @@ document.getElementById("reviewForm").addEventListener("submit", async (e) => {
   const storedData = localStorage.getItem("userData");
   if (!storedData) {
     alert("Please, Login first!");
-    window.location.href = "pages/login.html";
+    window.location.href = "/login";
     return;
   }
   const user = JSON.parse(storedData);
@@ -845,7 +844,7 @@ function updateNavbar() {
   if (username && accountBtn) {
     const firstName = username.split(" ")[0];
     accountBtn.innerHTML = `👤 ${firstName} <span class="triangle-icon">▼</span>`;
-    const loginLink = document.querySelector('a[href="pages/login.html"]');
+    const loginLink = document.querySelector('a[href="/login"]');
     if (loginLink) {
       loginLink.innerHTML = "🔄 Switch Account";
     }

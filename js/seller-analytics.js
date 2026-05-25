@@ -4,7 +4,7 @@ function protectSellerDashboard() {
   const userEmail = localStorage.getItem("userEmail");
   console.log(`🛡️ Security Check: Role is [${userRole}]`);
   if (!userEmail) {
-    window.location.href = "login.html";
+    window.location.href = "/login";
     return;
   }
   const allowedRoles = ["admin", "seller"];
@@ -18,7 +18,7 @@ function protectSellerDashboard() {
       confirmButtonText: "Wapas Jao",
       confirmButtonColor: "#3b82f6",
     }).then(() => {
-      window.location.href = "index.html";
+      window.location.href = "/";
     });
     document.body.innerHTML = "<h1 style='color:white; text-align:center; margin-top:20%; font-family:sans-serif;'>Unauthorized Access... redirecting...</h1>";
   }
@@ -30,7 +30,7 @@ async function fetchAnalyticsData() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   if (!userData || !userData.email) {
     alert("Session Expired! Please login again.");
-    window.location.href = "login.html";
+    window.location.href = "/login";
     return;
   }
   const sellerEmail = userData.email;

@@ -20,7 +20,7 @@ async function fetchAllAlerts() {
       list.innerHTML = `
           <div style="text-align:center; padding:20px; color:#facc15;">
             <p>Authentication Required. Please login to view alerts.</p>
-            <button onclick="window.location.href='login.html'" style="margin-top:10px; padding:8px 20px; cursor:pointer;">Login</button>
+          <button onclick="window.location.href='/login'" style="margin-top:10px; padding:8px 20px; cursor:pointer;">Login</button>
           </div>
         `;
       return;

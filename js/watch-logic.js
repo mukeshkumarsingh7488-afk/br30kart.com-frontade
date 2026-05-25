@@ -12,11 +12,11 @@ const courseId = params.get("id");
 console.log("📥 Course ID:", courseId);
 
 if (!token) {
-  window.location.href = "login.html";
+  window.location.href = "/login";
 }
 if (!courseId) {
   alert("Invalid Course!");
-  window.location.href = "mycourse.html";
+  window.location.href = "/my-course";
 }
 
 function getYTID(url) {
@@ -44,7 +44,7 @@ async function loadCourseContent() {
     });
     if (res.status === 401 || res.status === 403) {
       alert("Access Denied!");
-      window.location.href = "../index.html";
+      window.location.href = "/";
       return;
     }
     const course = await res.json();

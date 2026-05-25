@@ -26,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/review.css" />
-    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
   </head>
   <body onclick="closeAllReplyBoxes(event)">
@@ -43,7 +43,7 @@
           <small style="color: #888; text-transform: uppercase; font-size: 9px; display: block">Total Reviews</small>
           <span id="statReviews" style="color: #00ff88; font-size: 16px; font-weight: bold">0</span>
         </div>
-        <a href="admin-dashboard.html" style="background: #2563eb; color: white; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: bold; text-decoration: none">DASHBOARD</a>
+        <a href="/admin-dashboard" style="background: #2563eb; color: white; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: bold; text-decoration: none">DASHBOARD</a>
       </div>
       <div style="display: flex; justify-content: center; align-items: center; gap: 10px; padding: 5px 20px 10px 20px">
         <input type="text" id="searchUser" placeholder="🔍 Search by username..." onkeyup="searchReviews()" style="width: 40%; /* Half width */ min-width: 200px; padding: 10px; border-radius: 8px; background: #1a1a1a; border: 1px solid #333; color: white; outline: none" />
@@ -59,9 +59,12 @@
       </style>
       <div id="review-list"></div>
     </div>
-      <div id="commonFooter"></div>
-      <script src="/js/header-footer.js"></script>
-    <script src="../js/config.js"></script>
+    <div id="commonFooter"></div>
+    <script src="/js/config.js"></script>
+    <script src="/js/header-footer.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/notification.js"></script>
     <script src="../js/review.js"></script>
   </body>
 </html>

@@ -26,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/profile.css" />
-    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
@@ -59,11 +59,14 @@
         <button id="editBtn">Edit Profile</button>
         <button id="saveBtn" style="display: none">Save Changes</button>
         <button id="logoutBtn" onclick="logout()">Logout</button>
-        <a href="../index.html" class="back-home">Back to Home</a>
+        <a href="/" class="back-home">Back to Home</a>
       </div>
     </div>
-      <script src="/js/header-footer.js"></script>
-    <script src="../js/config.js"></script>
+    <script src="/js/config.js"></script>
+    <script src="/js/header-footer.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/notification.js"></script>
     <script src="../js/profile-logic.js"></script>
   </body>
 </html>

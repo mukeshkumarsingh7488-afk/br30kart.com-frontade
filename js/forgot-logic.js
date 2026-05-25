@@ -129,7 +129,7 @@ async function handleResetPassword(e) {
         timer: 2000,
         showConfirmButton: false,
       });
-      window.location.href = "login.html";
+      window.location.href = "/login";
     } else {
       throw new Error(data.msg || "Invalid OTP or Session Expired.");
     }

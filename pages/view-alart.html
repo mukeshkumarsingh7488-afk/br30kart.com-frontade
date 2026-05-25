@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/view-alart.css" />
-    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css" />
     <meta property="og:title" content="Live Market Alerts | BR30 Kart" />
     <meta property="og:description" content="Receive real-time trading alerts and market signals from BR30 Kart." />
     <meta property="og:image" content="https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png" />
@@ -48,7 +48,7 @@
     <div class="container">
       <h2>
         <span>Live Market Alerts ⚡</span>
-        <a href="../index.html" class="back-btn">← Home</a>
+        <a href="/" class="back-btn">← Home</a>
       </h2>
 
       <div id="all-notif-list">
@@ -56,9 +56,12 @@
         <p style="text-align: center; color: gray">Alerts load ho rahe hain...</p>
       </div>
     </div>
-  <div id="commonFooter"></div>
-  <script src="/js/header-footer.js"></script>
-    <script src="config.js"></script>
+    <div id="commonFooter"></div>
+    <script src="/js/config.js"></script>
+    <script src="/js/header-footer.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/notification.js"></script>
     <script src="../js/view-alart-logic.js"></script>
   </body>
 </html>

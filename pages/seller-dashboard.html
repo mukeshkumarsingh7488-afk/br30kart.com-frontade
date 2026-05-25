@@ -27,7 +27,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/seller-dashboard.css" />
-    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <meta property="og:title" content="Seller Dashboard | BR30 Kart" />
@@ -103,7 +103,7 @@
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end">
-          <button onclick="location = 'seller-analytics.html'" class="btn" style="background: #00c853; color: #000; font-weight: 900; font-size: 12px; width: 100%; border-radius: 10px; padding: 10px 20px; box-shadow: 0 4px 10px rgba(0, 200, 83, 0.2)">
+          <button onclick="location = '/seller-analytics'" class="btn" style="background: #00c853; color: #000; font-weight: 900; font-size: 12px; width: 100%; border-radius: 10px; padding: 10px 20px; box-shadow: 0 4px 10px rgba(0, 200, 83, 0.2)">
             <i class="fas fa-chart-line"></i>
             BACK TO DASHBORD
           </button>
@@ -112,7 +112,7 @@
               <i class="fas fa-user-cog"></i>
               Manage Profile
             </button>
-            <a href="../index.html" class="btn btn-home" style="background: #1f2937; color: #fff; font-weight: bold; font-size: 12px; border-radius: 10px; padding: 10px 15px; border: 1px solid #374151">
+            <a href="/" class="btn btn-home" style="background: #1f2937; color: #fff; font-weight: bold; font-size: 12px; border-radius: 10px; padding: 10px 15px; border: 1px solid #374151">
               <i class="fas fa-home"></i>
               Back to Home
             </a>
@@ -219,9 +219,12 @@
       </div>
       <div id="myContentList" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 50px"></div>
     </div>
-      <div id="commonFooter"></div>
-      <script src="/js/header-footer.js"></script>
-    <script src="../js/config.js"></script>
+    <div id="commonFooter"></div>
+    <script src="/js/config.js"></script>
+    <script src="/js/header-footer.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/notification.js"></script>
     <script src="../js/seller-dashboard.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@
   if (!allowed.includes(role)) {
     document.documentElement.style.display = "none";
     alert("🚨 ACCESS DENIED: Only Admin & Sellers Allowed!");
-    window.location.href = "../index.html";
+    window.location.href = "/";
   }
 })();
 
@@ -17,7 +17,7 @@ async function fetchPayoutHistory() {
   const email = localStorage.getItem("sellerEmail");
   if (!email) {
     console.error("Seller Email not found! Redirecting to login...");
-    window.location.href = "login.html";
+    window.location.href = "/login";
     return;
   }
   try {

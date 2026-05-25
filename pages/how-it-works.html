@@ -48,7 +48,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/how-it-works.css" />
-    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css" />
     <!-- Structured Data -->
     <script type="application/ld+json">
       {
@@ -281,7 +281,7 @@
               <div class="step-text">
                 <h4>Track Sales & Earnings</h4>
                 <p>Apne dedicated dashboard se apni sales aur payouts manage karein.</p>
-                <a href="pages/view-seller-program.html" class="learn-more-link">View Seller Program 🚀</a>
+                <a href="/seller-program" class="learn-more-link">View Seller Program 🚀</a>
               </div>
             </div>
           </div>
@@ -290,12 +290,16 @@
       <div class="cta-box">
         <h3>Ready to Join the Revolution?</h3>
         <p>Chahe aap seekhna chahte hon ya sikhana, BR30 Kart aapke saath hai.</p>
-        <a href="pages/register.html" class="btn">Get Started Now 🚀</a>
+        <a href="/register" class="btn">Get Started Now 🚀</a>
         <br />
-        <a href="../index.html" style="color: #888; text-decoration: none; display: inline-block; margin-top: 20px" title="Go back to the homepage" aria-label="Go back to the homepage">← Back to Home</a>
+        <a href="/" style="color: #888; text-decoration: none; display: inline-block; margin-top: 20px" title="Go back to the homepage" aria-label="Go back to the homepage">← Back to Home</a>
       </div>
     </div>
-      <div id="commonFooter"></div>
-      <script src="/js/header-footer.js"></script>
+    <div id="commonFooter"></div>
+    <script src="/js/config.js"></script>
+    <script src="/js/header-footer.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/notification.js"></script>
   </body>
 </html>

@@ -53,7 +53,7 @@ async function resetPassword(event) {
         timer: 2000,
         showConfirmButton: false,
       });
-      window.location.href = "login.html";
+      window.location.href = "/login";
     } else {
       throw new Error(data.msg || data.message || "Invalid OTP or Email verification failed.");
     }

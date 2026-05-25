@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
     <link rel="stylesheet" href="../assets/css/watch.css" />
-    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
   </head>
   <body>
@@ -38,7 +38,7 @@
     <div id="commonHeader"></div>
     <header>
       <h1 id="course-title">Course Title</h1>
-      <nav><a href="mycourse.html">← Back to Courses</a></nav>
+      <nav><a href="/my-course">← Back to Courses</a></nav>
     </header>
     <div class="watch-container">
       <div class="video-player">
@@ -64,9 +64,12 @@
         <p onclick="document.getElementById('cert-overlay').style.display = 'none'" style="color: #ff4d4d; cursor: pointer; margin-top: 15px; font-size: 12px">Maybe Later</p>
       </div>
     </div>
-      <div id="commonFooter"></div>
-      <script src="/js/header-footer.js"></script>
-    <script src="../js/config.js"></script>
+    <div id="commonFooter"></div>
+    <script src="/js/config.js"></script>
+    <script src="/js/header-footer.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/notification.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="../js/watch-logic.js"></script>
   </body>
