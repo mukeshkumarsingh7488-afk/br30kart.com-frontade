@@ -82,8 +82,10 @@ function renderTable(sellers) {
 }
 
 async function toggleVerification(userId, currentStatus) {
-  const actionText = currentStatus === "active" ? "deactivate" : "activate";
-  const themeColor = currentStatus === "active" ? "#d33" : "#28a745";
+  const isActive = currentStatus === true || currentStatus === "active" || currentStatus === "approved" || currentStatus === "Approved";
+
+  const actionText = isActive ? "deactivate" : "activate";
+  const themeColor = isActive ? "#d33" : "#28a745";
 
   const result = await Swal.fire({
     title: "Update Seller Status?",
@@ -113,16 +115,13 @@ async function toggleVerification(userId, currentStatus) {
 
     const data = await res.json().catch(() => ({}));
 
-    console.log("Toggle status:", res.status);
-    console.log("Toggle response:", data);
-
     if (!res.ok || data.success === false) {
       throw new Error(data.message || data.msg || "Server responded with an error");
     }
 
     await Swal.fire({
       title: "Success!",
-      text: data.message || `Seller status has been ${actionText}d.`,
+      text: data.msg || `Seller status has been ${actionText}d.`,
       icon: "success",
       timer: 1500,
       showConfirmButton: false,
