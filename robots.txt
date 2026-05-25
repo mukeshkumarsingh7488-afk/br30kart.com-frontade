@@ -12,7 +12,7 @@ Disallow: /pages/login.html
 Disallow: /pages/profile.html
 Disallow: /pages/mycourse.html
 Disallow: /pages/register.html
-Disallow: /pages/revew.html
+Disallow: /pages/review.html
 Disallow: /pages/reset.html
 Disallow: /pages/s-bestseller.html
 Disallow: /pages/s-payout-history.html
@@ -24,9 +24,8 @@ Disallow: /pages/seller-register.html
 Disallow: /pages/view-alart.html
 Disallow: /pages/watch.html
 
-# 🚀 Allow public pages
+# 🚀 Public pages (allow list)
 Allow: /pages/about.html
-Allow: /index.html
 Allow: /pages/aboutbr30.html
 Allow: /pages/besictoadvance.html
 Allow: /pages/contact.html
@@ -45,5 +44,5 @@ Allow: /pages/terms.html
 Allow: /pages/verify.html
 Allow: /pages/view-seller-program.html
 
-# 🧠 Main sitemap
+# 🧠 Sitemap
 Sitemap: https://br-30-kart.vercel.app/sitemap.xml
