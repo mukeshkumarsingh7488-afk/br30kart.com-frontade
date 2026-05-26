@@ -409,7 +409,7 @@ async function openCouponPrompt(id) {
 async function buyNow(product) {
   try {
     const token = localStorage.getItem("token");
-    const buyerEmail = localStorage.getItem("userEmail");
+    const buyerEmail = localStorage.getItem("userEmail") || localStorage.getItem("email") || JSON.parse(localStorage.getItem("user") || "{}")?.email;
 
     if (!token) {
       Swal.fire({
@@ -458,6 +458,10 @@ async function buyNow(product) {
     const data = await response.json();
 
     const sendFailureMail = async (reason) => {
+      if (!buyerEmail) {
+        console.error("❌ buyerEmail missing. Login data not found in localStorage.");
+        return;
+      }
       try {
         await fetch(`${CONFIG.BASE_API_URL}/payment/payment-failure`, {
           method: "POST",
