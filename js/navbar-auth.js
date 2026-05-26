@@ -1,3 +1,4 @@
+//#region Navbar Authentication
 document.addEventListener("DOMContentLoaded", () => {
   const navAccountBtn = document.getElementById("navAccountBtn");
   const loginRegisterLink = document.getElementById("loginRegisterLink");
@@ -44,3 +45,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+//#endregion
