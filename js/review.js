@@ -8,7 +8,6 @@ async function fetchReviews() {
     const res = await fetch(`${API_BASE}/all`);
     if (!res.ok) throw new Error(`Fetch failed with status: ${res.status}`);
     allReviews = await res.json();
-    selectedReviews.clear();
     updateBulkBar();
     const statReviewsElem = document.getElementById("statReviews");
     if (statReviewsElem) statReviewsElem.innerText = allReviews.length.toLocaleString("en-IN");
