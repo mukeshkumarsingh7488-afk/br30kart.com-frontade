@@ -127,20 +127,17 @@ textarea {
   box-sizing: border-box;
 }
 .bulk-action-bar {
-  position: sticky;
-  top: 118px;
-  z-index: 9999;
-  margin: 8px 20px 12px;
-  padding: 12px;
-  background: linear-gradient(135deg, #101010, #050505);
-  border: 1px solid #00ffa3;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 0 20px rgba(0, 255, 163, 0.12);
-  flex-wrap: wrap;
+  position: sticky !important;
+  top: 120px !important;
+  z-index: 9999 !important;
+  overflow: visible !important;
+}
+.bulk-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: nowrap !important;
+  margin-left: auto !important;
 }
 .bulk-left,
 .bulk-right {

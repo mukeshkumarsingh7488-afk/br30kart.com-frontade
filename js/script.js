@@ -744,8 +744,8 @@ async function loadTopReviews() {
     const response = await fetch(apiUrl);
     const data = await response.json();
     console.log("Full Data Received:", data);
-    const reviews = data.reviews || [];
-    const totalCount = data.totalCount || 0;
+    const reviews = (data.reviews || []).filter((r) => r.status === "approved");
+    const totalCount = data.totalCount || reviews.length;
     const countElement = document.getElementById("countNumber");
     if (countElement) {
       countElement.innerText = totalCount;
