@@ -61,13 +61,38 @@ function toggleReviewSelection(id, checked) {
   updateBulkBar();
 }
 
-function toggleSelectAllReviews() {
-  const checked = document.getElementById("selectAllReviews").checked;
-  document.querySelectorAll(".review-checkbox").forEach((cb) => {
-    cb.checked = checked;
-    checked ? selectedReviews.add(cb.value) : selectedReviews.delete(cb.value);
+function selectBulkReviews() {
+  const input = document.getElementById("bulkSelectCount");
+
+  let count = parseInt(input.value);
+
+  if (!count || count <= 0) {
+    return Swal.fire("Invalid Number", "Please enter valid review count", "warning");
+  }
+
+  selectedReviews.clear();
+
+  const checkboxes = document.querySelectorAll(".review-checkbox");
+
+  checkboxes.forEach((cb, index) => {
+    if (index < count) {
+      cb.checked = true;
+      selectedReviews.add(cb.value);
+    } else {
+      cb.checked = false;
+    }
   });
+
   updateBulkBar();
+
+  Swal.fire({
+    icon: "success",
+    title: `${selectedReviews.size} Reviews Selected`,
+    timer: 1200,
+    showConfirmButton: false,
+    background: "#0a0a0a",
+    color: "#fff",
+  });
 }
 
 function getSelectedReviewIds() {
