@@ -126,3 +126,79 @@ textarea {
   min-height: 80px;
   box-sizing: border-box;
 }
+.bulk-action-bar {
+  margin: 8px 20px 12px;
+  padding: 12px;
+  background: linear-gradient(135deg, #101010, #050505);
+  border: 1px solid #00ffa3;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 163, 0.12);
+  flex-wrap: wrap;
+}
+.bulk-left,
+.bulk-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.select-all-label {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+#selectedCount {
+  color: #00ffa3;
+  font-weight: 900;
+  font-size: 13px;
+}
+.bulk-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 900;
+}
+.bulk-btn.hide {
+  background: orange;
+  color: #000;
+}
+.bulk-btn.show {
+  background: #00ffa3;
+  color: #000;
+}
+.bulk-btn.reply {
+  background: #2563eb;
+  color: #fff;
+}
+.bulk-btn.delete {
+  background: #ff4d4d;
+  color: #fff;
+}
+.bulk-btn.clear {
+  background: #2d333b;
+  color: #fff;
+}
+.review-select-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.review-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #00ffa3;
+}
+.review-id {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: bold;
+}
+.selected-review {
+  border-left-color: #2563eb !important;
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.18);
+}

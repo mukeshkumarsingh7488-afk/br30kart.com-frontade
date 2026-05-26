@@ -54,6 +54,22 @@
           <i class="fas fa-sync-alt"></i>
         </button>
       </div>
+      <div id="bulkActionBar" class="bulk-action-bar" style="display: none">
+        <div class="bulk-left">
+          <label class="select-all-label">
+            <input type="checkbox" id="selectAllReviews" onchange="toggleSelectAllReviews()" />
+            Select All
+          </label>
+          <span id="selectedCount">0 Selected</span>
+        </div>
+        <div class="bulk-right">
+          <button class="bulk-btn hide" onclick="bulkHideReviews()">Hide</button>
+          <button class="bulk-btn show" onclick="bulkShowReviews()">Unhide</button>
+          <button class="bulk-btn reply" onclick="bulkReplyReviews()">Reply</button>
+          <button class="bulk-btn delete" onclick="bulkDeleteReviews()">Delete</button>
+          <button class="bulk-btn clear" onclick="clearReviewSelection()">Clear</button>
+        </div>
+      </div>
       <style>
         body {
           margin: 0 !important;

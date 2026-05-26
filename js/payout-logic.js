@@ -14,7 +14,7 @@ let payoutData = [];
 window.onload = fetchPayoutHistory;
 
 async function fetchPayoutHistory() {
-  const email = localStorage.getItem("sellerEmail");
+  const email = localStorage.getItem("sellerEmail") || localStorage.getItem("userEmail");
   if (!email) {
     console.error("Seller Email not found! Redirecting to login...");
     window.location.href = "/login";
