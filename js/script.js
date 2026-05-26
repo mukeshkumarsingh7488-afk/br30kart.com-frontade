@@ -409,6 +409,8 @@ async function openCouponPrompt(id) {
 async function buyNow(product) {
   try {
     const token = localStorage.getItem("token");
+    const buyerEmail = localStorage.getItem("userEmail");
+
     if (!token) {
       Swal.fire({
         icon: "warning",
@@ -416,50 +418,62 @@ async function buyNow(product) {
         text: "Please login first to continue purchase",
         confirmButtonText: "Login Now",
       }).then(() => {
-        const LOGIN_URL = "/login";
-        window.location.href = LOGIN_URL;
+        window.location.href = "/login";
       });
       return;
     }
+
     const now = new Date().getTime();
     const startTime = new Date(product.couponCreatedAt || product.createdAt).getTime();
     const expiryTime = startTime + 7 * 24 * 60 * 60 * 1000;
-    let finalPrice;
-    let appliedDiscount = 0;
+
+    let finalPrice = product.price;
     if (now < expiryTime && product.discount > 0) {
-      appliedDiscount = product.discount;
-      finalPrice = product.price - (product.price * appliedDiscount) / 100;
-    } else {
-      finalPrice = product.price;
+      finalPrice = product.price - (product.price * product.discount) / 100;
     }
-    console.log("Processing payment for:", product.title);
+
     Swal.fire({
       title: "Processing Payment...",
       text: "Please wait...",
       allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
+      didOpen: () => Swal.showLoading(),
     });
+
     const response = await fetch(`${CONFIG.BASE_API_URL}/payment/create-order`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         amount: finalPrice,
         productId: product._id,
-        buyerEmail: localStorage.getItem("userEmail"),
+        buyerEmail,
         sellerEmail: product.sellerEmail,
       }),
     });
+
     if (!response.ok) {
-      Swal.fire({
-        icon: "error",
-        title: "Failed",
-        text: "Order creation failed",
-      });
+      Swal.fire({ icon: "error", title: "Failed", text: "Order creation failed" });
       return;
     }
+
     const data = await response.json();
+
+    const sendFailureMail = async (reason) => {
+      try {
+        await fetch(`${CONFIG.BASE_API_URL}/payment/payment-failure`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            courseId: product._id,
+            buyerEmail,
+            reason,
+          }),
+        });
+        console.log("✅ Failure mail triggered");
+      } catch (err) {
+        console.error("❌ Failure mail API error:", err);
+      }
+    };
+
     const options = {
       key: data.key,
       amount: data.amount,
@@ -467,16 +481,12 @@ async function buyNow(product) {
       name: "BR30 Trader",
       description: product.title,
       order_id: data.orderId,
-      prefill: {
-        email: localStorage.getItem("userEmail") || "",
-      },
-      theme: {
-        color: "#00FFAB",
-      },
+      prefill: { email: buyerEmail || "" },
+      theme: { color: "#00FFAB" },
       modal: {
-        ondismiss: function () {
-          console.log("Payment window closed by user");
+        ondismiss: async function () {
           Swal.close();
+          await sendFailureMail("User closed Razorpay popup");
         },
       },
       handler: async function (paymentResponse) {
@@ -486,7 +496,8 @@ async function buyNow(product) {
             allowOutsideClick: false,
             didOpen: () => Swal.showLoading(),
           });
-          const verifyRes = await fetch(`${CONFIG.BASE_API_URL}/verify-payment`, {
+
+          const verifyRes = await fetch(`${CONFIG.BASE_API_URL}/payment/verify-payment`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -494,10 +505,12 @@ async function buyNow(product) {
               razorpay_payment_id: paymentResponse.razorpay_payment_id,
               razorpay_signature: paymentResponse.razorpay_signature,
               productId: product._id,
-              buyerEmail: localStorage.getItem("userEmail"),
+              buyerEmail,
+              sellerEmail: product.sellerEmail,
               amount: finalPrice,
             }),
           });
+
           if (verifyRes.ok) {
             Swal.fire({
               icon: "success",
@@ -506,10 +519,12 @@ async function buyNow(product) {
               timer: 2000,
               showConfirmButton: false,
             });
+
             setTimeout(() => {
               window.location.href = "/my-course";
             }, 2000);
           } else {
+            await sendFailureMail("Payment verification failed");
             Swal.fire({
               icon: "error",
               title: "Verification Failed",
@@ -518,6 +533,7 @@ async function buyNow(product) {
           }
         } catch (err) {
           console.error(err);
+          await sendFailureMail("Server error during payment verification");
           Swal.fire({
             icon: "error",
             title: "Error",
@@ -526,7 +542,14 @@ async function buyNow(product) {
         }
       },
     };
+
     const rzp = new Razorpay(options);
+
+    rzp.on("payment.failed", async function (response) {
+      console.log("❌ Razorpay Payment Failed:", response.error);
+      await sendFailureMail(response.error.description || "Payment Failed");
+    });
+
     rzp.open();
   } catch (err) {
     console.error("Buy Error:", err);
