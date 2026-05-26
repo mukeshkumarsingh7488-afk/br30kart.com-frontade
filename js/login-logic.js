@@ -82,6 +82,7 @@ async function handleLogin(e) {
     localStorage.setItem("token", data.token);
     localStorage.setItem("userRole", role);
     localStorage.setItem("userData", JSON.stringify(data.user));
+    localStorage.setItem("userEmail", data.user.email);
 
     let msg = "Login Successful";
 

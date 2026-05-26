@@ -409,7 +409,8 @@ async function openCouponPrompt(id) {
 async function buyNow(product) {
   try {
     const token = localStorage.getItem("token");
-    const buyerEmail = localStorage.getItem("userEmail") || localStorage.getItem("email") || JSON.parse(localStorage.getItem("user") || "{}")?.email;
+    const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+    const buyerEmail = localStorage.getItem("userEmail") || localStorage.getItem("email") || storedUser.email || storedUser.user?.email || storedUser.data?.email || "";
 
     if (!token) {
       Swal.fire({
