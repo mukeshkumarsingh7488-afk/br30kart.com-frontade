@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-
-Allow: /
 Allow: /robots.txt
 Allow: /sitemap.xml
 
