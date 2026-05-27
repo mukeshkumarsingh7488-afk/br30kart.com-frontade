@@ -885,50 +885,51 @@ const sellerLink = document.getElementById("sellerDashLink");
 const adminDashLink = document.getElementById("adminDashLink");
 const logoutLink = document.getElementById("logoutLink");
 
-const role = localStorage.getItem("role");
+const role = localStorage.getItem("userRole");
+
+console.log("ROLE =>", role);
 
 if (role && role.toLowerCase() === "admin") {
   adminDashLink.style.display = "block";
 }
+if (role && role.toLowerCase() === "seller") {
+  sellerLink.style.display = "block";
+}
+const token = localStorage.getItem("token");
 
-sellerLink.addEventListener("click", function (e) {
-  e.preventDefault();
+if (token) {
+  logoutLink.style.display = "block";
+}
 
-  this.classList.add("blink");
+function addBlinkEffect(element) {
+  if (!element) return;
 
-  const url = this.href;
+  element.addEventListener("click", function (e) {
+    e.preventDefault();
 
-  setTimeout(() => {
-    this.classList.remove("blink");
-    window.location.href = url;
-  }, 500);
-});
+    this.classList.add("blink");
 
-adminDashLink.addEventListener("click", function (e) {
-  e.preventDefault();
+    const url = this.href;
 
-  this.classList.add("blink");
+    setTimeout(() => {
+      this.classList.remove("blink");
 
-  const url = this.href;
+      if (this.id === "logoutLink") {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userRole");
+        localStorage.removeItem("userData");
+        localStorage.removeItem("userEmail");
 
-  setTimeout(() => {
-    this.classList.remove("blink");
-    window.location.href = url;
-  }, 500);
-});
+        window.location.href = "/login";
+      } else {
+        window.location.href = url;
+      }
+    }, 500);
+  });
+}
 
-logoutLink.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  this.classList.add("blink");
-
-  setTimeout(() => {
-    this.classList.remove("blink");
-
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-
-    window.location.href = "/login";
-  }, 500);
-});
+/* 🚀 APPLY EFFECTS */
+addBlinkEffect(sellerLink);
+addBlinkEffect(adminDashLink);
+addBlinkEffect(logoutLink);
 //#endregion
