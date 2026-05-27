@@ -882,6 +882,14 @@ function updateNavbar() {
 document.addEventListener("DOMContentLoaded", updateNavbar);
 
 const sellerLink = document.getElementById("sellerDashLink");
+const adminDashLink = document.getElementById("adminDashLink");
+const logoutLink = document.getElementById("logoutLink");
+
+const role = localStorage.getItem("role");
+
+if (role && role.toLowerCase() === "admin") {
+  adminDashLink.style.display = "block";
+}
 
 sellerLink.addEventListener("click", function (e) {
   e.preventDefault();
@@ -893,6 +901,34 @@ sellerLink.addEventListener("click", function (e) {
   setTimeout(() => {
     this.classList.remove("blink");
     window.location.href = url;
+  }, 500);
+});
+
+adminDashLink.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  this.classList.add("blink");
+
+  const url = this.href;
+
+  setTimeout(() => {
+    this.classList.remove("blink");
+    window.location.href = url;
+  }, 500);
+});
+
+logoutLink.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  this.classList.add("blink");
+
+  setTimeout(() => {
+    this.classList.remove("blink");
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+
+    window.location.href = "/login";
   }, 500);
 });
 //#endregion

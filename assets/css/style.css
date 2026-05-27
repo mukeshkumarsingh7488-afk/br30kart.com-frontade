@@ -1095,3 +1095,33 @@ select {
     box-shadow: none;
   }
 }
+.vip-btn {
+  margin-top: 10px;
+  padding: 14px 16px !important;
+  border-radius: 14px;
+  background: rgba(255, 196, 0, 0.08);
+  color: #ffc933 !important;
+  font-weight: 700;
+  border: 1px solid rgba(255, 196, 0, 0.12);
+  transition: all 0.3s ease;
+}
+.vip-btn:hover {
+  background: rgba(255, 196, 0, 0.15);
+  transform: translateX(4px);
+  color: #ffd95e !important;
+}
+.logout-btn {
+  margin-top: 10px;
+  padding: 14px 16px !important;
+  border-radius: 14px;
+  background: rgba(255, 60, 60, 0.08);
+  color: #ff4d4d !important;
+  font-weight: 700;
+  border: 1px solid rgba(255, 60, 60, 0.12);
+  transition: all 0.3s ease;
+}
+.logout-btn:hover {
+  background: rgba(255, 60, 60, 0.16);
+  transform: translateX(4px);
+  color: #ff7070 !important;
+}
