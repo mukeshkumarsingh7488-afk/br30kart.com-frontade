@@ -878,7 +878,6 @@ function updateNavbar() {
     }
   }
 }
-
 document.addEventListener("DOMContentLoaded", updateNavbar);
 
 const sellerLink = document.getElementById("sellerDashLink");
@@ -892,44 +891,25 @@ console.log("ROLE =>", role);
 if (role && role.toLowerCase() === "admin") {
   adminDashLink.style.display = "block";
 }
+
 if (role && role.toLowerCase() === "seller") {
   sellerLink.style.display = "block";
 }
+
 const token = localStorage.getItem("token");
 
 if (token) {
   logoutLink.style.display = "block";
 }
 
-function addBlinkEffect(element) {
-  if (!element) return;
+logoutLink.addEventListener("click", function (e) {
+  e.preventDefault();
 
-  element.addEventListener("click", function (e) {
-    e.preventDefault();
+  localStorage.removeItem("token");
+  localStorage.removeItem("userRole");
+  localStorage.removeItem("userData");
+  localStorage.removeItem("userEmail");
 
-    this.classList.add("blink");
-
-    const url = this.href;
-
-    setTimeout(() => {
-      this.classList.remove("blink");
-
-      if (this.id === "logoutLink") {
-        localStorage.removeItem("token");
-        localStorage.removeItem("userRole");
-        localStorage.removeItem("userData");
-        localStorage.removeItem("userEmail");
-
-        window.location.href = "/login";
-      } else {
-        window.location.href = url;
-      }
-    }, 500);
-  });
-}
-
-/* 🚀 APPLY EFFECTS */
-addBlinkEffect(sellerLink);
-addBlinkEffect(adminDashLink);
-addBlinkEffect(logoutLink);
+  window.location.href = "/login";
+});
 //#endregion
