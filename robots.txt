@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+Allow: /
+Allow: /robots.txt
+Allow: /sitemap.xml
+
 # 🚫 Private pages block (SEO + security)
 Disallow: /pages/activ-seller.html
 Disallow: /pages/activ-student.html
