@@ -1,9 +1,12 @@
 const sellerLink = document.getElementById("sellerDashLink");
 const adminDashLink = document.getElementById("adminDashLink");
 const logoutLink = document.getElementById("logoutLink");
+const loginLink = document.getElementById("loginLink");
 
 const role = localStorage.getItem("userRole");
 const token = localStorage.getItem("token");
+
+if (loginLink && token) loginLink.style.display = "none";
 
 if (adminDashLink && role?.toLowerCase() === "admin") {
   adminDashLink.style.display = "block";
