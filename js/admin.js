@@ -1254,16 +1254,23 @@ function renderAdminTable(products) {
       const isHidden = p.isVisible === false || String(p.isVisible) === "false";
       const isApproved = p.isApproved === true || String(p.isApproved) === "true";
       const rawVideo = p.videoLink || "";
-      let embedUrl = "";
-      if (rawVideo.includes("youtu.be")) {
-        const videoId = rawVideo.split("/").pop().split("?")[0];
-        embedUrl = `https://www.youtube.com/embed/${videoId}`;
-      } else if (rawVideo.includes("watch?v=")) {
-        const videoId = rawVideo.split("v=")[1].split("&")[0];
-        embedUrl = `https://www.youtube.com/embed/${videoId}`;
-      } else if (rawVideo.includes("youtube.com/embed/")) {
-        embedUrl = rawVideo;
-      }
+      const getYouTubeEmbedUrl = (url = "") => {
+        try {
+          const u = new URL(url);
+          let id = "";
+          if (u.hostname.includes("youtu.be")) id = u.pathname.replace("/", "");
+          if (u.hostname.includes("youtube.com")) {
+            if (u.pathname.includes("/watch")) id = u.searchParams.get("v") || "";
+            if (u.pathname.includes("/embed/")) id = u.pathname.split("/embed/")[1]?.split(/[?&]/)[0] || "";
+            if (u.pathname.includes("/shorts/")) id = u.pathname.split("/shorts/")[1]?.split(/[?&]/)[0] || "";
+            if (u.pathname.includes("/live/")) id = u.pathname.split("/live/")[1]?.split(/[?&]/)[0] || "";
+          }
+          return id ? `https://www.youtube.com/embed/${id}` : "";
+        } catch {
+          return "";
+        }
+      };
+      const embedUrl = getYouTubeEmbedUrl(rawVideo);
       return `
         <!-- 🟢 MAIN DATA ROW -->
         <tr>
@@ -1336,7 +1343,7 @@ function renderAdminTable(products) {
                     <div style="flex: 2; min-width: 350px;">
                         <p style="color: #a020f0; font-weight: bold; margin-bottom: 12px; font-size: 11px; letter-spacing: 1px;">📺 VIDEO PREVIEW</p>
                         <div style="background: #000; border-radius: 12px; overflow: hidden; position: relative; padding-top: 56.25%; border: 1px solid #333;">
-                            <iframe src="${embedUrl}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                            ${embedUrl ? `<iframe src="${embedUrl}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>` : `<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:14px;text-align:center;padding:20px;">Invalid or unsupported video link</div>`}
                         </div>
                         <p style="margin-top:12px; font-size: 11px; color: #64748b;">🔗 Link: <a href="${rawVideo}" target="_blank" style="color: #00ffcc;">${rawVideo}</a></p>
                     </div>
