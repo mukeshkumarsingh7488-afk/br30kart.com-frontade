@@ -198,9 +198,9 @@ Founder — **BR30 Group**
 
 ### 📧 Contact
 
-[![Support](https://img.shields.io/badge/Support-support.br30trader@gmail.com-D14836?style=for-the-badge\&logo=gmail\&logoColor=white)](mailto:support.br30trader@gmail.com)
+[![Support Team](https://img.shields.io/badge/📧_Support_Team-Contact_Now-D14836?style=for-the-badge)](https://mail.google.com/mail/?view=cm&fs=1&to=support.br30trader@gmail.com)
 
-[![Service](https://img.shields.io/badge/Service-br30service.contact@gmail.com-B71C1C?style=for-the-badge\&logo=gmail\&logoColor=white)](mailto:br30service.contact@gmail.com)
+[![Service Team](https://img.shields.io/badge/📨_Service_Team-Contact_Now-B71C1C?style=for-the-badge)](https://mail.google.com/mail/?view=cm&fs=1&to=br30service.contact@gmail.com)
 
 ### 🚀 BR30 Ecosystem
 
