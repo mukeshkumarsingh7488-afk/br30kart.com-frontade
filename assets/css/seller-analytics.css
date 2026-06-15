@@ -10,6 +10,20 @@
   --accent-clr: #00ffcc;
   --text-gray: #888888;
 }
+html,
+body,
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img {
+  -webkit-user-drag: none;
+}
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, sans-serif;

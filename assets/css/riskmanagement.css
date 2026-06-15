@@ -2,6 +2,20 @@ html,
 body {
   overflow-x: hidden;
 }
+html,
+body,
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img {
+  -webkit-user-drag: none;
+}
 :root {
   --bg-dark: #07070a;
   --card-bg: #12121a;

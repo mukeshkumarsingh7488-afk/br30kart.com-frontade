@@ -13,6 +13,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 18px;
   cursor: pointer;
 }
+html,
+body,
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img {
+  -webkit-user-drag: none;
+}
 body {
   background-color: #05070a;
   color: #e1e1e1;
