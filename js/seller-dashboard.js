@@ -51,7 +51,7 @@ function closeSellerModal() {
 
 async function fetchProfile(email) {
   try {
-    const res = await fetch(`${API_BASE}/api/products/get-seller`, {
+    const res = await fetch(`${CONFIG.BASE_API_URL}/products/get-seller`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
