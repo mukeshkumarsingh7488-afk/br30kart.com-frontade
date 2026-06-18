@@ -49,56 +49,6 @@ function closeSellerModal() {
   }
 }
 
-async function fetchProfile(email) {
-  try {
-    const res = await fetch(`${CONFIG.BASE_API_URL}/products/get-seller`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok || !data.success) {
-      Swal.fire({
-        icon: "error",
-        title: "Seller Not Found",
-        text: data.message || "Seller profile database me nahi mila.",
-        background: "#111827",
-        color: "#fff",
-      });
-      return;
-    }
-
-    localStorage.setItem("sellerData", JSON.stringify(data.data));
-
-    Swal.fire({
-      icon: "success",
-      title: "Seller Profile Loaded",
-      text: "Dashboard open ho raha hai.",
-      background: "#111827",
-      color: "#fff",
-      timer: 1000,
-      showConfirmButton: false,
-    });
-
-    setTimeout(() => {
-      location.reload();
-    }, 1000);
-  } catch (err) {
-    console.error("fetchProfile error:", err);
-    Swal.fire({
-      icon: "error",
-      title: "Server Error",
-      text: "Seller profile load nahi ho pa raha.",
-      background: "#111827",
-      color: "#fff",
-    });
-  }
-}
-
 window.addEventListener("load", async () => {
   const sEmail = localStorage.getItem("sellerEmail");
   const publishBtn = document.getElementById("publishBtn");
