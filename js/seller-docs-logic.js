@@ -134,6 +134,62 @@ async function toggleVerification(userId, currentStatus) {
   }
 }
 
+async function approveSeller(id) {
+  console.log(`[ADMIN] Approving Seller ID: ${id}`);
+  const result = await Swal.fire({
+    title: "Are you sure?",
+    text: "Once approved, this seller will be able to sell courses on the platform.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#28a745",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, Approve!",
+    cancelButtonText: "Cancel",
+  });
+  if (result.isConfirmed) {
+    try {
+      Swal.fire({
+        title: "Processing...",
+        text: "Please wait while we update the status.",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      const res = await fetch(`${API_URL}/approve-seller/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      if (data.success) {
+        console.log("✅ Seller Approved Successfully");
+        Swal.fire({
+          title: "Approved! 🥂",
+          text: "The seller has been approved successfully.",
+          icon: "success",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+        fetchDashboardData();
+      } else {
+        console.error("❌ Approval failed:", data.message);
+        Swal.fire({
+          title: "Approval Failed",
+          text: data.message || "Something went wrong.",
+          icon: "error",
+        });
+      }
+    } catch (err) {
+      console.error("❌ Connection error:", err);
+      Swal.fire({
+        title: "Server Error",
+        text: "Unable to connect to the server. Please try again later.",
+        icon: "error",
+      });
+    }
+  }
+}
+
 async function rejectSeller(userId, email) {
   const { value: reason } = await Swal.fire({
     title: "Reject Seller",
