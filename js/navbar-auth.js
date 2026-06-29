@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       localStorage.clear();
 
-      window.location.href = "/";
+      window.location.href = "/home";
     });
   }
 });
