@@ -107,7 +107,7 @@
     },
 
     {
-      "source": "/dashboard",
+      "source": "/home",
       "destination": "/index.html"
     },
     {
@@ -227,8 +227,16 @@
       "destination": "/pages/watch.html"
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "rewrites": [
+        {
+          "source": "/home",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/(.*)",
+          "destination": "/index.html"
+        }
+      ]
     }
   ],
 

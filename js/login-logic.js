@@ -104,7 +104,7 @@ async function handleLogin(e) {
       } else if (role === "seller") {
         window.location.replace("/seller-dashboard");
       } else {
-        window.location.replace("/");
+        window.location.replace("/home");
       }
     }, 1200);
   } catch (err) {

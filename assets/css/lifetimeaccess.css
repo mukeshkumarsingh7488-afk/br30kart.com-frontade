@@ -1,12 +1,23 @@
 :root {
-  --bg-dark: #07070a;
+  --bg-dark: #020604;
   --card-bg: #12121a;
   --primary-purple: #9333ea;
   --gold: #ffd700;
-  --accent-glow: rgba(147, 51, 234, 0.3);
-  --text-gray: #a1a1aa;
+  --accent-glow: rgba(147, 51, 234, 0.35);
+  --text-gray: #b8c8bf;
   --white: #ffffff;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body,
 * {
@@ -21,141 +32,382 @@ body,
 img {
   -webkit-user-drag: none;
 }
+
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--bg-dark);
   color: var(--white);
-  margin: 0;
-  padding: 0;
   overflow-x: hidden;
+  background: #020604;
 }
+
+/* ===========================
+   PREMIUM BACKGROUND
+=========================== */
+
 .container {
-  max-width: 1200px;
-  margin: 100px auto 60px;
-  padding: 0 20px;
-}
-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-h1 {
-  font-size: 3.5rem;
-  margin: 0;
-  background: linear-gradient(to right, #fff, var(--gold), var(--primary-purple));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-}
-.course-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-}
-.module-card {
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: 20px;
-  border: 1px solid #1f1f2e;
   position: relative;
-  transition: all 0.4s ease;
+  overflow: hidden;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 95px 0 70px;
+  background: radial-gradient(circle at 10% 12%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 90% 18%, rgba(147, 51, 234, 0.14), transparent 32%), radial-gradient(circle at 82% 88%, rgba(255, 215, 0, 0.1), transparent 30%), linear-gradient(180deg, #020604 0%, #06110d 55%, #020604 100%);
 }
-.module-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--gold);
-  box-shadow: 0 15px 30px rgba(255, 215, 0, 0.1);
-}
-.module-card::before {
+
+.container::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, var(--primary-purple), var(--gold));
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+
+  mask-image: radial-gradient(circle at 8% 18%, #000 0%, transparent 42%), radial-gradient(circle at 92% 82%, #000 0%, transparent 42%);
+
+  -webkit-mask-image: radial-gradient(circle at 8% 18%, #000 0%, transparent 42%), radial-gradient(circle at 92% 82%, #000 0%, transparent 42%);
 }
+
+.container::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -180px;
+  top: 120px;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.1);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+/* ===========================
+   WIDTH
+=========================== */
+
+header,
+.course-grid,
+.leaderboard-section,
+.back-btn-container {
+  width: min(1180px, calc(100% - 32px));
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+header {
+  text-align: center;
+  padding-bottom: 65px;
+}
+
+header::before {
+  content: "VIP PROGRAM • BR30 KART";
+  display: inline-flex;
+  margin-bottom: 20px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 215, 0, 0.22);
+  background: rgba(255, 215, 0, 0.08);
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+header h1 {
+  max-width: 1000px;
+  margin: auto;
+
+  font-size: clamp(2.6rem, 6vw, 5.4rem);
+
+  line-height: 0.96;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 900;
+
+  background: linear-gradient(90deg, #fff 0%, #ffe06b 28%, #ffd700 58%, #d58dff 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-transform: uppercase;
+
+  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+header > p {
+  margin-top: 18px;
+  color: var(--text-gray);
+  font-size: 1.12rem;
+  line-height: 1.8;
+}
+
+.center-text {
+  margin-top: 12px;
+}
+
+.center-text p {
+  max-width: 850px;
+  margin: auto;
+  color: #cfcfcf;
+  line-height: 1.8;
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+.course-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 24px;
+}
+
+.module-card {
+  position: relative;
+
+  overflow: hidden;
+
+  background: linear-gradient(180deg, rgba(24, 24, 36, 0.96), rgba(16, 16, 24, 0.96));
+
+  padding: 32px;
+
+  border-radius: 26px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(18px);
+
+  transition: 0.35s;
+}
+
+.module-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  width: 100%;
+
+  height: 4px;
+
+  background: linear-gradient(90deg, var(--primary-purple), var(--gold));
+}
+
+.module-card::after {
+  content: "";
+
+  position: absolute;
+
+  right: -70px;
+
+  bottom: -70px;
+
+  width: 170px;
+
+  height: 170px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 215, 0, 0.08);
+
+  filter: blur(45px);
+
+  opacity: 0;
+
+  transition: 0.35s;
+}
+
+.module-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(255, 215, 0, 0.35);
+
+  box-shadow:
+    0 22px 70px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(255, 215, 0, 0.08);
+}
+
+.module-card:hover::after {
+  opacity: 1;
+}
+
 .module-card h2 {
   color: var(--gold);
-  font-size: 1.4rem;
-  margin-bottom: 20px;
+
+  font-size: 1.45rem;
+
+  margin-bottom: 22px;
 }
+
 .module-card ul {
   list-style: none;
-  padding: 0;
-}
-.module-card li {
-  margin-bottom: 15px;
-  color: var(--text-gray);
-  font-size: 0.95rem;
-  display: flex;
-  align-items: flex-start;
-}
-.module-card li svg {
-  width: 18px;
-  height: 18px;
-  margin-right: 12px;
-  color: var(--gold);
-  flex-shrink: 0;
-  margin-top: 3px;
-}
-.leaderboard-section {
-  margin-top: 80px;
-  background: #161625;
-  padding: 40px;
-  border-radius: 25px;
-  border: 1px dashed var(--gold);
-  text-align: center;
-}
-.leaderboard-title {
-  color: var(--gold);
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-.user-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+
+  display: grid;
+
   gap: 15px;
 }
-.user-badge {
-  background: rgba(147, 51, 234, 0.2);
-  padding: 8px 20px;
-  border-radius: 50px;
-  border: 1px solid var(--primary-purple);
-  font-weight: 600;
-  font-size: 0.9rem;
+
+.module-card li {
+  display: flex;
+
+  gap: 12px;
+
+  align-items: flex-start;
+
+  color: #d2d2d2;
+
+  line-height: 1.65;
 }
+
+.module-card svg {
+  width: 18px;
+
+  min-width: 18px;
+
+  height: 18px;
+
+  color: var(--gold);
+
+  margin-top: 3px;
+}
+
+/* ===========================
+   HALL OF FAME
+=========================== */
+
+.leaderboard-section {
+  margin-top: 80px;
+
+  padding: 45px;
+
+  border-radius: 28px;
+
+  text-align: center;
+
+  background: linear-gradient(180deg, rgba(23, 23, 36, 0.96), rgba(14, 14, 22, 0.96));
+
+  border: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+.leaderboard-title {
+  color: var(--gold);
+
+  font-size: 2.1rem;
+
+  margin-bottom: 18px;
+}
+
+.user-list {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 16px;
+
+  margin-top: 28px;
+}
+
+.user-badge {
+  padding: 11px 22px;
+
+  border-radius: 999px;
+
+  background: rgba(147, 51, 234, 0.16);
+
+  border: 1px solid rgba(147, 51, 234, 0.45);
+
+  font-weight: 700;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
 .back-btn-container {
   text-align: center;
-  margin-top: 60px;
+
+  padding-top: 42px;
 }
+
 .btn-home {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 12px 35px;
-  background-color: #a020f0;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 10px;
-  transition: 0.3s ease;
-  border: 1px solid #a020f0;
-}
-.btn-home:hover {
-  background: transparent;
-  color: #a020f0;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
-}
-.center-text {
-  display: flex;
+  display: inline-flex;
+
+  align-items: center;
+
   justify-content: center;
+
+  min-height: 52px;
+
+  padding: 0 28px;
+
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  font-weight: 900;
+
+  color: #111;
+
+  background: linear-gradient(135deg, #ffd700, #fff3a1);
+
+  transition: 0.3s;
+
+  box-shadow: 0 18px 45px rgba(255, 215, 0, 0.18);
 }
-.center-text p {
-  font-size: 14px;
-  color: #ccc;
-  max-width: 800px;
-  text-align: center;
-  margin: 10px 0 0;
+
+.btn-home:hover {
+  transform: translateY(-4px);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 700px) {
+  header {
+    padding-bottom: 40px;
+  }
+
+  header h1 {
+    font-size: 2.9rem;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .module-card {
+    padding: 25px;
+
+    border-radius: 22px;
+  }
+
+  .leaderboard-section {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  header,
+  .course-grid,
+  .leaderboard-section,
+  .back-btn-container {
+    width: calc(100% - 22px);
+  }
+
+  .btn-home {
+    width: 100%;
+  }
 }
