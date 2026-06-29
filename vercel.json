@@ -3,62 +3,64 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/landing.html"
-    },
-    {
       "source": "/landing",
       "destination": "/landing.html"
     },
-
     {
-      "source": "/terms-and-conditions",
+      "source": "/landing-terms",
       "destination": "/pages/landing-terms.html"
     },
     {
-      "source": "/privacy-policy",
+      "source": "/landing-privacy",
       "destination": "/pages/landing-privacy.html"
     },
     {
-      "source": "/refund-policy",
+      "source": "/landing-refund",
       "destination": "/pages/landing-refund.html"
     },
     {
-      "source": "/disclaimer",
+      "source": "/landing-disclaimer",
       "destination": "/pages/landing-disclaimer.html"
     },
     {
-      "source": "/about-br30",
+      "source": "/landing-about-br30",
       "destination": "/pages/landing-aboutbr30.html"
     },
     {
-      "source": "/contact",
+      "source": "/landing-contact",
       "destination": "/pages/landing-contact.html"
     },
     {
-      "source": "/how-it-works",
+      "source": "/landing-how-it-works",
       "destination": "/pages/landing-how-it-works.html"
     },
     {
-      "source": "/support-community",
+      "source": "/landing-support-community",
       "destination": "/pages/landing-supportcommunity.html"
     },
     {
-      "source": "/verify",
+      "source": "/landing-verify",
       "destination": "/pages/landing-verify.html"
     },
     {
-      "source": "/learn-more",
+      "source": "/landing-learn-more",
       "destination": "/pages/landing-learn-more.html"
     },
     {
-      "source": "/seller-program",
+      "source": "/landing-seller-program",
       "destination": "/pages/landing-view-seller-program.html"
     },
-
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
     {
       "source": "/about",
       "destination": "/pages/about.html"
+    },
+    {
+      "source": "/about-br30",
+      "destination": "/pages/aboutbr30.html"
     },
     {
       "source": "/active-seller",
@@ -89,8 +91,24 @@
       "destination": "/pages/checkout.html"
     },
     {
+      "source": "/contact",
+      "destination": "/pages/contact.html"
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/pages/disclaimer.html"
+    },
+    {
       "source": "/forgot-password",
       "destination": "/pages/forgot.html"
+    },
+    {
+      "source": "/how-it-works",
+      "destination": "/pages/how-it-works.html"
+    },
+    {
+      "source": "/learn-more",
+      "destination": "/pages/learn-more.html"
     },
     {
       "source": "/lifetime-access",
@@ -113,8 +131,16 @@
       "destination": "/pages/premiumcourse.html"
     },
     {
+      "source": "/privacy-policy",
+      "destination": "/pages/privacy.html"
+    },
+    {
       "source": "/profile",
       "destination": "/pages/profile.html"
+    },
+    {
+      "source": "/refund-policy",
+      "destination": "/pages/refund.html"
     },
     {
       "source": "/register",
@@ -165,8 +191,24 @@
       "destination": "/pages/service.html"
     },
     {
+      "source": "/support-community",
+      "destination": "/pages/supportcommunity.html"
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/pages/terms.html"
+    },
+    {
+      "source": "/verify",
+      "destination": "/pages/verify.html"
+    },
+    {
       "source": "/view-alert",
       "destination": "/pages/view-alart.html"
+    },
+    {
+      "source": "/seller-program",
+      "destination": "/pages/view-seller-program.html"
     },
     {
       "source": "/watch",
