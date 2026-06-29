@@ -1,36 +1,14 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
     {
       "source": "/",
       "destination": "/landing.html"
     },
-
     {
       "source": "/landing",
       "destination": "/landing.html"
-    },
-
-    {
-      "source": "/landing-how-it-works",
-      "destination": "/pages/landing-how-it-works.html"
-    },
-    {
-      "source": "/landing-support-community",
-      "destination": "/pages/landing-supportcommunity.html"
-    },
-    {
-      "source": "/landing-verify",
-      "destination": "/pages/landing-verify.html"
-    },
-    {
-      "source": "/landing-learn-more",
-      "destination": "/pages/landing-learn-more.html"
-    },
-    {
-      "source": "/landing-seller-program",
-      "destination": "/pages/landing-view-seller-program.html"
     },
 
     {
@@ -57,7 +35,6 @@
       "source": "/contact",
       "destination": "/pages/landing-contact.html"
     },
-
     {
       "source": "/how-it-works",
       "destination": "/pages/landing-how-it-works.html"
@@ -195,10 +172,9 @@
       "source": "/watch",
       "destination": "/pages/watch.html"
     },
-
     {
       "source": "/(.*)",
-      "destination": "/landing.html"
+      "destination": "/index.html"
     }
   ],
 
