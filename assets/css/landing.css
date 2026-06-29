@@ -15,8 +15,11 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 110px;
 }
-
+.hero-section {
+  padding-top: 120px;
+}
 body {
+  padding-top: 100px;
   font-family: "Inter", sans-serif;
   background: #050607;
   color: #ffffff;
@@ -110,13 +113,18 @@ select {
 }
 
 .bk-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 999;
-  padding: 14px 18px;
-  backdrop-filter: blur(22px);
-  background: rgba(5, 6, 7, 0.72);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+
+  background: rgba(14, 18, 16, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(0, 255, 136, 0.12);
+  transition: all 0.3s ease;
 }
 
 .bk-nav-wrap {

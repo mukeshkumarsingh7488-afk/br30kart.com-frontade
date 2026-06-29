@@ -66,6 +66,14 @@
       "destination": "/index.html"
     },
     {
+      "source": "/about-br30",
+      "destination": "/pages/aboutbr30.html"
+    },
+    {
+      "source": "/verify",
+      "destination": "/pages/verify.html"
+    },
+    {
       "source": "/about",
       "destination": "/pages/about.html"
     },
