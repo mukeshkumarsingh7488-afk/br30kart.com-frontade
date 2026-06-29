@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/landing",
+      "source": "/",
       "destination": "/landing.html"
     },
     {
@@ -51,7 +51,7 @@
       "destination": "/pages/landing-view-seller-program.html"
     },
     {
-      "source": "/",
+      "source": "/dashboard",
       "destination": "/index.html"
     },
     {
