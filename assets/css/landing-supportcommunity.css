@@ -1,0 +1,204 @@
+.bk-support-page {
+  position: relative;
+  padding: 90px 0 120px;
+}
+
+.bk-support-hero {
+  max-width: 920px;
+  margin: 0 auto 68px;
+  text-align: center;
+}
+
+.bk-support-hero h1 {
+  margin-top: 18px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(50px, 6vw, 86px);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  color: #ffffff;
+}
+
+.bk-support-hero h1 span {
+  background: linear-gradient(90deg, #00ff88, #ffd37a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bk-support-lead {
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.bk-support-meta {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.bk-support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.bk-support-card {
+  padding: 30px;
+  border-radius: 32px;
+  background: radial-gradient(circle at 0 0, rgba(0, 255, 136, 0.11), transparent 36%), linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.028));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(22px);
+  transition: 0.3s ease;
+}
+
+.bk-support-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 255, 136, 0.3);
+  box-shadow: 0 38px 100px rgba(0, 255, 136, 0.1);
+}
+
+.bk-support-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  color: #00150a;
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  font-size: 26px;
+  box-shadow: 0 18px 40px rgba(0, 255, 136, 0.18);
+}
+
+.bk-support-icon.gold {
+  background: linear-gradient(135deg, #ffd37a, #fff0bd);
+  box-shadow: 0 18px 40px rgba(255, 211, 122, 0.16);
+}
+
+.bk-support-icon.whatsapp {
+  color: #ffffff;
+  background: linear-gradient(135deg, #13c65f, #25d366);
+  box-shadow: 0 18px 40px rgba(37, 211, 102, 0.18);
+}
+
+.bk-support-card h2 {
+  margin-top: 24px;
+  color: #ffffff;
+  font-size: 25px;
+  letter-spacing: -0.035em;
+}
+
+.bk-support-card p {
+  margin-top: 14px;
+  min-height: 76px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.bk-support-link {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 20px;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #00150a;
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  font-size: 14px;
+  font-weight: 900;
+  text-align: center;
+  word-break: break-word;
+  box-shadow: 0 16px 34px rgba(0, 255, 136, 0.14);
+  transition: 0.25s ease;
+}
+
+.bk-support-link:hover,
+.bk-whatsapp-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.05);
+}
+
+.bk-whatsapp-btn {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 20px;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: linear-gradient(135deg, #13c65f, #25d366);
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: 0 16px 34px rgba(37, 211, 102, 0.16);
+  transition: 0.25s ease;
+}
+
+.bk-support-phone {
+  margin-top: 16px;
+  display: inline-flex;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.bk-support-notice {
+  margin-top: 34px;
+  padding: 22px 26px;
+  border-radius: 26px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(255, 211, 122, 0.075);
+  border: 1px solid rgba(255, 211, 122, 0.16);
+}
+
+.bk-support-notice span {
+  font-size: 26px;
+}
+
+.bk-support-notice p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.bk-support-notice strong {
+  color: #ffd37a;
+}
+
+@media (max-width: 1000px) {
+  .bk-support-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bk-support-card p {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .bk-support-page {
+    padding: 70px 0 90px;
+  }
+
+  .bk-support-hero h1 {
+    font-size: 48px;
+  }
+
+  .bk-support-card {
+    padding: 24px;
+    border-radius: 28px;
+  }
+
+  .bk-support-notice {
+    flex-direction: column;
+  }
+}

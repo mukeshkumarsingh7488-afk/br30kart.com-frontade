@@ -1,0 +1,267 @@
+/* ==========================================
+   BR30 Kart - Seller Program
+========================================== */
+
+.bk-seller-program-page {
+  position: relative;
+  padding: 90px 0 120px;
+}
+
+.bk-seller-program-hero {
+  max-width: 950px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+
+.bk-seller-program-hero h1 {
+  margin-top: 18px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(52px, 6vw, 88px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+
+  background: linear-gradient(90deg, #ffffff, #00ff88, #ffd76b);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bk-seller-program-lead {
+  margin-top: 22px;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+}
+
+.bk-seller-program-text {
+  max-width: 760px;
+  margin: 20px auto;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.9;
+  font-size: 17px;
+}
+
+.bk-seller-program-meta {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 14px;
+}
+
+.bk-seller-program-actions {
+  margin-top: 35px;
+
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* ========================= */
+
+.bk-seller-program-intro {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.bk-seller-program-intro h2 {
+  margin: 18px 0;
+  font-size: 42px;
+  color: #fff;
+}
+
+.bk-seller-program-intro p {
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.9;
+  font-size: 17px;
+}
+
+/* ========================= */
+
+.bk-seller-program-section {
+  margin-bottom: 80px;
+}
+
+.bk-seller-section-head {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.bk-seller-section-head h2 {
+  margin-top: 15px;
+  font-size: 42px;
+  color: #fff;
+}
+
+/* ========================= */
+
+.bk-seller-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.bk-seller-feature-card {
+  position: relative;
+
+  padding: 34px;
+
+  border-radius: 32px;
+
+  background: radial-gradient(circle at top left, rgba(0, 255, 136, 0.12), transparent 35%), linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(22px);
+
+  transition: 0.35s;
+}
+
+.bk-seller-feature-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(0, 255, 136, 0.25);
+
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+}
+
+/* ========================= */
+
+.bk-seller-icon {
+  width: 70px;
+  height: 70px;
+
+  border-radius: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+
+  font-size: 28px;
+
+  color: #00ff88;
+
+  background: rgba(0, 255, 136, 0.08);
+
+  border: 1px solid rgba(0, 255, 136, 0.18);
+}
+
+.bk-seller-icon.gold {
+  color: #ffd76b;
+
+  background: rgba(255, 215, 107, 0.08);
+
+  border: 1px solid rgba(255, 215, 107, 0.18);
+}
+
+/* ========================= */
+
+.bk-seller-feature-card h3 {
+  color: #fff;
+
+  font-size: 28px;
+
+  margin-bottom: 22px;
+}
+
+.bk-seller-feature-card ul {
+  display: grid;
+
+  gap: 14px;
+
+  padding-left: 18px;
+}
+
+.bk-seller-feature-card li {
+  color: rgba(255, 255, 255, 0.72);
+
+  line-height: 1.8;
+}
+
+/* ========================= */
+
+.bk-seller-program-cta {
+  position: relative;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  padding: 70px 35px;
+
+  border-radius: 36px;
+
+  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.12), transparent 60%), linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(24px);
+}
+
+.bk-seller-program-cta h2 {
+  margin: 20px 0;
+
+  color: #fff;
+
+  font-size: 48px;
+}
+
+.bk-seller-program-cta p {
+  max-width: 640px;
+
+  margin: 0 auto 35px;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  line-height: 1.9;
+
+  font-size: 17px;
+}
+
+/* ========================= */
+
+@media (max-width: 950px) {
+  .bk-seller-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================= */
+
+@media (max-width: 768px) {
+  .bk-seller-program-page {
+    padding: 70px 0 90px;
+  }
+
+  .bk-seller-program-hero h1 {
+    font-size: 56px;
+  }
+
+  .bk-seller-program-intro h2 {
+    font-size: 34px;
+  }
+
+  .bk-seller-section-head h2 {
+    font-size: 34px;
+  }
+
+  .bk-seller-feature-card {
+    padding: 28px;
+
+    border-radius: 26px;
+  }
+
+  .bk-seller-feature-card h3 {
+    font-size: 24px;
+  }
+
+  .bk-seller-program-cta {
+    padding: 55px 24px;
+  }
+
+  .bk-seller-program-cta h2 {
+    font-size: 36px;
+  }
+}

@@ -1,0 +1,304 @@
+/* ===========================================================
+   BR30 Kart - How It Works
+=========================================================== */
+
+.bk-how-page {
+  position: relative;
+  padding: 90px 0 120px;
+}
+
+.bk-how-hero {
+  max-width: 950px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+
+.bk-how-hero h1 {
+  margin-top: 18px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  background: linear-gradient(90deg, #fff, #00ff88, #ffd37a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bk-how-lead {
+  margin-top: 22px;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.bk-how-text {
+  max-width: 760px;
+  margin: 20px auto 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.bk-how-meta {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===================================================== */
+
+.bk-how-roles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 34px;
+}
+
+/* ===================================================== */
+
+.bk-how-role-card {
+  position: relative;
+  padding: 38px;
+  border-radius: 34px;
+
+  background: radial-gradient(circle at 0 0, rgba(0, 255, 136, 0.12), transparent 38%), linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+
+  transition: 0.35s;
+}
+
+.bk-how-role-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 255, 136, 0.25);
+  box-shadow: 0 40px 100px rgba(0, 255, 136, 0.1);
+}
+
+.bk-how-role-head {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 34px;
+}
+
+.bk-how-role-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 34px;
+
+  background: linear-gradient(135deg, #00ff88, #6effba);
+}
+
+.bk-how-role-head p {
+  color: #00ff88;
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bk-how-role-head h2 {
+  margin-top: 6px;
+  color: #fff;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+/* ===================================================== */
+
+.bk-how-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bk-how-step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+
+  padding: 22px;
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: 0.25s;
+}
+
+.bk-how-step:hover {
+  transform: translateX(8px);
+  border-color: rgba(0, 255, 136, 0.22);
+}
+
+.bk-how-step-count {
+  min-width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: 900;
+
+  color: #00140b;
+
+  background: linear-gradient(135deg, #00ff88, #b4ffd8);
+}
+
+.bk-how-step-text h4 {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.bk-how-step-text p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+.bk-how-step-text b {
+  color: #00ff88;
+}
+
+/* ===================================================== */
+
+.bk-how-admin-note {
+  margin-top: 16px;
+
+  padding: 18px 20px;
+
+  border-radius: 16px;
+
+  background: rgba(255, 211, 122, 0.08);
+
+  border: 1px solid rgba(255, 211, 122, 0.18);
+
+  color: #ffd37a;
+
+  line-height: 1.8;
+}
+
+/* ===================================================== */
+
+.bk-how-inline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 18px;
+
+  color: #00ff88;
+
+  font-weight: 800;
+}
+
+.bk-how-inline-link:hover {
+  color: #fff;
+}
+
+/* ===================================================== */
+
+.bk-how-cta {
+  margin-top: 80px;
+
+  text-align: center;
+
+  padding: 60px;
+
+  border-radius: 36px;
+
+  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.13), transparent 60%), linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(20px);
+}
+
+.bk-how-cta h2 {
+  margin-top: 16px;
+  color: #fff;
+  font-size: 44px;
+}
+
+.bk-how-cta p {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 18px;
+}
+
+.bk-how-actions {
+  margin-top: 34px;
+
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+
+  flex-wrap: wrap;
+}
+
+/* ===================================================== */
+
+@media (max-width: 1000px) {
+  .bk-how-roles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .bk-how-page {
+    padding: 70px 0 90px;
+  }
+
+  .bk-how-role-card {
+    padding: 24px;
+  }
+
+  .bk-how-role-head {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bk-how-role-head h2 {
+    font-size: 26px;
+  }
+
+  .bk-how-step {
+    flex-direction: column;
+  }
+
+  .bk-how-step-count {
+    margin-bottom: 10px;
+  }
+
+  .bk-how-cta {
+    padding: 36px 22px;
+  }
+
+  .bk-how-cta h2 {
+    font-size: 34px;
+  }
+
+  .bk-how-actions {
+    flex-direction: column;
+  }
+
+  .bk-how-actions .bk-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
