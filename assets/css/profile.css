@@ -49,6 +49,52 @@ body::before {
   background-image: linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
   background-size: 42px 42px;
 }
+#vipBadgeContainer a,
+#vipBadgeContainer .upgrade-vip,
+#vipBadgeContainer .vip-upgrade,
+#vipBadgeContainer span a {
+  color: #b026ff !important;
+  font-weight: 900;
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  animation: vipBlink 1.4s ease-in-out infinite;
+  text-shadow:
+    0 0 8px rgba(176, 38, 255, 0.45),
+    0 0 18px rgba(176, 38, 255, 0.25);
+}
+
+#vipBadgeContainer a:hover,
+#vipBadgeContainer .upgrade-vip:hover,
+#vipBadgeContainer .vip-upgrade:hover {
+  color: #d875ff !important;
+  transform: translateY(-1px);
+}
+
+@keyframes vipBlink {
+  0% {
+    opacity: 0.55;
+    text-shadow:
+      0 0 6px rgba(176, 38, 255, 0.25),
+      0 0 14px rgba(176, 38, 255, 0.12);
+  }
+
+  50% {
+    opacity: 1;
+    text-shadow:
+      0 0 10px rgba(176, 38, 255, 0.75),
+      0 0 24px rgba(176, 38, 255, 0.45);
+  }
+
+  100% {
+    opacity: 0.55;
+    text-shadow:
+      0 0 6px rgba(176, 38, 255, 0.25),
+      0 0 14px rgba(176, 38, 255, 0.12);
+  }
+}
 
 .profile-card {
   width: 100%;

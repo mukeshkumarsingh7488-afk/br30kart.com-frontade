@@ -226,7 +226,7 @@ function updateUserStatus(userData) {
     vipContainer.innerHTML = `
       <div class="standard-badge">
           <span class="status-label">Standard Member</span>
-        <a href="/#Premium-Trading-Courses" class="upgrade-link"> Upgrade to VIP <i class="fas fa-arrow-right"></i></a>
+        <a href="/home#Premium-Trading-Courses" class="upgrade-link"> Upgrade to VIP <i class="fas fa-arrow-right"></i></a>
       </div>`;
   }
 }
