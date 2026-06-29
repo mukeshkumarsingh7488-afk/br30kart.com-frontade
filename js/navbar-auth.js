@@ -1,5 +1,4 @@
 //#region Navbar Authentication
-//#region Navbar Authentication
 document.addEventListener("DOMContentLoaded", () => {
   const navAccountBtn = document.getElementById("navAccountBtn");
   const loginRegisterLink = document.getElementById("loginRegisterLink");
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       localStorage.clear();
 
-      window.location.href = "/home";
+      window.location.href = "/";
     });
   }
 });
