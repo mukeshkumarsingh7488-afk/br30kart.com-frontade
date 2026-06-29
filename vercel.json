@@ -17,47 +17,47 @@
     },
 
     {
-      "source": "/terms-and-conditions",
+      "source": "/company/terms-and-conditions",
       "destination": "/pages/landing-terms.html"
     },
     {
-      "source": "/privacy-policy",
+      "source": "/company/privacy-policy",
       "destination": "/pages/landing-privacy.html"
     },
     {
-      "source": "/refund-policy",
+      "source": "/company/refund-policy",
       "destination": "/pages/landing-refund.html"
     },
     {
-      "source": "/disclaimer",
+      "source": "/company/disclaimer",
       "destination": "/pages/landing-disclaimer.html"
     },
     {
-      "source": "/about-br30",
+      "source": "/company/about-br30",
       "destination": "/pages/landing-aboutbr30.html"
     },
     {
-      "source": "/contact",
+      "source": "/company/contact",
       "destination": "/pages/landing-contact.html"
     },
     {
-      "source": "/how-it-works",
+      "source": "/company/how-it-works",
       "destination": "/pages/landing-how-it-works.html"
     },
     {
-      "source": "/support-community",
+      "source": "/company/support-community",
       "destination": "/pages/landing-supportcommunity.html"
     },
     {
-      "source": "/verify",
+      "source": "/company/verify",
       "destination": "/pages/landing-verify.html"
     },
     {
-      "source": "/learn-more",
+      "source": "/company/learn-more",
       "destination": "/pages/landing-learn-more.html"
     },
     {
-      "source": "/seller-program",
+      "source": "/company/seller-program",
       "destination": "/pages/landing-view-seller-program.html"
     },
 
@@ -172,6 +172,42 @@
     {
       "source": "/services",
       "destination": "/pages/service.html"
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/pages/terms.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/pages/privacy.html"
+    },
+    {
+      "source": "/refund-policy",
+      "destination": "/pages/refund.html"
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/pages/disclaimer.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/pages/contact.html"
+    },
+    {
+      "source": "/how-it-works",
+      "destination": "/pages/how-it-works.html"
+    },
+    {
+      "source": "/learn-more",
+      "destination": "/pages/learn-more.html"
+    },
+    {
+      "source": "/seller-program",
+      "destination": "/pages/view-seller-program.html"
+    },
+    {
+      "source": "/support-community",
+      "destination": "/pages/supportcommunity.html"
     },
     {
       "source": "/view-alert",

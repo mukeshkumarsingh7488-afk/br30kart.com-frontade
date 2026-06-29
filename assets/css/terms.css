@@ -1,8 +1,10 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
 }
 html,
 body,
@@ -14,109 +16,234 @@ body,
   -ms-user-select: none;
   user-select: none;
 }
-
 img {
   -webkit-user-drag: none;
 }
+:root {
+  --green: #00ff88;
+  --green2: #80ffc1;
+  --text-gray: #b8c8bf;
+  --white: #fff;
+}
 body {
-  background: #050505;
+  margin: 0;
+  background: #020604;
   color: #fff;
-  padding: 0;
-  min-height: 100vh;
+  font-family:
+    Inter,
+    Poppins,
+    Roboto,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  overflow-x: hidden;
 }
 .policy-container {
-  max-width: 950px;
-  width: calc(100% - 40px);
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 22px;
-  padding: 45px;
-  margin: 110px auto 60px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-  animation: fadeUp 0.6s ease-in-out;
+  width: 100%;
+  min-height: 100vh;
+  padding: 88px 0 80px;
+  background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 22%, rgba(0, 185, 105, 0.12), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 50%, #020604 100%);
+  position: relative;
+  overflow: hidden;
 }
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.policy-container:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 255, 136, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at 0% 45%, #000 0%, transparent 36%), radial-gradient(circle at 100% 72%, #000 0%, transparent 38%);
+  -webkit-mask-image: radial-gradient(circle at 0% 45%, #000 0%, transparent 36%), radial-gradient(circle at 100% 72%, #000 0%, transparent 38%);
+}
+.policy-container:after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: -150px;
+  top: 150px;
+  border-radius: 999px;
+  background: rgba(0, 255, 136, 0.18);
+  filter: blur(75px);
+  pointer-events: none;
+}
+.policy-title,
+.policy-body {
+  width: min(1050px, calc(100% - 32px));
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+.policy-title {
+  text-align: center;
+  padding: 18px 0 42px;
+}
+.policy-title:before {
+  content: "Terms & Conditions • BR30 Kart";
+  display: inline-flex;
+  width: fit-content;
+  margin: 0 auto 18px;
+  padding: 9px 14px;
+  border: 1px solid rgba(0, 255, 136, 0.28);
+  border-radius: 999px;
+  background: rgba(0, 255, 136, 0.08);
+  color: #00ff88;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .policy-title h1 {
-  font-size: 32px;
-  color: #a020f0;
-  text-align: center;
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
+  max-width: 850px;
+  margin: 0 auto 16px;
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  color: #fff;
+  font-weight: 900;
+  text-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.45),
+    0 0 18px rgba(0, 255, 136, 0.1);
 }
-.policy-title .meta {
-  text-align: center;
-  color: #9ca3af;
-  font-size: 13px;
-  margin-bottom: 30px;
+.meta {
+  color: #8fa69a;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+.policy-body {
+  padding: 42px;
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+.policy-body:before {
+  content: "";
+  position: absolute;
+  right: -80px;
+  bottom: -120px;
+  width: 280px;
+  height: 280px;
+  background: rgba(0, 255, 136, 0.12);
+  border-radius: 999px;
+  filter: blur(55px);
+  pointer-events: none;
+}
+.policy-body > * {
+  position: relative;
+  z-index: 1;
 }
 .policy-body p {
-  font-size: 16px;
-  color: #cbd5e1;
+  color: #cfd9d4;
   line-height: 1.9;
-  margin-bottom: 15px;
-  text-align: left;
+  font-size: 1.03rem;
+  margin-bottom: 16px;
+  font-weight: 560;
 }
 .policy-body h3 {
-  font-size: 18px;
-  color: #ffffff;
-  margin-top: 30px;
-  margin-bottom: 12px;
-  font-weight: 600;
-  border-left: 4px solid #a020f0;
-  padding-left: 12px;
+  margin: 30px 0 14px;
+  color: #fff;
+  font-size: 1.28rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  text-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+.policy-body h3:first-of-type {
+  margin-top: 22px;
 }
 .policy-body ul {
-  margin-left: 22px;
-  margin-bottom: 15px;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin: 10px 0 18px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: rgba(0, 255, 136, 0.045);
+  border: 1px solid rgba(0, 255, 136, 0.13);
 }
-.policy-body ul li {
-  font-size: 15px;
-  color: #cbd5e1;
-  margin-bottom: 8px;
-  line-height: 1.6;
+.policy-body li {
+  position: relative;
+  padding-left: 28px;
+  color: #b8c8bf;
+  line-height: 1.7;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.policy-body li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00ff88;
+  font-weight: 950;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.35);
 }
 .policy-body b {
-  color: #a020f0;
-  font-weight: 600;
+  color: #fff;
+}
+.policy-body hr {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 32px 0 18px;
 }
 .btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 13px 32px;
-  background: #a020f0;
-  color: #fff;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin: 28px auto 0;
+  padding: 0 22px;
+  border-radius: 999px;
   text-decoration: none;
-  border-radius: 12px;
-  font-weight: 600;
-  transition: 0.3s ease;
-  border: 1px solid #a020f0;
+  font-weight: 950;
+  color: #00170c;
+  background: linear-gradient(135deg, #00ff88, #80ffc1);
+  box-shadow: 0 18px 45px rgba(0, 255, 136, 0.22);
+  transition: 0.25s;
 }
 .btn:hover {
-  background: transparent;
-  color: #a020f0;
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(160, 32, 240, 0.35);
 }
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .policy-container {
-    padding: 30px 20px;
+    padding: 64px 0 54px;
+  }
+  .policy-title {
+    padding-bottom: 32px;
+  }
+  .policy-body {
+    padding: 32px;
+    border-radius: 28px;
+  }
+}
+@media (max-width: 560px) {
+  .policy-title,
+  .policy-body {
+    width: min(100% - 22px, 1050px);
   }
   .policy-title h1 {
-    font-size: 24px;
+    font-size: 2.35rem;
+    line-height: 0.98;
+  }
+  .policy-body {
+    padding: 24px;
+    border-radius: 24px;
   }
   .policy-body p {
-    font-size: 14px;
+    font-size: 0.98rem;
   }
-  .policy-body h3 {
-    font-size: 16px;
+  .policy-body ul {
+    padding: 16px;
+  }
+  .btn {
+    width: 100%;
   }
 }
