@@ -37,11 +37,8 @@ body {
   background: radial-gradient(circle at top left, rgba(0, 255, 136, 0.16), transparent 30%), radial-gradient(circle at bottom right, rgba(0, 255, 136, 0.12), transparent 35%), linear-gradient(180deg, #020604, #04120b, #020604);
   color: #fff;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow-x: hidden;
-  padding: 40px 18px;
+  padding: 110px 18px 60px;
 }
 
 body::before {
@@ -56,6 +53,8 @@ body::before {
 .profile-card {
   width: 100%;
   max-width: 520px;
+  min-height: auto;
+  margin: 0 auto;
   padding: 45px 35px;
   border-radius: 30px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
