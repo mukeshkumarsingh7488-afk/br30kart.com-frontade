@@ -17,51 +17,6 @@
     },
 
     {
-      "source": "/landing-terms",
-      "destination": "/pages/landing-terms.html"
-    },
-    {
-      "source": "/landing-privacy",
-      "destination": "/pages/landing-privacy.html"
-    },
-    {
-      "source": "/landing-refund",
-      "destination": "/pages/landing-refund.html"
-    },
-    {
-      "source": "/landing-disclaimer",
-      "destination": "/pages/landing-disclaimer.html"
-    },
-    {
-      "source": "/landing-about-br30",
-      "destination": "/pages/landing-aboutbr30.html"
-    },
-    {
-      "source": "/landing-contact",
-      "destination": "/pages/landing-contact.html"
-    },
-    {
-      "source": "/landing-how-it-works",
-      "destination": "/pages/landing-how-it-works.html"
-    },
-    {
-      "source": "/landing-support-community",
-      "destination": "/pages/landing-supportcommunity.html"
-    },
-    {
-      "source": "/landing-verify",
-      "destination": "/pages/landing-verify.html"
-    },
-    {
-      "source": "/landing-learn-more",
-      "destination": "/pages/landing-learn-more.html"
-    },
-    {
-      "source": "/landing-seller-program",
-      "destination": "/pages/landing-view-seller-program.html"
-    },
-
-    {
       "source": "/terms-and-conditions",
       "destination": "/pages/landing-terms.html"
     },
@@ -225,18 +180,6 @@
     {
       "source": "/watch",
       "destination": "/pages/watch.html"
-    },
-    {
-      "rewrites": [
-        {
-          "source": "/home",
-          "destination": "/index.html"
-        },
-        {
-          "source": "/(.*)",
-          "destination": "/index.html"
-        }
-      ]
     }
   ],
 
