@@ -14,14 +14,14 @@
 }
 
 .bk-seller-program-hero h1 {
-  margin-top: 18px;
+  margin-top: 0;
+  padding-top: 8px;
+  padding-bottom: 16px;
   font-family: "Playfair Display", serif;
   font-size: clamp(52px, 6vw, 88px);
-  line-height: 0.95;
+  line-height: 1.08;
   letter-spacing: -0.05em;
-
   background: linear-gradient(90deg, #ffffff, #00ff88, #ffd76b);
-
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -237,6 +237,11 @@
 
   .bk-seller-program-hero h1 {
     font-size: 56px;
+    margin-top: 0;
+    padding-top: 8px;
+    padding-bottom: 16px;
+    font-size: 56px;
+    line-height: 1.08;
   }
 
   .bk-seller-program-intro h2 {
