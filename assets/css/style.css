@@ -59,6 +59,24 @@ section:first-of-type {
   margin: 0 auto;
   gap: 15px;
 }
+.header-container {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.logo-title a {
+  gap: 10px;
+}
+
+.logo-text {
+  margin-left: 0 !important;
+  white-space: nowrap;
+}
+
+.user-dropdown .dropdown-content {
+  right: 0;
+  left: auto;
+}
 .logo-title a {
   display: flex;
   align-items: center;

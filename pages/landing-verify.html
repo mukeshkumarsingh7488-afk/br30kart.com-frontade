@@ -1,111 +1,80 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Official Verification | BR30 Kart</title>
-  <meta name="description" content="Verify BR30 Kart certificate authenticity and official course completion status." />
-  <meta name="robots" content="noindex, nofollow" />
-
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="../assets/css/landing.css" />
-  <link rel="stylesheet" href="../assets/css/landing-verify.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-  <script src="https://unpkg.com/html5-qrcode" defer></script>
-</head>
-
-<body class="bk-no-select">
-  <div class="bk-mouse-glow" id="mouseGlow"></div>
-
-  <div class="bk-bg" aria-hidden="true">
-    <span class="bk-orb orb-one"></span>
-    <span class="bk-orb orb-two"></span>
-    <span class="bk-orb orb-three"></span>
-    <div class="bk-grid-bg"></div>
-  </div>
-
-  <div id="landing-navbar"></div>
-
-  <main class="bk-verify-page">
-    <section class="bk-container">
-      <div class="bk-verify-hero">
-        <span class="bk-mini">BR30 Kart Verification</span>
-
-        <h1>Official Verification</h1>
-
-        <p class="bk-verify-lead">
-          Verify your BR30 Kart certificate and official course completion status securely.
-        </p>
-
-        <p class="bk-verify-meta">
-          Funded & Built by Mukesh Raj | BR30 Trader
-        </p>
-      </div>
-
- <article class="bk-verify-card">
-  <div class="bk-verify-logo-wrap">
-    <img src="../assets/images/founder/BR30-Fevicon-Green.png" alt="BR30 Kart Logo" />
-  </div>
-
-        <h2>🛡️ BR30 Verification</h2>
-        <p class="bk-verify-subtitle">Official BR30 Kart Certificate Verification System</p>
-
-        <div class="bk-verify-form">
-          <input type="text" id="certInput" placeholder="ENTER CERTIFICATE NO BR30-123456" />
-          <button type="button" onclick="verifyCert()">VERIFY CERTIFICATE ✅</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Official Verification | BR30 Kart</title>
+    <meta name="description" content="Verify BR30 Kart certificate authenticity and official course completion status." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/landing.css" />
+    <link rel="stylesheet" href="../assets/css/landing-verify.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
+  </head>
+  <body class="bk-no-select">
+    <div class="bk-mouse-glow" id="mouseGlow"></div>
+    <div class="bk-bg" aria-hidden="true">
+      <span class="bk-orb orb-one"></span>
+      <span class="bk-orb orb-two"></span>
+      <span class="bk-orb orb-three"></span>
+      <div class="bk-grid-bg"></div>
+    </div>
+    <div id="landing-navbar"></div>
+    <main class="bk-verify-page">
+      <section class="bk-container">
+        <div class="bk-verify-hero">
+          <span class="bk-mini">BR30 Kart Verification</span>
+          <h1>Official Verification</h1>
+          <p class="bk-verify-lead">Verify your BR30 Kart certificate and official course completion status securely.</p>
+          <p class="bk-verify-meta">Funded & Built by Mukesh Raj | BR30 Trader</p>
         </div>
+        <article class="bk-verify-card">
+          <div class="bk-verify-logo-wrap">
+            <img src="../assets/images/founder/BR30-Fevicon-Green.png" alt="BR30 Kart Logo" />
+          </div>
+          <h2>🛡️ BR30 Verification</h2>
+          <p class="bk-verify-subtitle">Official BR30 Kart Certificate Verification System</p>
 
-        <div class="bk-verify-divider">
-          <span></span>
-          <p>OR SCAN QR CODE</p>
-          <span></span>
-        </div>
-
-        <div class="bk-reader-box">
-          <div id="reader"></div>
-        </div>
-
-        <div id="result-box" class="bk-result-box">
-          <span class="status-tag">OFFICIALLY VERIFIED ✅</span>
-          <h3 id="res-name"></h3>
-          <p id="res-course"></p>
-          <p id="res-date"></p>
-        </div>
-
-        <div class="bk-verify-support">
-          <h3>Need help?</h3>
-          <p>
-            If your certificate is not showing, contact BR30 Kart Support.
-          </p>
-
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=support.br30trader@gmail.com&su=Certificate%20Verification%20Query%20-%20BR30%20Kart&body=Hello%20BR30%20Kart%20Support%20Team,%0A%0AI%20need%20help%20regarding%20certificate%20verification.%0A%0ACertificate%20ID:%20%0AName:%20%0ARegistered%20Email:%20%0A%0AThanks"
-            target="_blank"
-            class="bk-contact-link"
-          >
-            support.br30trader@gmail.com
-          </a>
-        </div>
-      </article>
-    </section>
-  </main>
-
-  <div id="landing-footer"></div>
-
-  <script src="/js/landing-layout.js"></script>
-  <script src="../js/config.js"></script>
-  <script src="../js/verify-logic.js"></script>
-</body>
+          <div class="bk-verify-form">
+            <input type="text" id="certInput" placeholder="ENTER CERTIFICATE NO BR30-123456" />
+            <button type="button" onclick="verifyCert()">VERIFY CERTIFICATE ✅</button>
+          </div>
+          <div class="bk-verify-divider">
+            <span></span>
+            <p>OR SCAN QR CODE</p>
+            <span></span>
+          </div>
+          <div class="bk-reader-box">
+            <div id="reader"></div>
+          </div>
+          <div id="result-box" class="bk-result-box">
+            <span class="status-tag">OFFICIALLY VERIFIED ✅</span>
+            <h3 id="res-name"></h3>
+            <p id="res-course"></p>
+            <p id="res-date"></p>
+          </div>
+          <div class="bk-verify-support">
+            <h3>Need help?</h3>
+            <p>If your certificate is not showing, contact BR30 Kart Support.</p>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support.br30trader@gmail.com&su=Certificate%20Verification%20Query%20-%20BR30%20Kart&body=Hello%20BR30%20Kart%20Support%20Team,%0A%0AI%20need%20help%20regarding%20certificate%20verification.%0A%0ACertificate%20ID:%20%0AName:%20%0ARegistered%20Email:%20%0A%0AThanks" target="_blank" class="bk-contact-link">support.br30trader@gmail.com</a>
+          </div>
+        </article>
+      </section>
+    </main>
+    <div id="landing-footer"></div>
+    <script src="/js/landing-layout.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/verify-logic.js"></script>
+  </body>
 </html>
