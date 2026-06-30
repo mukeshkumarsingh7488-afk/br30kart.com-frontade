@@ -26,9 +26,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
   background: radial-gradient(circle at 0% 55%, rgba(0, 255, 136, 0.24), transparent 30%), radial-gradient(circle at 100% 80%, rgba(0, 255, 136, 0.22), transparent 32%), linear-gradient(135deg, #020604 0%, #050805 45%, #020604 100%);
   position: relative;
   color: #fff;
@@ -55,7 +53,7 @@ body:after {
 .container {
   width: min(430px, calc(100% - 32px)) !important;
   max-width: 430px !important;
-  margin: 90px auto 70px !important;
+  margin: 140px auto 90px !important;
   padding: 40px 34px 32px !important;
   position: relative;
   z-index: 2;
@@ -68,6 +66,11 @@ body:after {
     0 28px 80px rgba(0, 0, 0, 0.62),
     0 0 55px rgba(0, 255, 136, 0.12);
   backdrop-filter: blur(20px);
+}
+#landing-footer,
+.premium-footer,
+.bk-footer {
+  width: 100%;
 }
 .container:before {
   content: "";
@@ -172,7 +175,7 @@ button:active {
 
   .container {
     width: min(100% - 24px, 430px) !important;
-    margin: 35px auto 55px !important;
+    margin: 115px auto 65px !important;
     padding: 30px 22px !important;
     border-radius: 24px;
   }

@@ -1139,3 +1139,15 @@ select {
   transform: translateX(4px);
   color: #ff7070 !important;
 }
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo-img {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 10px;
+}
