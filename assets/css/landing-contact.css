@@ -1,6 +1,6 @@
 .bk-contact-page {
   position: relative;
-  padding: 86px 0 110px;
+  padding: 0 0 110px;
 }
 
 .bk-contact-hero {
@@ -10,7 +10,7 @@
 }
 
 .bk-contact-hero h1 {
-  margin-top: 20px;
+  margin-top: 0;
   font-family: "Playfair Display", serif;
   font-size: clamp(44px, 6vw, 82px);
   line-height: 0.95;
@@ -144,7 +144,7 @@
 
 @media (max-width: 720px) {
   .bk-contact-page {
-    padding: 62px 0 82px;
+    padding: 0 0 82px;
   }
 
   .bk-contact-card {

@@ -1,6 +1,6 @@
 .bk-disclaimer-page {
   position: relative;
-  padding: 86px 0 110px;
+  padding: 0 0 110px;
 }
 
 .bk-disclaimer-hero {
@@ -10,7 +10,7 @@
 }
 
 .bk-disclaimer-hero h1 {
-  margin-top: 20px;
+  margin-top: 0;
   font-family: "Playfair Display", serif;
   font-size: clamp(42px, 5.6vw, 78px);
   line-height: 0.95;
@@ -116,7 +116,7 @@
 
 @media (max-width: 720px) {
   .bk-disclaimer-page {
-    padding: 62px 0 82px;
+    padding: 0 0 82px;
   }
 
   .bk-disclaimer-card {
@@ -124,6 +124,8 @@
   }
 
   .bk-disclaimer-hero h1 {
+    font-size: 46px;
+    margin-top: 0;
     font-size: 46px;
   }
 

@@ -42,7 +42,7 @@ body {
 .legal-page {
   width: 100%;
   min-height: 100vh;
-  padding: 88px 0 80px;
+  padding: 0 0 80px;
   background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 22%, rgba(0, 185, 105, 0.12), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 50%, #020604 100%);
   position: relative;
   overflow: hidden;
@@ -79,7 +79,7 @@ body {
 }
 .legal-hero {
   text-align: center;
-  padding: 18px 0 42px;
+  padding: 0 0 42px;
 }
 .legal-tag {
   display: inline-flex;
@@ -204,7 +204,7 @@ body {
 }
 @media (max-width: 760px) {
   .legal-page {
-    padding: 64px 0 54px;
+    padding: 0 0 54px;
   }
   .disclaimer-card {
     padding: 32px;

@@ -43,7 +43,7 @@ body {
 .container {
   width: 100%;
   min-height: 100vh;
-  padding: 88px 0 80px;
+  padding: 0 0 80px;
   background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 18%, rgba(0, 185, 105, 0.12), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 50%, #020604 100%);
   position: relative;
   overflow: hidden;
@@ -81,7 +81,7 @@ body {
 }
 .header {
   text-align: center;
-  padding: 18px 0 52px;
+  padding: 0 0 52px;
 }
 .page-badge {
   display: inline-flex;
@@ -274,7 +274,7 @@ body {
 }
 @media (max-width: 760px) {
   .container {
-    padding: 64px 0 54px;
+    padding: 0 0 32px;
   }
   .header {
     padding-bottom: 38px;
@@ -301,6 +301,12 @@ body {
   }
   .hero-desc {
     font-size: 1rem;
+  }
+  .container {
+    padding: 0 0 40px;
+  }
+  .header {
+    padding: 0 0 24px;
   }
   .step {
     padding: 22px;

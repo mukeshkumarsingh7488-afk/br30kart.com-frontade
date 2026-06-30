@@ -4,7 +4,7 @@
 
 .bk-seller-program-page {
   position: relative;
-  padding: 90px 0 120px;
+  padding: 0 0 120px;
 }
 
 .bk-seller-program-hero {
@@ -232,7 +232,7 @@
 
 @media (max-width: 768px) {
   .bk-seller-program-page {
-    padding: 70px 0 90px;
+    padding: 0 0 90px;
   }
 
   .bk-seller-program-hero h1 {
@@ -249,7 +249,6 @@
 
   .bk-seller-feature-card {
     padding: 28px;
-
     border-radius: 26px;
   }
 

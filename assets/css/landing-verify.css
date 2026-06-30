@@ -1,6 +1,6 @@
 .bk-verify-page {
   position: relative;
-  padding: 90px 0 120px;
+  padding: 0 0 120px;
 }
 
 .bk-verify-hero {
@@ -235,7 +235,7 @@
 
 @media (max-width: 720px) {
   .bk-verify-page {
-    padding: 70px 0 90px;
+    padding: 0 0 90px;
   }
 
   .bk-verify-hero h1 {

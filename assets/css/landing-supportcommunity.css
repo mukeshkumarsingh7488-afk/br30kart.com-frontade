@@ -1,6 +1,6 @@
 .bk-support-page {
   position: relative;
-  padding: 90px 0 120px;
+  padding: 0 0 120px;
 }
 
 .bk-support-hero {
@@ -186,7 +186,7 @@
 
 @media (max-width: 720px) {
   .bk-support-page {
-    padding: 70px 0 90px;
+    padding: 0 0 90px;
   }
 
   .bk-support-hero h1 {

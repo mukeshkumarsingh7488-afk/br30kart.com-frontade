@@ -1,6 +1,6 @@
 .bk-learn-page {
   position: relative;
-  padding: 90px 0 120px;
+  padding: 0 0 120px;
 }
 
 .bk-learn-hero {
@@ -139,11 +139,12 @@
 
 @media (max-width: 720px) {
   .bk-learn-page {
-    padding: 70px 0 90px;
+    padding: 0 0 90px;
   }
 
   .bk-learn-hero h1 {
     font-size: 46px;
+    margin-top: 0;
   }
 
   .bk-learn-step {
