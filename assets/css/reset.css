@@ -26,8 +26,9 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: radial-gradient(circle at 0% 55%, rgba(0, 255, 136, 0.24), transparent 30%), radial-gradient(circle at 100% 80%, rgba(0, 255, 136, 0.22), transparent 32%), linear-gradient(135deg, #020604 0%, #050805 45%, #020604 100%);
   position: relative;
   color: #fff;
@@ -53,7 +54,7 @@ body:after {
 .container {
   width: min(430px, calc(100% - 32px)) !important;
   max-width: 430px !important;
-  margin: 40px auto !important;
+  margin: 90px auto 70px !important;
   padding: 40px 34px 32px !important;
   position: relative;
   z-index: 2;
@@ -147,13 +148,16 @@ button:active {
 }
 @media (max-width: 480px) {
   body {
-    padding: 30px 12px;
+    padding: 0;
   }
+
   .container {
-    width: 100% !important;
+    width: min(100% - 24px, 430px) !important;
+    margin: 35px auto 55px !important;
     padding: 30px 22px !important;
     border-radius: 24px;
   }
+
   h2 {
     font-size: 1.75rem;
   }

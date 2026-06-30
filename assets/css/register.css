@@ -54,7 +54,7 @@ body:after {
 .container {
   width: min(460px, calc(100% - 32px)) !important;
   max-width: 460px !important;
-  margin: 40px auto !important;
+  margin: 90px auto 70px !important;
   padding: 38px 34px 32px !important;
   position: relative;
   z-index: 2;
@@ -217,23 +217,29 @@ button:active {
   body {
     padding: 30px 12px;
   }
+
   .container {
     width: 100% !important;
+    margin: 35px auto 55px !important;
     padding: 30px 22px !important;
     border-radius: 24px;
   }
+
   .auth-header-row {
     align-items: flex-start;
     flex-direction: column;
   }
+
   .container h2,
   .register-heading,
   .auth-header-row .register-heading {
     font-size: 1.75rem;
   }
+
   .role-btn-small {
     width: auto;
   }
+
   .input-box {
     margin-bottom: 14px;
   }

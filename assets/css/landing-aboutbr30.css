@@ -21,6 +21,39 @@
   color: transparent;
 }
 
+.bk-about-hero {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.bk-about-hero .bk-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 22px;
+  margin-bottom: 24px;
+
+  border-radius: 999px;
+
+  color: #00ff88;
+  font-size: 15px;
+  font-weight: 800;
+
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.16);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 10px 28px rgba(0, 255, 136, 0.08);
+
+  backdrop-filter: blur(14px);
+}
+
+.bk-about-hero h1 {
+  margin: 0;
+}
+
 .bk-about-card {
   max-width: 1040px;
   margin: 0 auto;
