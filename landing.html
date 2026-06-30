@@ -1,395 +1,400 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>BR30 Kart | Premium Digital Marketplace for Traders</title>
-  <meta name="description" content="BR30 Kart is a premium digital marketplace for trading courses, ebooks, indicators, mentorship, strategies and creator-led financial education products." />
-
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
-
-  <link rel="stylesheet" href="assets/css/landing.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-</head>
-
-<body class="bk-no-select">
-  <div class="bk-mouse-glow" id="mouseGlow"></div>
-
-  <div class="bk-bg" aria-hidden="true">
-    <span class="bk-orb orb-one"></span>
-    <span class="bk-orb orb-two"></span>
-    <span class="bk-orb orb-three"></span>
-    <div class="bk-grid-bg"></div>
-  </div>
-
-  <div id="landing-navbar"></div>
-
-  <main>
-    <section class="bk-hero" id="home">
-      <div class="bk-container bk-hero-grid">
-        <div class="bk-hero-copy">
-          <div class="bk-chip">
-            <i class="fa-solid fa-bolt"></i>
-            Premium Digital Marketplace for Traders
-          </div>
-
-          <h1>
-            Buy. Sell. Grow.
-            <span>All inside BR30 Kart.</span>
-          </h1>
-
-          <p>
-            A premium marketplace for trading courses, ebooks, indicators,
-            strategies, mentorship and creator-led learning products.
-          </p>
-
-          <div class="bk-hero-buttons">
-            <a href="#marketplace" class="bk-btn bk-btn-primary">
-              Explore Marketplace
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-            <a href="pages/landing-view-seller-program.html" class="bk-btn bk-btn-glass">
-              Become a Seller
-            </a>
-          </div>
-
-          <div class="bk-hero-proof">
-            <div><strong>6K+</strong><span>Happy Users</span></div>
-            <div><strong>Verified</strong><span>Sellers</span></div>
-            <div><strong>Secure</strong><span>Payments</span></div>
-          </div>
-        </div>
-
-        <div class="bk-hero-showcase">
-          <div class="bk-product-card floating-card card-one">
-            <span class="bk-card-tag">Premium Course</span>
-            <h3>Price Action Mastery</h3>
-            <p>Advanced market structure, entries, risk and psychology.</p>
-            <div class="bk-card-row"><span>★★★★★</span><b>₹4,999</b></div>
-          </div>
-
-          <div class="bk-product-card floating-card card-two">
-            <span class="bk-card-tag purple-tag">Indicator Bundle</span>
-            <h3>BR30 Trading Tools</h3>
-            <p>Smart tools for serious learners and active traders.</p>
-            <div class="bk-card-row"><span>★★★★★</span><b>₹1,999</b></div>
-          </div>
-
-          <div class="bk-product-card floating-card card-three">
-            <span class="bk-card-tag gold-tag">E-Book / PDF</span>
-            <h3>Trading Psychology Guide</h3>
-            <p>Discipline, patience and execution framework.</p>
-            <div class="bk-card-row"><span>★★★★★</span><b>₹999</b></div>
-          </div>
-
-          <div class="bk-showcase-core">
-            <div class="bk-core-ring"></div>
-            <h2>BR30</h2>
-            <p>Kart Marketplace</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bk-trust-bar">
-      <div class="bk-trust-track">
-        <span>🔥 Premium Digital Marketplace</span>
-        <span>Verified Sellers</span>
-        <span>Secure Payments</span>
-        <span>Instant Access</span>
-        <span>Trading Courses</span>
-        <span>E-Books</span>
-        <span>Mentorship</span>
-        <span>BR30 Ecosystem</span>
-      </div>
-    </section>
-
-    <section class="bk-search-zone">
-      <div class="bk-container">
-        <div class="bk-search-card">
-          <div>
-            <span class="bk-mini">Smart Explore</span>
-            <h2>Find your next trading product faster.</h2>
-          </div>
-
-          <div class="bk-search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input id="landingSearch" type="text" placeholder="Search courses, ebooks, crash course..." />
-            <button id="landingSearchBtn" type="button">Search</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bk-stats">
-      <div class="bk-container bk-stats-grid">
-        <div class="bk-stat-card"><strong data-count="6000">0</strong><span>Happy Users</span></div>
-        <div class="bk-stat-card"><strong data-count="500">0</strong><span>Digital Products</span></div>
-        <div class="bk-stat-card"><strong data-count="100">0</strong><span>Verified Sellers</span></div>
-        <div class="bk-stat-card"><strong>4.9★</strong><span>Community Rating</span></div>
-      </div>
-    </section>
-
-    <section class="bk-strip">
-      <div class="bk-container bk-strip-grid">
-        <span>Trading Courses</span>
-        <span>Indicators</span>
-        <span>Ebooks</span>
-        <span>Mentorship</span>
-        <span>Strategies</span>
-        <span>Communities</span>
-      </div>
-    </section>
-
-    <section class="bk-section" id="marketplace">
-      <div class="bk-container">
-        <div class="bk-section-head">
-          <span class="bk-mini">Marketplace</span>
-          <h2>Everything a trader needs, in one premium ecosystem.</h2>
-          <p>Explore curated products created for serious learning, better execution and long-term growth.</p>
-        </div>
-
-        <div class="bk-category-grid">
-          <a href="#Premium-Trading-Courses" class="bk-category-card">
-            <i class="fa-solid fa-crown"></i>
-            <h3>Premium Courses</h3>
-            <p>Advanced trading education and structured programs.</p>
-          </a>
-
-          <a href="#Trading-Standard-Course" class="bk-category-card">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <h3>Standard Courses</h3>
-            <p>Step-by-step learning for beginners and learners.</p>
-          </a>
-
-          <a href="#Crash-Course" class="bk-category-card">
-            <i class="fa-solid fa-rocket"></i>
-            <h3>Crash Courses</h3>
-            <p>Fast learning modules for focused topics.</p>
-          </a>
-
-          <a href="#pdfs" class="bk-category-card">
-            <i class="fa-solid fa-book-open"></i>
-            <h3>E-Books / PDFs</h3>
-            <p>Downloadable guides, notes and trading resources.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
- <section class="bk-section bk-live-products">
-  <div class="bk-container">
-
-    <div class="bk-section-head left">
-      <span class="bk-mini">Live Store</span>
-      <h2>Featured products from verified creators.</h2>
-      <p>These grids stay connected with your existing backend and script.js.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BR30 Kart | Premium Digital Marketplace for Traders</title>
+    <meta name="description" content="BR30 Kart is a premium digital marketplace for trading courses, ebooks, indicators, mentorship, strategies and creator-led financial education products." />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/landing.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+  </head>
+  <body class="bk-no-select">
+    <div class="bk-mouse-glow" id="mouseGlow"></div>
+    <div class="bk-bg" aria-hidden="true">
+      <span class="bk-orb orb-one"></span>
+      <span class="bk-orb orb-two"></span>
+      <span class="bk-orb orb-three"></span>
+      <div class="bk-grid-bg"></div>
     </div>
-
-<section class="bk-product-section" id="premium-trading-courses">
-  <h2>🎓 Premium Trading Courses</h2>
-  <div class="grid"></div>
-</section>
-
-<section class="bk-product-section" id="trading-standard-courses">
-  <h2>📘 Trading Standard Course</h2>
-  <div class="grid"></div>
-</section>
-
-<section class="bk-product-section" id="crash-courses">
-  <h2>⚡ Crash Course</h2>
-  <div class="grid"></div>
-</section>
-
-<section class="bk-product-section" id="other-digital-products">
-  <h2>📂 Other Digital Products</h2>
-  <div class="grid"></div>
-</section>
-
-<section class="bk-product-section" id="ebooks-pdf">
-  <h2>📕 E-Books / PDF</h2>
-  <div class="grid"></div>
-</section>
-
-  </div>
-</section>
-
-    <section class="bk-section bk-split" id="buyers">
-      <div class="bk-container bk-split-grid">
-        <div class="bk-split-copy">
-          <span class="bk-mini">For Buyers</span>
-          <h2>Learn from verified creators without confusion.</h2>
-          <p>
-            Browse courses, compare products, buy securely and access your
-            learning from your BR30 Kart account.
-          </p>
-
-          <div class="bk-check-list">
-            <span><i class="fa-solid fa-check"></i> Secure payment flow</span>
-            <span><i class="fa-solid fa-check"></i> Instant course access</span>
-            <span><i class="fa-solid fa-check"></i> Mobile friendly learning</span>
-            <span><i class="fa-solid fa-check"></i> Support and community access</span>
-          </div>
-        </div>
-
-        <div class="bk-glass-panel">
-          <h3>Buyer Journey</h3>
-          <div class="bk-flow">
-            <span>Explore</span>
-            <i class="fa-solid fa-arrow-down"></i>
-            <span>Choose</span>
-            <i class="fa-solid fa-arrow-down"></i>
-            <span>Pay Securely</span>
-            <i class="fa-solid fa-arrow-down"></i>
-            <span>Start Learning</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bk-section bk-split sellers" id="sellers">
-      <div class="bk-container bk-split-grid reverse">
-        <div class="bk-glass-panel seller-panel">
-          <h3>Seller System</h3>
-          <div class="bk-seller-metrics">
-            <div><b>80%</b><span>Seller Revenue</span></div>
-            <div><b>20%</b><span>Platform Share</span></div>
-            <div><b>Weekly</b><span>Payout Cycle</span></div>
-            <div><b>KYC</b><span>Verified Access</span></div>
-          </div>
-        </div>
-
-        <div class="bk-split-copy">
-          <span class="bk-mini">For Sellers</span>
-          <h2>Turn your trading knowledge into digital products.</h2>
-          <p>
-            BR30 Kart gives sellers a premium place to list courses, manage
-            sales, view analytics and build a trusted creator brand.
-          </p>
-
-          <div class="bk-check-list">
-            <span><i class="fa-solid fa-check"></i> Seller dashboard</span>
-            <span><i class="fa-solid fa-check"></i> Product management</span>
-            <span><i class="fa-solid fa-check"></i> Analytics and sales records</span>
-            <span><i class="fa-solid fa-check"></i> Payout history tracking</span>
-          </div>
-
-          <a href="pages/landing-view-seller-program.html" class="bk-btn bk-btn-primary">Apply as Seller</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="bk-section bk-reviews">
-      <div class="bk-container">
-        <div class="bk-section-head">
-          <span class="bk-mini">Community Trust</span>
-          <h2>Real feedback from BR30 Kart users.</h2>
-          <p>Review system existing script.js ke saath connected rahega.</p>
-        </div>
-
-        <div class="footer-review-section">
-          <div class="review-flex-container">
-            <div class="review-form-box">
-              <h3>Share Your Experience</h3>
-              <form id="reviewForm">
-                <input type="text" id="userName" placeholder="Your Name" required />
-                <select id="userRating">
-                  <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
-                  <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
-                  <option value="3">⭐⭐⭐ (3 Stars)</option>
-                </select>
-                <textarea id="userComment" placeholder="Write your feedback here..." required></textarea>
-             <button type="submit" id="submitBtn" disabled>Post Review</button>
-              </form>
+    <div id="landing-navbar"></div>
+    <main>
+      <section class="bk-hero" id="home">
+        <div class="bk-container bk-hero-grid">
+          <div class="bk-hero-copy">
+            <div class="bk-chip">
+              <i class="fa-solid fa-bolt"></i>
+              Premium Digital Marketplace for Traders
             </div>
-
-            <div class="review-list-box">
-              <div class="review-title-row">
-                <h3>Community Highlights</h3>
-                <div class="review-count-pill">Total <span id="countNumber"></span></div>
+            <h1>
+              Buy. Sell. Grow.
+              <span>All inside BR30 Kart.</span>
+            </h1>
+            <p>A premium marketplace for trading courses, ebooks, indicators, strategies, mentorship and creator-led learning products.</p>
+            <div class="bk-hero-buttons">
+              <a href="#marketplace" class="bk-btn bk-btn-primary">
+                Explore Marketplace
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="pages/landing-view-seller-program.html" class="bk-btn bk-btn-glass">Become a Seller</a>
+            </div>
+            <div class="bk-hero-proof">
+              <div>
+                <strong>6K+</strong>
+                <span>Happy Users</span>
               </div>
-              <div id="reviewDisplay"></div>
+              <div>
+                <strong>Verified</strong>
+                <span>Sellers</span>
+              </div>
+              <div>
+                <strong>Secure</strong>
+                <span>Payments</span>
+              </div>
+            </div>
+          </div>
+          <div class="bk-hero-showcase">
+            <div class="bk-product-card floating-card card-one">
+              <span class="bk-card-tag">Premium Course</span>
+              <h3>Price Action Mastery</h3>
+              <p>Advanced market structure, entries, risk and psychology.</p>
+              <div class="bk-card-row">
+                <span>★★★★★</span>
+                <b>₹4,999</b>
+              </div>
+            </div>
+            <div class="bk-product-card floating-card card-two">
+              <span class="bk-card-tag purple-tag">Indicator Bundle</span>
+              <h3>BR30 Trading Tools</h3>
+              <p>Smart tools for serious learners and active traders.</p>
+              <div class="bk-card-row">
+                <span>★★★★★</span>
+                <b>₹1,999</b>
+              </div>
+            </div>
+            <div class="bk-product-card floating-card card-three">
+              <span class="bk-card-tag gold-tag">E-Book / PDF</span>
+              <h3>Trading Psychology Guide</h3>
+              <p>Discipline, patience and execution framework.</p>
+              <div class="bk-card-row">
+                <span>★★★★★</span>
+                <b>₹999</b>
+              </div>
+            </div>
+            <div class="bk-showcase-core">
+              <div class="bk-core-ring"></div>
+              <h2>BR30</h2>
+              <p>Kart Marketplace</p>
             </div>
           </div>
         </div>
+      </section>
+      <section class="bk-trust-bar">
+        <div class="bk-trust-track">
+          <span>🔥 Premium Digital Marketplace</span>
+          <span>Verified Sellers</span>
+          <span>Secure Payments</span>
+          <span>Instant Access</span>
+          <span>Trading Courses</span>
+          <span>E-Books</span>
+          <span>Mentorship</span>
+          <span>BR30 Ecosystem</span>
+        </div>
+      </section>
+      <section class="bk-search-zone">
+        <div class="bk-container">
+          <div class="bk-search-card">
+            <div>
+              <span class="bk-mini">Smart Explore</span>
+              <h2>Find your next trading product faster.</h2>
+            </div>
+            <div class="bk-search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input id="landingSearch" type="text" placeholder="Search courses, ebooks, crash course..." />
+              <button id="landingSearchBtn" type="button">Search</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bk-stats">
+        <div class="bk-container bk-stats-grid">
+          <div class="bk-stat-card">
+            <strong data-count="6000">0</strong>
+            <span>Happy Users</span>
+          </div>
+          <div class="bk-stat-card">
+            <strong data-count="500">0</strong>
+            <span>Digital Products</span>
+          </div>
+          <div class="bk-stat-card">
+            <strong data-count="100">0</strong>
+            <span>Verified Sellers</span>
+          </div>
+          <div class="bk-stat-card">
+            <strong>4.9★</strong>
+            <span>Community Rating</span>
+          </div>
+        </div>
+      </section>
+      <section class="bk-strip">
+        <div class="bk-container bk-strip-grid">
+          <span>Trading Courses</span>
+          <span>Indicators</span>
+          <span>Ebooks</span>
+          <span>Mentorship</span>
+          <span>Strategies</span>
+          <span>Communities</span>
+        </div>
+      </section>
+      <section class="bk-section" id="marketplace">
+        <div class="bk-container">
+          <div class="bk-section-head">
+            <span class="bk-mini">Marketplace</span>
+            <h2>Everything a trader needs, in one premium ecosystem.</h2>
+            <p>Explore curated products created for serious learning, better execution and long-term growth.</p>
+          </div>
+          <div class="bk-category-grid">
+            <a href="#Premium-Trading-Courses" class="bk-category-card">
+              <i class="fa-solid fa-crown"></i>
+              <h3>Premium Courses</h3>
+              <p>Advanced trading education and structured programs.</p>
+            </a>
+            <a href="#Trading-Standard-Course" class="bk-category-card">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <h3>Standard Courses</h3>
+              <p>Step-by-step learning for beginners and learners.</p>
+            </a>
+            <a href="#Crash-Course" class="bk-category-card">
+              <i class="fa-solid fa-rocket"></i>
+              <h3>Crash Courses</h3>
+              <p>Fast learning modules for focused topics.</p>
+            </a>
+            <a href="#pdfs" class="bk-category-card">
+              <i class="fa-solid fa-book-open"></i>
+              <h3>E-Books / PDFs</h3>
+              <p>Downloadable guides, notes and trading resources.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="bk-section bk-live-products">
+        <div class="bk-container">
+          <div class="bk-section-head left">
+            <span class="bk-mini">Live Store</span>
+            <h2>Featured products from verified creators.</h2>
+            <p>These grids stay connected with your existing backend and script.js.</p>
+          </div>
+          <section class="bk-product-section" id="premium-trading-courses">
+            <h2>🎓 Premium Trading Courses</h2>
+            <div class="grid"></div>
+          </section>
+          <section class="bk-product-section" id="trading-standard-courses">
+            <h2>📘 Trading Standard Course</h2>
+            <div class="grid"></div>
+          </section>
+          <section class="bk-product-section" id="crash-courses">
+            <h2>⚡ Crash Course</h2>
+            <div class="grid"></div>
+          </section>
+          <section class="bk-product-section" id="other-digital-products">
+            <h2>📂 Other Digital Products</h2>
+            <div class="grid"></div>
+          </section>
+          <section class="bk-product-section" id="ebooks-pdf">
+            <h2>📕 E-Books / PDF</h2>
+            <div class="grid"></div>
+          </section>
+        </div>
+      </section>
+      <section class="bk-section bk-split" id="buyers">
+        <div class="bk-container bk-split-grid">
+          <div class="bk-split-copy">
+            <span class="bk-mini">For Buyers</span>
+            <h2>Learn from verified creators without confusion.</h2>
+            <p>Browse courses, compare products, buy securely and access your learning from your BR30 Kart account.</p>
+            <div class="bk-check-list">
+              <span>
+                <i class="fa-solid fa-check"></i>
+                Secure payment flow
+              </span>
+              <span>
+                <i class="fa-solid fa-check"></i>
+                Instant course access
+              </span>
+              <span>
+                <i class="fa-solid fa-check"></i>
+                Mobile friendly learning
+              </span>
+              <span>
+                <i class="fa-solid fa-check"></i>
+                Support and community access
+              </span>
+            </div>
+          </div>
+          <div class="bk-glass-panel">
+            <h3>Buyer Journey</h3>
+            <div class="bk-flow">
+              <span>Explore</span>
+              <i class="fa-solid fa-arrow-down"></i>
+              <span>Choose</span>
+              <i class="fa-solid fa-arrow-down"></i>
+              <span>Pay Securely</span>
+              <i class="fa-solid fa-arrow-down"></i>
+              <span>Start Learning</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bk-section bk-split sellers" id="sellers">
+        <div class="bk-container bk-split-grid reverse">
+          <div class="bk-glass-panel seller-panel">
+            <h3>Seller System</h3>
+            <div class="bk-seller-metrics">
+              <div>
+                <b>80%</b>
+                <span>Seller Revenue</span>
+              </div>
+              <div>
+                <b>20%</b>
+                <span>Platform Share</span>
+              </div>
+              <div>
+                <b>Weekly</b>
+                <span>Payout Cycle</span>
+              </div>
+              <div>
+                <b>KYC</b>
+                <span>Verified Access</span>
+              </div>
+            </div>
+          </div>
+          <div class="bk-split-copy">
+            <span class="bk-mini">For Sellers</span>
+            <h2>Turn your trading knowledge into digital products.</h2>
+            <p>BR30 Kart gives sellers a premium place to list courses, manage sales, view analytics and build a trusted creator brand.</p>
+            <div class="bk-check-list">
+              <span>
+                <i class="fa-solid fa-check"></i>
+                Seller dashboard
+              </span>
+              <span>
+                <i class="fa-solid fa-check"></i>
+                Product management
+              </span>
+              <span>
+                <i class="fa-solid fa-check"></i>
+                Analytics and sales records
+              </span>
+              <span>
+                <i class="fa-solid fa-check"></i>
+                Payout history tracking
+              </span>
+            </div>
+            <a href="pages/landing-view-seller-program.html" class="bk-btn bk-btn-primary">Apply as Seller</a>
+          </div>
+        </div>
+      </section>
+      <section class="bk-section bk-reviews">
+        <div class="bk-container">
+          <div class="bk-section-head">
+            <span class="bk-mini">Community Trust</span>
+            <h2>Real feedback from BR30 Kart users.</h2>
+            <p>Review system existing script.js ke saath connected rahega.</p>
+          </div>
+          <div class="footer-review-section">
+            <div class="review-flex-container">
+              <div class="review-form-box">
+                <h3>Share Your Experience</h3>
+                <form id="reviewForm">
+                  <input type="text" id="userName" placeholder="Your Name" required />
+                  <select id="userRating">
+                    <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+                    <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+                    <option value="3">⭐⭐⭐ (3 Stars)</option>
+                  </select>
+                  <textarea id="userComment" placeholder="Write your feedback here..." required></textarea>
+                  <button type="submit" id="submitBtn" disabled>Post Review</button>
+                </form>
+              </div>
+              <div class="review-list-box">
+                <div class="review-title-row">
+                  <h3>Community Highlights</h3>
+                  <div class="review-count-pill">
+                    Total
+                    <span id="countNumber"></span>
+                  </div>
+                </div>
+                <div id="reviewDisplay"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="landing-footer"></div>
+    <div id="sellerDetailModal" class="bk-modal">
+      <div class="bk-modal-card">
+        <h2 id="modalSellerName">Seller Name</h2>
+        <p id="modalSellerEmail"></p>
+        <div class="bk-modal-bio">
+          <p id="modalSellerBio"></p>
+        </div>
+        <div id="modalSocialLinks" class="bk-modal-social"></div>
+        <p id="modalSellerAddress"></p>
+        <button onclick="closeSellerModal()" class="bk-btn bk-btn-primary">Close Details</button>
       </div>
-    </section>
-  </main>
-
-  <div id="landing-footer"></div>
-
-  <div id="sellerDetailModal" class="bk-modal">
-    <div class="bk-modal-card">
-      <h2 id="modalSellerName">Seller Name</h2>
-      <p id="modalSellerEmail"></p>
-      <div class="bk-modal-bio">
-        <p id="modalSellerBio"></p>
-      </div>
-      <div id="modalSocialLinks" class="bk-modal-social"></div>
-      <p id="modalSellerAddress"></p>
-      <button onclick="closeSellerModal()" class="bk-btn bk-btn-primary">Close Details</button>
     </div>
-  </div>
-
-  <script src="/js/landing-layout.js"></script>
-  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
-  <script src="/js/navbar-auth.js"></script>
-  <script src="/js/config.js"></script>
-  <script src="/js/script.js"></script>
-
-  <script>
-    const counters = document.querySelectorAll("[data-count]");
-
-    const runCounter = (counter) => {
-      const target = Number(counter.dataset.count);
-      let value = 0;
-      const step = Math.max(1, Math.floor(target / 90));
-
-      const timer = setInterval(() => {
-        value += step;
-
-        if (value >= target) {
-          counter.textContent = target.toLocaleString("en-IN") + "+";
-          clearInterval(timer);
-        } else {
-          counter.textContent = value.toLocaleString("en-IN") + "+";
+    <script src="/js/landing-layout.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="/js/navbar-auth.js"></script>
+    <script src="/js/config.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+      const counters = document.querySelectorAll("[data-count]");
+      const runCounter = (counter) => {
+        const target = Number(counter.dataset.count);
+        let value = 0;
+        const step = Math.max(1, Math.floor(target / 90));
+        const timer = setInterval(() => {
+          value += step;
+          if (value >= target) {
+            counter.textContent = target.toLocaleString("en-IN") + "+";
+            clearInterval(timer);
+          } else {
+            counter.textContent = value.toLocaleString("en-IN") + "+";
+          }
+        }, 18);
+      };
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !entry.target.dataset.done) {
+              entry.target.dataset.done = "true";
+              runCounter(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      counters.forEach((counter) => counterObserver.observe(counter));
+      document.getElementById("landingSearchBtn")?.addEventListener("click", () => {
+        const value = document.getElementById("landingSearch")?.value?.toLowerCase().trim();
+        if (!value) {
+          document.getElementById("marketplace")?.scrollIntoView({ behavior: "smooth" });
+          return;
         }
-      }, 18);
-    };
-
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !entry.target.dataset.done) {
-          entry.target.dataset.done = "true";
-          runCounter(entry.target);
-        }
+        if (value.includes("premium")) location.hash = "Premium-Trading-Courses";
+        else if (value.includes("standard")) location.hash = "Trading-Standard-Course";
+        else if (value.includes("crash")) location.hash = "Crash-Course";
+        else if (value.includes("pdf") || value.includes("ebook") || value.includes("book")) location.hash = "pdfs";
+        else location.hash = "marketplace";
       });
-    }, { threshold: 0.5 });
-
-    counters.forEach((counter) => counterObserver.observe(counter));
-
-    document.getElementById("landingSearchBtn")?.addEventListener("click", () => {
-      const value = document.getElementById("landingSearch")?.value?.toLowerCase().trim();
-
-      if (!value) {
-        document.getElementById("marketplace")?.scrollIntoView({ behavior: "smooth" });
-        return;
-      }
-
-      if (value.includes("premium")) location.hash = "Premium-Trading-Courses";
-      else if (value.includes("standard")) location.hash = "Trading-Standard-Course";
-      else if (value.includes("crash")) location.hash = "Crash-Course";
-      else if (value.includes("pdf") || value.includes("ebook") || value.includes("book")) location.hash = "pdfs";
-      else location.hash = "marketplace";
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

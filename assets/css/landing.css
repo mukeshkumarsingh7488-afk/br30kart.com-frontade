@@ -182,12 +182,6 @@ select {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.bk-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .bk-icon-btn:hover,
 .bk-account-btn:hover,
 .bk-mobile-toggle:hover {
@@ -287,42 +281,6 @@ select {
   align-items: center;
   gap: 14px;
   flex-wrap: wrap;
-}
-
-.bk-btn {
-  min-height: 52px;
-  padding: 0 22px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-weight: 900;
-  transition: 0.25s;
-  border: 1px solid transparent;
-  cursor: pointer;
-}
-
-.bk-btn-primary {
-  color: #00150a;
-  background: linear-gradient(135deg, #00ff88, #a6ffcb);
-  box-shadow: 0 20px 50px rgba(0, 255, 136, 0.18);
-}
-
-.bk-btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 28px 70px rgba(0, 255, 136, 0.28);
-}
-
-.bk-btn-glass {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
-  color: #fff;
-}
-
-.bk-btn-glass:hover {
-  border-color: rgba(0, 255, 136, 0.35);
-  transform: translateY(-3px);
 }
 
 .bk-hero-proof {
@@ -1421,43 +1379,6 @@ select {
   border-radius: 18px !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
-.bk-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-/* Login */
-
-.bk-login-btn {
-  width: 110px;
-  height: 54px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 999px;
-
-  font-size: 16px;
-  font-weight: 700;
-
-  color: #fff;
-
-  background: rgba(255, 255, 255, 0.04);
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  backdrop-filter: blur(20px);
-
-  transition: 0.3s;
-}
-
-.bk-login-btn:hover {
-  color: #00ff88;
-  border-color: #00ff88;
-  background: rgba(0, 255, 136, 0.08);
-}
 
 /* Get Started */
 
@@ -1488,20 +1409,86 @@ select {
 
   box-shadow: 0 15px 35px rgba(0, 255, 136, 0.35);
 }
+.bk-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-.bk-mobile-toggle {
-  display: none;
+.bk-btn {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+  transition: 0.25s;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+}
 
-  width: 46px;
-  height: 46px;
+.bk-btn-primary {
+  color: #00150a;
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  box-shadow: 0 16px 38px rgba(0, 255, 136, 0.16);
+}
 
-  border-radius: 50%;
+.bk-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 52px rgba(0, 255, 136, 0.24);
+}
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  background: rgba(255, 255, 255, 0.05);
-
+.bk-btn-glass {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.12);
   color: #fff;
+}
+
+.bk-btn-glass:hover {
+  color: #00ff88;
+  border-color: rgba(0, 255, 136, 0.35);
+  background: rgba(0, 255, 136, 0.08);
+  transform: translateY(-2px);
+}
+
+.bk-login-btn {
+  width: auto;
+  min-width: 88px;
+  height: 44px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  transition: 0.25s;
+  white-space: nowrap;
+}
+
+.bk-login-btn:hover {
+  color: #00ff88;
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.08);
+  transform: translateY(-2px);
+}
+
+.bk-register-btn {
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+  white-space: nowrap;
 }
 
 @media (max-width: 1050px) {
@@ -1515,6 +1502,20 @@ select {
     align-items: center;
     justify-content: center;
   }
+}
+.bk-mobile-toggle {
+  display: none;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: #fff;
 }
 #submitBtn:disabled {
   opacity: 0.6;
