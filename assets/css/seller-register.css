@@ -26,8 +26,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
   background: radial-gradient(circle at 0% 48%, rgba(0, 255, 136, 0.23), transparent 31%), radial-gradient(circle at 100% 78%, rgba(0, 255, 136, 0.2), transparent 34%), linear-gradient(135deg, #020604 0%, #050805 46%, #020604 100%);
   position: relative;
   color: #fff;
@@ -222,12 +222,12 @@ input:focus {
 }
 @media (max-width: 560px) {
   body {
-    padding: 30px 12px;
-    place-items: start center;
+    padding: 0;
   }
+
   .kyc-container {
-    width: 100% !important;
-    margin: 0 auto 35px !important;
+    width: min(100% - 24px, 620px) !important;
+    margin: 35px auto 55px !important;
     padding: 30px 22px !important;
     border-radius: 24px;
   }

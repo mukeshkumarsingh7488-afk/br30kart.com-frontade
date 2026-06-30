@@ -2,6 +2,24 @@
   position: relative;
   padding: 0 0 110px;
 }
+.bk-about-hero {
+  max-width: 980px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.bk-about-hero h1 {
+  margin-top: 0;
+  padding: 8px 0 14px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 5.6vw, 78px);
+  line-height: 1.08;
+  letter-spacing: -0.06em;
+  background: linear-gradient(90deg, #ffffff, #00ff88, #ffd37a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 .bk-about-card {
   max-width: 1040px;
