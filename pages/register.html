@@ -70,6 +70,16 @@
           <input id="password" name="password" type="password" placeholder="8+ chars, 1 Special (@#$%^&*)" autocomplete="new-password" required />
           <span class="toggle-btn" id="toggleBtn" onclick="togglePassword()" style="cursor: pointer">👁️</span>
         </div>
+        <div class="terms-consent-box">
+          <label class="terms-consent-label">
+            <input type="checkbox" id="termsAccepted" />
+            <span>
+              I agree to BR30 Kart
+              <button type="button" class="terms-open-btn" onclick="openTermsModal()">Terms & Conditions</button>
+              and Privacy Policy.
+            </span>
+          </label>
+        </div>
         <button type="submit" id="regBtn">Send OTP</button>
       </form>
       <form id="otp-section" style="display: none" onsubmit="handleVerify(event)">
@@ -99,6 +109,36 @@
         >
           Already have an account? Login
         </a>
+      </div>
+    </div>
+    <div id="termsModal" class="terms-modal-overlay">
+      <div class="terms-modal">
+        <button type="button" class="terms-close-btn" onclick="closeTermsModal()">×</button>
+        <div class="terms-modal-head">
+          <span class="terms-badge">BR30 Kart Legal Consent</span>
+          <h3>Terms & Conditions</h3>
+          <p>Please read and accept the terms before creating your BR30 Kart account.</p>
+        </div>
+        <div class="terms-modal-body" id="termsScrollBox">
+          <h4>1. Account Registration</h4>
+          <p>You agree to provide correct details while creating your BR30 Kart account.</p>
+          <h4>2. Buyer Responsibility</h4>
+          <p>You are responsible for checking product/course details before purchase.</p>
+          <h4>3. Seller Responsibility</h4>
+          <p>Sellers must provide genuine products, correct information, and follow BR30 Kart seller rules.</p>
+          <h4>4. Payments & Refunds</h4>
+          <p>All payments, refunds, cancellations, and order related actions will follow BR30 Kart policies.</p>
+          <h4>5. Account Safety</h4>
+          <p>You are responsible for keeping your login details safe and secure.</p>
+          <h4>6. Platform Usage</h4>
+          <p>Misuse, fake activity, fraud, spam, or policy violation may result in account restriction.</p>
+          <h4>7. Legal Agreement</h4>
+          <p>By accepting, you confirm that you have read and agreed to BR30 Kart Terms & Conditions, Privacy Policy, Refund Policy, and platform guidelines.</p>
+        </div>
+        <div class="terms-modal-footer">
+          <button type="button" class="terms-cancel-btn" onclick="closeTermsModal()">Cancel</button>
+          <button type="button" class="terms-agree-btn" onclick="agreeTerms()">I Agree</button>
+        </div>
       </div>
     </div>
     <div id="landing-footer"></div>

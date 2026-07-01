@@ -116,9 +116,57 @@
           </div>
         </div>
         <div class="note">⚠️ Verification status aapko email par mil jayega (24-48 Hours).</div>
+        <div class="terms-consent-box">
+          <label class="terms-consent-label">
+            <input type="checkbox" id="termsAccepted" />
+            <span>
+              I agree to BR30 Kart
+              <button type="button" class="terms-open-btn" onclick="openTermsModal()">Terms & Conditions</button>
+              and Privacy Policy.
+            </span>
+          </label>
+        </div>
         <button type="submit" class="btn-submit" id="submitBtn">Submit Application</button>
         <a href="/login" class="back-link">Already have a seller account? Login</a>
       </form>
+    </div>
+    <div id="termsModal" class="terms-modal-overlay">
+      <div class="terms-modal">
+        <button type="button" class="terms-close-btn" onclick="closeTermsModal()">×</button>
+
+        <div class="terms-modal-head">
+          <span class="terms-badge">BR30 Kart Legal Consent</span>
+          <h3>Terms & Conditions</h3>
+          <p>Please read and accept the terms before submitting your seller application.</p>
+        </div>
+
+        <div class="terms-modal-body">
+          <h4>1. Account Registration</h4>
+          <p>You agree to provide correct details while creating your BR30 Kart account.</p>
+
+          <h4>2. Buyer Responsibility</h4>
+          <p>Buyers are responsible for reviewing course descriptions, pricing, and learning outcomes before purchasing any digital course.</p>
+
+          <h4>3. Seller Responsibility</h4>
+          <p>Sellers must upload original digital courses, provide accurate information, and comply with all BR30 Kart quality and platform standards.</p>
+          <h4>4. KYC & Payouts</h4>
+          <p>You agree that your KYC and bank details may be reviewed for seller verification and payout processing.</p>
+
+          <h4>5. Payments & Refunds</h4>
+          <p>All payments, refunds, cancellations, and order related actions will follow BR30 Kart policies.</p>
+
+          <h4>6. Platform Usage</h4>
+          <p>Misuse, fake activity, fraud, spam, or policy violation may result in account restriction.</p>
+
+          <h4>7. Legal Agreement</h4>
+          <p>By accepting, you confirm that you have read and agreed to BR30 Kart Terms & Conditions, Privacy Policy, Refund Policy, and platform guidelines.</p>
+        </div>
+
+        <div class="terms-modal-footer">
+          <button type="button" class="terms-cancel-btn" onclick="closeTermsModal()">Cancel</button>
+          <button type="button" class="terms-agree-btn" onclick="agreeTerms()">I Agree</button>
+        </div>
+      </div>
     </div>
     <div id="landing-footer"></div>
     <script src="../js/config.js"></script>
