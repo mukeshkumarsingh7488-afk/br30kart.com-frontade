@@ -38,6 +38,8 @@ body {
 }
 
 .container {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -80,7 +82,9 @@ body {
 
 .header {
   text-align: center;
-  padding: 64px 0 50px;
+  padding: 0 0 50px;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .page-badge {

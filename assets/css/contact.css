@@ -332,3 +332,14 @@ hr {
     width: 100%;
   }
 }
+.btn,
+.btn:link,
+.btn:visited {
+  color: #02110a !important;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  color: #02110a !important;
+}
