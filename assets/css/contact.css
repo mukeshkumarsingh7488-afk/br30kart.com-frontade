@@ -78,7 +78,7 @@ body {
 
 .contact-header {
   text-align: center;
-  padding: 64px 0 42px;
+  padding: 120px 0 42px;
 }
 
 .contact-header::before {
@@ -292,7 +292,7 @@ hr {
   }
 
   .contact-header {
-    padding: 48px 0 32px;
+    padding: 100px 0 32px;
   }
 
   .contact-header h1 {

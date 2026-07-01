@@ -298,3 +298,16 @@ body {
 .btn:active {
   color: #02110a !important;
 }
+.email-link,
+.phone-link {
+  color: #00ff88;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.email-link:hover,
+.phone-link:hover {
+  color: #7dffb7;
+  text-decoration: underline;
+}

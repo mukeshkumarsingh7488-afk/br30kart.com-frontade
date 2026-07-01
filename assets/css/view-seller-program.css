@@ -68,7 +68,7 @@ body::after {
 
 .header {
   text-align: center;
-  padding: 185px 0 60px;
+  padding: 105px 0 60px;
 }
 
 .header::before {
@@ -303,7 +303,7 @@ body > a.btn {
 
 @media (max-width: 760px) {
   .header {
-    padding: 145px 0 36px;
+    padding: 95px 0 36px;
   }
 
   .header h1 {
@@ -335,7 +335,7 @@ body > a.btn {
 }
 @media (max-width: 480px) {
   .header {
-    padding: 125px 0 30px;
+    padding: 85px 0 30px;
   }
 }
 

@@ -61,7 +61,7 @@ body::after {
   position: relative;
   z-index: 2;
   width: min(520px, calc(100% - 32px));
-  margin: 64px auto 70px;
+  margin: 92px auto 70px;
   padding: 42px 32px;
   overflow: hidden;
   border-radius: 40px;
@@ -104,10 +104,11 @@ body::after {
 }
 
 .verify-card img {
+  display: block;
   width: 82px;
   height: 82px;
   object-fit: contain;
-  margin-bottom: 14px !important;
+  margin: 0 auto 14px !important;
   border-radius: 20px;
   filter: drop-shadow(0 18px 38px rgba(0, 255, 136, 0.22));
 }
@@ -261,7 +262,7 @@ button:hover {
 @media (max-width: 600px) {
   .verify-card {
     width: min(100% - 22px, 520px);
-    margin: 48px auto 54px;
+    margin: 82px auto 54px;
     padding: 34px 22px;
     border-radius: 28px;
   }

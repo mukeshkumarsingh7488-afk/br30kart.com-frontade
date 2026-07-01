@@ -298,3 +298,16 @@ body {
 .btn:active {
   color: #02110a !important;
 }
+.refund-email-link,
+.refund-phone-link {
+  color: #00ff88;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.refund-email-link:hover,
+.refund-phone-link:hover {
+  color: #7dffb7;
+  text-decoration: underline;
+}
