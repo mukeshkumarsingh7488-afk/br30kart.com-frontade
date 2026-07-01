@@ -1,34 +1,91 @@
 .bk-privacy-page {
   position: relative;
   padding: 0 0 110px;
+  overflow: hidden;
+  background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 18%, rgba(0, 185, 105, 0.12), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 55%, #020604 100%);
+}
+
+.bk-privacy-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 255, 136, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.08) 1px, transparent 1px);
+  background-size: 43px 43px;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.75) 8%, #000 18%, #000 82%, rgba(0, 0, 0, 0.75) 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.75) 8%, #000 18%, #000 82%, rgba(0, 0, 0, 0.75) 92%, transparent 100%);
+}
+
+.bk-privacy-page::after {
+  content: "";
+  position: absolute;
+  right: -180px;
+  top: 180px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(0, 255, 136, 0.15);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.bk-privacy-page .bk-container {
+  position: relative;
+  z-index: 2;
 }
 
 .bk-privacy-hero {
-  max-width: 920px;
+  max-width: 940px;
   margin: 0 auto 34px;
   text-align: center;
-  padding-top: 0;
+  overflow: visible;
+}
+
+.bk-privacy-hero .bk-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 24px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 255, 136, 0.38);
+  background: rgba(0, 255, 136, 0.09);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 0 28px rgba(0, 255, 136, 0.14);
+}
+
+.bk-privacy-hero .bk-mini::before {
+  content: "●";
+  margin-right: 10px;
+  color: #00ff88;
+  font-size: 12px;
+  text-shadow: 0 0 14px rgba(0, 255, 136, 0.75);
 }
 
 .bk-privacy-hero h1 {
-  margin-top: 0;
-  padding-top: 8px;
-  padding-bottom: 10px;
+  margin: 0 auto 18px;
+  padding-bottom: 18px;
   font-family: "Playfair Display", serif;
-  font-size: clamp(44px, 6vw, 82px);
-  line-height: 1.08;
+  font-size: clamp(46px, 6vw, 86px);
+  line-height: 1.16;
   letter-spacing: -0.06em;
   background: linear-gradient(90deg, #ffffff, #00ff88, #ffd37a);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  overflow: visible;
 }
 
 .bk-privacy-meta {
-  margin-top: 18px;
   color: rgba(255, 255, 255, 0.58);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
+  line-height: 1.7;
 }
 
 .bk-privacy-card {
@@ -42,21 +99,36 @@
   backdrop-filter: blur(24px);
 }
 
-.bk-privacy-card p {
-  margin-top: 18px;
+.bk-privacy-card p,
+.bk-privacy-card li {
   color: rgba(255, 255, 255, 0.72);
   font-size: 16px;
-  line-height: 1.85;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
 }
 
-.bk-privacy-card b {
-  color: #ffffff;
+.bk-privacy-card > p:first-child,
+.bk-privacy-card > p:nth-child(2) {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 17px;
+}
+
+.bk-privacy-card p {
+  margin-top: 18px;
+}
+
+.bk-privacy-card b,
+.bk-privacy-card a {
+  color: #00ff88;
+  font-weight: 800;
 }
 
 .bk-privacy-card h3 {
   margin-top: 38px;
   color: #ffffff;
   font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800;
   line-height: 1.18;
   letter-spacing: -0.035em;
 }
@@ -69,6 +141,7 @@
   margin-bottom: 14px;
   border-radius: 999px;
   background: linear-gradient(90deg, #00ff88, transparent);
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.4);
 }
 
 .bk-privacy-card ul {
@@ -83,10 +156,8 @@
   position: relative;
   padding: 15px 18px 15px 46px;
   border-radius: 18px;
-  color: rgba(255, 255, 255, 0.72);
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  line-height: 1.65;
 }
 
 .bk-privacy-card li::before {
@@ -105,23 +176,30 @@
   font-weight: 900;
 }
 
-.bk-privacy-card hr {
-  margin: 36px 0 24px;
-  border: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 .bk-contact-link {
   color: #00ff88;
   font-weight: 800;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: 0.25s ease;
+  word-break: break-word;
 }
 
 .bk-contact-link:hover {
   color: #7dffb7;
   border-color: #00ff88;
+}
+
+.bk-privacy-card hr {
+  margin: 36px 0 24px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bk-privacy-built {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-weight: 700 !important;
 }
 
 @media (max-width: 720px) {
@@ -134,10 +212,24 @@
   }
 
   .bk-privacy-hero h1 {
-    margin-top: 0;
-    padding-top: 8px;
-    padding-bottom: 10px;
     font-size: 48px;
-    line-height: 1.08;
+    line-height: 1.12;
+  }
+
+  .bk-privacy-card p,
+  .bk-privacy-card li {
+    font-size: 14.5px;
+  }
+}
+
+@media (max-width: 560px) {
+  .bk-privacy-card {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .bk-privacy-card li {
+    padding: 14px 16px 14px 44px;
+    border-radius: 16px;
   }
 }

@@ -1,21 +1,81 @@
 .bk-refund-page {
   position: relative;
   padding: 0 0 110px;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 22%, rgba(255, 211, 122, 0.08), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 55%, #020604 100%);
+}
+
+.bk-refund-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 255, 136, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.055) 1px, transparent 1px);
+  background-size: 52px 52px;
+  background-position: center center;
+  opacity: 0.95;
+}
+
+.bk-refund-page::after {
+  content: "";
+  position: absolute;
+  right: -180px;
+  top: 160px;
+  width: 420px;
+  height: 420px;
+  border-radius: 999px;
+  background: rgba(0, 255, 136, 0.16);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bk-refund-page .bk-container {
+  position: relative;
+  z-index: 2;
 }
 
 .bk-refund-hero {
-  max-width: 920px;
+  max-width: 940px;
   margin: 0 auto 34px;
   text-align: center;
+  overflow: visible;
+}
+
+.bk-refund-hero .bk-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 24px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 255, 136, 0.38);
+  background: rgba(0, 255, 136, 0.09);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 0 28px rgba(0, 255, 136, 0.14);
+}
+
+.bk-refund-hero .bk-mini::before {
+  content: "●";
+  margin-right: 10px;
+  color: #00ff88;
+  font-size: 12px;
+  text-shadow: 0 0 14px rgba(0, 255, 136, 0.75);
 }
 
 .bk-refund-hero h1 {
-  margin-top: 0;
-  padding-top: 8px;
-  padding-bottom: 10px;
+  margin: 0 auto 18px;
+  padding-bottom: 18px;
   font-family: "Playfair Display", serif;
-  font-size: clamp(44px, 6vw, 82px);
-  line-height: 1.08;
+  font-size: clamp(46px, 6vw, 86px);
+  line-height: 1.16;
   letter-spacing: -0.06em;
   background: linear-gradient(90deg, #ffffff, #00ff88, #ffd37a);
   -webkit-background-clip: text;
@@ -24,10 +84,10 @@
 }
 
 .bk-refund-meta {
-  margin-top: 18px;
   color: rgba(255, 255, 255, 0.58);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
+  line-height: 1.7;
 }
 
 .bk-refund-card {
@@ -41,17 +101,36 @@
   backdrop-filter: blur(24px);
 }
 
-.bk-refund-card p {
-  margin-top: 18px;
+.bk-refund-card p,
+.bk-refund-card li {
   color: rgba(255, 255, 255, 0.72);
   font-size: 16px;
-  line-height: 1.85;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+}
+
+.bk-refund-card > p:first-child,
+.bk-refund-card > p:nth-child(2) {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 17px;
+}
+
+.bk-refund-card p {
+  margin-top: 18px;
+}
+
+.bk-refund-card b,
+.bk-refund-card a {
+  color: #00ff88;
+  font-weight: 800;
 }
 
 .bk-refund-card h3 {
   margin-top: 38px;
   color: #ffffff;
   font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800;
   line-height: 1.18;
   letter-spacing: -0.035em;
 }
@@ -64,6 +143,7 @@
   margin-bottom: 14px;
   border-radius: 999px;
   background: linear-gradient(90deg, #00ff88, transparent);
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.4);
 }
 
 .bk-refund-card ul {
@@ -78,10 +158,8 @@
   position: relative;
   padding: 15px 18px 15px 46px;
   border-radius: 18px;
-  color: rgba(255, 255, 255, 0.72);
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  line-height: 1.65;
 }
 
 .bk-refund-card li::before {
@@ -100,23 +178,30 @@
   font-weight: 900;
 }
 
-.bk-refund-card hr {
-  margin: 36px 0 24px;
-  border: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 .bk-contact-link {
   color: #00ff88;
   font-weight: 800;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: 0.25s ease;
+  word-break: break-word;
 }
 
 .bk-contact-link:hover {
   color: #7dffb7;
   border-color: #00ff88;
+}
+
+.bk-refund-card hr {
+  margin: 36px 0 24px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bk-refund-built {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-weight: 700 !important;
 }
 
 @media (max-width: 720px) {
@@ -129,10 +214,24 @@
   }
 
   .bk-refund-hero h1 {
-    margin-top: 0;
-    padding-top: 8px;
-    padding-bottom: 10px;
     font-size: 48px;
-    line-height: 1.08;
+    line-height: 1.12;
+  }
+
+  .bk-refund-card p,
+  .bk-refund-card li {
+    font-size: 14.5px;
+  }
+}
+
+@media (max-width: 560px) {
+  .bk-refund-card {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .bk-refund-card li {
+    padding: 14px 16px 14px 44px;
+    border-radius: 16px;
   }
 }

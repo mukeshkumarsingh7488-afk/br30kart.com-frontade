@@ -1,304 +1,388 @@
-/* ===========================================================
-   BR30 Kart - How It Works
-=========================================================== */
-
 .bk-how-page {
   position: relative;
-  padding: 0 0 120px;
+  padding: 0 0 110px;
+  overflow: hidden;
+  background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 18%, rgba(0, 185, 105, 0.12), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 55%, #020604 100%);
+}
+
+.bk-how-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 255, 136, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.08) 1px, transparent 1px);
+  background-size: 43px 43px;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.75) 8%, #000 18%, #000 82%, rgba(0, 0, 0, 0.75) 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.75) 8%, #000 18%, #000 82%, rgba(0, 0, 0, 0.75) 92%, transparent 100%);
+}
+
+.bk-how-page::after {
+  content: "";
+  position: absolute;
+  right: -180px;
+  top: 180px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(0, 255, 136, 0.15);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.bk-how-page .bk-container {
+  position: relative;
+  z-index: 2;
 }
 
 .bk-how-hero {
-  max-width: 950px;
-  margin: 0 auto 70px;
+  max-width: 980px;
+  margin: 0 auto 48px;
   text-align: center;
+  overflow: visible;
+}
+
+.bk-how-hero .bk-mini,
+.bk-how-cta .bk-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 24px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 255, 136, 0.38);
+  background: rgba(0, 255, 136, 0.09);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 0 28px rgba(0, 255, 136, 0.14);
+}
+
+.bk-how-hero .bk-mini::before,
+.bk-how-cta .bk-mini::before {
+  content: "●";
+  margin-right: 10px;
+  color: #00ff88;
+  font-size: 12px;
+  text-shadow: 0 0 14px rgba(0, 255, 136, 0.75);
 }
 
 .bk-how-hero h1 {
-  margin-top: 0;
+  margin: 0 auto 18px;
+  padding-bottom: 18px;
   font-family: "Playfair Display", serif;
-  font-size: clamp(48px, 6vw, 84px);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-  background: linear-gradient(90deg, #fff, #00ff88, #ffd37a);
+  font-size: clamp(46px, 6vw, 86px);
+  line-height: 1.16;
+  letter-spacing: -0.06em;
+  background: linear-gradient(90deg, #ffffff, #00ff88, #ffd37a);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .bk-how-lead {
-  margin-top: 22px;
-  font-size: 22px;
-  color: #fff;
-  font-weight: 700;
+  max-width: 860px;
+  margin: 0 auto 14px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 800;
+  line-height: 1.45;
 }
 
 .bk-how-text {
-  max-width: 760px;
-  margin: 20px auto 0;
+  max-width: 900px;
+  margin: 0 auto;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.9;
+  letter-spacing: 0.01em;
 }
 
 .bk-how-meta {
-  margin-top: 18px;
-  color: rgba(255, 255, 255, 0.48);
-  font-size: 14px;
-  font-weight: 600;
+  max-width: 850px;
+  margin: 16px auto 0;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.7;
 }
-
-/* ===================================================== */
 
 .bk-how-roles-grid {
+  max-width: 1180px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 34px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
 }
-
-/* ===================================================== */
 
 .bk-how-role-card {
   position: relative;
-  padding: 38px;
-  border-radius: 34px;
-
-  background: radial-gradient(circle at 0 0, rgba(0, 255, 136, 0.12), transparent 38%), linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
-
-  transition: 0.35s;
+  overflow: hidden;
+  padding: clamp(26px, 4vw, 42px);
+  border-radius: 40px;
+  background: radial-gradient(circle at 14% 0%, rgba(0, 255, 136, 0.13), transparent 36%), radial-gradient(circle at 90% 10%, rgba(255, 211, 122, 0.08), transparent 34%), linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 0 32px 110px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(24px);
 }
 
-.bk-how-role-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(0, 255, 136, 0.25);
-  box-shadow: 0 40px 100px rgba(0, 255, 136, 0.1);
+.bk-how-role-card::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -140px;
+  width: 300px;
+  height: 300px;
+  border-radius: 999px;
+  background: rgba(0, 255, 136, 0.12);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.bk-how-role-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .bk-how-role-head {
   display: flex;
+  align-items: flex-start;
   gap: 18px;
-  align-items: center;
-  margin-bottom: 34px;
+  margin-bottom: 26px;
 }
 
 .bk-how-role-icon {
-  width: 72px;
-  height: 72px;
+  width: 66px;
+  height: 66px;
+  min-width: 66px;
+  display: grid;
+  place-items: center;
   border-radius: 22px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 34px;
-
-  background: linear-gradient(135deg, #00ff88, #6effba);
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  color: #00150a;
+  font-size: 30px;
+  box-shadow: 0 18px 42px rgba(0, 255, 136, 0.2);
 }
 
 .bk-how-role-head p {
+  margin: 0 0 8px;
   color: #00ff88;
-  font-weight: 800;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .bk-how-role-head h2 {
-  margin-top: 6px;
-  color: #fff;
-  font-size: 30px;
-  line-height: 1.2;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 850;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
 }
 
-/* ===================================================== */
-
 .bk-how-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  display: grid;
+  gap: 14px;
 }
 
 .bk-how-step {
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-
-  padding: 22px;
-  border-radius: 22px;
-
-  background: rgba(255, 255, 255, 0.04);
-
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.045);
   border: 1px solid rgba(255, 255, 255, 0.08);
-
-  transition: 0.25s;
+  transition: 0.25s ease;
 }
 
 .bk-how-step:hover {
-  transform: translateX(8px);
-  border-color: rgba(0, 255, 136, 0.22);
+  transform: translateY(-3px);
+  border-color: rgba(0, 255, 136, 0.28);
+  background: rgba(0, 255, 136, 0.055);
 }
 
 .bk-how-step-count {
-  min-width: 52px;
+  width: 52px;
   height: 52px;
-
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 18px;
-  font-weight: 900;
-
-  color: #00140b;
-
-  background: linear-gradient(135deg, #00ff88, #b4ffd8);
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  color: #00150a;
+  font-size: 20px;
+  font-weight: 950;
+  box-shadow: 0 14px 32px rgba(0, 255, 136, 0.18);
 }
 
 .bk-how-step-text h4 {
-  color: #fff;
-  font-size: 20px;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 850;
+  line-height: 1.25;
 }
 
 .bk-how-step-text p {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.8;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
 }
 
 .bk-how-step-text b {
   color: #00ff88;
-}
-
-/* ===================================================== */
-
-.bk-how-admin-note {
-  margin-top: 16px;
-
-  padding: 18px 20px;
-
-  border-radius: 16px;
-
-  background: rgba(255, 211, 122, 0.08);
-
-  border: 1px solid rgba(255, 211, 122, 0.18);
-
-  color: #ffd37a;
-
-  line-height: 1.8;
-}
-
-/* ===================================================== */
-
-.bk-how-inline-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  margin-top: 18px;
-
-  color: #00ff88;
-
   font-weight: 800;
 }
 
-.bk-how-inline-link:hover {
-  color: #fff;
+.bk-how-admin-note {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.18);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-/* ===================================================== */
+.bk-how-inline-link {
+  display: inline-flex;
+  margin-top: 12px;
+  color: #00ff88;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.bk-how-inline-link:hover {
+  text-decoration: underline;
+}
 
 .bk-how-cta {
-  margin-top: 80px;
-
+  max-width: 1040px;
+  margin: 34px auto 0;
+  padding: clamp(30px, 5vw, 48px);
+  border-radius: 40px;
   text-align: center;
-
-  padding: 60px;
-
-  border-radius: 36px;
-
-  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.13), transparent 60%), linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  backdrop-filter: blur(20px);
+  background: radial-gradient(circle at 14% 0%, rgba(0, 255, 136, 0.15), transparent 38%), linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(0, 255, 136, 0.18);
+  box-shadow: 0 32px 110px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
 }
 
 .bk-how-cta h2 {
-  margin-top: 16px;
-  color: #fff;
-  font-size: 44px;
+  margin: 0 0 14px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 5vw, 70px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+  background: linear-gradient(90deg, #ffffff, #00ff88, #ffd37a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .bk-how-cta p {
-  margin-top: 18px;
+  max-width: 720px;
+  margin: 0 auto;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.85;
 }
 
 .bk-how-actions {
-  margin-top: 34px;
-
   display: flex;
   justify-content: center;
-  gap: 18px;
-
+  align-items: center;
+  gap: 14px;
   flex-wrap: wrap;
+  margin-top: 26px;
 }
 
-/* ===================================================== */
+.bk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 900;
+  transition: 0.25s ease;
+}
 
-@media (max-width: 1000px) {
+.bk-btn-primary {
+  color: #00170c;
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  box-shadow: 0 18px 45px rgba(0, 255, 136, 0.22);
+}
+
+.bk-btn-glass {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.bk-btn:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 950px) {
   .bk-how-roles-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .bk-how-page {
-    padding: 0 0 90px;
+    padding: 0 0 82px;
   }
 
-  .bk-how-role-card {
-    padding: 24px;
+  .bk-how-hero h1 {
+    font-size: 48px;
+    line-height: 1.12;
+  }
+
+  .bk-how-role-card,
+  .bk-how-cta {
+    border-radius: 28px;
   }
 
   .bk-how-role-head {
     flex-direction: column;
-    text-align: center;
-  }
-
-  .bk-how-role-head h2 {
-    font-size: 26px;
   }
 
   .bk-how-step {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
-  .bk-how-step-count {
-    margin-bottom: 10px;
+  .bk-how-text,
+  .bk-how-meta,
+  .bk-how-step-text p,
+  .bk-how-cta p {
+    font-size: 14.5px;
   }
+}
 
+@media (max-width: 560px) {
+  .bk-how-role-card,
   .bk-how-cta {
-    padding: 36px 22px;
-  }
-
-  .bk-how-cta h2 {
-    font-size: 34px;
+    padding: 24px;
+    border-radius: 24px;
   }
 
   .bk-how-actions {
     flex-direction: column;
   }
 
-  .bk-how-actions .bk-btn {
+  .bk-btn {
     width: 100%;
-    justify-content: center;
   }
 }

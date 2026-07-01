@@ -1,271 +1,358 @@
-/* ==========================================
-   BR30 Kart - Seller Program
-========================================== */
-
 .bk-seller-program-page {
   position: relative;
-  padding: 0 0 120px;
+  padding: 0 0 110px;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 22%, rgba(255, 211, 122, 0.08), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 55%, #020604 100%);
+}
+
+.bk-seller-program-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 255, 136, 0.052) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.052) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-position: center center;
+  opacity: 0.95;
+}
+
+.bk-seller-program-page::after {
+  content: "";
+  position: absolute;
+  right: -180px;
+  top: 160px;
+  width: 420px;
+  height: 420px;
+  border-radius: 999px;
+  background: rgba(0, 255, 136, 0.16);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bk-seller-program-page .bk-container {
+  position: relative;
+  z-index: 2;
 }
 
 .bk-seller-program-hero {
-  max-width: 950px;
-  margin: 0 auto 70px;
+  max-width: 980px;
+  margin: 0 auto 44px;
   text-align: center;
+  overflow: visible;
+}
+
+.bk-seller-program-hero .bk-mini,
+.bk-seller-program-intro .bk-mini,
+.bk-seller-section-head .bk-mini,
+.bk-seller-program-cta .bk-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 24px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 255, 136, 0.38);
+  background: rgba(0, 255, 136, 0.09);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 0 28px rgba(0, 255, 136, 0.14);
+}
+
+.bk-seller-program-hero .bk-mini::before,
+.bk-seller-program-intro .bk-mini::before,
+.bk-seller-section-head .bk-mini::before,
+.bk-seller-program-cta .bk-mini::before {
+  content: "●";
+  margin-right: 10px;
+  color: #00ff88;
+  font-size: 12px;
+  text-shadow: 0 0 14px rgba(0, 255, 136, 0.75);
 }
 
 .bk-seller-program-hero h1 {
-  margin-top: 0;
-  padding-top: 8px;
-  padding-bottom: 16px;
+  margin: 0 auto 18px;
+  padding-bottom: 18px;
   font-family: "Playfair Display", serif;
-  font-size: clamp(52px, 6vw, 88px);
-  line-height: 1.08;
-  letter-spacing: -0.05em;
-  background: linear-gradient(90deg, #ffffff, #00ff88, #ffd76b);
+  font-size: clamp(54px, 7vw, 96px);
+  line-height: 1.12;
+  letter-spacing: -0.065em;
+  background: linear-gradient(90deg, #ffffff, #00ff88, #ffd37a);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+.title-emoji {
+  display: inline-block;
+  color: initial;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
+  letter-spacing: normal;
+  transform: translateY(-0.02em);
+}
+
 .bk-seller-program-lead {
-  margin-top: 22px;
-  font-size: 22px;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 700;
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 800;
+  line-height: 1.4;
 }
 
 .bk-seller-program-text {
-  max-width: 760px;
-  margin: 20px auto;
-  color: rgba(255, 255, 255, 0.68);
-  line-height: 1.9;
+  max-width: 860px;
+  margin: 18px auto 0;
+  color: rgba(255, 255, 255, 0.76);
   font-size: 17px;
+  font-weight: 400;
+  line-height: 1.9;
 }
 
 .bk-seller-program-meta {
-  color: rgba(255, 255, 255, 0.48);
+  max-width: 860px;
+  margin: 14px auto 0;
+  color: rgba(255, 255, 255, 0.58);
   font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
 }
 
 .bk-seller-program-actions {
-  margin-top: 35px;
-
   display: flex;
   justify-content: center;
-  gap: 18px;
   flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
 }
 
-/* ========================= */
+.bk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 50px;
+  padding: 0 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 950;
+  transition: 0.25s ease;
+}
 
-.bk-seller-program-intro {
-  max-width: 900px;
-  margin: 0 auto 80px;
+.bk-btn-primary {
+  color: #00150a;
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  box-shadow: 0 18px 45px rgba(0, 255, 136, 0.22);
+}
+
+.bk-btn-glass {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.065);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.bk-btn:hover {
+  transform: translateY(-3px);
+}
+
+.bk-seller-program-intro,
+.bk-seller-program-section,
+.bk-seller-program-cta {
+  max-width: 1180px;
+  margin: 26px auto 0;
+  padding: 34px;
+  border-radius: 36px;
+  background: radial-gradient(circle at 14% 0%, rgba(0, 255, 136, 0.13), transparent 36%), radial-gradient(circle at 90% 10%, rgba(255, 211, 122, 0.08), transparent 34%), linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 0 32px 110px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(24px);
+}
+
+.bk-seller-program-intro,
+.bk-seller-program-cta {
   text-align: center;
 }
 
-.bk-seller-program-intro h2 {
-  margin: 18px 0;
-  font-size: 42px;
-  color: #fff;
+.bk-seller-program-intro h2,
+.bk-seller-section-head h2,
+.bk-seller-program-cta h2 {
+  margin: 0 auto 14px;
+  color: #ffffff;
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
 }
 
-.bk-seller-program-intro p {
-  color: rgba(255, 255, 255, 0.65);
+.bk-seller-program-intro p,
+.bk-seller-program-cta p {
+  max-width: 820px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.9;
-  font-size: 17px;
-}
-
-/* ========================= */
-
-.bk-seller-program-section {
-  margin-bottom: 80px;
 }
 
 .bk-seller-section-head {
   text-align: center;
-  margin-bottom: 45px;
+  margin-bottom: 24px;
 }
-
-.bk-seller-section-head h2 {
-  margin-top: 15px;
-  font-size: 42px;
-  color: #fff;
-}
-
-/* ========================= */
 
 .bk-seller-feature-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 22px;
 }
 
 .bk-seller-feature-card {
   position: relative;
+  overflow: hidden;
+  padding: 30px;
+  border-radius: 30px;
+  background: radial-gradient(circle at 14% 0%, rgba(0, 255, 136, 0.11), transparent 36%), linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(20px);
+  transition: 0.28s ease;
+}
 
-  padding: 34px;
-
-  border-radius: 32px;
-
-  background: radial-gradient(circle at top left, rgba(0, 255, 136, 0.12), transparent 35%), linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  backdrop-filter: blur(22px);
-
-  transition: 0.35s;
+.bk-seller-feature-card::after {
+  content: "";
+  position: absolute;
+  right: -90px;
+  bottom: -110px;
+  width: 230px;
+  height: 230px;
+  border-radius: 999px;
+  background: rgba(0, 255, 136, 0.13);
+  filter: blur(55px);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.28s ease;
 }
 
 .bk-seller-feature-card:hover {
-  transform: translateY(-8px);
-
-  border-color: rgba(0, 255, 136, 0.25);
-
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+  transform: translateY(-6px);
+  border-color: rgba(0, 255, 136, 0.28);
+  box-shadow:
+    0 34px 100px rgba(0, 0, 0, 0.42),
+    0 0 42px rgba(0, 255, 136, 0.08);
 }
 
-/* ========================= */
+.bk-seller-feature-card:hover::after {
+  opacity: 1;
+}
+
+.bk-seller-feature-card > * {
+  position: relative;
+  z-index: 1;
+}
 
 .bk-seller-icon {
-  width: 70px;
-  height: 70px;
-
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
   border-radius: 22px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 24px;
-
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  color: #00150a;
   font-size: 28px;
-
-  color: #00ff88;
-
-  background: rgba(0, 255, 136, 0.08);
-
-  border: 1px solid rgba(0, 255, 136, 0.18);
+  box-shadow: 0 18px 45px rgba(0, 255, 136, 0.2);
 }
 
 .bk-seller-icon.gold {
-  color: #ffd76b;
-
-  background: rgba(255, 215, 107, 0.08);
-
-  border: 1px solid rgba(255, 215, 107, 0.18);
+  background: linear-gradient(135deg, #ffd37a, #fff0bd);
 }
 
-/* ========================= */
-
 .bk-seller-feature-card h3 {
-  color: #fff;
-
-  font-size: 28px;
-
-  margin-bottom: 22px;
+  margin: 0 0 18px;
+  color: #ffffff;
+  font-size: clamp(23px, 2.4vw, 30px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
 }
 
 .bk-seller-feature-card ul {
+  margin: 0;
+  padding: 0;
   display: grid;
-
-  gap: 14px;
-
-  padding-left: 18px;
+  gap: 12px;
+  list-style: none;
 }
 
 .bk-seller-feature-card li {
   color: rgba(255, 255, 255, 0.72);
-
-  line-height: 1.8;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
 }
 
-/* ========================= */
-
-.bk-seller-program-cta {
-  position: relative;
-
-  overflow: hidden;
-
-  text-align: center;
-
-  padding: 70px 35px;
-
-  border-radius: 36px;
-
-  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.12), transparent 60%), linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  backdrop-filter: blur(24px);
+.bk-seller-program-cta .bk-btn {
+  margin-top: 24px;
 }
 
-.bk-seller-program-cta h2 {
-  margin: 20px 0;
-
-  color: #fff;
-
-  font-size: 48px;
-}
-
-.bk-seller-program-cta p {
-  max-width: 640px;
-
-  margin: 0 auto 35px;
-
-  color: rgba(255, 255, 255, 0.68);
-
-  line-height: 1.9;
-
-  font-size: 17px;
-}
-
-/* ========================= */
-
-@media (max-width: 950px) {
+@media (max-width: 900px) {
   .bk-seller-feature-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* ========================= */
-
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .bk-seller-program-page {
-    padding: 0 0 90px;
+    padding: 0 0 82px;
   }
 
   .bk-seller-program-hero h1 {
-    font-size: 56px;
-    margin-top: 0;
-    padding-top: 8px;
-    padding-bottom: 16px;
-    font-size: 56px;
+    font-size: 54px;
     line-height: 1.08;
   }
 
-  .bk-seller-program-intro h2 {
-    font-size: 34px;
-  }
-
-  .bk-seller-section-head h2 {
-    font-size: 34px;
+  .bk-seller-program-intro,
+  .bk-seller-program-section,
+  .bk-seller-program-cta {
+    padding: 26px;
+    border-radius: 28px;
   }
 
   .bk-seller-feature-card {
-    padding: 28px;
+    padding: 26px;
     border-radius: 26px;
   }
 
-  .bk-seller-feature-card h3 {
-    font-size: 24px;
+  .bk-seller-program-text,
+  .bk-seller-feature-card li,
+  .bk-seller-program-intro p,
+  .bk-seller-program-cta p {
+    font-size: 14.5px;
+  }
+}
+
+@media (max-width: 560px) {
+  .bk-seller-program-actions {
+    flex-direction: column;
   }
 
-  .bk-seller-program-cta {
-    padding: 55px 24px;
+  .bk-btn {
+    width: 100%;
   }
 
-  .bk-seller-program-cta h2 {
-    font-size: 36px;
+  .bk-seller-program-intro,
+  .bk-seller-program-section,
+  .bk-seller-program-cta,
+  .bk-seller-feature-card {
+    padding: 24px;
+    border-radius: 24px;
   }
 }

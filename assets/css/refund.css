@@ -3,32 +3,29 @@
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
+  background: #020604;
 }
+
 html,
 body,
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
+
 img {
   -webkit-user-drag: none;
 }
-:root {
-  --green: #00ff88;
-  --green2: #80ffc1;
-  --text-gray: #b8c8bf;
-  --white: #fff;
-}
+
 body {
   margin: 0;
+  overflow-x: hidden;
+  color: #ffffff;
   background: #020604;
-  color: #fff;
   font-family:
     Inter,
     Poppins,
@@ -38,27 +35,27 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  overflow-x: hidden;
 }
+
 .policy-container {
+  position: relative;
   width: 100%;
   min-height: 100vh;
   padding: 88px 0 80px;
-  background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 22%, rgba(0, 185, 105, 0.12), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 50%, #020604 100%);
-  position: relative;
   overflow: hidden;
+  background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 22%, rgba(255, 211, 122, 0.08), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 50%, #020604 100%);
 }
-.policy-container:before {
+
+.policy-container::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(0, 255, 136, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.08) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(0, 255, 136, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.07) 1px, transparent 1px);
   background-size: 42px 42px;
-  mask-image: radial-gradient(circle at 0% 45%, #000 0%, transparent 36%), radial-gradient(circle at 100% 72%, #000 0%, transparent 38%);
-  -webkit-mask-image: radial-gradient(circle at 0% 45%, #000 0%, transparent 36%), radial-gradient(circle at 100% 72%, #000 0%, transparent 38%);
 }
-.policy-container:after {
+
+.policy-container::after {
   content: "";
   position: absolute;
   width: 360px;
@@ -66,134 +63,166 @@ body {
   right: -150px;
   top: 150px;
   border-radius: 999px;
-  background: rgba(0, 255, 136, 0.18);
+  background: rgba(0, 255, 136, 0.16);
   filter: blur(75px);
   pointer-events: none;
 }
+
 .policy-title,
 .policy-body {
-  width: min(1050px, calc(100% - 32px));
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   z-index: 2;
+  width: min(1050px, calc(100% - 32px));
+  margin: auto;
 }
+
 .policy-title {
   text-align: center;
   padding: 18px 0 42px;
 }
-.policy-title:before {
-  content: "Legal Policy • BR30 Kart";
+
+.policy-title::before {
+  content: "BR30 Kart Legal";
   display: inline-flex;
   width: fit-content;
   margin: 0 auto 18px;
-  padding: 9px 14px;
-  border: 1px solid rgba(0, 255, 136, 0.28);
+  padding: 9px 18px;
   border-radius: 999px;
+  border: 1px solid rgba(0, 255, 136, 0.28);
   background: rgba(0, 255, 136, 0.08);
   color: #00ff88;
-  font-size: 0.8rem;
+  font-size: 0.86rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
+
 .policy-title h1 {
-  max-width: 850px;
+  max-width: 950px;
   margin: 0 auto 16px;
-  font-size: clamp(2.2rem, 4.4vw, 4rem);
-  line-height: 1.02;
-  letter-spacing: -0.055em;
-  color: #fff;
-  font-weight: 900;
-  text-shadow:
-    0 10px 35px rgba(0, 0, 0, 0.45),
-    0 0 18px rgba(0, 255, 136, 0.1);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 5.4vw, 78px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.06em;
+  background: linear-gradient(90deg, #ffffff, #00ff88, #ffd37a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
+
 .meta {
-  color: #8fa69a;
-  font-size: 0.95rem;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.7;
 }
+
 .policy-body {
-  padding: 42px;
-  border-radius: 34px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(18px);
+  padding: clamp(26px, 5vw, 58px);
+  border-radius: 40px;
   overflow: hidden;
+  background: radial-gradient(circle at 14% 0%, rgba(0, 255, 136, 0.13), transparent 36%), radial-gradient(circle at 90% 10%, rgba(255, 211, 122, 0.08), transparent 34%), linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 0 32px 110px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(24px);
 }
-.policy-body:before {
-  content: "";
-  position: absolute;
-  right: -80px;
-  bottom: -120px;
-  width: 280px;
-  height: 280px;
-  background: rgba(0, 255, 136, 0.12);
-  border-radius: 999px;
-  filter: blur(55px);
-  pointer-events: none;
-}
-.policy-body > * {
-  position: relative;
-  z-index: 1;
-}
+
 .policy-body p {
-  color: #cfd9d4;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.9;
-  font-size: 1.03rem;
-  margin-bottom: 16px;
-  font-weight: 560;
+  letter-spacing: 0.01em;
 }
+
+.policy-body > p:first-child,
+.policy-body > p:nth-child(2) {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.95;
+}
+
+.policy-body b,
+.policy-body strong {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.policy-body a {
+  color: #00ff88;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.policy-body a:hover {
+  color: #7dffb7;
+  text-decoration: underline;
+}
+
 .policy-body h3 {
-  margin: 30px 0 14px;
-  color: #fff;
-  font-size: 1.28rem;
-  letter-spacing: -0.025em;
-  font-weight: 900;
-  text-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  margin-top: 40px;
+  color: #ffffff;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
 }
-.policy-body h3:first-of-type {
-  margin-top: 22px;
+
+.policy-body h3::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00ff88, transparent);
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.4);
 }
+
 .policy-body ul {
-  list-style: none;
+  margin: 18px 0 0;
+  padding-left: 0;
   display: grid;
-  gap: 10px;
-  margin: 10px 0 18px;
-  padding: 18px 20px;
-  border-radius: 20px;
-  background: rgba(0, 255, 136, 0.045);
-  border: 1px solid rgba(0, 255, 136, 0.13);
+  gap: 12px;
+  list-style: none;
 }
+
 .policy-body li {
   position: relative;
-  padding-left: 28px;
-  color: #b8c8bf;
-  line-height: 1.7;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 15px 18px 15px 46px;
+  border-radius: 18px;
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.75;
 }
-.policy-body li:before {
+
+.policy-body li::before {
   content: "✓";
   position: absolute;
-  left: 0;
-  top: 0;
-  color: #00ff88;
-  font-weight: 950;
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.35);
+  left: 16px;
+  top: 15px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #00150a;
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  font-size: 12px;
+  font-weight: 900;
 }
-.policy-body b {
-  color: #fff;
-}
+
 .policy-body hr {
+  margin: 36px 0 24px;
   border: 0;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.12);
-  margin: 32px 0 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .btn {
   display: flex;
   width: fit-content;
@@ -203,47 +232,57 @@ body {
   margin: 28px auto 0;
   padding: 0 22px;
   border-radius: 999px;
-  text-decoration: none;
-  font-weight: 950;
   color: #00170c;
   background: linear-gradient(135deg, #00ff88, #80ffc1);
+  text-decoration: none;
+  font-weight: 950;
   box-shadow: 0 18px 45px rgba(0, 255, 136, 0.22);
-  transition: 0.25s ease;
+  transition: 0.25s;
 }
+
 .btn:hover {
   transform: translateY(-3px);
 }
+
 @media (max-width: 760px) {
   .policy-container {
     padding: 64px 0 54px;
   }
+
   .policy-title {
     padding-bottom: 32px;
   }
+
+  .policy-title h1 {
+    font-size: 48px;
+    line-height: 1.08;
+  }
+
   .policy-body {
-    padding: 32px;
     border-radius: 28px;
   }
+
+  .policy-body p,
+  .policy-body li {
+    font-size: 14.5px;
+  }
+
+  .policy-body h3 {
+    font-size: 22px;
+  }
 }
+
 @media (max-width: 560px) {
   .policy-title,
   .policy-body {
     width: min(100% - 22px, 1050px);
   }
-  .policy-title h1 {
-    font-size: 2.35rem;
-    line-height: 0.98;
-  }
+
   .policy-body {
     padding: 24px;
     border-radius: 24px;
   }
-  .policy-body p {
-    font-size: 0.98rem;
-  }
-  .policy-body ul {
-    padding: 16px;
-  }
+
   .btn {
     width: 100%;
   }

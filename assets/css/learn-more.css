@@ -3,32 +3,29 @@
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
+  background: #020604;
 }
+
 html,
 body,
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
+
 img {
   -webkit-user-drag: none;
 }
-:root {
-  --green: #00ff88;
-  --green2: #80ffc1;
-  --text: #fff;
-  --muted: #b8c8bf;
-}
+
 body {
   margin: 0;
+  overflow-x: hidden;
+  color: #ffffff;
   background: #020604;
-  color: #fff;
   font-family:
     Inter,
     Poppins,
@@ -38,27 +35,27 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  overflow-x: hidden;
 }
+
 .container {
+  position: relative;
   width: 100%;
   min-height: 100vh;
   padding: 0 0 80px;
-  background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 18%, rgba(0, 185, 105, 0.12), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 50%, #020604 100%);
-  position: relative;
   overflow: hidden;
+  background: radial-gradient(circle at 12% 10%, rgba(0, 255, 136, 0.16), transparent 28%), radial-gradient(circle at 88% 22%, rgba(255, 211, 122, 0.08), transparent 30%), linear-gradient(180deg, #020604 0%, #04120b 50%, #020604 100%);
 }
-.container:before {
+
+.container::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(0, 255, 136, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.08) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(0, 255, 136, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.07) 1px, transparent 1px);
   background-size: 42px 42px;
-  mask-image: radial-gradient(circle at 0% 45%, #000 0%, transparent 36%), radial-gradient(circle at 100% 72%, #000 0%, transparent 38%);
-  -webkit-mask-image: radial-gradient(circle at 0% 45%, #000 0%, transparent 36%), radial-gradient(circle at 100% 72%, #000 0%, transparent 38%);
 }
-.container:after {
+
+.container::after {
   content: "";
   position: absolute;
   width: 360px;
@@ -66,178 +63,181 @@ body {
   right: -150px;
   top: 150px;
   border-radius: 999px;
-  background: rgba(0, 255, 136, 0.18);
+  background: rgba(0, 255, 136, 0.16);
   filter: blur(75px);
   pointer-events: none;
 }
+
 .header,
 .step-container,
 .vip-highlight {
+  position: relative;
+  z-index: 2;
   width: min(1080px, calc(100% - 32px));
   margin-left: auto;
   margin-right: auto;
-  position: relative;
-  z-index: 2;
 }
+
 .header {
   text-align: center;
-  padding: 0 0 52px;
+  padding: 64px 0 50px;
 }
+
 .page-badge {
   display: inline-flex;
   width: fit-content;
-  margin: 0 auto 20px;
-  padding: 9px 16px;
-  border: 1px solid rgba(0, 255, 136, 0.28);
+  margin: 0 auto 18px;
+  padding: 9px 18px;
   border-radius: 999px;
+  border: 1px solid rgba(0, 255, 136, 0.28);
   background: rgba(0, 255, 136, 0.08);
   color: #00ff88;
-  font-size: 0.8rem;
+  font-size: 0.86rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
+
 .header h1 {
-  max-width: 920px;
+  max-width: 980px;
   margin: 0 auto 18px;
-  font-size: clamp(2.4rem, 5vw, 4.6rem);
-  line-height: 1;
-  letter-spacing: -0.055em;
-  color: #fff;
-  font-weight: 900;
-  text-shadow:
-    0 10px 35px rgba(0, 0, 0, 0.45),
-    0 0 18px rgba(0, 255, 136, 0.1);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(44px, 6vw, 82px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.06em;
+  background: linear-gradient(90deg, #ffffff, #00ff88, #ffd37a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
+
 .hero-line {
   max-width: 850px;
-  margin: 0 auto 14px !important;
-  color: #fff !important;
-  font-size: clamp(1.15rem, 2vw, 1.55rem) !important;
-  line-height: 1.35 !important;
-  font-weight: 900 !important;
+  margin: 18px auto 0 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 17px !important;
+  font-weight: 500 !important;
+  line-height: 1.95 !important;
+  letter-spacing: 0.01em;
 }
+
 .hero-desc {
   max-width: 860px;
-  margin: 0 auto;
-  color: #c9d8d0;
-  font-size: 1.08rem;
-  line-height: 1.8;
-  font-weight: 600;
+  margin: 18px auto 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
 }
+
 .hero-small {
   max-width: 850px;
   margin: 16px auto 0;
-  color: #8fa69a;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 14px;
   font-weight: 700;
+  line-height: 1.7;
 }
+
 .step-container {
   display: grid;
   gap: 20px;
 }
+
+.step,
+.vip-highlight {
+  overflow: hidden;
+  border-radius: 40px;
+  background: radial-gradient(circle at 14% 0%, rgba(0, 255, 136, 0.13), transparent 36%), radial-gradient(circle at 90% 10%, rgba(255, 211, 122, 0.08), transparent 34%), linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 0 32px 110px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(24px);
+}
+
 .step {
   display: grid;
   grid-template-columns: 74px 1fr;
   gap: 20px;
   padding: 28px;
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(18px);
-  position: relative;
-  overflow: hidden;
   transition: 0.25s ease;
 }
-.step:before {
-  content: "";
-  position: absolute;
-  right: -80px;
-  bottom: -110px;
-  width: 230px;
-  height: 230px;
-  border-radius: 999px;
-  background: rgba(0, 255, 136, 0.12);
-  filter: blur(55px);
-  opacity: 0;
-  transition: 0.25s ease;
-}
+
 .step:hover {
   transform: translateY(-4px);
-  border-color: rgba(0, 255, 136, 0.3);
+  border-color: rgba(0, 255, 136, 0.28);
 }
-.step:hover:before {
-  opacity: 1;
-}
-.step > * {
-  position: relative;
-  z-index: 1;
-}
+
 .step-num {
   width: 64px;
   height: 64px;
   border-radius: 22px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #00ff88, #80ffc1);
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
   color: #00170c;
   font-size: 1.6rem;
   font-weight: 950;
   box-shadow: 0 18px 45px rgba(0, 255, 136, 0.2);
 }
+
 .step-content h3 {
-  margin: 2px 0 10px;
-  color: #fff;
-  font-size: 1.45rem;
-  font-weight: 900;
+  margin: 2px 0 12px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -0.03em;
-  text-shadow:
-    0 10px 35px rgba(0, 0, 0, 0.45),
-    0 0 18px rgba(0, 255, 136, 0.1);
 }
-.step-content p {
-  color: #b8c8bf;
-  line-height: 1.8;
-  font-size: 1rem;
-  font-weight: 600;
+
+.step-content h3::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00ff88, transparent);
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.4);
 }
+
+.step-content p,
+.vip-highlight p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+}
+
 .step-content b {
-  color: #fff;
+  color: #ffffff;
+  font-weight: 800;
 }
+
 .vip-highlight {
   margin-top: 30px;
-  padding: 40px;
-  border-radius: 34px;
+  padding: clamp(28px, 4vw, 46px);
   text-align: center;
-  border: 1px solid rgba(0, 255, 136, 0.22);
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.12), rgba(255, 255, 255, 0.04));
-  box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.35),
-    0 0 48px rgba(0, 255, 136, 0.08);
-  backdrop-filter: blur(18px);
-  overflow: hidden;
 }
+
 .vip-highlight h2 {
-  margin: 0 0 12px;
-  color: #fff;
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  font-weight: 900;
-  text-shadow:
-    0 10px 35px rgba(0, 0, 0, 0.45),
-    0 0 18px rgba(0, 255, 136, 0.1);
+  margin: 0 0 14px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(34px, 4.5vw, 58px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+  background: linear-gradient(90deg, #ffffff, #00ff88, #ffd37a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
+
 .vip-highlight p {
   max-width: 780px;
   margin: 0 auto;
-  color: #b8c8bf;
-  line-height: 1.8;
-  font-size: 1.05rem;
-  font-weight: 650;
 }
+
 .vip-actions {
   display: flex;
   justify-content: center;
@@ -246,80 +246,90 @@ body {
   flex-wrap: wrap;
   margin-top: 24px;
 }
+
 .vip-btn,
 .back-home {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 50px;
-  padding: 0 22px;
+  padding: 0 24px;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 950;
   transition: 0.25s ease;
 }
+
 .vip-btn {
   color: #00170c;
   background: linear-gradient(135deg, #00ff88, #80ffc1);
   box-shadow: 0 18px 45px rgba(0, 255, 136, 0.22);
 }
+
 .back-home {
-  color: #fff;
+  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.06);
 }
+
 .vip-btn:hover,
 .back-home:hover {
   transform: translateY(-3px);
 }
+
 @media (max-width: 760px) {
   .container {
-    padding: 0 0 32px;
+    padding: 0 0 54px;
   }
+
   .header {
-    padding-bottom: 38px;
+    padding: 48px 0 36px;
   }
+
+  .header h1 {
+    font-size: 48px;
+  }
+
+  .hero-line,
+  .hero-desc,
+  .step-content p,
+  .vip-highlight p {
+    font-size: 14.5px !important;
+  }
+
   .step {
     grid-template-columns: 1fr;
-    border-radius: 26px;
-    padding: 26px;
+    border-radius: 28px;
   }
+
   .vip-highlight {
     border-radius: 28px;
-    padding: 32px;
   }
 }
+
 @media (max-width: 560px) {
   .header,
   .step-container,
   .vip-highlight {
     width: min(100% - 22px, 1080px);
   }
-  .header h1 {
-    font-size: 2.55rem;
-    line-height: 0.98;
-  }
-  .hero-desc {
-    font-size: 1rem;
-  }
-  .container {
-    padding: 0 0 40px;
-  }
-  .header {
-    padding: 0 0 24px;
-  }
-  .step {
-    padding: 22px;
+
+  .step,
+  .vip-highlight {
+    padding: 24px;
     border-radius: 24px;
   }
+
   .step-num {
     width: 58px;
     height: 58px;
     border-radius: 20px;
   }
+
   .vip-actions {
     flex-direction: column;
   }
+
   .vip-btn,
   .back-home {
     width: 100%;
