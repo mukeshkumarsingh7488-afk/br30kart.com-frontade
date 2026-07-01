@@ -1780,3 +1780,126 @@ select {
     border-radius: 18px;
   }
 }
+/* ===========================
+   BR30 Kart FAQ Section
+=========================== */
+
+.bk-faq-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.bk-faq-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 12% 8%, rgba(0, 255, 136, 0.12), transparent 28%), radial-gradient(circle at 88% 18%, rgba(255, 211, 122, 0.08), transparent 30%);
+}
+
+.bk-faq-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 16px;
+  max-width: 980px;
+  margin: 42px auto 0;
+}
+
+.bk-faq-item {
+  overflow: hidden;
+  border-radius: 24px;
+  background: radial-gradient(circle at 14% 0%, rgba(0, 255, 136, 0.1), transparent 36%), linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(20px);
+  transition: 0.25s ease;
+}
+
+.bk-faq-item:hover {
+  border-color: rgba(0, 255, 136, 0.28);
+  transform: translateY(-2px);
+}
+
+.bk-faq-item summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  padding: 22px 64px 22px 24px;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.bk-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.bk-faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #00150a;
+  background: linear-gradient(135deg, #00ff88, #a6ffcb);
+  font-size: 24px;
+  font-weight: 900;
+  transform: translateY(-50%);
+  box-shadow: 0 12px 26px rgba(0, 255, 136, 0.18);
+}
+
+.bk-faq-item[open] summary::after {
+  content: "−";
+}
+
+.bk-faq-item p {
+  margin: 0;
+  padding: 0 24px 24px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.bk-faq-item[open] {
+  border-color: rgba(0, 255, 136, 0.24);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.34),
+    0 0 42px rgba(0, 255, 136, 0.06);
+}
+
+@media (max-width: 620px) {
+  .bk-faq-grid {
+    margin-top: 30px;
+    gap: 12px;
+  }
+
+  .bk-faq-item {
+    border-radius: 20px;
+  }
+
+  .bk-faq-item summary {
+    padding: 18px 56px 18px 18px;
+    font-size: 15.5px;
+  }
+
+  .bk-faq-item summary::after {
+    right: 16px;
+    width: 30px;
+    height: 30px;
+    font-size: 22px;
+  }
+
+  .bk-faq-item p {
+    padding: 0 18px 20px;
+    font-size: 14.5px;
+  }
+}
