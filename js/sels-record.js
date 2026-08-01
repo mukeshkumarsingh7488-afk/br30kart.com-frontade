@@ -384,7 +384,7 @@ async function exportToPDF() {
     const doc = new jsPDF("l", "pt", "a4");
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
-    const logoUrl = "../https://i.ibb.co/KxnQc4gx/BR30-LOGO1.png";
+    const logoUrl = "../https://res.cloudinary.com/dw4imlekm/image/upload/v1782555325/BR30-Fevicon-Green_tummos.png";
     try {
       doc.addImage(logoUrl, "JPEG", pageWidth - 110, 25, 70, 50);
     } catch (e) {
