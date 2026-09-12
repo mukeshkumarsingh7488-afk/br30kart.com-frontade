@@ -52,7 +52,7 @@ body::after {
   z-index: -1;
   pointer-events: none;
   background-image: linear-gradient(rgba(0, 255, 136, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.07) 1px, transparent 1px);
-  background-size: 42px 42px;
+  background-size: 28px 28px;
 }
 
 .services-hero,

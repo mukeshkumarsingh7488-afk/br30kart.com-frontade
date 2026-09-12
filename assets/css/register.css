@@ -37,6 +37,7 @@ body {
 .bk-footer {
   width: 100%;
 }
+
 body:before {
   content: "";
   position: fixed;
