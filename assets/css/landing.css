@@ -55,7 +55,7 @@ select {
   position: absolute;
   inset: 0;
   background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-size: 72px 72px;
   mask-image: radial-gradient(circle at center, black, transparent 72%);
   opacity: 0.55;
 }
