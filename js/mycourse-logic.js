@@ -94,18 +94,12 @@ function renderCourses(courses) {
             </div>
             <!-- 📱 SUPPORT OPTIONS (WhatsApp & Email) -->
            <div style="display: flex; gap: 8px;">
-  <!-- ✅ WhatsApp Support -->
-  <button class="watch-btn" 
-    onclick="window.open('https://wa.me/916200986380?text=${encodeURIComponent(`Admin, My course ${course.title} is locked. ID: ${course._id}`)}', '_blank')" 
-    style="background: #25d366; flex: 1; border: none; padding: 10px; border-radius: 8px; cursor: pointer; color: #fff; font-weight: bold; font-size: 11px;">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-  </button>
-  <!-- ✅ Email Support -->
-  <button class="watch-btn" 
-    onclick="window.location.href='mailto:support.br30@gmail.com?subject=${encodeURIComponent(`Course Locked: ${course.title}`)}&body=${encodeURIComponent(`User ID: ${course._id}`)}'" 
-    style="background: #3b82f6; flex: 1; border: none; padding: 10px; border-radius: 8px; cursor: pointer; color: #fff; font-weight: bold; font-size: 11px;">
-    <i class="fas fa-envelope"></i> Email
-  </button>
+<!-- ✅ Support Request -->
+<button class="watch-btn"
+  onclick="window.open('https://br30crm-com-f.vercel.app/public/forms/6ac4a4ce8ab8658ebe3748f7/br30-kart-support-request?utm_source=br30-kart-web&utm_medium=website&lead_source=br30-kart-web&form_id=6ac71aaf6ca9142e6f794d0f&source_id=6ac71b1b6ca9142e6f794d18', '_blank')"
+  style="background: #3b82f6; flex: 1; border: none; padding: 10px; border-radius: 8px; cursor: pointer; color: #fff; font-weight: bold; font-size: 11px;">
+  <i class="fas fa-headset"></i> Support
+</button>
             </div>
           `
               : `
